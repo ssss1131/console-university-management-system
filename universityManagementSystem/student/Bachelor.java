@@ -1,32 +1,15 @@
 package universityManagementSystem.student;
 
+import universityManagementSystem.enums.Specialization;
 
-import universityManagementSystem.Student;
-
-/**
-* @generated
-*/
-public class Bachelor extends Student {
-    
-    /**
-    * @generated
-    */
+public class Bachelor {
     private Specialization  specialization;
-    
-    
-    
-    /**
-    * @generated
-    */
+
     private Specialization  getSpecialization() {
         return this.specialization;
     }
-    
-    /**
-    * @generated
-    */
-    private Specialization  setSpecialization(Specialization  specialization) {
+
+    private void setSpecialization(Specialization specialization) {
         this.specialization = specialization;
     }
-    
 }

@@ -1,8 +1,6 @@
 package universityManagementSystem.student;
 
 
-import universityManagementSystem.Student;
-
 /**
 * @generated
 */

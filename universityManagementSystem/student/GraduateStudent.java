@@ -1,76 +1,36 @@
 package universityManagementSystem.student;
 
+import universityManagementSystem.student.research.ResearchProject;
+import universityManagementSystem.student.research.Researcher;
 
-import universityManagementSystem.ResearchSupervisor;
-import universityManagementSystem.Student;
-import universityManagementSystem.Vector;
+import java.util.Vector;
 
-/**
-* @generated
-*/
-public class GraduateStudent extends Student implements Researcher {
-    
-    /**
-    * @generated
-    */
+public class GraduateStudent implements Researcher {
     private ResearchSupervisor supervisor;
-    
-    /**
-    * @generated
-    */
     private Vector<ResearchProject> researchProjects;
-    
-    /**
-    * @generated
-    */
     private Vector<ResearchPaper> researchPapers;
-    
-    
-    
-    /**
-    * @generated
-    */
+
     private ResearchSupervisor  getSupervisor() {
         return this.supervisor;
     }
     
-    /**
-    * @generated
-    */
-    private ResearchSupervisor  setSupervisor(ResearchSupervisor  supervisor) {
+    private void setSupervisor(ResearchSupervisor  supervisor) {
         this.supervisor = supervisor;
     }
     
-    /**
-    * @generated
-    */
     private Vector<ResearchProject> getResearchProjects() {
         return this.researchProjects;
     }
     
-    /**
-    * @generated
-    */
-    private Vector<ResearchProject> setResearchProjects(Vector<ResearchProject> researchProjects) {
+    private void setResearchProjects(Vector<ResearchProject> researchProjects) {
         this.researchProjects = researchProjects;
     }
     
-    /**
-    * @generated
-    */
     private Vector<ResearchPaper> getResearchPapers() {
         return this.researchPapers;
     }
     
-    /**
-    * @generated
-    */
-    private Vector<ResearchPaper> setResearchPapers(Vector<ResearchPaper> researchPapers) {
+    private void setResearchPapers(Vector<ResearchPaper> researchPapers) {
         this.researchPapers = researchPapers;
     }
-    
-
-    //                          Operations                                  
-    
-    
 }

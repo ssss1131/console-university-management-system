@@ -1,7 +1,6 @@
 package universityManagementSystem.repository;
 
 
-import universityManagementSystem.Course;
 import universityManagementSystem.Vector;
 
 /**

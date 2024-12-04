@@ -1,13 +1,10 @@
 package universityManagementSystem.student;
 
 
-import universityManagementSystem.*;
-import universityManagementSystem.Organization;
-
 /**
 * @generated
 */
-public class Student extends BaseUserBaseUser implements User, CanViewCourses, CanBeResearcher, CanViewMarks, CanViewTeachers {
+public class Student extends BaseUserBaseUser implements CanViewCourses, CanBeResearcher, CanViewMarks, CanViewTeachers {
     
     /**
     * @generated
