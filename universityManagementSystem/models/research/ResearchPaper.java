@@ -1,166 +1,80 @@
 package universityManagementSystem.models.research;
 
+import universityManagementSystem.models.student.research.Researcher;
 
-import universityManagementSystem.Vector;
+import java.time.LocalDate;
+import java.util.Vector;
 
-/**
-* @generated
-*/
 public class ResearchPaper {
-    
-    /**
-    * @generated
-    */
     private String title;
-    
-    /**
-    * @generated
-    */
-    private String abstract;
-    
-    /**
-    * @generated
-    */
+    private String tesis;
     private String journal;
-    
-    /**
-    * @generated
-    */
     private Integer citations;
-    
-    /**
-    * @generated
-    */
     private Vector<Researcher> authors;
-    
-    /**
-    * @generated
-    */
     private String doi;
-    
-    /**
-    * @generated
-    */
     private LocalDate publicationDate;
-    
-    
-    
-    /**
-    * @generated
-    */
+
     private String getTitle() {
         return this.title;
     }
-    
-    /**
-    * @generated
-    */
-    private String setTitle(String title) {
+
+    private void setTitle(String title) {
         this.title = title;
     }
-    
-    /**
-    * @generated
-    */
+
     private String getAbstract() {
-        return this.abstract;
+        return this.tesis;
     }
-    
-    /**
-    * @generated
-    */
-    private String setAbstract(String abstract) {
-        this.abstract = abstract;
+
+    private void setTesis(String tesis) {
+        this.tesis = tesis;
     }
-    
-    /**
-    * @generated
-    */
+
     private String getJournal() {
         return this.journal;
     }
-    
-    /**
-    * @generated
-    */
-    private String setJournal(String journal) {
+
+    private void setJournal(String journal) {
         this.journal = journal;
     }
-    
-    /**
-    * @generated
-    */
+
     private Integer getCitations() {
         return this.citations;
     }
-    
-    /**
-    * @generated
-    */
-    private Integer setCitations(Integer citations) {
+
+    private void setCitations(Integer citations) {
         this.citations = citations;
     }
-    
-    /**
-    * @generated
-    */
+
     private Vector<Researcher> getAuthors() {
         return this.authors;
     }
-    
-    /**
-    * @generated
-    */
-    private Vector<Researcher> setAuthors(Vector<Researcher> authors) {
+
+    private void setAuthors(Vector<Researcher> authors) {
         this.authors = authors;
     }
-    
-    /**
-    * @generated
-    */
+
     private String getDoi() {
         return this.doi;
     }
-    
-    /**
-    * @generated
-    */
-    private String setDoi(String doi) {
+
+    private void setDoi(String doi) {
         this.doi = doi;
     }
-    
-    /**
-    * @generated
-    */
+
     private LocalDate getPublicationDate() {
         return this.publicationDate;
     }
-    
-    /**
-    * @generated
-    */
-    private LocalDate setPublicationDate(LocalDate publicationDate) {
+
+    private void setPublicationDate(LocalDate publicationDate) {
         this.publicationDate = publicationDate;
     }
-    
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
     public String getCitation() {
         //TODO
         return "";
     }
-    
-    /**
-    * @generated
-    */
     public void addAuthor() {
         //TODO
-        return null;
     }
-    
-    
 }

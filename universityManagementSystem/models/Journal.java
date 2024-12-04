@@ -1,106 +1,45 @@
 package universityManagementSystem.models;
 
+import universityManagementSystem.models.academic.Post;
 
-import universityManagementSystem.Vector;
+import java.util.Vector;
 
-/**
-* @generated
-*/
 public class Journal {
-    
-    /**
-    * @generated
-    */
     private String name;
+    private Vector<User> subscibers;
+
     
-    /**
-    * @generated
-    */
-    private Vector<Subscriber> subscibers;
-    
-    /**
-    * @generated
-    */
-    private invalid attribute;
-    
-    
-    
-    /**
-    * @generated
-    */
     private String getName() {
         return this.name;
     }
-    
-    /**
-    * @generated
-    */
-    private String setName(String name) {
+
+    private void setName(String name) {
         this.name = name;
     }
-    
-    /**
-    * @generated
-    */
-    private Vector<Subscriber> getSubscibers() {
+
+    private Vector<User> getSubscibers() {
         return this.subscibers;
+
     }
-    
-    /**
-    * @generated
-    */
-    private Vector<Subscriber> setSubscibers(Vector<Subscriber> subscibers) {
+    private void setSubscibers(Vector<User> subscibers) {
         this.subscibers = subscibers;
     }
-    
-    /**
-    * @generated
-    */
-    private invalid getAttribute() {
-        return this.attribute;
-    }
-    
-    /**
-    * @generated
-    */
-    private invalid setAttribute(invalid attribute) {
-        this.attribute = attribute;
-    }
-    
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public void notify() {
+    public void notify(Post post) {
         //TODO
-        return null;
     }
-    
-    /**
-    * @generated
-    */
+
     public void publish() {
         //TODO
-        return null;
     }
-    
-    /**
-    * @generated
-    */
+
     public boolean add() {
         //TODO
         return false;
     }
-    
-    /**
-    * @generated
-    */
+
     public boolean remove() {
         //TODO
         return false;
     }
-    
-    
 }

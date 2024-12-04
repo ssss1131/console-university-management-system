@@ -1,99 +1,47 @@
 package universityManagementSystem.models.research;
 
+import universityManagementSystem.models.student.research.Researcher;
+import java.util.Vector;
 
-import universityManagementSystem.Vector;
-import universityManagementSystem.models.ResearchPaper;
-
-/**
-* @generated
-*/
 public class ResearchProject {
-    
-    /**
-    * @generated
-    */
     private String topic;
-    
-    /**
-    * @generated
-    */
     private Vector<Researcher> participants;
+    private Vector<ResearchPaper> publishedPapers;
     
-    /**
-    * @generated
-    */
-    private Vector<universityManagementSystem.models.ResearchPaper> publishedPapers;
-    
-    
-    
-    /**
-    * @generated
-    */
     private String getTopic() {
         return this.topic;
     }
-    
-    /**
-    * @generated
-    */
-    private String setTopic(String topic) {
+
+    private void setTopic(String topic) {
         this.topic = topic;
     }
-    
-    /**
-    * @generated
-    */
+
     private Vector<Researcher> getParticipants() {
         return this.participants;
     }
-    
-    /**
-    * @generated
-    */
-    private Vector<Researcher> setParticipants(Vector<Researcher> participants) {
+
+    private void setParticipants(Vector<Researcher> participants) {
         this.participants = participants;
     }
-    
-    /**
-    * @generated
-    */
-    private Vector<universityManagementSystem.models.ResearchPaper> getPublishedPapers() {
+
+    private Vector<ResearchPaper> getPublishedPapers() {
         return this.publishedPapers;
     }
-    
-    /**
-    * @generated
-    */
-    private Vector<universityManagementSystem.models.ResearchPaper> setPublishedPapers(Vector<ResearchPaper> publishedPapers) {
+
+    private void setPublishedPapers(Vector<ResearchPaper> publishedPapers) {
         this.publishedPapers = publishedPapers;
     }
-    
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
     public void joinToProject() {
         //TODO
-        return null;
     }
-    
-    /**
-    * @generated
-    */
+
     public void quitFromProject() {
         //TODO
-        return null;
     }
-    
-    /**
-    * @generated
-    */
+
     public boolean publishPaper() {
         //TODO
         return false;
     }
-    
-    
 }
