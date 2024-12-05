@@ -1,70 +1,35 @@
 package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
+import main.java.kbtu.chill_guys.university_management_system.model.BaseUser;
 
-import universityManagementSystem.models.BaseUser;
+import java.time.LocalDate;
 
-/**
-* @generated
-*/
 public class Post {
-    
-    /**
-    * @generated
-    */
-    private Date date;
-    
-    /**
-    * @generated
-    */
+    private LocalDate date;
     private String content;
-    
-    /**
-    * @generated
-    */
     private BaseUser author;
-    
-    
-    
-    /**
-    * @generated
-    */
-    private Date getDate() {
+
+    public LocalDate getDate() {
         return this.date;
     }
-    
-    /**
-    * @generated
-    */
-    private Date setDate(Date date) {
+
+    public void setDate(LocalDate date) {
         this.date = date;
     }
-    
-    /**
-    * @generated
-    */
-    private String getContent() {
+
+    public String getContent() {
         return this.content;
     }
-    
-    /**
-    * @generated
-    */
-    private String setContent(String content) {
+
+    public void setContent(String content) {
         this.content = content;
     }
-    
-    /**
-    * @generated
-    */
-    private BaseUser getAuthor() {
+
+    public BaseUser getAuthor() {
         return this.author;
     }
-    
-    /**
-    * @generated
-    */
-    private BaseUser setAuthor(BaseUser author) {
+
+    public void setAuthor(BaseUser author) {
         this.author = author;
     }
-    
 }

@@ -1,17 +1,17 @@
 package main.java.kbtu.chill_guys.university_management_system.model.employee;
 
-import universityManagementSystem.permissions.CanViewRequests;
-import universityManagementSystem.permissions.CanViewTeachers;
-import universityManagementSystem.enums.organization.ManagerType;
+import main.java.kbtu.chill_guys.university_management_system.permission.CanViewRequests;
+import main.java.kbtu.chill_guys.university_management_system.permission.CanViewTeachers;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.ManagerType;
 
 public class Manager implements CanViewRequests, CanViewTeachers {
     private ManagerType ManagerType;
 
-    private ManagerType getManagerType() {
+    public ManagerType getManagerType() {
         return this.ManagerType;
     }
 
-    private void setManagerType(ManagerType ManagerType) {
+    public void setManagerType(ManagerType ManagerType) {
         this.ManagerType = ManagerType;
     }
 

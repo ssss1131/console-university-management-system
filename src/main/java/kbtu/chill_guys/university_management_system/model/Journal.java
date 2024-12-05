@@ -8,20 +8,19 @@ public class Journal {
     private String name;
     private Vector<User> subscibers;
 
-    
-    private String getName() {
+    public String getName() {
         return this.name;
     }
 
-    private void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    private Vector<User> getSubscibers() {
+    public Vector<User> getSubscibers() {
         return this.subscibers;
 
     }
-    private void setSubscibers(Vector<User> subscibers) {
+    public void setSubscibers(Vector<User> subscibers) {
         this.subscibers = subscibers;
     }
 

@@ -1,6 +1,6 @@
 package main.java.kbtu.chill_guys.university_management_system.model.research;
 
-import universityManagementSystem.models.student.research.Researcher;
+import main.java.kbtu.chill_guys.university_management_system.model.research.Researcher;
 
 import java.time.LocalDate;
 import java.util.Vector;
@@ -14,59 +14,59 @@ public class ResearchPaper {
     private String doi;
     private LocalDate publicationDate;
 
-    private String getTitle() {
+    public String getTitle() {
         return this.title;
     }
 
-    private void setTitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    private String getAbstract() {
+    public String getAbstract() {
         return this.tesis;
     }
 
-    private void setTesis(String tesis) {
+    public void setTesis(String tesis) {
         this.tesis = tesis;
     }
 
-    private String getJournal() {
+    public String getJournal() {
         return this.journal;
     }
 
-    private void setJournal(String journal) {
+    public void setJournal(String journal) {
         this.journal = journal;
     }
 
-    private Integer getCitations() {
+    public Integer getCitations() {
         return this.citations;
     }
 
-    private void setCitations(Integer citations) {
+    public void setCitations(Integer citations) {
         this.citations = citations;
     }
 
-    private Vector<Researcher> getAuthors() {
+    public Vector<Researcher> getAuthors() {
         return this.authors;
     }
 
-    private void setAuthors(Vector<Researcher> authors) {
+    public void setAuthors(Vector<Researcher> authors) {
         this.authors = authors;
     }
 
-    private String getDoi() {
+    public String getDoi() {
         return this.doi;
     }
 
-    private void setDoi(String doi) {
+    public void setDoi(String doi) {
         this.doi = doi;
     }
 
-    private LocalDate getPublicationDate() {
+    public LocalDate getPublicationDate() {
         return this.publicationDate;
     }
 
-    private void setPublicationDate(LocalDate publicationDate) {
+    public void setPublicationDate(LocalDate publicationDate) {
         this.publicationDate = publicationDate;
     }
 

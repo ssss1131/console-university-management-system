@@ -1,6 +1,6 @@
 package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
-import universityManagementSystem.models.student.Student;
+import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 
 import java.time.LocalDate;
 
@@ -9,27 +9,27 @@ public class Complaint {
     private String description;
     private LocalDate date;
     
-    private Student getStudent() {
+    public Student getStudent() {
         return this.student;
     }
 
-    private void setStudent(Student student) {
+    public void setStudent(Student student) {
         this.student = student;
     }
 
-    private String getDescription() {
+    public String getDescription() {
         return this.description;
     }
 
-    private void setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    private LocalDate getLocalDate() {
+    public LocalDate getLocalDate() {
         return this.date;
     }
 
-    private void setLocalDate(LocalDate date) {
+    public void setLocalDate(LocalDate date) {
         this.date = date;
     }
 }

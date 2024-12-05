@@ -1,4 +1,4 @@
-package universityManagementSystem.enumeration.academic;
+package main.java.kbtu.chill_guys.university_management_system.enumeration.academic;
 
 public enum MasterProgram {
     DATA_SCIENCE, IT_MANAGEMENT, SOFTWARE_ENGINEERING, COMPUTER_SCIENCE_AND_DATA_ANALYTICS, INFORMATION_SYSTEMS,

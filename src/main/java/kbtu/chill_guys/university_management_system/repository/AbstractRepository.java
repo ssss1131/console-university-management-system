@@ -1,8 +1,5 @@
 package main.java.kbtu.chill_guys.university_management_system.repository;
 
-
-import universityManagementSystem.Vector;
-
 /**
 * @generated
 */

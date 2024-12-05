@@ -1,15 +1,15 @@
-package universityManagementSystem.models.student;
+package main.java.kbtu.chill_guys.university_management_system.model.student;
 
-import universityManagementSystem.enums.academic.MasterProgram;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.MasterProgram;
 
 public class Master extends GraduateStudent {
     private MasterProgram masterProgram;
 
-    private MasterProgram getMasterProgram() {
+    public MasterProgram getMasterProgram() {
         return this.masterProgram;
     }
 
-    private void setMasterProgram(MasterProgram masterProgram) {
+    public void setMasterProgram(MasterProgram masterProgram) {
         this.masterProgram = masterProgram;
     }
 }

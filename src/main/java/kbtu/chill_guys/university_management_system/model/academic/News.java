@@ -1,51 +1,24 @@
 package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
+import java.util.Vector;
 
-import universityManagementSystem.Vector;
-
-/**
-* @generated
-*/
 public class News {
-    
-    /**
-    * @generated
-    */
     private String topic;
-    
-    /**
-    * @generated
-    */
-    private Vector<universityManagementSystem.Post> comments;
-    
-    
-    
-    /**
-    * @generated
-    */
-    private String getTopic() {
+    private Vector<Post> comments;
+
+    public String getTopic() {
         return this.topic;
     }
-    
-    /**
-    * @generated
-    */
-    private String setTopic(String topic) {
+
+    public void setTopic(String topic) {
         this.topic = topic;
     }
-    
-    /**
-    * @generated
-    */
-    private Vector<universityManagementSystem.Post> getComments() {
+
+    public Vector<Post> getComments() {
         return this.comments;
     }
-    
-    /**
-    * @generated
-    */
-    private Vector<universityManagementSystem.Post> setComments(Vector<Post> comments) {
+
+    public void setComments(Vector<Post> comments) {
         this.comments = comments;
     }
-    
 }

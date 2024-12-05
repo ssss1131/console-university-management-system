@@ -1,7 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.model.research;
 
-import universityManagementSystem.models.BaseUser;
-import universityManagementSystem.permissions.CanBeResearcher;
+import main.java.kbtu.chill_guys.university_management_system.model.BaseUser;
+import main.java.kbtu.chill_guys.university_management_system.permission.CanBeResearcher;
 
 import java.util.Vector;
 
@@ -10,27 +10,27 @@ public class ResearcherDecorator <T extends BaseUser> implements CanBeResearcher
     private Vector<ResearchProject> researchProjects;
     private Vector<ResearchPaper> researchPapers;
 
-    private T getUser() {
+    public T getUser() {
         return this.User;
     }
 
-    private void setUser(T User) {
+    public void setUser(T User) {
         this.User = User;
     }
 
-    private Vector<ResearchProject> getResearchProjects() {
+    public Vector<ResearchProject> getResearchProjects() {
         return this.researchProjects;
     }
 
-    private void setResearchProjects(Vector<ResearchProject> researchProjects) {
+    public void setResearchProjects(Vector<ResearchProject> researchProjects) {
         this.researchProjects = researchProjects;
     }
 
-    private Vector<ResearchPaper> getResearchPapers() {
+    public Vector<ResearchPaper> getResearchPapers() {
         return this.researchPapers;
     }
 
-    private void setResearchPapers(Vector<ResearchPaper> researchPapers) {
+    public void setResearchPapers(Vector<ResearchPaper> researchPapers) {
         this.researchPapers = researchPapers;
     }
 }

@@ -1,6 +1,6 @@
-package universityManagementSystem.models.student;
+package main.java.kbtu.chill_guys.university_management_system.model.student;
 
-import universityManagementSystem.enums.academic.OrganizationRole;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.OrganizationRole;
 
 import java.util.Map;
 
@@ -9,27 +9,27 @@ public class Organization {
     private String description;
     private Map<Student, OrganizationRole> members;
 
-    private String getName() {
+    public String getName() {
         return this.name;
     }
 
-    private void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    private String getDescription() {
+    public String getDescription() {
         return this.description;
     }
 
-    private void setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    private Map<Student, OrganizationRole> getMembers() {
+    public Map<Student, OrganizationRole> getMembers() {
         return this.members;
     }
 
-    private void setMembers(Map<Student, OrganizationRole> members) {
+    public void setMembers(Map<Student, OrganizationRole> members) {
         this.members = members;
     }
 

@@ -1,62 +1,50 @@
 package main.java.kbtu.chill_guys.university_management_system.model.employee;
 
-import universityManagementSystem.permissions.CanViewCourses;
-import universityManagementSystem.permissions.CanViewStudents;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Rating;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.TeachingDegree;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
+import main.java.kbtu.chill_guys.university_management_system.permission.CanViewCourses;
+import main.java.kbtu.chill_guys.university_management_system.permission.CanViewStudents;
 
 public class Teacher implements CanViewCourses, CanViewStudents {
     private Rating rating;
     private School school;
     private TeachingDegree teachingDegree;
 
-    private Rating getRating() {
-        return this.rating;
+    public Rating getRating() {
+        return rating;
     }
 
-    private Rating setRating(Rating rating) {
+    public void setRating(Rating rating) {
         this.rating = rating;
     }
 
-    private School getSchool() {
+    public School getSchool() {
         return this.school;
-
     }
 
-    private void setSchool(School school) {
+    public void setSchool(School school) {
         this.school = school;
     }
-    private TeachingDegree getTeachingDegree() {
+
+    public TeachingDegree getTeachingDegree() {
         return this.teachingDegree;
     }
-    private TeachingDegree setTeachingDegree(TeachingDegree teachingDegree) {
+
+    public void setTeachingDegree(TeachingDegree teachingDegree) {
         this.teachingDegree = teachingDegree;
     }
-    
 
-    //                          Operations                                  
     public void sendComplaints() {
         //TODO
-        return null;
     }
+
     public int putMarks() {
         //TODO
         return 0;
     }
-    public boolean sendComplaints() {
-        //TODO
-        return false;
-    }
-    public boolean putMarks() {
-        //TODO
-        return false;
-    }
+
     public void viewMarks() {
         //TODO
-        return null;
     }
-    public void getRating() {
-        //TODO
-        return null;
-    }
-    
-    
 }

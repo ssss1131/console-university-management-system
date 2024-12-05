@@ -1,52 +1,31 @@
 package main.java.kbtu.chill_guys.university_management_system.service;
 
+import main.java.kbtu.chill_guys.university_management_system.model.User;
+import main.java.kbtu.chill_guys.university_management_system.repository.GeneralRepository;
 
-/**
-* @generated
-*/
+import java.util.UUID;
+
 public class AdminService {
-    
-    
-    /**
-    * @generated
-    */
-    private ServiceFactoryImpl serviceFactoryImpl;
-    
-    
+    private final GeneralRepository generalRepository;
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
+    public AdminService(GeneralRepository generalRepository) {
+        this.generalRepository = generalRepository;
+    }
+
     public String getLogs() {
         //TODO
         return "";
     }
     
-    /**
-    * @generated
-    */
-    public void createUser() {
-        //TODO
-        return null;
+    public void createUser(User user) {
+        generalRepository.save(user);
+    }
+
+    public void modifyUser(User user) {
+        generalRepository.save(user);
     }
     
-    /**
-    * @generated
-    */
-    public void modifyUser() {
-        //TODO
-        return null;
+    public void removeUser(UUID id) {
+        generalRepository.delete(id);
     }
-    
-    /**
-    * @generated
-    */
-    public void removeUser() {
-        //TODO
-        return null;
-    }
-    
-    
 }

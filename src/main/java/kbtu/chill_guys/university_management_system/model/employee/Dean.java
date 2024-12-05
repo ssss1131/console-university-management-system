@@ -1,8 +1,8 @@
 package main.java.kbtu.chill_guys.university_management_system.model.employee;
 
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Complaint;
-import universityManagementSystem.permissions.CanViewRequests;
-import universityManagementSystem.permissions.CanViewStudents;
+import main.java.kbtu.chill_guys.university_management_system.permission.CanViewRequests;
+import main.java.kbtu.chill_guys.university_management_system.permission.CanViewStudents;
 
 import java.util.Vector;
 

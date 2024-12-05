@@ -1,15 +1,15 @@
-package universityManagementSystem.models.student;
+package main.java.kbtu.chill_guys.university_management_system.model.student;
 
-import universityManagementSystem.enums.academic.Specialization;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Specialization;
 
 public class Bachelor {
     private Specialization  specialization;
 
-    private Specialization  getSpecialization() {
+    public Specialization  getSpecialization() {
         return this.specialization;
     }
 
-    private void setSpecialization(Specialization specialization) {
+    public void setSpecialization(Specialization specialization) {
         this.specialization = specialization;
     }
 }

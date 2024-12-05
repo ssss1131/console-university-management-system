@@ -1,71 +1,87 @@
 package main.java.kbtu.chill_guys.university_management_system.model.student;
 
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Mark;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Course;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Gpa;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
+import main.java.kbtu.chill_guys.university_management_system.model.BaseUser;
+import main.java.kbtu.chill_guys.university_management_system.model.Journal;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.*;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanBeResearcher;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewCourses;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewMarks;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewTeachers;
-import universityManagementSystem.models.BaseUser;
+import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
 
 import java.time.LocalDate;
 import java.util.Map;
+import java.util.UUID;
+import java.util.Vector;
 
 public class Student extends BaseUser implements CanViewCourses, CanBeResearcher, CanViewMarks, CanViewTeachers {
-
     private School school;
     private LocalDate enrollmentDate;
     private Gpa gpa;
     private Integer credits;
     private Integer studyDuration;
-    private universityManagementSystem.models.student.Organization organization;
+    private Organization organization;
 
+    public Student() {
+        super();
+    }
 
-    private School getSchool() {
+    public Student(UUID id, String email, String firstName, String lastName, Vector<Post> notifications, School school, LocalDate enrollmentDate, GPA school1, int credits, int studyDuration, Organization organization) {
+        super(id, email, firstName, lastName, notifications);
+        this.school = school;
+        this.enrollmentDate = enrollmentDate;
+        this.credits = credits;
+        this.studyDuration = studyDuration;
+        this.organization = organization;
+    }
+
+    public School getSchool() {
         return this.school;
     }
 
-    private School setSchool(School school) {
+    public void setSchool(School school) {
         this.school = school;
     }
 
-    private LocalDate getEnrollmentDate() {
+    public LocalDate getEnrollmentDate() {
         return this.enrollmentDate;
     }
 
-    private LocalDate setEnrollmentDate(LocalDate enrollmentDate) {
+    public void setEnrollmentDate(LocalDate enrollmentDate) {
         this.enrollmentDate = enrollmentDate;
     }
 
-    private Gpa getGpa() {
+    public Gpa getGpa() {
         return this.gpa;
     }
 
-    private Gpa setGpa(Gpa gpa) {
+    public void setGpa(Gpa gpa) {
         this.gpa = gpa;
     }
 
-    private Integer getCredits() {
+    public Integer getCredits() {
         return this.credits;
     }
 
-    private Integer setCredits(Integer credits) {
+    public void setCredits(Integer credits) {
         this.credits = credits;
     }
 
-    private Integer getStudyDuration() {
+    public Integer getStudyDuration() {
         return this.studyDuration;
     }
 
-    private Integer setStudyDuration(Integer studyDuration) {
+    public void setStudyDuration(Integer studyDuration) {
         this.studyDuration = studyDuration;
     }
 
-    private universityManagementSystem.Organization getOrganization() {
+    public Organization getOrganization() {
         return this.organization;
     }
 
-    private universityManagementSystem.Organization setOrganization(universityManagementSystem.models.student.Organization organization) {
+    public void setOrganization(Organization organization) {
         this.organization = organization;
     }
 
@@ -81,10 +97,9 @@ public class Student extends BaseUser implements CanViewCourses, CanBeResearcher
 
     public void rateTeacher() {
         //TODO
-        return null;
     }
 
-    public universityManagementSystem.models.academic.Transcript viewTranscript() {
+    public Transcript viewTranscript() {
         //TODO
         return null;
     }
@@ -114,5 +129,23 @@ public class Student extends BaseUser implements CanViewCourses, CanBeResearcher
         return "";
     }
 
+    @Override
+    public boolean login(String username, String password) {
+        return false;
+    }
 
+    @Override
+    public Vector<Post> viewNews() {
+        return null;
+    }
+
+    @Override
+    public void subscribeJournal(Journal journal) {
+
+    }
+
+    @Override
+    public void unsubscribeJournal(Journal journal) {
+
+    }
 }

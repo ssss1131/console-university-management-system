@@ -1,68 +1,57 @@
 package main.java.kbtu.chill_guys.university_management_system.controller;
 
-
+import main.java.kbtu.chill_guys.university_management_system.model.User;
+import main.java.kbtu.chill_guys.university_management_system.model.UserFactory;
 import main.java.kbtu.chill_guys.university_management_system.service.AdminService;
 
-/**
-* @generated
-*/
+import java.util.Map;
+import java.util.UUID;
+
 public class AdminController {
-    
-    /**
-    * @generated
-    */
     private AdminService adminService;
-    
-    
-    
-    /**
-    * @generated
-    */
+
     private AdminService getAdminService() {
         return this.adminService;
     }
-    
-    /**
-    * @generated
-    */
+
     private void setAdminService(AdminService adminService) {
         this.adminService = adminService;
     }
-    
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
     public String getLogs() {
         //TODO
         return "";
     }
-    
-    /**
-    * @generated
-    */
-    public void createUser() {
-        //TODO
 
+    public void createUser(Map<String, Object> data) {
+        String type = (String) data.get("type");
+        User user = UserFactory.createUser(type, data);
+        adminService.createUser(user);
     }
-    
-    /**
-    * @generated
-    */
-    public void modifyUser() {
-        //TODO
 
+    public void modifyUser(Map<String, Object> data) {
+        String type = (String) data.get("type");
+        User user = UserFactory.createUser(type, data);
+        adminService.modifyUser(user);
     }
-    
-    /**
-    * @generated
-    */
-    public void removeUser() {
-        //TODO
 
+    public void removeUser(Map<String, Object> data) {
+        UUID id = (UUID) data.get("id");
+        adminService.removeUser(id);
     }
-    
-    
+
+    public boolean isExistingUser() {
+        //TODO
+        return false;
+    }
+
+    public boolean changePasswordToUser() {
+        //TODO
+        return false;
+    }
+
+    public boolean hasUniqueLogin() {
+        //TODO
+        return false;
+    }
 }

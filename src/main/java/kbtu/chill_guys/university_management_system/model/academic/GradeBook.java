@@ -1,68 +1,36 @@
 package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
+import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 
-/**
-* @generated
-*/
+import java.time.LocalDate;
+import java.util.Map;
+
 public class GradeBook {
-    
-    /**
-    * @generated
-    */
     private Student student;
-    
-    /**
-    * @generated
-    */
-    private universityManagementSystem.Mark mark;
-    
-    /**
-    * @generated
-    */
-    private Map<Date, bool> attendance;
-    
-    
-    
-    /**
-    * @generated
-    */
-    private Student getStudent() {
+    private Mark mark;
+    private Map<LocalDate, Boolean> attendance;
+
+    public Student getStudent() {
         return this.student;
     }
-    
-    /**
-    * @generated
-    */
-    private Student setStudent(Student student) {
+
+    public void setStudent(Student student) {
         this.student = student;
     }
-    
-    /**
-    * @generated
-    */
-    private universityManagementSystem.Mark getMark() {
+
+    public Mark getMark() {
         return this.mark;
     }
-    
-    /**
-    * @generated
-    */
-    private universityManagementSystem.Mark setMark(Mark mark) {
+
+    public void setMark(Mark mark) {
         this.mark = mark;
     }
-    
-    /**
-    * @generated
-    */
-    private Map<Date, bool> getAttendance() {
+
+    public Map<LocalDate, Boolean> getAttendance() {
         return this.attendance;
     }
-    
-    /**
-    * @generated
-    */
-    private Map<Date, bool> setAttendance(Map<Date, bool> attendance) {
+
+    public void setAttendance(Map<LocalDate, Boolean> attendance) {
         this.attendance = attendance;
     }
-    
 }

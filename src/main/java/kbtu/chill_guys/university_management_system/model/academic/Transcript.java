@@ -1,30 +1,15 @@
 package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
+import java.util.Vector;
 
-/**
-* @generated
-*/
 public class Transcript {
+    private Vector<Mark> grades;
     
-    /**
-    * @generated
-    */
-    private invalid grades;
-    
-    
-    
-    /**
-    * @generated
-    */
-    public invalid getGrades() {
+    public Vector<Mark> getGrades() {
         return this.grades;
     }
-    
-    /**
-    * @generated
-    */
-    public invalid setGrades(invalid grades) {
+
+    public void setGrades(Vector<Mark> grades) {
         this.grades = grades;
     }
-    
 }

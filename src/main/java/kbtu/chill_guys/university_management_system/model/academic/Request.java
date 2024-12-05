@@ -1,34 +1,13 @@
 package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
-
-/**
-* @generated
-*/
-public class Request {
-    
-    /**
-    * @generated
-    */
+public class Request extends Post {
     private Boolean isSigned;
-    
-    
-    
-    /**
-    * @generated
-    */
-    private Boolean getIsSigned() {
+
+    public Boolean getIsSigned() {
         return this.isSigned;
     }
-    
-    /**
-    * @generated
-    */
-    private Boolean setIsSigned(Boolean isSigned) {
+
+    public void setIsSigned(Boolean isSigned) {
         this.isSigned = isSigned;
     }
-    
-
-    //                          Operations                                  
-    
-    
 }

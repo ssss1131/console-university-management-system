@@ -1,9 +1,9 @@
-package universityManagementSystem.models.student;
+package main.java.kbtu.chill_guys.university_management_system.model.student;
 
-import universityManagementSystem.models.employee.ResearchSupervisor;
-import universityManagementSystem.models.research.ResearchPaper;
-import universityManagementSystem.models.student.research.ResearchProject;
-import universityManagementSystem.models.student.research.Researcher;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.ResearchSupervisor;
+import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
+import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchProject;
+import main.java.kbtu.chill_guys.university_management_system.model.research.Researcher;
 
 import java.util.Vector;
 
@@ -12,27 +12,27 @@ public class GraduateStudent implements Researcher {
     private Vector<ResearchProject> researchProjects;
     private Vector<ResearchPaper> researchPapers;
 
-    private ResearchSupervisor getSupervisor() {
+    public ResearchSupervisor getSupervisor() {
         return this.supervisor;
     }
     
-    private void setSupervisor(ResearchSupervisor  supervisor) {
+    public void setSupervisor(ResearchSupervisor  supervisor) {
         this.supervisor = supervisor;
     }
     
-    private Vector<ResearchProject> getResearchProjects() {
+    public Vector<ResearchProject> getResearchProjects() {
         return this.researchProjects;
     }
     
-    private void setResearchProjects(Vector<ResearchProject> researchProjects) {
+    public void setResearchProjects(Vector<ResearchProject> researchProjects) {
         this.researchProjects = researchProjects;
     }
     
-    private Vector<ResearchPaper> getResearchPapers() {
+    public Vector<ResearchPaper> getResearchPapers() {
         return this.researchPapers;
     }
     
-    private void setResearchPapers(Vector<ResearchPaper> researchPapers) {
+    public void setResearchPapers(Vector<ResearchPaper> researchPapers) {
         this.researchPapers = researchPapers;
     }
 }
