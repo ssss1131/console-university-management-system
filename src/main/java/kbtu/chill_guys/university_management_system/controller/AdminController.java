@@ -1,5 +1,6 @@
 package main.java.kbtu.chill_guys.university_management_system.controller;
 
+import main.java.kbtu.chill_guys.university_management_system.model.BaseUser;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.model.UserFactory;
 import main.java.kbtu.chill_guys.university_management_system.service.AdminService;
@@ -25,13 +26,13 @@ public class AdminController {
 
     public void createUser(Map<String, Object> data) {
         String type = (String) data.get("type");
-        User user = UserFactory.createUser(type, data);
+        BaseUser user = UserFactory.createUser(type, data);
         adminService.createUser(user);
     }
 
     public void modifyUser(Map<String, Object> data) {
         String type = (String) data.get("type");
-        User user = UserFactory.createUser(type, data);
+        BaseUser user = UserFactory.createUser(type, data);
         adminService.modifyUser(user);
     }
 

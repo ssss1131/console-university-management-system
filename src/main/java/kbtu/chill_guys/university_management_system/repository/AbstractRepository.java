@@ -1,92 +1,53 @@
 package main.java.kbtu.chill_guys.university_management_system.repository;
 
-/**
-* @generated
-*/
-public class AbstractRepository {
-    
-    /**
-    * @generated
-    */
-    private Database database;
-    
-    /**
-    * @generated
-    */
-    private Path path;
-    
-    
-    
-    /**
-    * @generated
-    */
-    private Database getDatabase() {
-        return this.database;
-    }
-    
-    /**
-    * @generated
-    */
-    private Database setDatabase(Database database) {
-        this.database = database;
-    }
-    
-    /**
-    * @generated
-    */
-    private Path getPath() {
-        return this.path;
-    }
-    
-    /**
-    * @generated
-    */
-    private Path setPath(Path path) {
-        this.path = path;
-    }
-    
+import main.java.kbtu.chill_guys.university_management_system.database.Database;
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public Vector<String> getAllLines() {
-        //TODO
-        return null;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Vector;
+
+public abstract class AbstractRepository<T> {
+    private Database database = null;
+    private final Path path;
+
+    public AbstractRepository(Path path) {
+        this.database = Database.getInstance();
+        this.path = path;
+
+        try {
+            database.loadData(path);
+        } catch (IOException | ClassNotFoundException e) {
+            saveData(new Vector<T>());
+        }
     }
-    
-    /**
-    * @generated
-    */
-    public void addLine() {
-        //TODO
-        return null;
+
+    @SuppressWarnings("unchecked")
+    public Vector<T> getAllLines() {
+        return (Vector<T>) database.getData(path);
     }
-    
-    /**
-    * @generated
-    */
-    public boolean isExistingLine() {
-        //TODO
-        return false;
+
+    public void saveData(Vector<T> data) {
+        database.saveData(path, data);
     }
-    
-    /**
-    * @generated
-    */
-    public void removeLine() {
-        //TODO
-        return null;
+
+    public void addLine(T line) {
+        Vector<T> data = getAllLines();
+        data.add(line);
+        saveData(data);
     }
-    
-    /**
-    * @generated
-    */
-    public void updateLine() {
-        //TODO
-        return null;
+
+    public void removeLine(T line) {
+        Vector<T> data = getAllLines();
+        data.remove(line);
+        saveData(data);
     }
-    
-    
+
+    public void updateLine(T oldLine, T newLine) {
+        Vector<T> data = getAllLines();
+        int index = data.indexOf(oldLine);
+        if (index != -1) {
+            data.set(index, newLine);
+            saveData(data);
+        }
+    }
 }

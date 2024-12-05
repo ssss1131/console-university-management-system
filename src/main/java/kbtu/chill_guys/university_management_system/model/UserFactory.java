@@ -14,7 +14,7 @@ import java.util.UUID;
 import java.util.Vector;
 
 public class UserFactory {
-    public static User createUser(String type, Map<String, Object> data) {
+    public static BaseUser createUser(String type, Map<String, Object> data) {
         Vector<Post> notifications = (Vector<Post>) data.get("notifications");
 
         if (notifications == null) {
