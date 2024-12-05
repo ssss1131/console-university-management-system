@@ -1,30 +1,24 @@
 package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
+import main.java.kbtu.chill_guys.university_management_system.enumeration.evaluation.CourseType;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
+
+import java.util.Vector;
+
 public class Subject {
-    private invalid attribute;
     private School school;
     private String code;
     private String name;
     private Integer credits;
     private GradeBook gradebook;
     private Vector<Subject> prerequisites;
-    private Vector<School, CourseType> subjectType;
-    private School school;
     private CourseType courseType;
-
-    public invalid getAttribute() {
-        return this.attribute;
-    }
-
-    public invalid setAttribute(invalid attribute) {
-        this.attribute = attribute;
-    }
 
     private School getSchool() {
         return this.school;
     }
 
-    private School setSchool(School school) {
+    private void setSchool(School school) {
         this.school = school;
     }
 
@@ -32,7 +26,7 @@ public class Subject {
         return this.code;
     }
 
-    private String setCode(String code) {
+    private void setCode(String code) {
         this.code = code;
     }
 
@@ -40,7 +34,7 @@ public class Subject {
         return this.name;
     }
 
-    private String setName(String name) {
+    private void setName(String name) {
         this.name = name;
     }
 
@@ -48,7 +42,7 @@ public class Subject {
         return this.credits;
     }
 
-    private Integer setCredits(Integer credits) {
+    private void setCredits(Integer credits) {
         this.credits = credits;
     }
 
@@ -56,7 +50,7 @@ public class Subject {
         return this.gradebook;
     }
 
-    private GradeBook setGradebook(GradeBook gradebook) {
+    private void setGradebook(GradeBook gradebook) {
         this.gradebook = gradebook;
     }
 
@@ -64,56 +58,28 @@ public class Subject {
         return this.prerequisites;
     }
 
-    private Vector<Subject> setPrerequisites(Vector<Subject> prerequisites) {
+    private void setPrerequisites(Vector<Subject> prerequisites) {
         this.prerequisites = prerequisites;
-    }
-
-    private Vector<School, CourseType> getSubjectType() {
-        return this.subjectType;
-    }
-
-    private Vector<School, CourseType> setSubjectType(Vector<School, CourseType> subjectType) {
-        this.subjectType = subjectType;
-    }
-
-    private School getSchool() {
-        return this.school;
-    }
-
-    private School setSchool(School school) {
-        this.school = school;
     }
 
     private CourseType getCourseType() {
         return this.courseType;
     }
 
-    private CourseType setCourseType(CourseType courseType) {
+    private void setCourseType(CourseType courseType) {
         this.courseType = courseType;
     }
-    
-
-    //                          Operations                                  
 
     public double getMinandMax() {
         //TODO
         return 0.0;
     }
 
-    public Vector<Subject> getPrerequisites() {
-        //TODO
-        return null;
-    }
-
     public void viewGradebook() {
         //TODO
-        return null;
     }
 
     public void getTranscript() {
         //TODO
-        return null;
     }
-    
-    
 }

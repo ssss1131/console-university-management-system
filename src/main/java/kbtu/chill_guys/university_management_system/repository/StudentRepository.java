@@ -4,7 +4,7 @@ import main.java.kbtu.chill_guys.university_management_system.model.student.Stud
 
 import java.util.Vector;
 
-public class StudentRepository extends AbstractRepository {
+public class StudentRepository  {
     public Vector<Student> getAllStudentsBySchool() {
         //TODO
         return null;

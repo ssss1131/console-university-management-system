@@ -1,125 +1,49 @@
 package main.java.kbtu.chill_guys.university_management_system.dto;
 
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Gpa;
 
-/**
-* @generated
-*/
 public class TranscriptDto {
-    
-    /**
-    * @generated
-    */
     private String code;
-    
-    /**
-    * @generated
-    */
     private String name;
-    
-    /**
-    * @generated
-    */
     private Integer credits;
-    
-    /**
-    * @generated
-    */
     private double mark;
-    
-    /**
-    * @generated
-    */
     private Gpa letterMark;
-    
-    /**
-    * @generated
-    */
     private double gpa;
-    
-    
-    
-    /**
-    * @generated
-    */
-    private String getCode() {
+
+    public String getCode() {
         return this.code;
     }
-    
-    /**
-    * @generated
-    */
-    private String setCode(String code) {
+    public void setCode(String code) {
         this.code = code;
     }
-    
-    /**
-    * @generated
-    */
-    private String getName() {
+    public String getName() {
         return this.name;
     }
-    
-    /**
-    * @generated
-    */
-    private String setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
-    
-    /**
-    * @generated
-    */
-    private Integer getCredits() {
+    public Integer getCredits() {
         return this.credits;
     }
-    
-    /**
-    * @generated
-    */
-    private Integer setCredits(Integer credits) {
+    public void setCredits(Integer credits) {
         this.credits = credits;
     }
-    
-    /**
-    * @generated
-    */
-    private double getMark() {
+    public double getMark() {
         return this.mark;
     }
-    
-    /**
-    * @generated
-    */
-    private double setMark(double mark) {
+    public void setMark(double mark) {
         this.mark = mark;
     }
-    
-    /**
-    * @generated
-    */
-    private Gpa getLetterMark() {
+    public Gpa getLetterMark() {
         return this.letterMark;
     }
-    
-    /**
-    * @generated
-    */
-    private Gpa setLetterMark(Gpa letterMark) {
+    public void setLetterMark(Gpa letterMark) {
         this.letterMark = letterMark;
     }
-    
-    /**
-    * @generated
-    */
-    private double getGpa() {
+    public double getGpa() {
         return this.gpa;
     }
-    
-    /**
-    * @generated
-    */
-    private double setGpa(double gpa) {
+    public void setGpa(double gpa) {
         this.gpa = gpa;
     }
-    
 }

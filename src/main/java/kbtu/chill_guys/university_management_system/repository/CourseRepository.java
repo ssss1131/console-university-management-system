@@ -1,33 +1,17 @@
 package main.java.kbtu.chill_guys.university_management_system.repository;
 
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Course;
 
-import universityManagementSystem.Vector;
+import java.util.Vector;
 
-/**
-* @generated
-*/
-public class CourseRepository extends AbstractRepository {
-    
-    
-    
-
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
+public class CourseRepository {
     public Course getCourseByName() {
         //TODO
         return null;
     }
-    
-    /**
-    * @generated
-    */
+
     public Vector<Course> getAllCourses() {
         //TODO
         return null;
     }
-    
-    
 }
