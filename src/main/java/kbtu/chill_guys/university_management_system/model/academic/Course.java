@@ -1,7 +1,7 @@
-package universityManagementSystem.models.academic;
+package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
 
-import universityManagementSystem.Vector;
+import java.util.Vector;
 
 /**
 * @generated
@@ -31,7 +31,7 @@ public class Course extends Subject {
     /**
     * @generated
     */
-    private invalid gradebook;
+
     
     
     
@@ -59,7 +59,7 @@ public class Course extends Subject {
     /**
     * @generated
     */
-    private Period setPeriod(Period period) {
+    private void setPeriod(Period period) {
         this.period = period;
     }
     
@@ -73,7 +73,7 @@ public class Course extends Subject {
     /**
     * @generated
     */
-    private Integer setLimit (Integer limit ) {
+    private void setLimit (Integer limit ) {
         this.limit  = limit ;
     }
     
@@ -87,33 +87,16 @@ public class Course extends Subject {
     /**
     * @generated
     */
-    private Integer setYear(Integer year) {
+    private void setYear(Integer year) {
         this.year = year;
     }
     
-    /**
-    * @generated
-    */
-    private invalid getGradebook() {
-        return this.gradebook;
-    }
-    
-    /**
-    * @generated
-    */
-    private invalid setGradebook(invalid gradebook) {
-        this.gradebook = gradebook;
-    }
-    
 
-    //                          Operations                                  
-    
     /**
     * @generated
     */
     public void displayReport() {
         //TODO
-        return null;
     }
     
     

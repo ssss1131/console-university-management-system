@@ -1,4 +1,4 @@
-package universityManagementSystem.models.academic;
+package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
 
 import universityManagementSystem.models.BaseUser;

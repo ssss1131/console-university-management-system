@@ -1,7 +1,11 @@
 package main.java.kbtu.chill_guys.university_management_system.service;
 
 
-import universityManagementSystem.Vector;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Complaint;
+import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
+
+import java.util.Vector;
+
 
 /**
 * @generated
@@ -9,10 +13,8 @@ import universityManagementSystem.Vector;
 public class DeanService {
     
     
-    /**
-    * @generated
-    */
-    private ServiceFactoryImpl serviceFactoryImpl;
+
+
     
     
 
@@ -39,7 +41,7 @@ public class DeanService {
     */
     public void sendMessage() {
         //TODO
-        return null;
+
     }
     
     /**
@@ -47,7 +49,7 @@ public class DeanService {
     */
     public void approveRequest() {
         //TODO
-        return null;
+
     }
     
     /**
@@ -55,7 +57,7 @@ public class DeanService {
     */
     public void declineRequest() {
         //TODO
-        return null;
+
     }
     
     

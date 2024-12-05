@@ -1,4 +1,4 @@
-package universityManagementSystem.models;
+package main.java.kbtu.chill_guys.university_management_system.model;
 
 public class UserFactory {
     private User user;

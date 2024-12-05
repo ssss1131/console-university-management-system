@@ -1,4 +1,4 @@
-package universityManagementSystem.models.employee;
+package main.java.kbtu.chill_guys.university_management_system.model.employee;
 
 import universityManagementSystem.models.research.ResearchProject;
 import universityManagementSystem.models.research.ResearchPaper;

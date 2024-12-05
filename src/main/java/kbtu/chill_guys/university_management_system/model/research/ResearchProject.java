@@ -1,4 +1,4 @@
-package universityManagementSystem.models.research;
+package main.java.kbtu.chill_guys.university_management_system.model.research;
 
 import universityManagementSystem.models.student.research.Researcher;
 import java.util.Vector;

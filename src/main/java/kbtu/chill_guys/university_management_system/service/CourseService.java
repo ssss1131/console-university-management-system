@@ -1,20 +1,14 @@
 package main.java.kbtu.chill_guys.university_management_system.service;
 
 
-import universityManagementSystem.Vector;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Course;
+
+import java.util.Vector;
 
 /**
 * @generated
 */
 public class CourseService {
-    
-    
-    /**
-    * @generated
-    */
-    private ServiceFactoryImpl serviceFactoryImpl;
-    
-    
 
     //                          Operations                                  
     

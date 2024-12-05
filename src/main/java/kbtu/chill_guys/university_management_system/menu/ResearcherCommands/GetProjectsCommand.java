@@ -1,4 +1,4 @@
-package universityManagementSystem.menu.ResearcherController;
+package main.java.kbtu.chill_guys.university_management_system.menu.ResearcherCommands;
 
 
 import universityManagementSystem.controllers.ResearcherController;
@@ -6,7 +6,7 @@ import universityManagementSystem.controllers.ResearcherController;
 /**
 * @generated
 */
-public class GetPapersCommand {
+public class GetProjectsCommand {
     
     /**
     * @generated

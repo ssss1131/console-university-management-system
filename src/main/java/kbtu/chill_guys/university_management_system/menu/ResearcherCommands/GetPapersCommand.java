@@ -1,17 +1,17 @@
-package universityManagementSystem.menu.ResearcherController;
+package main.java.kbtu.chill_guys.university_management_system.menu.ResearcherCommands;
 
 
-import universityManagementSystem.controllers.EmployeeController;
+import universityManagementSystem.controllers.ResearcherController;
 
 /**
 * @generated
 */
-public class GetStudentsCommand {
+public class GetPapersCommand {
     
     /**
     * @generated
     */
-    private EmployeeController controller;
+    private ResearcherController controller;
     
     /**
     * @generated
@@ -28,14 +28,14 @@ public class GetStudentsCommand {
     /**
     * @generated
     */
-    private EmployeeController getController() {
+    private ResearcherController getController() {
         return this.controller;
     }
     
     /**
     * @generated
     */
-    private EmployeeController setController(EmployeeController controller) {
+    private ResearcherController setController(ResearcherController controller) {
         this.controller = controller;
     }
     

@@ -1,6 +1,16 @@
 package main.java.kbtu.chill_guys.university_management_system.controller;
 
 
+import main.java.kbtu.chill_guys.university_management_system.model.User;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Course;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Mark;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Request;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
+import main.java.kbtu.chill_guys.university_management_system.service.*;
+
+import java.util.Vector;
+
 /**
 * @generated
 */
@@ -14,7 +24,7 @@ public class GeneralController {
     /**
     * @generated
     */
-    private universityManagementSystem.TeacherService TeacherService;
+    private TeacherService TeacherService;
     
     /**
     * @generated
@@ -53,7 +63,7 @@ public class GeneralController {
     /**
     * @generated
     */
-    private CourseService setCourseService(CourseService courseService) {
+    private void setCourseService(CourseService courseService) {
         this.courseService = courseService;
     }
     
@@ -63,25 +73,12 @@ public class GeneralController {
     private TeacherService getTeacherService() {
         return this.TeacherService;
     }
+
     
     /**
     * @generated
     */
-    private TeacherService setTeacherService(TeacherService TeacherService) {
-        this.TeacherService = TeacherService;
-    }
-    
-    /**
-    * @generated
-    */
-    private TeacherService getTeacherService() {
-        return this.teacherService;
-    }
-    
-    /**
-    * @generated
-    */
-    private TeacherService setTeacherService(TeacherService teacherService) {
+    private void setTeacherService(TeacherService teacherService) {
         this.teacherService = teacherService;
     }
     
@@ -95,7 +92,7 @@ public class GeneralController {
     /**
     * @generated
     */
-    private RequestService setRequestService(RequestService requestService) {
+    private void setRequestService(RequestService requestService) {
         this.requestService = requestService;
     }
     
@@ -109,7 +106,7 @@ public class GeneralController {
     /**
     * @generated
     */
-    private AuthService setAuthService(AuthService authService) {
+    private void setAuthService(AuthService authService) {
         this.authService = authService;
     }
     
@@ -123,7 +120,7 @@ public class GeneralController {
     /**
     * @generated
     */
-    private JournalService setJournalService(JournalService journalService) {
+    private void setJournalService(JournalService journalService) {
         this.journalService = journalService;
     }
     
@@ -137,7 +134,7 @@ public class GeneralController {
     /**
     * @generated
     */
-    private NewsRetrievalService setNewsRetrievalService(NewsRetrievalService newsRetrievalService) {
+    private void setNewsRetrievalService(NewsRetrievalService newsRetrievalService) {
         this.newsRetrievalService = newsRetrievalService;
     }
     
@@ -187,7 +184,7 @@ public class GeneralController {
     /**
     * @generated
     */
-    public vector<Post> getNews() {
+    public Vector<Post> getNews() {
         //TODO
         return null;
     }
@@ -197,7 +194,7 @@ public class GeneralController {
     */
     public void subscribe() {
         //TODO
-        return null;
+
     }
     
     /**
@@ -205,7 +202,7 @@ public class GeneralController {
     */
     public void unsubscribe() {
         //TODO
-        return null;
+
     }
     
     

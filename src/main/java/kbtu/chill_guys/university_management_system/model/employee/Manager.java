@@ -1,4 +1,4 @@
-package universityManagementSystem.models.employee;
+package main.java.kbtu.chill_guys.university_management_system.model.employee;
 
 import universityManagementSystem.permissions.CanViewRequests;
 import universityManagementSystem.permissions.CanViewTeachers;

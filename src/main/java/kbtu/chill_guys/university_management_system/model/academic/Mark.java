@@ -1,4 +1,4 @@
-package universityManagementSystem.models.academic;
+package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
 
 /**
@@ -19,7 +19,7 @@ public class Mark {
     /**
     * @generated
     */
-    private double final;
+    private double finalExam;
     
     
     
@@ -33,7 +33,7 @@ public class Mark {
     /**
     * @generated
     */
-    private double setFirstAtt(double firstAtt) {
+    private void setFirstAtt(double firstAtt) {
         this.firstAtt = firstAtt;
     }
     
@@ -47,22 +47,22 @@ public class Mark {
     /**
     * @generated
     */
-    private double setSecondAtt(double secondAtt) {
+    private void setSecondAtt(double secondAtt) {
         this.secondAtt = secondAtt;
     }
     
     /**
     * @generated
     */
-    private double getFinal() {
-        return this.final;
+    private double getFinalExam() {
+        return this.finalExam;
     }
     
     /**
     * @generated
     */
-    private double setFinal(double final) {
-        this.final = final;
+    private void setFinal(double finalExam) {
+        this.finalExam = finalExam;
     }
     
 
@@ -73,7 +73,7 @@ public class Mark {
     */
     public double getTotalMark() {
         //TODO
-        return null;
+        return 0;
     }
     
     /**
@@ -81,7 +81,7 @@ public class Mark {
     */
     public double getGPA() {
         //TODO
-        return null;
+        return 0;
     }
     
     /**
@@ -89,7 +89,7 @@ public class Mark {
     */
     public double getLetterGPA() {
         //TODO
-        return null;
+        return 0;
     }
     
     

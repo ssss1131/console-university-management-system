@@ -25,7 +25,7 @@ public class AdminController {
     /**
     * @generated
     */
-    private AdminService setAdminService(AdminService adminService) {
+    private void setAdminService(AdminService adminService) {
         this.adminService = adminService;
     }
     
@@ -45,7 +45,7 @@ public class AdminController {
     */
     public void createUser() {
         //TODO
-        return null;
+
     }
     
     /**
@@ -53,7 +53,7 @@ public class AdminController {
     */
     public void modifyUser() {
         //TODO
-        return null;
+
     }
     
     /**
@@ -61,7 +61,7 @@ public class AdminController {
     */
     public void removeUser() {
         //TODO
-        return null;
+
     }
     
     

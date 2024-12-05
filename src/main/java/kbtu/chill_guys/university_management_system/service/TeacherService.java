@@ -1,8 +1,14 @@
 package main.java.kbtu.chill_guys.university_management_system.service;
 
 
-import universityManagementSystem.Vector;
-import universityManagementSystem.repository.UserRepository;
+
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Mark;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Request;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
+import main.java.kbtu.chill_guys.university_management_system.repository.UserRepository;
+
+
+import java.util.Vector;
 
 /**
 * @generated
@@ -18,7 +24,7 @@ public class TeacherService {
     /**
     * @generated
     */
-    private ServiceFactoryImpl serviceFactoryImpl;
+
     
     
     /**
@@ -31,7 +37,7 @@ public class TeacherService {
     /**
     * @generated
     */
-    private UserRepository setUserRepository(UserRepository userRepository) {
+    private void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
     

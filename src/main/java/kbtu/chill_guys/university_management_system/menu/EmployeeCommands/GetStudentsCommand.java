@@ -1,4 +1,4 @@
-package universityManagementSystem.menu.EmployeeCommands;
+package main.java.kbtu.chill_guys.university_management_system.menu.EmployeeCommands;
 
 
 import universityManagementSystem.controllers.EmployeeController;

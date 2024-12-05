@@ -1,4 +1,5 @@
 package main.java.kbtu.chill_guys.university_management_system.controller;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Complaint;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 import main.java.kbtu.chill_guys.university_management_system.service.DeanService;
 
@@ -7,7 +8,7 @@ import java.util.Vector;
 /**
 * @generated
 */
-public class DeanController {
+public class  DeanController {
     
     /**
     * @generated
@@ -26,7 +27,7 @@ public class DeanController {
     /**
     * @generated
     */
-    private DeanService setDeanService(DeanService deanService) {
+    private void setDeanService(DeanService deanService) {
         this.deanService = deanService;
     }
     
@@ -36,7 +37,7 @@ public class DeanController {
     /**
     * @generated
     */
-    public Vector<universityManagementSystem.models.academic.Complaint> getComplaints() {
+    public Vector<Complaint> getComplaints() {
         //TODO
         return null;
     }
@@ -54,7 +55,7 @@ public class DeanController {
     */
     public void sendMessage() {
         //TODO
-        return null;
+
     }
     
     /**
@@ -62,7 +63,7 @@ public class DeanController {
     */
     public void approveRequest() {
         //TODO
-        return null;
+
     }
     
     /**
@@ -70,7 +71,7 @@ public class DeanController {
     */
     public void declineRequest() {
         //TODO
-        return null;
+
     }
     
     

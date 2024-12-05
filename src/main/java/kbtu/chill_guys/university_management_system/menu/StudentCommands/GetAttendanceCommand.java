@@ -1,4 +1,4 @@
-package universityManagementSystem.menu.StudentCommands;
+package main.java.kbtu.chill_guys.university_management_system.menu.StudentCommands;
 
 
 import universityManagementSystem.controllers.StudentController;

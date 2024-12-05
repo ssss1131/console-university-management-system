@@ -1,7 +1,10 @@
 package main.java.kbtu.chill_guys.university_management_system.controller;
 
 
-import universityManagementSystem.Vector;
+import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
+import main.java.kbtu.chill_guys.university_management_system.service.EmployeeService;
+
+import java.util.Vector;
 
 /**
 * @generated
@@ -25,7 +28,7 @@ public class EmployeeController {
     /**
     * @generated
     */
-    private EmployeeService setEmployeeService(EmployeeService employeeService) {
+    private void setEmployeeService(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
     
@@ -45,7 +48,7 @@ public class EmployeeController {
     */
     public void sendMessage() {
         //TODO
-        return null;
+
     }
     
     

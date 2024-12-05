@@ -1,6 +1,6 @@
-package universityManagementSystem.models.employee;
+package main.java.kbtu.chill_guys.university_management_system.model.employee;
 
-import universityManagementSystem.models.academic.Complaint;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Complaint;
 import universityManagementSystem.permissions.CanViewRequests;
 import universityManagementSystem.permissions.CanViewStudents;
 

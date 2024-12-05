@@ -1,5 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.model.student;
 
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Mark;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Course;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanBeResearcher;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewCourses;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewMarks;
@@ -87,7 +89,7 @@ public class Student extends BaseUser implements CanViewCourses, CanBeResearcher
         return null;
     }
 
-    public Vector<universityManagementSystem.models.academic.Mark> viewMarks() {
+    public Vector<Mark> viewMarks() {
         //TODO
         return null;
     }
@@ -102,7 +104,7 @@ public class Student extends BaseUser implements CanViewCourses, CanBeResearcher
         return false;
     }
 
-    public Map<universityManagementSystem.models.academic.Course, Integer> viewAttendance() {
+    public Map<Course, Integer> viewAttendance() {
         //TODO
         return null;
     }

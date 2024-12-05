@@ -1,4 +1,4 @@
-package universityManagementSystem.menu.DeanCommands;
+package main.java.kbtu.chill_guys.university_management_system.menu.DeanCommands;
 
 
 import universityManagementSystem.controllers.DeanController;
