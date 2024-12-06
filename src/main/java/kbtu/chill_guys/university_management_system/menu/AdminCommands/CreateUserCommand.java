@@ -1,7 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.menu.AdminCommands;
 
 
-import universityManagementSystem.controllers.AdminController;
+import main.java.kbtu.chill_guys.university_management_system.controller.AdminController;
 
 public class CreateUserCommand {
     private AdminController controller;

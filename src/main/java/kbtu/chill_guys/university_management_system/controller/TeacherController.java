@@ -1,76 +1,38 @@
 package main.java.kbtu.chill_guys.university_management_system.controller;
 
+import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
+import main.java.kbtu.chill_guys.university_management_system.service.TeacherService;
 
-import universityManagementSystem.Vector;
+import java.util.Vector;
 
-/**
-* @generated
-*/
 public class TeacherController {
-    
-    /**
-    * @generated
-    */
     private TeacherService teacherService;
-    
-    
-    
-    /**
-    * @generated
-    */
-    private TeacherService getTeacherService() {
+
+    public TeacherService getTeacherService() {
         return this.teacherService;
     }
-    
-    /**
-    * @generated
-    */
-    private TeacherService setTeacherService(TeacherService teacherService) {
+    public void setTeacherService(TeacherService teacherService) {
         this.teacherService = teacherService;
     }
-    
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
     public Vector<Student> getStudents() {
         //TODO
         return null;
     }
-    
-    /**
-    * @generated
-    */
+
     public void sendMessage() {
         //TODO
-        return null;
     }
-    
-    /**
-    * @generated
-    */
+
     public void addMarks() {
         //TODO
-        return null;
     }
-    
-    /**
-    * @generated
-    */
+
     public void submitComplaint() {
         //TODO
-        return null;
     }
-    
-    /**
-    * @generated
-    */
+
     public void defineFinalDate() {
         //TODO
-        return null;
     }
-    
-    
 }

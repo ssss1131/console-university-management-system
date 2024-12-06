@@ -1,112 +1,57 @@
 package main.java.kbtu.chill_guys.university_management_system.controller;
 
+import main.java.kbtu.chill_guys.university_management_system.service.CourseManagementService;
+import main.java.kbtu.chill_guys.university_management_system.service.NewsManagementService;
+import main.java.kbtu.chill_guys.university_management_system.service.ReportService;
 
-/**
-* @generated
-*/
 public class ManagerController {
-    
-    /**
-    * @generated
-    */
     private CourseManagementService courseManagementService;
-    
-    /**
-    * @generated
-    */
     private ReportService reportService;
-    
-    /**
-    * @generated
-    */
     private NewsManagementService newsManagementService;
-    
-    
-    
-    /**
-    * @generated
-    */
-    private CourseManagementService getCourseManagementService() {
+
+    public CourseManagementService getCourseManagementService() {
         return this.courseManagementService;
     }
-    
-    /**
-    * @generated
-    */
-    private CourseManagementService setCourseManagementService(CourseManagementService courseManagementService) {
+
+    public void setCourseManagementService(CourseManagementService courseManagementService) {
         this.courseManagementService = courseManagementService;
     }
-    
-    /**
-    * @generated
-    */
-    private ReportService getReportService() {
+
+    public ReportService getReportService() {
         return this.reportService;
     }
-    
-    /**
-    * @generated
-    */
-    private ReportService setReportService(ReportService reportService) {
+
+    public void setReportService(ReportService reportService) {
         this.reportService = reportService;
     }
-    
-    /**
-    * @generated
-    */
-    private NewsManagementService getNewsManagementService() {
+
+    public NewsManagementService getNewsManagementService() {
         return this.newsManagementService;
     }
-    
-    /**
-    * @generated
-    */
-    private NewsManagementService setNewsManagementService(NewsManagementService newsManagementService) {
+
+    public void setNewsManagementService(NewsManagementService newsManagementService) {
         this.newsManagementService = newsManagementService;
     }
-    
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
     public void addCoursesForRegistration() {
         //TODO
-        return null;
     }
-    
-    /**
-    * @generated
-    */
+
     public void assignCourseToTeacher() {
         //TODO
-        return null;
     }
-    
-    /**
-    * @generated
-    */
+
     public boolean approveStudentRegistration() {
         //TODO
         return false;
     }
-    
-    /**
-    * @generated
-    */
+
     public String makeReport() {
         //TODO
         return "";
     }
-    
-    /**
-    * @generated
-    */
+
     public void addNews() {
         //TODO
-        return null;
     }
-    
-    
 }

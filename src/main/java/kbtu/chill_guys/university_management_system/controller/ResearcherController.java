@@ -1,52 +1,28 @@
 package main.java.kbtu.chill_guys.university_management_system.controller;
 
+import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
+import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchProject;
+import main.java.kbtu.chill_guys.university_management_system.service.ResearchService;
 
-import universityManagementSystem.Vector;
+import java.util.Vector;
 
-/**
-* @generated
-*/
 public class ResearcherController {
-    
-    /**
-    * @generated
-    */
     private ResearchService researchService;
-    
-    
-    
-    /**
-    * @generated
-    */
+
     private ResearchService getResearchService() {
         return this.researchService;
     }
-    
-    /**
-    * @generated
-    */
-    private ResearchService setResearchService(ResearchService researchService) {
+    private void setResearchService(ResearchService researchService) {
         this.researchService = researchService;
     }
-    
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
     public Vector<ResearchProject> getProjects() {
         //TODO
         return null;
     }
-    
-    /**
-    * @generated
-    */
+
     public Vector<ResearchPaper> getPapers() {
         //TODO
         return null;
     }
-    
-    
 }

@@ -1,7 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.database;
 
-import java.io.*;
-import java.nio.file.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;

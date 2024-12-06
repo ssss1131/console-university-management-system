@@ -13,36 +13,47 @@ public class TranscriptDto {
     public String getCode() {
         return this.code;
     }
+
     public void setCode(String code) {
         this.code = code;
     }
+
     public String getName() {
         return this.name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public Integer getCredits() {
         return this.credits;
     }
+
     public void setCredits(Integer credits) {
         this.credits = credits;
     }
+
     public double getMark() {
         return this.mark;
     }
+
     public void setMark(double mark) {
         this.mark = mark;
     }
+
     public Gpa getLetterMark() {
         return this.letterMark;
     }
+
     public void setLetterMark(Gpa letterMark) {
         this.letterMark = letterMark;
     }
+
     public double getGpa() {
         return this.gpa;
     }
+
     public void setGpa(double gpa) {
         this.gpa = gpa;
     }

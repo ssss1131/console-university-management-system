@@ -1,90 +1,58 @@
 package main.java.kbtu.chill_guys.university_management_system.controller;
 
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Course;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Mark;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
+import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
+import main.java.kbtu.chill_guys.university_management_system.service.StudentService;
 
-/**
-* @generated
-*/
+import java.time.LocalDate;
+import java.util.Map;
+import java.util.Vector;
+
 public class StudentController {
-    
-    /**
-    * @generated
-    */
     private StudentService studentService;
-    
-    
-    
-    /**
-    * @generated
-    */
-    private StudentService getStudentService() {
+
+    public StudentService getStudentService() {
         return this.studentService;
     }
-    
-    /**
-    * @generated
-    */
-    private StudentService setStudentService(StudentService studentService) {
+    public void setStudentService(StudentService studentService) {
         this.studentService = studentService;
     }
-    
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
     public Vector<Mark> getMarks() {
         //TODO
         return null;
     }
-    
-    /**
-    * @generated
-    */
+
     public Vector<Transcript> getTranscript() {
         //TODO
         return null;
     }
-    
-    /**
-    * @generated
-    */
+
     public Vector<Organization> getOrganizations() {
         //TODO
         return null;
     }
-    
-    /**
-    * @generated
-    */
+
     public Vector<Teacher> getTeachers() {
         //TODO
         return null;
     }
-    
-    /**
-    * @generated
-    */
+
     public Vector<Course> getCourses() {
         //TODO
         return null;
     }
-    
-    /**
-    * @generated
-    */
-    public Vector<Attendance> getAttendance() {
+
+    public Map<LocalDate, Boolean> getAttendance() {
         //TODO
         return null;
     }
-    
-    /**
-    * @generated
-    */
+
     public int getAcademicStanding() {
         //TODO
         return 0;
     }
-    
-    
 }

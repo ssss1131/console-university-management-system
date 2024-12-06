@@ -1,6 +1,5 @@
 package main.java.kbtu.chill_guys.university_management_system.model.research;
 
-import main.java.kbtu.chill_guys.university_management_system.model.research.Researcher;
 import java.util.Vector;
 
 public class ResearchProject {
