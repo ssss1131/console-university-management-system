@@ -1,15 +1,20 @@
 package main.java.kbtu.chill_guys.university_management_system.repository;
 
 
-import universityManagementSystem.Vector;
+import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
+import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchProject;
+
+import java.nio.file.Path;
+import java.util.Vector;
 
 /**
 * @generated
 */
 public class ResearchRepository extends AbstractRepository {
-    
-    
-    
+    public ResearchRepository(Path path) {
+        super(path);
+    }
+
 
     //                          Operations                                  
     
@@ -28,14 +33,8 @@ public class ResearchRepository extends AbstractRepository {
         //TODO
         return null;
     }
-    
-    /**
-    * @generated
-    */
-    public Vector<ResearchProject> getAllProjects() {
-        //TODO
-        return null;
-    }
-    
+
+
+
     
 }

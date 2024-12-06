@@ -10,7 +10,7 @@ public class ReportService {
     /**
     * @generated
     */
-    private ServiceFactoryImpl serviceFactoryImpl;
+
     
     
 

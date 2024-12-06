@@ -10,7 +10,7 @@ public class CourseManagementService {
     /**
     * @generated
     */
-    private ServiceFactoryImpl serviceFactoryImpl;
+
     
     
 
@@ -21,7 +21,7 @@ public class CourseManagementService {
     */
     public void addCoursesForRegistration() {
         //TODO
-        return null;
+
     }
     
     /**
@@ -29,7 +29,7 @@ public class CourseManagementService {
     */
     public void assignCourseToTeacher() {
         //TODO
-        return null;
+
     }
     
     /**

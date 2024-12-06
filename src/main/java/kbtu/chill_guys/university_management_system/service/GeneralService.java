@@ -1,6 +1,15 @@
 package main.java.kbtu.chill_guys.university_management_system.service;
 
 
+import main.java.kbtu.chill_guys.university_management_system.model.User;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Course;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Mark;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Request;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
+
+import java.util.Vector;
+
 /**
 * @generated
 */
@@ -54,7 +63,7 @@ public class GeneralService {
     /**
     * @generated
     */
-    public vector<Post> getNews() {
+    public Vector<Post> getNews() {
         //TODO
         return null;
     }
@@ -64,7 +73,7 @@ public class GeneralService {
     */
     public void subscribe() {
         //TODO
-        return null;
+
     }
     
     /**
@@ -72,7 +81,7 @@ public class GeneralService {
     */
     public void unsubscribe() {
         //TODO
-        return null;
+
     }
     
     

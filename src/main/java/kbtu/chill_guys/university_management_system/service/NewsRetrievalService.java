@@ -1,6 +1,10 @@
 package main.java.kbtu.chill_guys.university_management_system.service;
 
 
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
+
+import java.util.Vector;
+
 /**
 * @generated
 */
@@ -14,7 +18,7 @@ public class NewsRetrievalService {
     /**
     * @generated
     */
-    public vector<Post> getNews() {
+    public Vector<Post> getNews() {
         //TODO
         return null;
     }
@@ -24,7 +28,7 @@ public class NewsRetrievalService {
     */
     public void addNews() {
         //TODO
-        return null;
+
     }
     
     

@@ -10,7 +10,7 @@ public class JournalService {
     /**
     * @generated
     */
-    private ServiceFactoryImpl serviceFactoryImpl;
+
     
     
 
@@ -21,7 +21,7 @@ public class JournalService {
     */
     public void subscribe() {
         //TODO
-        return null;
+
     }
     
     /**
@@ -29,7 +29,7 @@ public class JournalService {
     */
     public void unsubscribe() {
         //TODO
-        return null;
+
     }
     
     

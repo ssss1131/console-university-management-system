@@ -3,12 +3,13 @@ package main.java.kbtu.chill_guys.university_management_system.database;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Database {
+public class Database implements Serializable {
     private static Database instance;
     private final Map<Path, Object> dataMap;
 

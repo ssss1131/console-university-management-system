@@ -1,7 +1,8 @@
 package main.java.kbtu.chill_guys.university_management_system.service;
 
 
-import universityManagementSystem.repository.UserRepository;
+import main.java.kbtu.chill_guys.university_management_system.model.User;
+import main.java.kbtu.chill_guys.university_management_system.repository.UserRepository;
 
 /**
 * @generated
@@ -12,25 +13,20 @@ public class AuthService {
     * @generated
     */
     private UserRepository userRepository;
+
     
     
     /**
     * @generated
     */
-    private ServiceFactoryImpl serviceFactoryImpl;
-    
-    
-    /**
-    * @generated
-    */
-    private UserRepository getUserRepository() {
+    public UserRepository getUserRepository() {
         return this.userRepository;
     }
     
     /**
     * @generated
     */
-    private UserRepository setUserRepository(UserRepository userRepository) {
+    public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
     

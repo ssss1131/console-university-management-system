@@ -1,6 +1,8 @@
 package main.java.kbtu.chill_guys.university_management_system.menu.SettingsCommands;
 
 
+import main.java.kbtu.chill_guys.university_management_system.menu.Menu;
+
 /**
 * @generated
 */
@@ -16,14 +18,14 @@ public class ChangeLanguageCommand {
     /**
     * @generated
     */
-    private Menu getMenu() {
+    public Menu getMenu() {
         return this.menu;
     }
     
     /**
     * @generated
     */
-    private Menu setMenu(Menu menu) {
+    public void setMenu(Menu menu) {
         this.menu = menu;
     }
     
@@ -35,7 +37,7 @@ public class ChangeLanguageCommand {
     */
     public void execute() {
         //TODO
-        return null;
+
     }
     
     

@@ -1,8 +1,11 @@
 package main.java.kbtu.chill_guys.university_management_system.service;
 
 
-import universityManagementSystem.Vector;
-import universityManagementSystem.repository.RequestRepository;
+
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Request;
+import main.java.kbtu.chill_guys.university_management_system.repository.RequestRepository;
+
+import java.util.Vector;
 
 /**
 * @generated
@@ -14,24 +17,18 @@ public class RequestService {
     */
     private RequestRepository requestRepository;
     
-    
+
     /**
     * @generated
     */
-    private ServiceFactoryImpl serviceFactoryImpl;
-    
-    
-    /**
-    * @generated
-    */
-    private RequestRepository getRequestRepository() {
+    public RequestRepository getRequestRepository() {
         return this.requestRepository;
     }
     
     /**
     * @generated
     */
-    private RequestRepository setRequestRepository(RequestRepository requestRepository) {
+    public void setRequestRepository(RequestRepository requestRepository) {
         this.requestRepository = requestRepository;
     }
     
@@ -51,7 +48,7 @@ public class RequestService {
     */
     public void sendRequest() {
         //TODO
-        return null;
+
     }
     
     

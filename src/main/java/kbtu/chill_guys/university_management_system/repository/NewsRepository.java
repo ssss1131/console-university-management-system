@@ -1,15 +1,19 @@
 package main.java.kbtu.chill_guys.university_management_system.repository;
 
 
-import universityManagementSystem.Vector;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
+
+import java.nio.file.Path;
+import java.util.Vector;
 
 /**
 * @generated
 */
 public class NewsRepository extends AbstractRepository {
-    
-    
-    
+    public NewsRepository(Path path) {
+        super(path);
+    }
+
 
     //                          Operations                                  
     
@@ -26,7 +30,7 @@ public class NewsRepository extends AbstractRepository {
     */
     public void addNews() {
         //TODO
-        return null;
+
     }
     
     

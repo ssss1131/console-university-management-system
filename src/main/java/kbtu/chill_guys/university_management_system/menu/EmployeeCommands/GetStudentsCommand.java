@@ -9,7 +9,7 @@ public class GetStudentsCommand {
         return this.controller;
     }
 
-    public EmployeeController setController(EmployeeController controller) {
+    public void setController(EmployeeController controller) {
         this.controller = controller;
     }
 

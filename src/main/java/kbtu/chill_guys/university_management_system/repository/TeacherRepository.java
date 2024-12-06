@@ -1,13 +1,16 @@
 package main.java.kbtu.chill_guys.university_management_system.repository;
 
 
+import java.nio.file.Path;
+
 /**
 * @generated
 */
 public class TeacherRepository extends AbstractRepository {
-    
-    
-    
+    public TeacherRepository(Path path) {
+        super(path);
+    }
+
 
     //                          Operations                                  
     
@@ -16,7 +19,7 @@ public class TeacherRepository extends AbstractRepository {
     */
     public void addMarks() {
         //TODO
-        return null;
+
     }
     
     /**
@@ -24,7 +27,7 @@ public class TeacherRepository extends AbstractRepository {
     */
     public void submitComplaint() {
         //TODO
-        return null;
+
     }
     
     /**
@@ -32,7 +35,7 @@ public class TeacherRepository extends AbstractRepository {
     */
     public void defineFinalDate() {
         //TODO
-        return null;
+
     }
     
     

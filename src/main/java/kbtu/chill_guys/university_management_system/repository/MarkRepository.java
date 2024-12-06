@@ -1,15 +1,19 @@
 package main.java.kbtu.chill_guys.university_management_system.repository;
 
 
-import universityManagementSystem.Vector;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Mark;
+
+import java.nio.file.Path;
+import java.util.Vector;
 
 /**
 * @generated
 */
 public class MarkRepository extends AbstractRepository {
-    
-    
-    
+    public MarkRepository(Path path) {
+        super(path);
+    }
+
 
     //                          Operations                                  
     
@@ -18,7 +22,7 @@ public class MarkRepository extends AbstractRepository {
     */
     public void addMarkToStudent() {
         //TODO
-        return null;
+
     }
     
     /**

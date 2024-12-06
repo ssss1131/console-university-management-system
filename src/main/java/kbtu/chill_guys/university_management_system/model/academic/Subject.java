@@ -14,59 +14,59 @@ public class Subject {
     private Vector<Subject> prerequisites;
     private CourseType courseType;
 
-    private School getSchool() {
+    public School getSchool() {
         return this.school;
     }
 
-    private void setSchool(School school) {
+    public void setSchool(School school) {
         this.school = school;
     }
 
-    private String getCode() {
+    public String getCode() {
         return this.code;
     }
 
-    private void setCode(String code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
-    private String getName() {
+    public String getName() {
         return this.name;
     }
 
-    private void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    private Integer getCredits() {
+    public Integer getCredits() {
         return this.credits;
     }
 
-    private void setCredits(Integer credits) {
+    public void setCredits(Integer credits) {
         this.credits = credits;
     }
 
-    private GradeBook getGradebook() {
+    public GradeBook getGradebook() {
         return this.gradebook;
     }
 
-    private void setGradebook(GradeBook gradebook) {
+    public void setGradebook(GradeBook gradebook) {
         this.gradebook = gradebook;
     }
 
-    private Vector<Subject> getPrerequisites() {
+    public Vector<Subject> getPrerequisites() {
         return this.prerequisites;
     }
 
-    private void setPrerequisites(Vector<Subject> prerequisites) {
+    public void setPrerequisites(Vector<Subject> prerequisites) {
         this.prerequisites = prerequisites;
     }
 
-    private CourseType getCourseType() {
+    public CourseType getCourseType() {
         return this.courseType;
     }
 
-    private void setCourseType(CourseType courseType) {
+    public void setCourseType(CourseType courseType) {
         this.courseType = courseType;
     }
 

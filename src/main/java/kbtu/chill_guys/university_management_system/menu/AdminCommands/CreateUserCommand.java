@@ -6,11 +6,11 @@ import main.java.kbtu.chill_guys.university_management_system.controller.AdminCo
 public class CreateUserCommand {
     private AdminController controller;
 
-    private AdminController getController() {
+    public AdminController getController() {
         return this.controller;
     }
 
-    private AdminController setController(AdminController controller) {
+    public AdminController setController(AdminController controller) {
         this.controller = controller;
         return controller;
     }

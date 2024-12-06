@@ -9,10 +9,10 @@ import java.util.Vector;
 public class ResearcherController {
     private ResearchService researchService;
 
-    private ResearchService getResearchService() {
+    public ResearchService getResearchService() {
         return this.researchService;
     }
-    private void setResearchService(ResearchService researchService) {
+    public void setResearchService(ResearchService researchService) {
         this.researchService = researchService;
     }
 

@@ -16,7 +16,7 @@ public class ManagerService {
     */
     public void addCoursesForRegistration() {
         //TODO
-        return null;
+
     }
     
     /**
@@ -24,7 +24,7 @@ public class ManagerService {
     */
     public void assignCourseToTeacher() {
         //TODO
-        return null;
+
     }
     
     /**
@@ -48,7 +48,7 @@ public class ManagerService {
     */
     public void addNews() {
         //TODO
-        return null;
+
     }
     
     

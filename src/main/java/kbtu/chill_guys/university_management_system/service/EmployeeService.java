@@ -1,18 +1,15 @@
 package main.java.kbtu.chill_guys.university_management_system.service;
 
 
-import universityManagementSystem.Vector;
+import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
+
+import java.util.Vector;
 
 /**
 * @generated
 */
 public class EmployeeService {
-    
-    
-    /**
-    * @generated
-    */
-    private ServiceFactoryImpl serviceFactoryImpl;
+
     
     
 
@@ -31,7 +28,7 @@ public class EmployeeService {
     */
     public void sendMessage() {
         //TODO
-        return null;
+
     }
     
     
