@@ -12,16 +12,15 @@ import java.util.Vector;
 
 public class Employee extends User implements CanViewCourses {
     private Integer salary;
-    private Teacher teacher;
 
     public Employee() {
         super();
     }
 
-    public Employee(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, Vector<Post> notifications, int salary, Teacher teacher) {
+    public Employee(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName,
+                    Vector<Post> notifications, int salary) {
         super(id, role, email, password, salt, firstName, lastName, notifications);
         this.salary = salary;
-        this.teacher = teacher;
     }
 
     public Integer getSalary() {
@@ -30,14 +29,6 @@ public class Employee extends User implements CanViewCourses {
     
     public void setSalary(Integer salary) {
         this.salary = salary;
-    }
-
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
     }
 
     public void sendMessage() {

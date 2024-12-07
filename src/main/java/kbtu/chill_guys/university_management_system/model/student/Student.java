@@ -28,7 +28,9 @@ public class Student extends User implements CanViewCourses, CanBeResearcher, Ca
         super();
     }
 
-    public Student(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, Vector<Post> notifications, School school, LocalDate enrollmentDate, GPA school1, int credits, int studyDuration, Organization organization) {
+    public Student(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName,
+                   Vector<Post> notifications, School school, LocalDate enrollmentDate, GPA school1, int credits,
+                   int studyDuration, Organization organization) {
         super(id, role, email, password, salt, firstName, lastName, notifications);
         this.school = school;
         this.enrollmentDate = enrollmentDate;

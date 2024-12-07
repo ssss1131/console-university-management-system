@@ -1,39 +1,30 @@
 package main.java.kbtu.chill_guys.university_management_system.model.employee;
 
+import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewRequests;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewTeachers;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.ManagerType;
 
-public class Manager implements CanViewRequests, CanViewTeachers {
-    private ManagerType ManagerType;
+import java.util.UUID;
+import java.util.Vector;
+
+public class Manager extends Employee implements CanViewRequests, CanViewTeachers {
+    private ManagerType managerType;
+
+    public Manager() {}
+
+    public Manager(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName,
+                   Vector<Post> notifications, int salary, ManagerType managerType) {
+        super(id, role, email, password, salt, firstName, lastName, notifications, salary);
+        this.managerType = managerType;
+    }
 
     public ManagerType getManagerType() {
-        return this.ManagerType;
+        return this.managerType;
     }
 
-    public void setManagerType(ManagerType ManagerType) {
-        this.ManagerType = ManagerType;
-    }
-
-    public String makeReport() {
-        //TODO
-        return "";
-    }
-
-    public void addNews() {
-        //TODO
-    }
-
-    public void assignCourseToTeacher() {
-        //TODO
-    }
-
-    public void addCourseForRegistration() {
-        //TODO
-    }
-
-    public boolean approveStudentRegistration() {
-        //TODO
-        return false;
+    public void setManagerType(ManagerType managerType) {
+        this.managerType = managerType;
     }
 }
