@@ -16,14 +16,17 @@ public class AdminView {
         System.out.println("Enter user role (e.g., admin, student): ");
         data.put("role", UserRole.valueOf(scanner.nextLine().toUpperCase()));
 
+        System.out.println("Enter email: ");
+        data.put("email", scanner.nextLine());
+
+        System.out.println("Enter password: ");
+        data.put("password", scanner.nextLine());
+
         System.out.println("Enter first name: ");
         data.put("firstName", scanner.nextLine());
 
         System.out.println("Enter last name: ");
         data.put("lastName", scanner.nextLine());
-
-        System.out.println("Enter email: ");
-        data.put("email", scanner.nextLine());
 
         return data;
     }
@@ -36,11 +39,7 @@ public class AdminView {
     public void displayLogs() {
         //TODO
     }
-    
-    public void addUser() {
-        //TODO
-    }
-    
+
     public void updateUser() {
         //TODO
     }

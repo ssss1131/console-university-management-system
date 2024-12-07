@@ -1,19 +1,29 @@
 package main.java.kbtu.chill_guys.university_management_system.menu.GeneralCommands;
 
-import main.java.kbtu.chill_guys.university_management_system.controller.GeneralController;
+import main.java.kbtu.chill_guys.university_management_system.controller.AuthController;
+import main.java.kbtu.chill_guys.university_management_system.menu.Command;
+import main.java.kbtu.chill_guys.university_management_system.view.AuthView;
 
-public class LoginCommand {
-    private GeneralController controller;
+public class LoginCommand implements Command {
+    private final AuthController loginController;
+    private final AuthView authView;
 
-    public GeneralController getController() {
-        return this.controller;
+    public LoginCommand(AuthController loginController, AuthView authView) {
+        this.loginController = loginController;
+        this.authView = authView;
     }
 
-    public void setController(GeneralController controller) {
-        this.controller = controller;
-    }
-
+    @Override
     public void execute() {
-        //TODO
+        String email = authView.getEmail();
+        String password = authView.getPassword();
+
+        boolean isAuthenticated = loginController.login(email, password);
+
+        if (isAuthenticated) {
+            authView.displayLoginSuccess();
+        } else {
+            authView.displayLoginFailure();
+        }
     }
 }

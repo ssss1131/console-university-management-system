@@ -19,6 +19,13 @@ public class UserRepository extends AbstractRepository<User> implements GeneralR
                 .orElse(null);
     }
 
+    public User findUserByEmail(String email) {
+        return getAllLines().stream()
+                .filter(user -> user.getEmail().equals(email))
+                .findFirst()
+                .orElse(null);
+    }
+
     @Override
     public void save(User user) {
         Vector<User> users = getAllLines();

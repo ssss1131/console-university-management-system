@@ -7,7 +7,7 @@ import java.util.UUID;
 import java.util.Vector;
 
 public class Admin extends User {
-    public Admin(UUID id, UserRole role, String email, String firstName, String lastName, Vector<Post> notifications) {
-        super(id, role, email, firstName, lastName, notifications);
+    public Admin(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, Vector<Post> notifications) {
+        super(id, role, email, password, salt, firstName, lastName, notifications);
     }
 }

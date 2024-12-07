@@ -1,53 +1,32 @@
 package main.java.kbtu.chill_guys.university_management_system.service;
 
-
 import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.repository.UserRepository;
+import main.java.kbtu.chill_guys.university_management_system.util.PasswordUtil;
 
-/**
-* @generated
-*/
+import java.util.Map;
+
 public class AuthService {
-    
-    /**
-    * @generated
-    */
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    
-    
-    /**
-    * @generated
-    */
-    public UserRepository getUserRepository() {
-        return this.userRepository;
-    }
-    
-    /**
-    * @generated
-    */
-    public void setUserRepository(UserRepository userRepository) {
+    public AuthService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-    
 
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public User login() {
-        //TODO
-        return null;
+    public UserRepository getUserRepository() {
+        return userRepository;
     }
-    
-    /**
-    * @generated
-    */
-    public String hashPassword() {
-        //TODO
-        return "";
+
+    public boolean authenticate(String email, String plainPassword) {
+        User userData = userRepository.findUserByEmail(email);
+
+        if (userData == null) {
+            return false;
+        }
+
+        String salt = userData.getSalt();
+        String hashedPassword = userData.getPassword();
+
+        return PasswordUtil.checkPassword(plainPassword, salt, hashedPassword);
     }
-    
-    
 }

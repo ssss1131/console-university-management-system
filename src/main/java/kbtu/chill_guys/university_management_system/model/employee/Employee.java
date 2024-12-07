@@ -18,8 +18,8 @@ public class Employee extends User implements CanViewCourses {
         super();
     }
 
-    public Employee(UUID id, UserRole role, String email, String firstName, String lastName, Vector<Post> notifications, int salary, Teacher teacher) {
-        super(id, role, email, firstName, lastName, notifications);
+    public Employee(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, Vector<Post> notifications, int salary, Teacher teacher) {
+        super(id, role, email, password, salt, firstName, lastName, notifications);
         this.salary = salary;
         this.teacher = teacher;
     }
