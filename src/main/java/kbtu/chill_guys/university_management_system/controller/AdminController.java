@@ -1,6 +1,6 @@
 package main.java.kbtu.chill_guys.university_management_system.controller;
 
-import main.java.kbtu.chill_guys.university_management_system.model.BaseUser;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.model.UserFactory;
 import main.java.kbtu.chill_guys.university_management_system.service.AdminService;
@@ -9,14 +9,14 @@ import java.util.Map;
 import java.util.UUID;
 
 public class AdminController {
-    private AdminService adminService;
+    private final AdminService adminService;
+
+    public AdminController(AdminService adminService) {
+        this.adminService = adminService;
+    }
 
     private AdminService getAdminService() {
         return this.adminService;
-    }
-
-    private void setAdminService(AdminService adminService) {
-        this.adminService = adminService;
     }
 
     public String getLogs() {
@@ -24,15 +24,16 @@ public class AdminController {
         return "";
     }
 
-    public void createUser(Map<String, Object> data) {
-        String type = (String) data.get("type");
-        BaseUser user = UserFactory.createUser(type, data);
+    public User createUser(Map<String, Object> data) {
+        UserRole role = (UserRole) data.get("role");
+        User user = UserFactory.createUser(role, data);
         adminService.createUser(user);
+        return user;
     }
 
     public void modifyUser(Map<String, Object> data) {
-        String type = (String) data.get("type");
-        BaseUser user = UserFactory.createUser(type, data);
+        UserRole role = (UserRole) data.get("role");
+        User user = UserFactory.createUser(role, data);
         adminService.modifyUser(user);
     }
 

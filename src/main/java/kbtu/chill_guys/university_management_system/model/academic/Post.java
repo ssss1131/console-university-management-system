@@ -1,13 +1,13 @@
 package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
-import main.java.kbtu.chill_guys.university_management_system.model.BaseUser;
+import main.java.kbtu.chill_guys.university_management_system.model.User;
 
 import java.time.LocalDate;
 
 public class Post {
     private LocalDate date;
     private String content;
-    private BaseUser author;
+    private User author;
 
     public LocalDate getDate() {
         return this.date;
@@ -25,11 +25,11 @@ public class Post {
         this.content = content;
     }
 
-    public BaseUser getAuthor() {
+    public User getAuthor() {
         return this.author;
     }
 
-    public void setAuthor(BaseUser author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 }

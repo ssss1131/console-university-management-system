@@ -1,11 +1,11 @@
 package main.java.kbtu.chill_guys.university_management_system.model.research;
 
-import main.java.kbtu.chill_guys.university_management_system.model.BaseUser;
+import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanBeResearcher;
 
 import java.util.Vector;
 
-public class ResearcherDecorator <T extends BaseUser> implements CanBeResearcher {
+public class ResearcherDecorator <T extends User> implements CanBeResearcher {
     private T User;
     private Vector<ResearchProject> researchProjects;
     private Vector<ResearchPaper> researchPapers;

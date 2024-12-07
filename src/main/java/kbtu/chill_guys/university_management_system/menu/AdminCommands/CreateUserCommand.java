@@ -2,20 +2,28 @@ package main.java.kbtu.chill_guys.university_management_system.menu.AdminCommand
 
 
 import main.java.kbtu.chill_guys.university_management_system.controller.AdminController;
+import main.java.kbtu.chill_guys.university_management_system.menu.Command;
+import main.java.kbtu.chill_guys.university_management_system.model.User;
+import main.java.kbtu.chill_guys.university_management_system.view.AdminView;
 
-public class CreateUserCommand {
-    private AdminController controller;
+import java.util.Map;
 
-    public AdminController getController() {
-        return this.controller;
-    }
+public class CreateUserCommand implements Command {
+    private final AdminController controller;
+    private final AdminView view;
 
-    public AdminController setController(AdminController controller) {
+    public CreateUserCommand(AdminController controller, AdminView view) {
         this.controller = controller;
-        return controller;
+        this.view = view;
     }
 
+    @Override
     public void execute() {
+        System.out.println("Executing CreateUserCommand...");
+        Map<String, Object> data = view.getUserInput();
 
+        User user = controller.createUser(data);
+
+        view.displayUserCreated(user);
     }
 }

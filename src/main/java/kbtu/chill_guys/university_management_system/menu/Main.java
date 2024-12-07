@@ -1,30 +1,23 @@
 package main.java.kbtu.chill_guys.university_management_system.menu;
 
-import main.java.kbtu.chill_guys.university_management_system.model.Admin;
-import main.java.kbtu.chill_guys.university_management_system.model.BaseUser;
-import main.java.kbtu.chill_guys.university_management_system.model.User;
+import main.java.kbtu.chill_guys.university_management_system.controller.AdminController;
+import main.java.kbtu.chill_guys.university_management_system.menu.AdminCommands.CreateUserCommand;
 import main.java.kbtu.chill_guys.university_management_system.repository.UserRepository;
 import main.java.kbtu.chill_guys.university_management_system.service.AdminService;
+import main.java.kbtu.chill_guys.university_management_system.view.AdminView;
 
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.UUID;
-import java.util.Vector;
 
 public class Main {
     public static void main(String[] args) {
-        Path userFile = Paths.get("users.dat");
+        AdminService adminService = new AdminService(new UserRepository(Paths.get("users.db")));
+        AdminController adminController = new AdminController(adminService);
+        AdminView adminView = new AdminView();
 
-        // Создаем репозиторий
-        UserRepository userRepository = new UserRepository(userFile);
+        Menu menu = new Menu();
 
-        // Создаем сервис
-        AdminService adminService = new AdminService(userRepository);
+        menu.registerCommand("createUser", new CreateUserCommand(adminController, adminView));
 
-        // Пример работы с сервисом
-        BaseUser admin = new Admin(UUID.randomUUID(), "admin@kbtu.kz", "Admin", "User", new Vector<>());
-        adminService.createUser(admin);
-
-        adminService.removeUser(admin.getId());
+        menu.run();
     }
 }

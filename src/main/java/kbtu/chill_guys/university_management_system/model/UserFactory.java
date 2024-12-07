@@ -1,6 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.model;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.GPA;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Employee;
@@ -14,26 +15,30 @@ import java.util.UUID;
 import java.util.Vector;
 
 public class UserFactory {
-    public static BaseUser createUser(String type, Map<String, Object> data) {
+    public static User createUser(UserRole role, Map<String, Object> data) {
+        UUID uuid = UUID.randomUUID();
+
         Vector<Post> notifications = (Vector<Post>) data.get("notifications");
 
         if (notifications == null) {
             notifications = new Vector<>();
         }
 
-        switch (type.toLowerCase()) {
-            case "admin":
+        switch (role) {
+            case ADMIN:
                 return new Admin(
-                        UUID.fromString((String) data.get("id")),
+                        uuid,
+                        role,
                         (String) data.get("email"),
                         (String) data.get("firstName"),
                         (String) data.get("lastName"),
-                        notifications
+                        new Vector<>()
                 ) {
                 };
-            case "student":
+            case STUDENT:
                 return new Student(
-                        UUID.fromString((String) data.get("id")),
+                        uuid,
+                        role,
                         (String) data.get("email"),
                         (String) data.get("firstName"),
                         (String) data.get("lastName"),
@@ -45,9 +50,10 @@ public class UserFactory {
                         Integer.parseInt((String) data.get("studyDuration")),
                         (Organization) data.get("organization")
                 );
-            case "employee":
+            case EMPLOYEE:
                 return new Employee(
-                        UUID.fromString((String) data.get("id")),
+                        uuid,
+                        role,
                         (String) data.get("email"),
                         (String) data.get("firstName"),
                         (String) data.get("lastName"),
@@ -56,7 +62,7 @@ public class UserFactory {
                         (Teacher) data.get("teacher")
                 );
             default:
-                throw new IllegalArgumentException("Unknown user type: " + type);
+                throw new IllegalArgumentException("Unknown user type: " + role);
         }
     }
 }

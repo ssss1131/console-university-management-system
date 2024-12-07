@@ -2,21 +2,21 @@ package main.java.kbtu.chill_guys.university_management_system.model.student;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Gpa;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
-import main.java.kbtu.chill_guys.university_management_system.model.BaseUser;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
+import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.model.Journal;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.*;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanBeResearcher;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewCourses;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewMarks;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewTeachers;
-import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
 
 import java.time.LocalDate;
 import java.util.Map;
 import java.util.UUID;
 import java.util.Vector;
 
-public class Student extends BaseUser implements CanViewCourses, CanBeResearcher, CanViewMarks, CanViewTeachers {
+public class Student extends User implements CanViewCourses, CanBeResearcher, CanViewMarks, CanViewTeachers {
     private School school;
     private LocalDate enrollmentDate;
     private Gpa gpa;
@@ -28,8 +28,8 @@ public class Student extends BaseUser implements CanViewCourses, CanBeResearcher
         super();
     }
 
-    public Student(UUID id, String email, String firstName, String lastName, Vector<Post> notifications, School school, LocalDate enrollmentDate, GPA school1, int credits, int studyDuration, Organization organization) {
-        super(id, email, firstName, lastName, notifications);
+    public Student(UUID id, UserRole role, String email, String firstName, String lastName, Vector<Post> notifications, School school, LocalDate enrollmentDate, GPA school1, int credits, int studyDuration, Organization organization) {
+        super(id, role, email, firstName, lastName, notifications);
         this.school = school;
         this.enrollmentDate = enrollmentDate;
         this.credits = credits;
@@ -127,25 +127,5 @@ public class Student extends BaseUser implements CanViewCourses, CanBeResearcher
     public String viewAcademicStanding() {
         //TODO
         return "";
-    }
-
-    @Override
-    public boolean login(String username, String password) {
-        return false;
-    }
-
-    @Override
-    public Vector<Post> viewNews() {
-        return null;
-    }
-
-    @Override
-    public void subscribeJournal(Journal journal) {
-
-    }
-
-    @Override
-    public void unsubscribeJournal(Journal journal) {
-
     }
 }

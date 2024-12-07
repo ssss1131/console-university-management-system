@@ -1,6 +1,5 @@
 package main.java.kbtu.chill_guys.university_management_system.service;
 
-import main.java.kbtu.chill_guys.university_management_system.model.BaseUser;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.repository.GeneralRepository;
 
@@ -18,11 +17,11 @@ public class AdminService {
         return "";
     }
     
-    public void createUser(BaseUser user) {
+    public void createUser(User user) {
         generalRepository.save(user);
     }
 
-    public void modifyUser(BaseUser user) {
+    public void modifyUser(User user) {
         generalRepository.save(user);
     }
     
