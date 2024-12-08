@@ -13,7 +13,7 @@ import main.java.kbtu.chill_guys.university_management_system.permission.CanView
 import java.time.LocalDate;
 import java.util.*;
 
-public class Student extends User implements CanViewCourses, CanBeResearcher, CanViewMarks, CanViewTeachers {
+public abstract class Student extends User implements CanViewCourses, CanBeResearcher, CanViewMarks, CanViewTeachers {
     private School school;
     private LocalDate enrollmentDate;
     private Gpa gpa;
