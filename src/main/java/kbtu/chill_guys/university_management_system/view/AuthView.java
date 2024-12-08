@@ -15,8 +15,8 @@ public class AuthView {
         return scanner.nextLine();
     }
 
-    public void displayLoginSuccess() {
-        System.out.println("Login successful! Welcome!");
+    public void displayLoginSuccess(String userFirstName, String userLastName) {
+        System.out.println("Login successful! Welcome " + userFirstName + " " + userLastName + "!");
     }
 
     public void displayLoginFailure() {

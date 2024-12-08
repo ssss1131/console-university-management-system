@@ -17,16 +17,20 @@ public class AuthService {
         return userRepository;
     }
 
-    public boolean authenticate(String email, String plainPassword) {
+    public User authenticate(String email, String plainPassword) {
         User userData = userRepository.findUserByEmail(email);
 
         if (userData == null) {
-            return false;
+            return null;
         }
 
         String salt = userData.getSalt();
         String hashedPassword = userData.getPassword();
 
-        return PasswordUtil.checkPassword(plainPassword, salt, hashedPassword);
+        if (PasswordUtil.checkPassword(plainPassword, salt, hashedPassword)) {
+            return userData;
+        } else {
+            return null;
+        }
     }
 }

@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Menu {
     private Language language;
-    private User loggedUser;
+    private User loggedUser = null;
     private Map<String, Command> commands = new HashMap<>();;
 
     public Language getLanguage() {
@@ -39,6 +39,7 @@ public class Menu {
     public void run() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
+            displayAvailableCommands();
             System.out.println("Enter command: ");
             String commandName = scanner.nextLine();
             Command command = commands.get(commandName);
@@ -51,11 +52,26 @@ public class Menu {
         }
     }
 
-    public void save() {
-        //TODO
-    }
-
     public void registerCommand(String commandName, Command command) {
         commands.put(commandName, command);
+    }
+
+    public void displayAvailableCommands() {
+        if (loggedUser == null) {
+            System.out.println("Available commands:");
+            for (String commandName : commands.keySet()) {
+                if (commandName.equalsIgnoreCase("login")) {
+                    System.out.println("- " + commandName);
+                }
+            }
+        } else {
+            System.out.println("Current user: " + loggedUser.getFirstName() + " " + loggedUser.getLastName());
+            System.out.println("Available commands:");
+            for (String commandName : commands.keySet()) {
+                if (!commandName.equalsIgnoreCase("login")) {
+                    System.out.println("- " + commandName);
+                }
+            }
+        }
     }
 }

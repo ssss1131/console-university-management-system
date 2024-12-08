@@ -39,24 +39,6 @@ public final class UserFactory {
                         (String) data.get("firstName"),
                         (String) data.get("lastName"),
                         notifications
-                ) {
-                };
-            case STUDENT:
-                return new Student(
-                        uuid,
-                        role,
-                        (String) data.get("email"),
-                        (String) data.get("password"),
-                        (String) data.get("salt"),
-                        (String) data.get("firstName"),
-                        (String) data.get("lastName"),
-                        notifications,
-                        (School) data.get("school"),
-                        LocalDate.parse((String) data.get("enrollmentDate")),
-                        (Gpa) data.get("gpa"),
-                        (Integer) data.get("credits"),
-                        (Integer) data.get("studyDuration"),
-                        (Organization) data.get("organization")
                 );
             case TEACHER:
                 return new Teacher(
