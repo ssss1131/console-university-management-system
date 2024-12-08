@@ -4,6 +4,7 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.util.U
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.Vector;
 
@@ -86,8 +87,20 @@ public abstract class User implements Serializable {
     public String toString() {
         return "User [id: " + id + ", role: " + role + ", email: " + email + ", firstName: " + firstName + ", lastName: " + lastName + "]" + password;
     }
-
     public String getSalt() {
         return salt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) && role == user.role && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(salt, user.salt) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(notifications, user.notifications);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, role, email, password, salt, firstName, lastName, notifications);
     }
 }

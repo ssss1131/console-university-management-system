@@ -3,9 +3,11 @@ package main.java.kbtu.chill_guys.university_management_system.model.academic;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.evaluation.CourseType;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
 
+import java.io.Serializable;
+import java.util.Objects;
 import java.util.Vector;
 
-public class Subject {
+public class Subject implements Serializable {
     private School school;
     private String code;
     private String name;
@@ -68,6 +70,32 @@ public class Subject {
 
     public void setCourseType(CourseType courseType) {
         this.courseType = courseType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Subject subject = (Subject) o;
+        return school == subject.school && Objects.equals(code, subject.code) && Objects.equals(name, subject.name) && Objects.equals(credits, subject.credits) && Objects.equals(gradebook, subject.gradebook) && Objects.equals(prerequisites, subject.prerequisites) && courseType == subject.courseType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(school, code, name, credits, gradebook, prerequisites, courseType);
+    }
+
+    @Override
+    public String toString() {
+        return "Subject{" +
+               "school=" + school +
+               ", code='" + code + '\'' +
+               ", name='" + name + '\'' +
+               ", credits=" + credits +
+               ", gradebook=" + gradebook +
+               ", prerequisites=" + prerequisites +
+               ", courseType=" + courseType +
+               '}';
     }
 
     public double getMinandMax() {

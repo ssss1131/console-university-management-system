@@ -2,12 +2,13 @@ package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
 import main.java.kbtu.chill_guys.university_management_system.model.User;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Post {
-    private LocalDate date;
-    private String content;
+public class Post implements Serializable {
     private User author;
+    private String content;
+    private LocalDate date;
 
     public LocalDate getDate() {
         return this.date;

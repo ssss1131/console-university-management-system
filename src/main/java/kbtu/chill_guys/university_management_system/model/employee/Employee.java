@@ -2,15 +2,16 @@ package main.java.kbtu.chill_guys.university_management_system.model.employee;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
-import main.java.kbtu.chill_guys.university_management_system.model.Journal;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
+import main.java.kbtu.chill_guys.university_management_system.permission.CanBeResearcher;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewCourses;
 
+import java.util.Objects;
 import java.util.UUID;
 import java.util.Vector;
 
-public class Employee extends User implements CanViewCourses {
+public abstract class Employee extends User implements CanViewCourses, CanBeResearcher {
     private Integer salary;
 
     public Employee() {
@@ -38,5 +39,26 @@ public class Employee extends User implements CanViewCourses {
     public Vector<Student> viewStudents() {
         //TODO
         return null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(salary, employee.salary);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), salary);
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+               "salary=" + salary +
+               "} " + super.toString();
     }
 }

@@ -6,6 +6,7 @@ import main.java.kbtu.chill_guys.university_management_system.permission.CanView
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewTeachers;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.ManagerType;
 
+import java.util.Objects;
 import java.util.UUID;
 import java.util.Vector;
 
@@ -26,5 +27,26 @@ public class Manager extends Employee implements CanViewRequests, CanViewTeacher
 
     public void setManagerType(ManagerType managerType) {
         this.managerType = managerType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Manager manager = (Manager) o;
+        return managerType == manager.managerType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), managerType);
+    }
+
+    @Override
+    public String toString() {
+        return "Manager{" +
+               "managerType=" + managerType +
+               "} " + super.toString();
     }
 }

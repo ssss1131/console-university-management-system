@@ -4,7 +4,6 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.academ
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
-import main.java.kbtu.chill_guys.university_management_system.model.Journal;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.*;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanBeResearcher;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewCourses;
@@ -12,9 +11,7 @@ import main.java.kbtu.chill_guys.university_management_system.permission.CanView
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewTeachers;
 
 import java.time.LocalDate;
-import java.util.Map;
-import java.util.UUID;
-import java.util.Vector;
+import java.util.*;
 
 public class Student extends User implements CanViewCourses, CanBeResearcher, CanViewMarks, CanViewTeachers {
     private School school;
@@ -23,17 +20,19 @@ public class Student extends User implements CanViewCourses, CanBeResearcher, Ca
     private Integer credits;
     private Integer studyDuration;
     private Organization organization;
+    private Map<Semester, Subject> semesterDisciplines = new HashMap<>();
 
     public Student() {
         super();
     }
 
     public Student(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName,
-                   Vector<Post> notifications, School school, LocalDate enrollmentDate, GPA school1, int credits,
-                   int studyDuration, Organization organization) {
+                   Vector<Post> notifications, School school, LocalDate enrollmentDate, Gpa gpa, Integer credits,
+                   Integer studyDuration, Organization organization) {
         super(id, role, email, password, salt, firstName, lastName, notifications);
         this.school = school;
         this.enrollmentDate = enrollmentDate;
+        this.gpa = gpa;
         this.credits = credits;
         this.studyDuration = studyDuration;
         this.organization = organization;
@@ -87,6 +86,41 @@ public class Student extends User implements CanViewCourses, CanBeResearcher, Ca
         this.organization = organization;
     }
 
+    public Map<Semester, Subject> getSemesterDisciplines() {
+        return semesterDisciplines;
+    }
+
+    public void addSemesterDiscipline(Semester semester, Subject subject) {
+        semesterDisciplines.put(semester, subject);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Student student = (Student) o;
+        return school == student.school && Objects.equals(enrollmentDate, student.enrollmentDate) && gpa == student.gpa && Objects.equals(credits, student.credits) && Objects.equals(studyDuration, student.studyDuration) && Objects.equals(organization, student.organization) && Objects.equals(semesterDisciplines, student.semesterDisciplines);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), school, enrollmentDate, gpa, credits, studyDuration, organization, semesterDisciplines);
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+               "school=" + school +
+               ", enrollmentDate=" + enrollmentDate +
+               ", gpa=" + gpa +
+               ", credits=" + credits +
+               ", studyDuration=" + studyDuration +
+               ", organization=" + organization +
+               ", semesterDisciplines=" + semesterDisciplines +
+               "} " + super.toString();
+    }
+
     public boolean registerForCourse() {
         //TODO
         return false;
@@ -106,11 +140,6 @@ public class Student extends User implements CanViewCourses, CanBeResearcher, Ca
         return null;
     }
 
-    public Vector<Mark> viewMarks() {
-        //TODO
-        return null;
-    }
-
     public boolean joinOrganization() {
         //TODO
         return false;
@@ -121,10 +150,10 @@ public class Student extends User implements CanViewCourses, CanBeResearcher, Ca
         return false;
     }
 
-    public Map<Course, Integer> viewAttendance() {
-        //TODO
-        return null;
-    }
+//    public Map<Course, Integer> viewAttendance() {
+//        //TODO
+//        return null;
+//    }
 
     public String viewAcademicStanding() {
         //TODO
