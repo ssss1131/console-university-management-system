@@ -2,7 +2,7 @@ package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
 import java.util.Vector;
 
-public class News {
+public class News extends Post {
     private String topic;
     private Vector<Post> comments;
 

@@ -2,43 +2,74 @@ package main.java.kbtu.chill_guys.university_management_system.model;
 
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 
+import java.util.UUID;
 import java.util.Vector;
 
 public class Journal {
     private String name;
-    private Vector<User> subscibers;
+    private UUID id;
+    private Vector<Subscriber> subscribers;
+    private Vector<Post> posts;
 
-    public String getName() {
-        return this.name;
+    public Journal(String name, UUID id) {
+        this.name = name;
+        this.id = id != null ? id : UUID.randomUUID();
+        this.subscribers = new Vector<>();
+        this.posts = new Vector<>();
     }
 
+    // Getters
+    public String getName() {
+        return name;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public Vector<Subscriber> getSubscribers() {
+        return subscribers;
+    }
+
+    public Vector<Post> getPosts() {
+        return posts;
+    }
+
+    // Setters
     public void setName(String name) {
         this.name = name;
     }
 
-    public Vector<User> getSubscibers() {
-        return this.subscibers;
-
-    }
-    public void setSubscibers(Vector<User> subscibers) {
-        this.subscibers = subscibers;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
-    public void notify(Post post) {
-        //TODO
+    public void setSubscribers(Vector<Subscriber> subscribers) {
+        this.subscribers = subscribers;
     }
 
-    public void publish() {
-        //TODO
+    public void setPosts(Vector<Post> posts) {
+        this.posts = posts;
     }
 
-    public boolean add() {
-        //TODO
+    // Additional methods
+    public boolean addSubscriber(Subscriber subscriber) {
+        if (subscriber != null && !subscribers.contains(subscriber)) {
+            return subscribers.add(subscriber);
+        }
         return false;
     }
 
-    public boolean remove() {
-        //TODO
-        return false;
+    public boolean removeSubscriber(Subscriber subscriber) {
+        return subscribers.remove(subscriber);
+    }
+
+    public void publish(Post post) {
+        if (post != null) {
+            posts.add(post);
+            for (Subscriber subscriber : subscribers) {
+                subscriber.update(post);
+            }
+        }
     }
 }
