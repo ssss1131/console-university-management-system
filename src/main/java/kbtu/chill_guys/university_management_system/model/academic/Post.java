@@ -2,9 +2,10 @@ package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
 import main.java.kbtu.chill_guys.university_management_system.model.User;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Post {
+public class Post implements Serializable {
     private String title;
     private LocalDate date;
     private String content;

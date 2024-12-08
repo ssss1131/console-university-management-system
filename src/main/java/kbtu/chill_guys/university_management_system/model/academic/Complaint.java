@@ -1,35 +1,25 @@
 package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
-import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
+import main.java.kbtu.chill_guys.university_management_system.model.User;
 
-import java.time.LocalDate;
 
-public class Complaint {
-    private Student student;
-    private String description;
-    private LocalDate date;
+public class Complaint extends Post {
+    private User complainantUser; //кому жалуется
+    private Status status;
     
-    public Student getStudent() {
-        return this.student;
+    public User getComplainantUser() {
+        return this.complainantUser;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setComplainantUser(User complainantUser) {
+        this.complainantUser = complainantUser;
     }
 
-    public String getDescription() {
-        return this.description;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public LocalDate getLocalDate() {
-        return this.date;
-    }
-
-    public void setLocalDate(LocalDate date) {
-        this.date = date;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

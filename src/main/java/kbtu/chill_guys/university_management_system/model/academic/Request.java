@@ -1,5 +1,6 @@
 package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
+//TODO
 public class Request extends Post {
     private Boolean isSigned;
 
