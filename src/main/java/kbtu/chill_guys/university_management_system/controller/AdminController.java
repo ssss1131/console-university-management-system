@@ -43,14 +43,12 @@ public class AdminController {
         adminService.modifyUser(user);
     }
 
-    public void removeUser(Map<String, Object> data) {
-        UUID id = (UUID) data.get("id");
+    public void removeUser(UUID id) {
         adminService.removeUser(id);
     }
 
-    public boolean isExistingUser() {
-        //TODO
-        return false;
+    public boolean isExistingUser(UUID id) {
+        return adminService.isExistingUser(id);
     }
 
     public boolean changePasswordToUser() {

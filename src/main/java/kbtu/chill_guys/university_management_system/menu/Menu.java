@@ -6,8 +6,10 @@ import main.java.kbtu.chill_guys.university_management_system.model.User;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class Menu {
+    private static final Logger LOGGER = Logger.getLogger(Menu.class.getName());
     private Language language;
     private User loggedUser = null;
     private Map<String, Command> commands = new HashMap<>();;
@@ -39,6 +41,7 @@ public class Menu {
     public void run() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
+            LOGGER.info("Application starting...");
             displayAvailableCommands();
             System.out.println("Enter command: ");
             String commandName = scanner.nextLine();
@@ -46,6 +49,7 @@ public class Menu {
 
             if (command != null) {
                 command.execute();
+                LOGGER.info("Command " + commandName + " executed successfully.");
             } else {
                 System.out.println("Unknown command.");
             }
@@ -65,6 +69,7 @@ public class Menu {
                 }
             }
         } else {
+            LOGGER.info(loggedUser.getFirstName() + " successfully logged in.");
             System.out.println("Current user: " + loggedUser.getFirstName() + " " + loggedUser.getLastName());
             System.out.println("Available commands:");
             for (String commandName : commands.keySet()) {
