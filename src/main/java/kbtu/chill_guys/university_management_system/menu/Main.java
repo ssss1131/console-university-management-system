@@ -2,8 +2,8 @@ package main.java.kbtu.chill_guys.university_management_system.menu;
 
 import main.java.kbtu.chill_guys.university_management_system.controller.AdminController;
 import main.java.kbtu.chill_guys.university_management_system.controller.AuthController;
-import main.java.kbtu.chill_guys.university_management_system.menu.AdminCommands.CreateUserCommand;
-import main.java.kbtu.chill_guys.university_management_system.menu.GeneralCommands.LoginCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.admin_command.CreateUserCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.general_command.LoginCommand;
 import main.java.kbtu.chill_guys.university_management_system.repository.UserRepository;
 import main.java.kbtu.chill_guys.university_management_system.service.AdminService;
 import main.java.kbtu.chill_guys.university_management_system.service.AuthService;

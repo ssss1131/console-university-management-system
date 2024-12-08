@@ -10,18 +10,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Database implements Serializable {
-    private static Database instance;
+    private static final Database INSTANCE = new Database();
     private final Map<Path, Object> dataMap;
 
     private Database() {
         this.dataMap = new HashMap<>();
     }
 
-    public static synchronized Database getInstance() {
-        if (instance == null) {
-            instance = new Database();
-        }
-        return instance;
+    public static Database getInstance() {
+        return INSTANCE;
     }
 
     public Object getData(Path path) {
