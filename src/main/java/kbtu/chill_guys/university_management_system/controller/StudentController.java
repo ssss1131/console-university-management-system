@@ -1,7 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.controller;
 
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Course;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Mark;
+//import main.java.kbtu.chill_guys.university_management_system.model.academic.Course;
+//import main.java.kbtu.chill_guys.university_management_system.model.academic.Mark;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
@@ -21,10 +21,10 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    public Vector<Mark> getMarks() {
-        //TODO
-        return null;
-    }
+//    public Vector<Mark> getMarks() {
+//        //TODO
+//        return null;
+//    }
 
     public Vector<Transcript> getTranscript() {
         //TODO
@@ -41,10 +41,10 @@ public class StudentController {
         return null;
     }
 
-    public Vector<Course> getCourses() {
-        //TODO
-        return null;
-    }
+//    public Vector<Course> getCourses() {
+//        //TODO
+//        return null;
+//    }
 
     public Map<LocalDate, Boolean> getAttendance() {
         //TODO
@@ -75,11 +75,11 @@ public class StudentController {
         //TODO
         return null;
     }
-
-    public Vector<Mark> viewMarks() {
-        //TODO
-        return null;
-    }
+//
+//    public Vector<Mark> viewMarks() {
+//        //TODO
+//        return null;
+//    }
 
     public boolean joinOrganization() {
         //TODO
@@ -91,10 +91,10 @@ public class StudentController {
         return false;
     }
 
-    public Map<Course, Integer> viewAttendance() {
-        //TODO
-        return null;
-    }
+//    public Map<Course, Integer> viewAttendance() {
+//        //TODO
+//        return null;
+//    }
 
     public String viewAcademicStanding() {
         //TODO

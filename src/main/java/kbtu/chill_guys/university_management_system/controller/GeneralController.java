@@ -1,8 +1,8 @@
 package main.java.kbtu.chill_guys.university_management_system.controller;
 
 import main.java.kbtu.chill_guys.university_management_system.model.User;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Course;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Mark;
+//import main.java.kbtu.chill_guys.university_management_system.model.academic.Course;
+//import main.java.kbtu.chill_guys.university_management_system.model.academic.Mark;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Request;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
@@ -66,20 +66,20 @@ public class GeneralController {
         this.newsRetrievalService = newsRetrievalService;
     }
 
-    public Vector<Course> getCourses() {
-        //TODO
-        return null;
-    }
+//    public Vector<Course> getCourses() {
+//        //TODO
+//        return null;
+//    }
 
     public Vector<Teacher> getTeachers() {
         //TODO
         return null;
     }
 
-    public Vector<Mark> getMarks() {
-        //TODO
-        return null;
-    }
+//    public Vector<Mark> getMarks() {
+//        //TODO
+//        return null;
+//    }
 
     public Vector<Request> getRequests() {
         //TODO

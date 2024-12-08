@@ -1,7 +1,5 @@
 package main.java.kbtu.chill_guys.university_management_system.service;
 
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Course;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Mark;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
@@ -11,10 +9,10 @@ import java.util.Map;
 import java.util.Vector;
 
 public class StudentService {
-    public Vector<Mark> showMarks() {
-        //TODO
-        return null;
-    }
+//    public Vector<Mark> showMarks() {
+//        //TODO
+//        return null;
+//    }
 
     public Vector<Transcript> showTranscript() {
         //TODO
@@ -31,10 +29,10 @@ public class StudentService {
         return null;
     }
 
-    public Vector<Course> showCourses() {
-        //TODO
-        return null;
-    }
+//    public Vector<Course> showCourses() {
+//        //TODO
+//        return null;
+//    }
 
     public Map<LocalDate, Boolean> showAttendace() {
         //TODO

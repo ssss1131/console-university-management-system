@@ -1,6 +1,6 @@
 package main.java.kbtu.chill_guys.university_management_system.repository;
 
-import main.java.kbtu.chill_guys.university_management_system.database.Database;
+import main.java.kbtu.chill_guys.university_management_system.repository.database.Database;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -23,7 +23,11 @@ public abstract class AbstractRepository<T> {
 
     @SuppressWarnings("unchecked")
     public Vector<T> getAllLines() {
-        return (Vector<T>) database.getData(path);
+        try {
+            return database.loadData(path);
+        } catch (IOException | ClassNotFoundException e) {
+            return new Vector<>();
+        }
     }
 
     public void saveData(Vector<T> data) {

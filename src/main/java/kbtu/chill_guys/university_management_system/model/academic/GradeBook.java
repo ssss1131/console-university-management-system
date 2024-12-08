@@ -1,5 +1,6 @@
 package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Attendance;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 
 import java.io.Serializable;

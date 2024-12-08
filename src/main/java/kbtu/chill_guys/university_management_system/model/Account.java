@@ -6,9 +6,7 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.academ
 import java.io.Serializable;
 
 public class Account implements Serializable {
-
     private String login;
     private String password;
     private Role role;
-
 }

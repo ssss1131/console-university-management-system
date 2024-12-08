@@ -1,7 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Status;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
-
 
 public class Complaint extends Post {
     private User complainantUser; //кому жалуется

@@ -15,7 +15,7 @@ import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) {
-        UserRepository userRepository = new UserRepository(Paths.get(""));
+        UserRepository userRepository = new UserRepository(Paths.get("account.ser"));
         AdminService adminService = new AdminService(userRepository);
         AdminController adminController = new AdminController(adminService);
         AdminView adminView = new AdminView();
