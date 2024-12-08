@@ -11,6 +11,7 @@ import main.java.kbtu.chill_guys.university_management_system.model.student.Stud
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class AdminView {
     private final Scanner scanner = new Scanner(System.in);
@@ -110,6 +111,15 @@ public class AdminView {
         return organization;
     }
 
+    public void displayMessage(String message) {
+        System.out.println(message);
+    }
+
+    public UUID getUserIdForDeletion() {
+        System.out.println("Enter the ID of the user to delete: ");
+        String id = scanner.nextLine();
+        return UUID.fromString(id);
+    }
 
     public void displayLogs() {
         //TODO

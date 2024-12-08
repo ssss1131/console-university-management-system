@@ -19,9 +19,9 @@ public class Bachelor extends Student {
     public Bachelor() {}
 
     public Bachelor(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName,
-                    Vector<Post> notifications, School school, LocalDate enrollmentDate, Gpa school1, int credits,
+                    Vector<Post> notifications, School school, LocalDate enrollmentDate, Gpa gpa, int credits,
                     int studyDuration, Organization organization, Specialization specialization) {
-        super(id, role, email, password, salt, firstName, lastName, notifications, school, enrollmentDate, school1, credits,
+        super(id, role, email, password, salt, firstName, lastName, notifications, school, enrollmentDate, gpa, credits,
                 studyDuration, organization);
         this.specialization = specialization;
     }

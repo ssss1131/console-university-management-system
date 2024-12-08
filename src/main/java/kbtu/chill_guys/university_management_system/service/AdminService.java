@@ -28,4 +28,8 @@ public class AdminService {
     public void removeUser(UUID id) {
         generalRepository.delete(id);
     }
+
+    public boolean isExistingUser(UUID id) {
+        return generalRepository.findById(id) != null;
+    }
 }
