@@ -55,4 +55,49 @@ public class StudentController {
         //TODO
         return 0;
     }
+
+
+    public boolean registerForCourse() {
+        //TODO
+        return false;
+    }
+
+    public boolean dropCourse() {
+        //TODO
+        return false;
+    }
+
+    public void rateTeacher() {
+        //TODO
+    }
+
+    public Transcript viewTranscript() {
+        //TODO
+        return null;
+    }
+
+    public Vector<Mark> viewMarks() {
+        //TODO
+        return null;
+    }
+
+    public boolean joinOrganization() {
+        //TODO
+        return false;
+    }
+
+    public boolean leaveOrganization() {
+        //TODO
+        return false;
+    }
+
+    public Map<Course, Integer> viewAttendance() {
+        //TODO
+        return null;
+    }
+
+    public String viewAcademicStanding() {
+        //TODO
+        return "";
+    }
 }

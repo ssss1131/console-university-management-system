@@ -10,7 +10,7 @@ import main.java.kbtu.chill_guys.university_management_system.permission.CanView
 import java.util.UUID;
 import java.util.Vector;
 
-public class Employee extends User implements CanViewCourses {
+public abstract class Employee extends User implements CanViewCourses {
     private Integer salary;
 
     public Employee() {
@@ -29,14 +29,5 @@ public class Employee extends User implements CanViewCourses {
     
     public void setSalary(Integer salary) {
         this.salary = salary;
-    }
-
-    public void sendMessage() {
-        //TODO
-    }
-    
-    public Vector<Student> viewStudents() {
-        //TODO
-        return null;
     }
 }

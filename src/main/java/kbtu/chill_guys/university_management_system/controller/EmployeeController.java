@@ -15,12 +15,12 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    public Vector<Student> getStudents() {
-        //TODO
-        return null;
-    }
-
     public void sendMessage() {
         //TODO
+    }
+
+    public Vector<Student> viewStudents() {
+        //TODO
+        return null;
     }
 }

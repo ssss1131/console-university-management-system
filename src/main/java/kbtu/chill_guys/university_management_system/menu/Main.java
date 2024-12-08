@@ -4,6 +4,7 @@ import main.java.kbtu.chill_guys.university_management_system.controller.AdminCo
 import main.java.kbtu.chill_guys.university_management_system.controller.AuthController;
 import main.java.kbtu.chill_guys.university_management_system.menu.AdminCommands.CreateUserCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.GeneralCommands.LoginCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.GeneralCommands.LogoutCommand;
 import main.java.kbtu.chill_guys.university_management_system.repository.UserRepository;
 import main.java.kbtu.chill_guys.university_management_system.service.AdminService;
 import main.java.kbtu.chill_guys.university_management_system.service.AuthService;
@@ -19,14 +20,15 @@ public class Main {
         AdminController adminController = new AdminController(adminService);
         AdminView adminView = new AdminView();
 
-        AuthService loginService = new AuthService(userRepository);
-        AuthController loginController = new AuthController(loginService);
+        AuthService authService = new AuthService(userRepository);
+        AuthController authController = new AuthController(authService);
         AuthView loginView = new AuthView();
 
         Menu menu = new Menu();
 
         menu.registerCommand("createUser", new CreateUserCommand(adminController, adminView));
-        menu.registerCommand("login", new LoginCommand(loginController, loginView));
+        menu.registerCommand("login", new LoginCommand(authController, loginView, menu));
+        menu.registerCommand("logout", new LogoutCommand(menu));
 
         menu.run();
     }

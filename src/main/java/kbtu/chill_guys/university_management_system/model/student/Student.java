@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.Vector;
 
-public class Student extends User implements CanViewCourses, CanBeResearcher, CanViewMarks, CanViewTeachers {
+public abstract class Student extends User implements CanViewCourses, CanBeResearcher, CanViewMarks, CanViewTeachers {
     private School school;
     private LocalDate enrollmentDate;
     private Gpa gpa;
@@ -85,49 +85,5 @@ public class Student extends User implements CanViewCourses, CanBeResearcher, Ca
 
     public void setOrganization(Organization organization) {
         this.organization = organization;
-    }
-
-    public boolean registerForCourse() {
-        //TODO
-        return false;
-    }
-
-    public boolean dropCourse() {
-        //TODO
-        return false;
-    }
-
-    public void rateTeacher() {
-        //TODO
-    }
-
-    public Transcript viewTranscript() {
-        //TODO
-        return null;
-    }
-
-    public Vector<Mark> viewMarks() {
-        //TODO
-        return null;
-    }
-
-    public boolean joinOrganization() {
-        //TODO
-        return false;
-    }
-
-    public boolean leaveOrganization() {
-        //TODO
-        return false;
-    }
-
-    public Map<Course, Integer> viewAttendance() {
-        //TODO
-        return null;
-    }
-
-    public String viewAcademicStanding() {
-        //TODO
-        return "";
     }
 }
