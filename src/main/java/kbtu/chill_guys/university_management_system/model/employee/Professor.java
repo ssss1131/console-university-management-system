@@ -4,10 +4,12 @@ import main.java.kbtu.chill_guys.university_management_system.model.research.Res
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
 import main.java.kbtu.chill_guys.university_management_system.model.research.Researcher;
 
+import java.io.Serializable;
+import java.util.Objects;
 import java.util.Vector;
 
 
-public class Professor implements Researcher {
+public class Professor extends Teacher implements Researcher {
     private Vector<ResearchProject> researchProjects;
     private Vector<ResearchPaper> researchPapers;
 
@@ -25,5 +27,27 @@ public class Professor implements Researcher {
 
     public void setResearchPapers(Vector<ResearchPaper> researchPapers) {
         this.researchPapers = researchPapers;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Professor professor = (Professor) o;
+        return Objects.equals(researchProjects, professor.researchProjects) && Objects.equals(researchPapers, professor.researchPapers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), researchProjects, researchPapers);
+    }
+
+    @Override
+    public String toString() {
+        return "Professor{" +
+               "researchProjects=" + researchProjects +
+               ", researchPapers=" + researchPapers +
+               "} " + super.toString();
     }
 }

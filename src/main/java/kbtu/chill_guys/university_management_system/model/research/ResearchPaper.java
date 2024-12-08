@@ -2,13 +2,14 @@ package main.java.kbtu.chill_guys.university_management_system.model.research;
 
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Journal;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.Vector;
 
-public class ResearchPaper {
+public class ResearchPaper implements Serializable {
 
-    private final UUID ID;
     private String title;
     private String thesis;
     private Journal journal;
@@ -17,9 +18,6 @@ public class ResearchPaper {
     private String doi;
     private LocalDate publicationDate;
 
-    {
-        ID = UUID.randomUUID();
-    }
 
     public String getTitle() {
         return this.title;
@@ -29,7 +27,7 @@ public class ResearchPaper {
         this.title = title;
     }
 
-    public String getAbstract() {
+    public String getThesis() {
         return this.thesis;
     }
 
@@ -65,16 +63,38 @@ public class ResearchPaper {
         return this.doi;
     }
 
-    public void setDoi(String doi) {
-        this.doi = doi;
-    }
-
     public LocalDate getPublicationDate() {
         return this.publicationDate;
     }
 
     public void setPublicationDate(LocalDate publicationDate) {
         this.publicationDate = publicationDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ResearchPaper that = (ResearchPaper) o;
+        return Objects.equals(doi, that.doi);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(doi);
+    }
+
+    @Override
+    public String toString() {
+        return "ResearchPaper{" +
+               "title='" + title + '\'' +
+               ", thesis='" + thesis + '\'' +
+               ", journal=" + journal +
+               ", citations=" + citations +
+               ", authors=" + authors +
+               ", doi='" + doi + '\'' +
+               ", publicationDate=" + publicationDate +
+               '}';
     }
 
     public String getCitation() {
