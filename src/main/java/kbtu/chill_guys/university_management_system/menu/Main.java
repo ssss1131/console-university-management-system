@@ -2,9 +2,9 @@ package main.java.kbtu.chill_guys.university_management_system.menu;
 
 import main.java.kbtu.chill_guys.university_management_system.controller.AdminController;
 import main.java.kbtu.chill_guys.university_management_system.controller.AuthController;
-import main.java.kbtu.chill_guys.university_management_system.menu.AdminCommands.CreateUserCommand;
-import main.java.kbtu.chill_guys.university_management_system.menu.GeneralCommands.LoginCommand;
-import main.java.kbtu.chill_guys.university_management_system.menu.GeneralCommands.LogoutCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.general_command.LogoutCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.admin_command.CreateUserCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.general_command.LoginCommand;
 import main.java.kbtu.chill_guys.university_management_system.repository.UserRepository;
 import main.java.kbtu.chill_guys.university_management_system.service.AdminService;
 import main.java.kbtu.chill_guys.university_management_system.service.AuthService;
@@ -22,12 +22,12 @@ public class Main {
 
         AuthService authService = new AuthService(userRepository);
         AuthController authController = new AuthController(authService);
-        AuthView loginView = new AuthView();
+        AuthView authView = new AuthView();
 
         Menu menu = new Menu();
 
         menu.registerCommand("createUser", new CreateUserCommand(adminController, adminView));
-        menu.registerCommand("login", new LoginCommand(authController, loginView, menu));
+        menu.registerCommand("login", new LoginCommand(authController, authView, menu));
         menu.registerCommand("logout", new LogoutCommand(menu));
 
         menu.run();
