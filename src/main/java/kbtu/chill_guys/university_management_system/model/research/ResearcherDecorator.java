@@ -5,10 +5,11 @@ import main.java.kbtu.chill_guys.university_management_system.permission.CanBeRe
 
 import java.util.Vector;
 
-public class ResearcherDecorator <T extends User> implements CanBeResearcher {
+public class ResearcherDecorator <T extends User & CanBeResearcher> implements Researcher{
+
     private T User;
-    private Vector<ResearchProject> researchProjects;
-    private Vector<ResearchPaper> researchPapers;
+    private final Vector<ResearchProject> researchProjects = new Vector<>();
+    private final Vector<ResearchPaper> researchPapers = new Vector<>();
 
     public T getUser() {
         return this.User;
@@ -22,15 +23,8 @@ public class ResearcherDecorator <T extends User> implements CanBeResearcher {
         return this.researchProjects;
     }
 
-    public void setResearchProjects(Vector<ResearchProject> researchProjects) {
-        this.researchProjects = researchProjects;
-    }
-
     public Vector<ResearchPaper> getResearchPapers() {
         return this.researchPapers;
     }
 
-    public void setResearchPapers(Vector<ResearchPaper> researchPapers) {
-        this.researchPapers = researchPapers;
-    }
 }

@@ -1,18 +1,25 @@
 package main.java.kbtu.chill_guys.university_management_system.model.research;
 
-import main.java.kbtu.chill_guys.university_management_system.model.research.Researcher;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Journal;
 
 import java.time.LocalDate;
+import java.util.UUID;
 import java.util.Vector;
 
 public class ResearchPaper {
+
+    private final UUID ID;
     private String title;
-    private String tesis;
-    private String journal;
+    private String thesis;
+    private Journal journal;
     private Integer citations;
-    private Vector<Researcher> authors;
+    private final Vector<Researcher> authors = new Vector<>();
     private String doi;
     private LocalDate publicationDate;
+
+    {
+        ID = UUID.randomUUID();
+    }
 
     public String getTitle() {
         return this.title;
@@ -23,18 +30,18 @@ public class ResearchPaper {
     }
 
     public String getAbstract() {
-        return this.tesis;
+        return this.thesis;
     }
 
-    public void setTesis(String tesis) {
-        this.tesis = tesis;
+    public void setThesis(String thesis) {
+        this.thesis = thesis;
     }
 
-    public String getJournal() {
+    public Journal getJournal() {
         return this.journal;
     }
 
-    public void setJournal(String journal) {
+    public void setJournal(Journal journal) {
         this.journal = journal;
     }
 
@@ -50,8 +57,8 @@ public class ResearchPaper {
         return this.authors;
     }
 
-    public void setAuthors(Vector<Researcher> authors) {
-        this.authors = authors;
+    public void addAuthor(Researcher researcher){
+        authors.add(researcher);
     }
 
     public String getDoi() {
