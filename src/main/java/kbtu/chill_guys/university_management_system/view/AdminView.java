@@ -16,6 +16,8 @@ import java.util.UUID;
 public class AdminView {
     private final Scanner scanner = new Scanner(System.in);
 
+    private static final String CANCEL = "cancel";
+
     public Map<String, Object> getUserInput() {
         Map<String, Object> data = new HashMap<>();
 
@@ -36,10 +38,18 @@ public class AdminView {
         data.put("lastName", scanner.nextLine());
 
         switch (role) {
-            case STUDENT: handleStudentInput(data);
-            case TEACHER: handleTeacherInput(data);
-            case MANAGER: handleManagerInput(data);
-            case DEAN: handleDeanInput(data);
+            case STUDENT:
+                handleStudentInput(data);
+                break;
+            case TEACHER:
+                handleTeacherInput(data);
+                break;
+            case MANAGER:
+                handleManagerInput(data);
+                break;
+            case DEAN:
+                handleDeanInput(data);
+                break;
         }
 
         return data;
@@ -66,7 +76,10 @@ public class AdminView {
         System.out.println("Enter study duration (years): ");
         data.put("studyDuration", Integer.parseInt(scanner.nextLine()));
 
-        System.out.println("Enter organization: ");
+        System.out.printf("Enter organization(or %s): ", CANCEL);
+        if (scanner.nextLine().equalsIgnoreCase(CANCEL)) {
+            return;
+        }
         data.put("organization", getOrganizationInput());
     }
 
@@ -128,7 +141,7 @@ public class AdminView {
     public void updateUser() {
         //TODO
     }
-    
+
     public void deleteUser() {
         //TODO
     }

@@ -6,7 +6,7 @@ import java.util.Vector;
 
 public final class Database {
     private static final Database INSTANCE = new Database();
-    private final Path basePath = Paths.get(System.getProperty("user.dir"), "main", "resources", "db");
+    private final Path basePath = Paths.get(System.getProperty("user.dir"), "src","main", "resources", "db");
 
 
     private Database() {

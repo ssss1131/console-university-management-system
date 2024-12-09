@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import java.util.Vector;
 
 public abstract class AbstractRepository<T> {
-    private Database database = null;
+    private Database database;
     private final Path path;
 
     public AbstractRepository(Path path) {
