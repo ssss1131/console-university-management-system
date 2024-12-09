@@ -17,19 +17,15 @@ public class DeleteUserCommand implements Command {
 
     @Override
     public void execute() {
-        // Запрос данных пользователя для удаления
         UUID userId = view.getUserIdForDeletion();
 
-        // Проверка существования пользователя
         if (!controller.isExistingUser(userId)) {
             view.displayMessage("User not found!");
             return;
         }
 
-        // Удаление пользователя
         controller.removeUser(userId);
 
-        // Вывод сообщения об успешном удалении
         view.displayMessage("User deleted successfully!");
     }
 }

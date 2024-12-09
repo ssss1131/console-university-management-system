@@ -3,15 +3,13 @@ package main.java.kbtu.chill_guys.university_management_system.view;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.OrganizationRole;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.ManagerType;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.util.LogPeriod;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.UUID;
+import java.util.*;
 
 public class AdminView {
     private final Scanner scanner = new Scanner(System.in);
@@ -134,15 +132,17 @@ public class AdminView {
         return UUID.fromString(id);
     }
 
-    public void displayLogs() {
-        //TODO
+    public LogPeriod getLogPeriod() {
+        System.out.println("Enter log period (DAY, WEEK, MONTH): ");
+        return LogPeriod.valueOf(scanner.nextLine().toUpperCase());
     }
 
-    public void updateUser() {
-        //TODO
-    }
-
-    public void deleteUser() {
-        //TODO
+    public void displayLogs(List<String> logs) {
+        if (logs.isEmpty()) {
+            System.out.println("No logs found for the selected period.");
+        } else {
+            System.out.println("Logs for the selected period:");
+            logs.forEach(System.out::println);
+        }
     }
 }

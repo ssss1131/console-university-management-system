@@ -1,13 +1,16 @@
 package main.java.kbtu.chill_guys.university_management_system.controller;
 
+import main.java.kbtu.chill_guys.university_management_system.enumeration.util.LogPeriod;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.model.UserFactory;
 import main.java.kbtu.chill_guys.university_management_system.service.AdminService;
 import main.java.kbtu.chill_guys.university_management_system.util.PasswordUtil;
 
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.Vector;
 
 public class AdminController {
     private final AdminService adminService;
@@ -16,13 +19,8 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    private AdminService getAdminService() {
-        return this.adminService;
-    }
-
-    public String getLogs() {
-        //TODO
-        return "";
+    public List<String> getLogs(LogPeriod period) {
+        return adminService.getLogs(period);
     }
 
     public User createUser(Map<String, Object> data) {
@@ -49,15 +47,5 @@ public class AdminController {
 
     public boolean isExistingUser(UUID id) {
         return adminService.isExistingUser(id);
-    }
-
-    public boolean changePasswordToUser() {
-        //TODO
-        return false;
-    }
-
-    public boolean hasUniqueLogin() {
-        //TODO
-        return false;
     }
 }
