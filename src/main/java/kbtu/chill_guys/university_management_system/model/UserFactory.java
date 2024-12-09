@@ -1,6 +1,5 @@
 package main.java.kbtu.chill_guys.university_management_system.model;
 
-import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Gpa;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Rating;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.TeachingDegree;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.ManagerType;
@@ -10,17 +9,17 @@ import main.java.kbtu.chill_guys.university_management_system.model.academic.Pos
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Dean;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Manager;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
-import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
-import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 
-import java.time.LocalDate;
 import java.util.Map;
 import java.util.UUID;
 import java.util.Vector;
+import java.util.logging.Logger;
 
 public final class UserFactory {
 
-    private UserFactory(){
+    private static final Logger logger = Logger.getLogger(UserFactory.class.getName());
+
+    private UserFactory() {
 
     }
 
@@ -57,30 +56,37 @@ public final class UserFactory {
                 );
             case MANAGER:
                 return new Manager(
-                    uuid,
-                    role,
-                    (String) data.get("email"),
-                    (String) data.get("password"),
-                    (String) data.get("salt"),
-                    (String) data.get("firstName"),
-                    (String) data.get("lastName"),
-                    notifications,
-                    (Integer) data.get("salary"),
-                    (ManagerType) data.get("managerType")
+                        uuid,
+                        role,
+                        (String) data.get("email"),
+                        (String) data.get("password"),
+                        (String) data.get("salt"),
+                        (String) data.get("firstName"),
+                        (String) data.get("lastName"),
+                        notifications,
+                        (Integer) data.get("salary"),
+                        (ManagerType) data.get("managerType")
                 );
             case DEAN:
                 return new Dean(
-                    uuid,
-                    role,
-                    (String) data.get("email"),
-                    (String) data.get("password"),
-                    (String) data.get("salt"),
-                    (String) data.get("firstName"),
-                    (String) data.get("lastName"),
-                    notifications,
-                    (Integer) data.get("salary")
+                        uuid,
+                        role,
+                        (String) data.get("email"),
+                        (String) data.get("password"),
+                        (String) data.get("salt"),
+                        (String) data.get("firstName"),
+                        (String) data.get("lastName"),
+                        notifications,
+                        (Integer) data.get("salary")
                 );
+//            case STUDENT:
+//                return new Student(uuid,
+//                        role,
+//                        (String)data.get("email"),
+//                        data.get("password")
+//                );
             default:
+                logger.warning("Not handled role, need some validation");
                 throw new IllegalArgumentException("Unknown user type: " + role);
         }
     }

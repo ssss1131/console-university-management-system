@@ -10,13 +10,21 @@ import main.java.kbtu.chill_guys.university_management_system.menu.general_comma
 import main.java.kbtu.chill_guys.university_management_system.repository.UserRepository;
 import main.java.kbtu.chill_guys.university_management_system.service.AdminService;
 import main.java.kbtu.chill_guys.university_management_system.service.AuthService;
+import main.java.kbtu.chill_guys.university_management_system.util.LoggerUtil;
 import main.java.kbtu.chill_guys.university_management_system.view.AdminView;
 import main.java.kbtu.chill_guys.university_management_system.view.AuthView;
 
 import java.nio.file.Paths;
+import java.util.logging.Logger;
 
 public class Main {
+
+    private static final Logger logger = Logger.getLogger(Main.class.getName());
+
     public static void main(String[] args) {
+
+        LoggerUtil.configureLogging();
+
         UserRepository userRepository = new UserRepository(Paths.get("account.ser"));
         AdminService adminService = new AdminService(userRepository);
         AdminController adminController = new AdminController(adminService);

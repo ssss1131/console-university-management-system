@@ -11,8 +11,8 @@ import java.util.logging.Logger;
 public class Menu {
     private static final Logger LOGGER = Logger.getLogger(Menu.class.getName());
     private Language language;
-    private User loggedUser = null;
-    private Map<String, Command> commands = new HashMap<>();;
+    private User loggedUser;
+    private Map<String, Command> commands = new HashMap<>();
 
     public Language getLanguage() {
         return this.language;
@@ -40,8 +40,8 @@ public class Menu {
 
     public void run() {
         Scanner scanner = new Scanner(System.in);
+        LOGGER.info("Application starting...");
         while (true) {
-            LOGGER.info("Application starting...");
             displayAvailableCommands();
             System.out.println("Enter command: ");
             String commandName = scanner.nextLine();
