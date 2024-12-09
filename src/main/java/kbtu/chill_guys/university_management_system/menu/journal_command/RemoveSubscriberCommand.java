@@ -3,16 +3,16 @@ package main.java.kbtu.chill_guys.university_management_system.menu.journal_comm
 import main.java.kbtu.chill_guys.university_management_system.controller.JournalController;
 import main.java.kbtu.chill_guys.university_management_system.menu.Command;
 import main.java.kbtu.chill_guys.university_management_system.model.Journal;
-import main.java.kbtu.chill_guys.university_management_system.model.Subscriber;
+import main.java.kbtu.chill_guys.university_management_system.model.UserSubscriber;
 import main.java.kbtu.chill_guys.university_management_system.view.JournalView;
 
 public class RemoveSubscriberCommand implements Command {
     private final JournalController journalController;
     private final Journal journal;
-    private final Subscriber subscriber;
+    private final UserSubscriber subscriber;
     private final JournalView journalView;
 
-    public RemoveSubscriberCommand(JournalController journalController, Journal journal, Subscriber subscriber, JournalView journalView) {
+    public RemoveSubscriberCommand(JournalController journalController, Journal journal, UserSubscriber subscriber, JournalView journalView) {
         this.journalController = journalController;
         this.journal = journal;
         this.subscriber = subscriber;

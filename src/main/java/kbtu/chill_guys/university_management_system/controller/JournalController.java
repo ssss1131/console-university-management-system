@@ -1,6 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.controller;
 
 import main.java.kbtu.chill_guys.university_management_system.model.Subscriber;
+import main.java.kbtu.chill_guys.university_management_system.model.UserSubscriber;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 import main.java.kbtu.chill_guys.university_management_system.service.JournalService;
 
@@ -16,11 +17,11 @@ public class JournalController {
         return journalService.deleteJournal(name);
     }
 
-    public boolean addSubscriber(String journalName, Subscriber subscriber) {
+    public boolean addSubscriber(String journalName, UserSubscriber subscriber) {
         return journalService.addSubscriber(journalName, subscriber);
     }
 
-    public boolean removeSubscriber(String journalName, Subscriber subscriber) {
+    public boolean removeSubscriber(String journalName, UserSubscriber subscriber) {
         return journalService.removeSubscriber(journalName, subscriber);
     }
 
