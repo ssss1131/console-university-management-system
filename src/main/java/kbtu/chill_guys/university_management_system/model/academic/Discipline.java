@@ -7,13 +7,13 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.Vector;
 
-public class Subject implements Serializable {
+public class Discipline implements Serializable {
     private School school;
     private String code;
     private String name;
     private Integer credits;
     private GradeBook gradebook;
-    private Vector<Subject> prerequisites;
+    private Vector<Discipline> prerequisites;
     private CourseType courseType;
 
     public School getSchool() {
@@ -56,11 +56,11 @@ public class Subject implements Serializable {
         this.gradebook = gradebook;
     }
 
-    public Vector<Subject> getPrerequisites() {
+    public Vector<Discipline> getPrerequisites() {
         return this.prerequisites;
     }
 
-    public void setPrerequisites(Vector<Subject> prerequisites) {
+    public void setPrerequisites(Vector<Discipline> prerequisites) {
         this.prerequisites = prerequisites;
     }
 
@@ -76,8 +76,8 @@ public class Subject implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Subject subject = (Subject) o;
-        return school == subject.school && Objects.equals(code, subject.code) && Objects.equals(name, subject.name) && Objects.equals(credits, subject.credits) && Objects.equals(gradebook, subject.gradebook) && Objects.equals(prerequisites, subject.prerequisites) && courseType == subject.courseType;
+        Discipline discipline = (Discipline) o;
+        return school == discipline.school && Objects.equals(code, discipline.code) && Objects.equals(name, discipline.name) && Objects.equals(credits, discipline.credits) && Objects.equals(gradebook, discipline.gradebook) && Objects.equals(prerequisites, discipline.prerequisites) && courseType == discipline.courseType;
     }
 
     @Override

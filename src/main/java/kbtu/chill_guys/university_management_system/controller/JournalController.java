@@ -5,11 +5,8 @@ import main.java.kbtu.chill_guys.university_management_system.model.academic.Pos
 import main.java.kbtu.chill_guys.university_management_system.service.JournalService;
 
 public class JournalController {
-    private final JournalService journalService;
+    private final JournalService journalService = new JournalService();
 
-    public JournalController(JournalService journalService) {
-        this.journalService = journalService;
-    }
 
     public boolean createJournal(String name) {
         return journalService.createJournal(name);

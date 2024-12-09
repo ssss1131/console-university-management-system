@@ -10,11 +10,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public class AdminController {
-    private final AdminService adminService;
-
-    public AdminController(AdminService adminService) {
-        this.adminService = adminService;
-    }
+    private final AdminService adminService = new AdminService();
 
     private AdminService getAdminService() {
         return this.adminService;

@@ -1,6 +1,12 @@
 package main.java.kbtu.chill_guys.university_management_system.view;
 
 public class ManagerView {
+
+    public void addNewCourses(){
+
+    }
+
+
     public void displayCoursesForRegistration() {
         //TODO
     }

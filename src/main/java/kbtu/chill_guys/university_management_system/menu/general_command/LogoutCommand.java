@@ -4,11 +4,7 @@ import main.java.kbtu.chill_guys.university_management_system.menu.Command;
 import main.java.kbtu.chill_guys.university_management_system.menu.Menu;
 
 public class LogoutCommand implements Command {
-    private final Menu menu;
-
-    public LogoutCommand(Menu menu) {
-        this.menu = menu;
-    }
+    private final Menu menu = Menu.getInstance();
 
     @Override
     public void execute() {

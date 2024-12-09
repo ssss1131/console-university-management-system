@@ -1,7 +1,5 @@
 package main.java.kbtu.chill_guys.university_management_system.controller;
 
-//import main.java.kbtu.chill_guys.university_management_system.model.academic.Course;
-//import main.java.kbtu.chill_guys.university_management_system.model.academic.Mark;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;

@@ -5,12 +5,9 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.academ
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Subject;
-import main.java.kbtu.chill_guys.university_management_system.permission.CanBeResearcher;
-import main.java.kbtu.chill_guys.university_management_system.permission.CanViewCourses;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewStudents;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.Vector;
@@ -19,7 +16,7 @@ public class Teacher extends Employee implements CanViewStudents {
     private Rating rating;
     private School school;
     private TeachingDegree teachingDegree;
-    private Vector<Subject> disciplines;
+    private Vector<Discipline> disciplines;
 
     public Teacher(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName,
                    Vector<Post> notifications, int salary, Rating rating, School school, TeachingDegree teachingDegree) {

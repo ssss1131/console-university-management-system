@@ -7,16 +7,14 @@ import main.java.kbtu.chill_guys.university_management_system.model.academic.Pos
 import main.java.kbtu.chill_guys.university_management_system.view.JournalView;
 
 public class PublishPostCommand implements Command {
-    private final JournalController journalController;
+    private final JournalController journalController = new JournalController();
     private final Journal journal;
     private final Post post;
-    private final JournalView journalView;
+    private final JournalView journalView = new JournalView();
 
-    public PublishPostCommand(JournalController journalController, Journal journal, Post post, JournalView journalView) {
-        this.journalController = journalController;
+    public PublishPostCommand(Journal journal, Post post) {
         this.journal = journal;
         this.post = post;
-        this.journalView = journalView;
     }
 
     @Override

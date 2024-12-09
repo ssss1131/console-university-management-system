@@ -1,14 +1,19 @@
 package main.java.kbtu.chill_guys.university_management_system.repository;
 
 import main.java.kbtu.chill_guys.university_management_system.model.User;
+import main.java.kbtu.chill_guys.university_management_system.util.Constant;
 
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.UUID;
 import java.util.Vector;
 
+import static main.java.kbtu.chill_guys.university_management_system.util.Constant.USERS_PATH;
+
 public class UserRepository extends AbstractRepository<User> implements GeneralRepository {
-    public UserRepository(Path path) {
-        super(path);
+
+    public UserRepository() {
+        super(USERS_PATH);
     }
 
     @Override
