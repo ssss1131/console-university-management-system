@@ -3,6 +3,7 @@ package main.java.kbtu.chill_guys.university_management_system.controller;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
+import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 import main.java.kbtu.chill_guys.university_management_system.service.StudentService;
 
 import java.time.LocalDate;
@@ -97,5 +98,16 @@ public class StudentController {
     public String viewAcademicStanding() {
         //TODO
         return "";
+    }
+
+    public Object getAvailableYears(Student student) {
+        return null;
+    }
+
+    public Object getAvailablePeriods(Student student, String selectedYear) {
+        return null;
+    }
+
+    public void viewCoursesByYearAndPeriod(Student student, String selectedYear, String selectedPeriod) {
     }
 }
