@@ -2,6 +2,7 @@ package main.java.kbtu.chill_guys.university_management_system.service;
 
 import main.java.kbtu.chill_guys.university_management_system.model.Journal;
 import main.java.kbtu.chill_guys.university_management_system.model.Subscriber;
+import main.java.kbtu.chill_guys.university_management_system.model.UserSubscriber;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 
 import java.util.Vector;
@@ -33,7 +34,7 @@ public class JournalService {
         return false;
     }
 
-    public boolean addSubscriber(String journalName, Subscriber subscriber) {
+    public boolean addSubscriber(String journalName, UserSubscriber subscriber) {
         for (Journal journal : journals) {
             if (journal.getName().equals(journalName)) {
                 return journal.addSubscriber(subscriber);  // Добавляем подписчика в журнал
@@ -42,7 +43,7 @@ public class JournalService {
         return false;
     }
 
-    public boolean removeSubscriber(String journalName, Subscriber subscriber) {
+    public boolean removeSubscriber(String journalName, UserSubscriber subscriber) {
         for (Journal journal : journals) {
             if (journal.getName().equals(journalName)) {
                 return journal.removeSubscriber(subscriber);  // Удаляем подписчика из журнала

@@ -2,6 +2,7 @@ package main.java.kbtu.chill_guys.university_management_system.view;
 
 import main.java.kbtu.chill_guys.university_management_system.model.Journal;
 import main.java.kbtu.chill_guys.university_management_system.model.Subscriber;
+import main.java.kbtu.chill_guys.university_management_system.model.UserSubscriber;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 
 import java.time.LocalDate;
@@ -26,7 +27,7 @@ public class JournalView {
     }
     public void displaySubscribers(Journal journal) {
         System.out.println("Subscribers:");
-        for (Subscriber subscriber : journal.getSubscribers()) {
+        for (UserSubscriber subscriber : journal.getSubscribers()) {
             System.out.println(subscriber);
         }
     }
