@@ -8,8 +8,10 @@ import java.util.Vector;
 public class Journal {
     private String name;
     private UUID id;
-    private Vector<Subscriber> subscribers;
+    private Vector<UserSubscriber> subscribers;
     private Vector<Post> posts;
+
+    public Journal() {}
 
     public Journal(String name, UUID id) {
         this.name = name;
@@ -27,7 +29,7 @@ public class Journal {
         return id;
     }
 
-    public Vector<Subscriber> getSubscribers() {
+    public Vector<UserSubscriber> getSubscribers() {
         return subscribers;
     }
 
@@ -44,7 +46,7 @@ public class Journal {
         this.id = id;
     }
 
-    public void setSubscribers(Vector<Subscriber> subscribers) {
+    public void setSubscribers(Vector<UserSubscriber> subscribers) {
         this.subscribers = subscribers;
     }
 
@@ -53,14 +55,14 @@ public class Journal {
     }
 
     // Additional methods
-    public boolean addSubscriber(Subscriber subscriber) {
+    public boolean addSubscriber(UserSubscriber subscriber) {
         if (subscriber != null && !subscribers.contains(subscriber)) {
             return subscribers.add(subscriber);
         }
         return false;
     }
 
-    public boolean removeSubscriber(Subscriber subscriber) {
+    public boolean removeSubscriber(UserSubscriber subscriber) {
         return subscribers.remove(subscriber);
     }
 
