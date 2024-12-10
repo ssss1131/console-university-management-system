@@ -11,7 +11,7 @@ import main.java.kbtu.chill_guys.university_management_system.model.employee.Tea
 import java.util.Vector;
 
 public class GeneralService {
-//    public Vector<Course> getCourses() {
+//    public Vector<Course> getDiscipline() {
 //        //TODO
 //        return null;
 //    }

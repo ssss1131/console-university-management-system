@@ -11,19 +11,19 @@ import main.java.kbtu.chill_guys.university_management_system.service.*;
 import java.util.Vector;
 
 public class GeneralController {
-    private CourseService courseService;
+    private DisciplineService disciplineService;
     private TeacherService teacherService;
     private RequestService requestService;
     private AuthService authService;
     private JournalService journalService;
     private NewsRetrievalService newsRetrievalService;
 
-    public CourseService getCourseService() {
-        return this.courseService;
+    public DisciplineService getCourseService() {
+        return this.disciplineService;
     }
 
-    public void setCourseService(CourseService courseService) {
-        this.courseService = courseService;
+    public void setCourseService(DisciplineService disciplineService) {
+        this.disciplineService = disciplineService;
     }
 
     public TeacherService getTeacherService() {
@@ -66,7 +66,7 @@ public class GeneralController {
         this.newsRetrievalService = newsRetrievalService;
     }
 
-//    public Vector<Course> getCourses() {
+//    public Vector<Course> getDisipline() {
 //        //TODO
 //        return null;
 //    }

@@ -6,13 +6,9 @@ import main.java.kbtu.chill_guys.university_management_system.model.student.Stud
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Logger;
 
 
 public class StudentView {
-
-    private static final Logger logger = Logger.getLogger(StudentView.class.getName());
-
     public void displayInfo(Student student) {
         System.out.println("Hello " + student.getFirstName() + " " + student.getLastName());
         System.out.println("Your ID: " + student.getId());
@@ -44,7 +40,7 @@ public class StudentView {
     public void displayAcademicStanding() {
         //TODO
     }
-    public void showCoursesMenu(Student student, StudentController studentController) {
+    public void showDisciplineMenu(Student student, StudentController studentController) {
         Scanner scanner = new Scanner(System.in);
 
         try {
@@ -57,7 +53,7 @@ public class StudentView {
             Period period = Period.valueOf(scanner.nextLine().toUpperCase());
 
             // Шаг 3: Получение и отображение курсов
-            List<String> courses = studentController.getCourses(student, year, period);
+            List<String> courses = studentController.getDiscipline(student, year, period);
             System.out.println("Courses for " + year + " " + period + ":");
             if (courses.isEmpty()) {
                 System.out.println("No courses found.");
@@ -65,8 +61,9 @@ public class StudentView {
                 courses.forEach(course -> System.out.println("  - " + course));
             }
         } catch (IllegalArgumentException e) {
-            logger.severe("occurred exception: " + e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
+    
     
 }

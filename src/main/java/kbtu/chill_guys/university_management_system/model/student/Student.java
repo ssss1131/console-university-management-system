@@ -14,7 +14,7 @@ import main.java.kbtu.chill_guys.university_management_system.util.GpaCalculatio
 import java.time.LocalDate;
 import java.util.*;
 
-public abstract class Student extends User implements CanViewCourses, CanBeResearcher, CanViewMarks, CanViewTeachers {
+public class Student extends User implements CanViewCourses, CanBeResearcher, CanViewMarks, CanViewTeachers {
     private School school;
     private LocalDate enrollmentDate;
     private double gpaNumeric;
