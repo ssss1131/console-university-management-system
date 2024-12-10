@@ -1,9 +1,9 @@
 package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
+import java.io.Serializable;
 import java.util.Vector;
 
-//TODO
-public class News {
+public class News implements Serializable {
     private String topic;
     private Vector<Post> comments;
 
