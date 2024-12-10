@@ -1,6 +1,9 @@
 package main.java.kbtu.chill_guys.university_management_system.view;
 
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.MasterProgram;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.OrganizationRole;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.PhdProgram;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Specialization;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.ManagerType;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.LogPeriod;
@@ -8,6 +11,7 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.util.U
 import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
+import main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil;
 
 import java.util.*;
 
@@ -19,7 +23,7 @@ public class AdminView {
     public Map<String, Object> getUserInput() {
         Map<String, Object> data = new HashMap<>();
 
-        System.out.println("Enter user role (e.g., admin, student, teacher, manager, dean): ");
+        System.out.println("Enter user role (e.g., admin, bachelor, phd, master, teacher, manager, dean): ");
         UserRole role = UserRole.valueOf(scanner.nextLine().toUpperCase());
         data.put("role", role);
 
@@ -36,7 +40,7 @@ public class AdminView {
         data.put("lastName", scanner.nextLine());
 
         switch (role) {
-            case STUDENT:
+            case BACHELOR, MASTER, PHD:
                 handleStudentInput(data);
                 break;
             case TEACHER:
@@ -73,6 +77,20 @@ public class AdminView {
 
         System.out.println("Enter study duration (years): ");
         data.put("studyDuration", Integer.parseInt(scanner.nextLine()));
+
+        System.out.println("Enter specialization: ");
+
+        UserRole role = (UserRole) data.get("role");
+        if (role == UserRole.MASTER) {
+            System.out.println("Choose a Master Program: ");
+            data.put("program", EnumSelectionUtil.selectEnum(MasterProgram.class));
+        } else if (role == UserRole.PHD) {
+            System.out.println("Choose a PhD Program: ");
+            data.put("program", EnumSelectionUtil.selectEnum(PhdProgram.class));
+        } else {
+            System.out.println("Choose a Bachelor Program: ");
+            data.put("program", EnumSelectionUtil.selectEnum(Specialization.class));
+        }
 
         System.out.printf("Enter organization(or %s): ", CANCEL);
         if (scanner.nextLine().equalsIgnoreCase(CANCEL)) {

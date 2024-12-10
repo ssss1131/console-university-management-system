@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class Transcript implements Serializable {
     private Student student;
-    private Subject subject;
+    private Discipline discipline;
     private int year;
     private Period period;
     private int gpaNumeric;
@@ -23,12 +23,12 @@ public class Transcript implements Serializable {
         this.student = student;
     }
 
-    public Subject getSubject() {
-        return subject;
+    public Discipline getSubject() {
+        return discipline;
     }
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
+    public void setSubject(Discipline discipline) {
+        this.discipline = discipline;
     }
 
     public int getYear() {
@@ -68,19 +68,19 @@ public class Transcript implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transcript that = (Transcript) o;
-        return year == that.year && gpaNumeric == that.gpaNumeric && Objects.equals(student, that.student) && Objects.equals(subject, that.subject) && period == that.period && gpaLetter == that.gpaLetter;
+        return year == that.year && gpaNumeric == that.gpaNumeric && Objects.equals(student, that.student) && Objects.equals(discipline, that.discipline) && period == that.period && gpaLetter == that.gpaLetter;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(student, subject, year, period, gpaNumeric, gpaLetter);
+        return Objects.hash(student, discipline, year, period, gpaNumeric, gpaLetter);
     }
 
     @Override
     public String toString() {
         return "Transcript{" +
                "student=" + student +
-               ", subject=" + subject +
+               ", subject=" + discipline +
                ", year=" + year +
                ", period=" + period +
                ", gpaNumeric=" + gpaNumeric +

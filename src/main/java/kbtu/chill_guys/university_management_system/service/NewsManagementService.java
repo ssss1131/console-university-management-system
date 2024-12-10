@@ -4,11 +4,7 @@ import main.java.kbtu.chill_guys.university_management_system.model.academic.Pos
 import main.java.kbtu.chill_guys.university_management_system.repository.PostRepository;
 
 public class NewsManagementService {
-    private final PostRepository postRepository;
-
-    public NewsManagementService(PostRepository postRepository) {
-        this.postRepository = postRepository;
-    }
+    private final PostRepository postRepository = new PostRepository();
 
     public void addPost(Post post) {
         postRepository.savePost(post);

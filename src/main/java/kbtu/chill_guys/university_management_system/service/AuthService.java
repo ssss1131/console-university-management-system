@@ -7,15 +7,8 @@ import main.java.kbtu.chill_guys.university_management_system.util.PasswordUtil;
 import java.util.Map;
 
 public class AuthService {
-    private final UserRepository userRepository;
+    private final UserRepository userRepository = new UserRepository();
 
-    public AuthService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    public UserRepository getUserRepository() {
-        return userRepository;
-    }
 
     public User authenticate(String email, String plainPassword) {
         User userData = userRepository.findUserByEmail(email);

@@ -9,10 +9,20 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class Menu {
+
+    private static final Menu INSTANCE = new Menu();
     private static final Logger LOGGER = Logger.getLogger(Menu.class.getName());
     private Language language;
     private User loggedUser;
     private Map<String, Command> commands = new HashMap<>();
+
+    private Menu(){
+
+    }
+
+    public static Menu getInstance(){
+        return INSTANCE;
+    }
 
     public Language getLanguage() {
         return this.language;

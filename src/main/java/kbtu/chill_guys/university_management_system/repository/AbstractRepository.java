@@ -13,15 +13,8 @@ public abstract class AbstractRepository<T> {
     public AbstractRepository(Path path) {
         this.database = Database.getInstance();
         this.path = path;
-
-        try {
-            database.loadData(path);
-        } catch (IOException | ClassNotFoundException e) {
-            saveData(new Vector<T>());
-        }
     }
 
-    @SuppressWarnings("unchecked")
     public Vector<T> getAllLines() {
         try {
             return database.loadData(path);
@@ -30,20 +23,20 @@ public abstract class AbstractRepository<T> {
         }
     }
 
-    public void saveData(Vector<T> data) {
+    public void saveAllLines(Vector<T> data) {
         database.saveData(path, data);
     }
 
     public void addLine(T line) {
         Vector<T> data = getAllLines();
         data.add(line);
-        saveData(data);
+        saveAllLines(data);
     }
 
     public void removeLine(T line) {
         Vector<T> data = getAllLines();
         data.remove(line);
-        saveData(data);
+        saveAllLines(data);
     }
 
     public void updateLine(T oldLine, T newLine) {
@@ -51,7 +44,7 @@ public abstract class AbstractRepository<T> {
         int index = data.indexOf(oldLine);
         if (index != -1) {
             data.set(index, newLine);
-            saveData(data);
+            saveAllLines(data);
         }
     }
 }

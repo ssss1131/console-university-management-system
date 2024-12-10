@@ -1,34 +1,30 @@
 package main.java.kbtu.chill_guys.university_management_system.view;
 
-import main.java.kbtu.chill_guys.university_management_system.model.Journal;
-import main.java.kbtu.chill_guys.university_management_system.model.Subscriber;
-import main.java.kbtu.chill_guys.university_management_system.model.UserSubscriber;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 
-import java.time.LocalDate;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class JournalView {
     private final Scanner scanner = new Scanner(System.in);
 
+    public String getJournalName() {
+        System.out.println("Enter journal name: ");
+        return scanner.nextLine();
+    }
 
-    public void displayJournalDetails(Journal journal) {
-        System.out.println("Journal Details:");
-        System.out.println("Name: " + journal.getName());
-        System.out.println("ID: " + journal.getId());
-        System.out.println("Subscribers: " + journal.getSubscribers().size());
-        System.out.println("Posts: " + journal.getPosts().size());
+    public UUID getJournalId() {
+        System.out.println("Enter journal ID: ");
+        return UUID.fromString(scanner.nextLine());
     }
-    public void displayAllPosts(Journal journal) {
-        System.out.println("All Posts:");
-        for (Post post : journal.getPosts()) {
-            System.out.println(post);
-        }
+
+    public Post getPostInput() {
+        System.out.println("Enter post content: ");
+        String content = scanner.nextLine();
+        return new Post(); // assuming Post has a constructor that accepts content
     }
-    public void displaySubscribers(Journal journal) {
-        System.out.println("Subscribers:");
-        for (UserSubscriber subscriber : journal.getSubscribers()) {
-            System.out.println(subscriber);
-        }
+
+    public void displayMessage(String message) {
+        System.out.println(message);
     }
 }

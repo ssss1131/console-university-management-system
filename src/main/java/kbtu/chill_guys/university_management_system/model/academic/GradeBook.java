@@ -12,7 +12,7 @@ import java.util.Objects;
 public class GradeBook implements Serializable {
 
     private Student student;
-    private Subject subject;
+    private Discipline discipline;
     private final Map<LocalDate, AttendanceAndGrade> attendanceAndGrades = new HashMap<>();
 
     public Student getStudent() {
@@ -23,12 +23,12 @@ public class GradeBook implements Serializable {
         this.student = student;
     }
 
-    public Subject getSubject() {
-        return this.subject;
+    public Discipline getSubject() {
+        return this.discipline;
     }
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
+    public void setSubject(Discipline discipline) {
+        this.discipline = discipline;
     }
 
     public Map<LocalDate, AttendanceAndGrade> getAttendanceAndGrades() {
@@ -50,12 +50,12 @@ public class GradeBook implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GradeBook gradeBook = (GradeBook) o;
-        return Objects.equals(student, gradeBook.student) && Objects.equals(subject, gradeBook.subject) && Objects.equals(attendanceAndGrades, gradeBook.attendanceAndGrades);
+        return Objects.equals(student, gradeBook.student) && Objects.equals(discipline, gradeBook.discipline) && Objects.equals(attendanceAndGrades, gradeBook.attendanceAndGrades);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(student, subject, attendanceAndGrades);
+        return Objects.hash(student, discipline, attendanceAndGrades);
     }
 
 
@@ -63,7 +63,7 @@ public class GradeBook implements Serializable {
     public String toString() {
         return "GradeBook{" +
                "student=" + student +
-               ", subject=" + subject +
+               ", subject=" + discipline +
                ", attendanceAndGrades=" + attendanceAndGrades +
                '}';
     }

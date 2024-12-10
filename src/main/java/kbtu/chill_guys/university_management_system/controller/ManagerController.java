@@ -4,11 +4,7 @@ import main.java.kbtu.chill_guys.university_management_system.model.academic.Pos
 import main.java.kbtu.chill_guys.university_management_system.service.NewsManagementService;
 
 public class ManagerController {
-    private final NewsManagementService newsManagementService;
-
-    public ManagerController(NewsManagementService newsManagementService) {
-        this.newsManagementService = newsManagementService;
-    }
+    private final NewsManagementService newsManagementService = new NewsManagementService();
 
     public void addNews(Post post) {
         newsManagementService.addPost(post);

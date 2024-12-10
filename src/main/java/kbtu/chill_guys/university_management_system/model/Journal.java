@@ -2,13 +2,14 @@ package main.java.kbtu.chill_guys.university_management_system.model;
 
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 
+import java.io.Serializable;
 import java.util.UUID;
 import java.util.Vector;
 
-public class Journal {
+public class Journal implements Serializable {
     private String name;
     private UUID id;
-    private Vector<UserSubscriber> subscribers;
+    private Vector<User> subscribers;
     private Vector<Post> posts;
 
     public Journal() {}
@@ -29,7 +30,7 @@ public class Journal {
         return id;
     }
 
-    public Vector<UserSubscriber> getSubscribers() {
+    public Vector<User> getSubscribers() {
         return subscribers;
     }
 
@@ -46,7 +47,7 @@ public class Journal {
         this.id = id;
     }
 
-    public void setSubscribers(Vector<UserSubscriber> subscribers) {
+    public void setSubscribers(Vector<User> subscribers) {
         this.subscribers = subscribers;
     }
 
@@ -55,14 +56,14 @@ public class Journal {
     }
 
     // Additional methods
-    public boolean addSubscriber(UserSubscriber subscriber) {
+    public boolean addSubscriber(User subscriber) {
         if (subscriber != null && !subscribers.contains(subscriber)) {
             return subscribers.add(subscriber);
         }
         return false;
     }
 
-    public boolean removeSubscriber(UserSubscriber subscriber) {
+    public boolean removeSubscriber(User subscriber) {
         return subscribers.remove(subscriber);
     }
 

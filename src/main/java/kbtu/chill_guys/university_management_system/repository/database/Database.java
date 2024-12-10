@@ -2,9 +2,12 @@ package main.java.kbtu.chill_guys.university_management_system.repository.databa
 
 import java.io.*;
 import java.nio.file.*;
-import java.util.Vector;
+import java.util.logging.Logger;
 
 public final class Database {
+
+    private static final Logger logger = Logger.getLogger(Database.class.getName());
+
     private static final Database INSTANCE = new Database();
     private final Path basePath = Paths.get(System.getProperty("user.dir"), "src","main", "resources", "db");
 
@@ -57,7 +60,8 @@ public final class Database {
         try (ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(basePath.resolve(path)))) {
             oos.writeObject(data);
         } catch (IOException e) {
-            System.err.println("Error saving data: " + e.getMessage());
+
+            logger.warning("Error saving data, cause path incorrect: " + e.getMessage());
         }
     }
 

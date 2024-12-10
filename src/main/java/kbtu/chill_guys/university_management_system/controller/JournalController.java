@@ -1,34 +1,30 @@
 package main.java.kbtu.chill_guys.university_management_system.controller;
 
-import main.java.kbtu.chill_guys.university_management_system.model.Subscriber;
-import main.java.kbtu.chill_guys.university_management_system.model.UserSubscriber;
+import main.java.kbtu.chill_guys.university_management_system.model.Journal;
+import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 import main.java.kbtu.chill_guys.university_management_system.service.JournalService;
 
+import java.util.List;
+import java.util.UUID;
+
 public class JournalController {
-    private final JournalService journalService;
+    private final JournalService journalService = new JournalService();
 
-    public JournalController(JournalService journalService) {
-        this.journalService = journalService;
+
+    public void createJournal(Journal journal) {
+        journalService.createJournal(journal);
     }
 
-    public boolean createJournal(String name) {
-        return journalService.createJournal(name);
+    public void deleteJournal(UUID id) {
+        journalService.deleteJournal(id);
     }
 
-    public boolean deleteJournal(String name) {
-        return journalService.deleteJournal(name);
+    public List<Journal> getAllJournals() {
+        return journalService.getAllJournals();
     }
 
-    public boolean addSubscriber(String journalName, UserSubscriber subscriber) {
-        return journalService.addSubscriber(journalName, subscriber);
-    }
-
-    public boolean removeSubscriber(String journalName, UserSubscriber subscriber) {
-        return journalService.removeSubscriber(journalName, subscriber);
-    }
-
-    public void publishPost(String journalName, Post post) {
-        journalService.publishPost(journalName, post);
+    public void publishPost(UUID journalId, Post post) {
+        journalService.publishPost(journalId, post);
     }
 }

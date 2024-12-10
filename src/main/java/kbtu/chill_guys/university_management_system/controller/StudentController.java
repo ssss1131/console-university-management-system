@@ -1,18 +1,20 @@
 package main.java.kbtu.chill_guys.university_management_system.controller;
 
-//import main.java.kbtu.chill_guys.university_management_system.model.academic.Course;
-//import main.java.kbtu.chill_guys.university_management_system.model.academic.Mark;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.evaluation.Period;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
+import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 import main.java.kbtu.chill_guys.university_management_system.service.StudentService;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
 public class StudentController {
-    private StudentService studentService;
+    private StudentService studentService = new StudentService();
+
 
     public StudentService getStudentService() {
         return this.studentService;
@@ -41,7 +43,7 @@ public class StudentController {
         return null;
     }
 
-//    public Vector<Course> getCourses() {
+//    public Vector<Course> getDisipline() {
 //        //TODO
 //        return null;
 //    }
@@ -99,5 +101,20 @@ public class StudentController {
     public String viewAcademicStanding() {
         //TODO
         return "";
+    }
+
+    public List<String> getDiscipline(Student student, String year, Period period) {
+        // Проверка года
+        if (!studentService.isYearValid(student, year)) {
+            throw new IllegalArgumentException("Invalid year. Please enter a valid year.");
+        }
+
+        // Проверка периода
+        if (!studentService.isPeriodValid(student, year, period)) {
+            throw new IllegalArgumentException("Invalid period. Please enter a valid period.");
+        }
+
+        // Возврат курсов
+        return studentService.getDisciplineByYearAndPeriod(student, year, period);
     }
 }

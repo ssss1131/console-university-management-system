@@ -1,13 +1,21 @@
 package main.java.kbtu.chill_guys.university_management_system.view;
 
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
-import main.java.kbtu.chill_guys.university_management_system.model.User;
 
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class ManagerView {
     private final Scanner scanner = new Scanner(System.in);
+
+    public void addNewCourses(){
+
+    }
+
+
+    public void displayCoursesForRegistration() {
+        //TODO
+    }
 
     public Post getPostInput() {
         Post post = new Post();

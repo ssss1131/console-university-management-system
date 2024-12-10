@@ -7,13 +7,9 @@ import main.java.kbtu.chill_guys.university_management_system.view.AdminView;
 import java.util.Map;
 
 public class UpdateUserCommand implements Command {
-    private final AdminController controller;
-    private final AdminView view;
+    private final AdminController controller = new AdminController();
+    private final AdminView view = new AdminView();
 
-    public UpdateUserCommand(AdminController controller, AdminView view) {
-        this.controller = controller;
-        this.view = view;
-    }
 
     @Override
     public void execute() {

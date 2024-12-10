@@ -1,63 +1,35 @@
 package main.java.kbtu.chill_guys.university_management_system.service;
 
 import main.java.kbtu.chill_guys.university_management_system.model.Journal;
-import main.java.kbtu.chill_guys.university_management_system.model.Subscriber;
-import main.java.kbtu.chill_guys.university_management_system.model.UserSubscriber;
+import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
+import main.java.kbtu.chill_guys.university_management_system.repository.JournalRepository;
 
-import java.util.Vector;
+import java.util.List;
 import java.util.UUID;
 
 public class JournalService {
-    private final Vector<Journal> journals;
+    private final JournalRepository journalRepository = new JournalRepository();
 
-    public JournalService() {
-        this.journals = new Vector<>();
+    public void createJournal(Journal journal) {
+        journalRepository.save(journal);
     }
 
-    public boolean createJournal(String name) {
-        if (name == null || name.isEmpty()) {
-            return false;
-        }
-        Journal journal = new Journal(name, UUID.randomUUID());
-        journals.add(journal);  // Добавляем журнал в список
-        return true;
+    public void deleteJournal(UUID id) {
+        journalRepository.delete(id);
     }
 
-    public boolean deleteJournal(String name) {
-        for (Journal journal : journals) {
-            if (journal.getName().equals(name)) {
-                journals.remove(journal);  // Удаляем журнал из списка
-                return true;
-            }
-        }
-        return false;
+    public List<Journal> getAllJournals() {
+        return journalRepository.findAll();
     }
 
-    public boolean addSubscriber(String journalName, UserSubscriber subscriber) {
-        for (Journal journal : journals) {
-            if (journal.getName().equals(journalName)) {
-                return journal.addSubscriber(subscriber);  // Добавляем подписчика в журнал
-            }
-        }
-        return false;
-    }
-
-    public boolean removeSubscriber(String journalName, UserSubscriber subscriber) {
-        for (Journal journal : journals) {
-            if (journal.getName().equals(journalName)) {
-                return journal.removeSubscriber(subscriber);  // Удаляем подписчика из журнала
-            }
-        }
-        return false;
-    }
-
-    public void publishPost(String journalName, Post post) {
-        for (Journal journal : journals) {
-            if (journal.getName().equals(journalName)) {
-                journal.publish(post);  // Публикуем пост для всех подписчиков
-                return;
-            }
+    public void publishPost(UUID journalId, Post post) {
+        Journal journal = journalRepository.findById(journalId);
+        if (journal != null) {
+            journal.publish(post);
+            journalRepository.save(journal);
+        } else {
+            throw new IllegalArgumentException("Journal not found.");
         }
     }
 }

@@ -6,13 +6,8 @@ import main.java.kbtu.chill_guys.university_management_system.model.academic.Pos
 import main.java.kbtu.chill_guys.university_management_system.view.ManagerView;
 
 public class AddNewsCommand implements Command {
-    private final ManagerController controller;
-    private final ManagerView view;
-
-    public AddNewsCommand(ManagerController controller, ManagerView view) {
-        this.controller = controller;
-        this.view = view;
-    }
+    private final ManagerController controller = new ManagerController();
+    private final ManagerView view = new ManagerView();
 
     @Override
     public void execute() {

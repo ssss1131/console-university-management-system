@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.Vector;
 
-public abstract class User implements Serializable {
+public abstract class User implements Serializable, Subscriber {
     private UUID id;
     private UserRole role;
     private String email;
@@ -81,6 +81,10 @@ public abstract class User implements Serializable {
 
     public String getPassword() {
         return password;
+    }
+
+    public void update(Post post) {
+        getNotifications().add(post);
     }
 
     @Override
