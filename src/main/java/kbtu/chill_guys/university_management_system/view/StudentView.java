@@ -6,9 +6,13 @@ import main.java.kbtu.chill_guys.university_management_system.model.student.Stud
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 
 public class StudentView {
+
+    private static final Logger logger = Logger.getLogger(StudentView.class.getName());
+
     public void displayInfo(Student student) {
         System.out.println("Hello " + student.getFirstName() + " " + student.getLastName());
         System.out.println("Your ID: " + student.getId());
@@ -61,7 +65,7 @@ public class StudentView {
                 courses.forEach(course -> System.out.println("  - " + course));
             }
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            logger.severe(e.getMessage());
         }
     }
     
