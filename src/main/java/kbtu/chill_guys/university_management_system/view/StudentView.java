@@ -1,5 +1,6 @@
 package main.java.kbtu.chill_guys.university_management_system.view;
 
+import main.java.kbtu.chill_guys.university_management_system.controller.StudentController;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.evaluation.Period;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
@@ -8,6 +9,7 @@ import main.java.kbtu.chill_guys.university_management_system.model.student.Stud
 
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 
 
@@ -18,6 +20,8 @@ public class StudentView {
         System.out.println("Study duration: " + student.getStudyDuration());
         System.out.println("School: " + student.getSchool());
         System.out.println("Organization: " + student.getOrganization());
+        System.out.println("GPA: " + student.getGpa());
+
 
     }
 
@@ -41,25 +45,28 @@ public class StudentView {
     public void displayAcademicStanding() {
         //TODO
     }
-    // Печать доступных годов
-    public void printAvailableYears(Set<String> years) {
-        System.out.println("Available years:");
-        years.forEach(year -> System.out.println("  - " + year));
-    }
+    public void showCoursesMenu(Student student, StudentController studentController) {
+        Scanner scanner = new Scanner(System.in);
 
-    // Печать доступных периодов
-    public void printAvailablePeriods(List<Period> periods) {
-        System.out.println("Available periods:");
-        periods.forEach(period -> System.out.println("  - " + period));
-    }
+        try {
+            // Шаг 1: Получение года
+            System.out.print("Enter year (e.g., 2023-2024): ");
+            String year = scanner.nextLine();
 
-    // Печать курсов
-    public void printCourses(List<String> courses, String year, Period period) {
-        System.out.println("Courses for " + year + " " + period + ":");
-        if (courses.isEmpty()) {
-            System.out.println("  No courses found.");
-        } else {
-            courses.forEach(course -> System.out.println("  - " + course));
+            // Шаг 2: Получение периода
+            System.out.print("Enter period (SPRING/FALL): ");
+            String period = scanner.nextLine().toUpperCase();
+
+            // Шаг 3: Получение и отображение курсов
+            List<String> courses = studentController.getCourses(student, year, period);
+            System.out.println("Courses for " + year + " " + period + ":");
+            if (courses.isEmpty()) {
+                System.out.println("No courses found.");
+            } else {
+                courses.forEach(course -> System.out.println("  - " + course));
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
     }
     

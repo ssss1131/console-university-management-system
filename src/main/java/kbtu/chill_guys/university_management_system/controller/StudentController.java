@@ -1,5 +1,6 @@
 package main.java.kbtu.chill_guys.university_management_system.controller;
 
+import main.java.kbtu.chill_guys.university_management_system.enumeration.evaluation.Period;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
@@ -7,6 +8,7 @@ import main.java.kbtu.chill_guys.university_management_system.model.student.Stud
 import main.java.kbtu.chill_guys.university_management_system.service.StudentService;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
@@ -100,14 +102,7 @@ public class StudentController {
         return "";
     }
 
-    public Object getAvailableYears(Student student) {
+    public List<String> getCourses(Student student, String year, Period period) {
         return null;
-    }
-
-    public Object getAvailablePeriods(Student student, String selectedYear) {
-        return null;
-    }
-
-    public void viewCoursesByYearAndPeriod(Student student, String selectedYear, String selectedPeriod) {
     }
 }
