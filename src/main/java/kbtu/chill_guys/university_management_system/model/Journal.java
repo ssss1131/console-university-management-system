@@ -2,10 +2,12 @@ package main.java.kbtu.chill_guys.university_management_system.model;
 
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 
+import java.io.Serializable;
 import java.util.UUID;
 import java.util.Vector;
 
-public class Journal {
+public class Journal implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String name;
     private UUID id;
     private Vector<User> subscribers;

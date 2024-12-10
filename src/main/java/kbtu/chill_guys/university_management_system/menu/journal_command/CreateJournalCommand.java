@@ -17,9 +17,9 @@ public class CreateJournalCommand implements Command {
     @Override
     public void execute() {
         String name = view.getJournalName();
-        Journal journal = new Journal(name, null);
+        Journal journal = new Journal(name, null);  // ID будет сгенерирован
         controller.createJournal(journal);
-        view.displayMessage("Journal created successfully!");
+        view.displayMessage("Journal created successfully! UUID: " + journal.getId());
     }
 }
 
