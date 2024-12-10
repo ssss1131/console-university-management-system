@@ -2,18 +2,17 @@ package main.java.kbtu.chill_guys.university_management_system.view;
 
 import main.java.kbtu.chill_guys.university_management_system.controller.StudentController;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.evaluation.Period;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
-import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
+import java.util.logging.Logger;
 
 
 public class StudentView {
+
+    private static final Logger logger = Logger.getLogger(StudentView.class.getName());
+
     public void displayInfo(Student student) {
         System.out.println("Hello " + student.getFirstName() + " " + student.getLastName());
         System.out.println("Your ID: " + student.getId());
@@ -55,7 +54,7 @@ public class StudentView {
 
             // Шаг 2: Получение периода
             System.out.print("Enter period (SPRING/FALL): ");
-            String period = scanner.nextLine().toUpperCase();
+            Period period = Period.valueOf(scanner.nextLine().toUpperCase());
 
             // Шаг 3: Получение и отображение курсов
             List<String> courses = studentController.getCourses(student, year, period);
@@ -66,9 +65,8 @@ public class StudentView {
                 courses.forEach(course -> System.out.println("  - " + course));
             }
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            logger.severe("occurred exception: " + e.getMessage());
         }
     }
-    
     
 }

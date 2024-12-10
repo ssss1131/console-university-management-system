@@ -7,13 +7,16 @@ import main.java.kbtu.chill_guys.university_management_system.model.student.Stud
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class ViewCoursesCommand implements Command {
-    private final StudentController studentController;
+
+    Logger logger = Logger.getLogger(ViewCoursesCommand.class.getName());
+
+    private final StudentController studentController = new StudentController();
     private final Student student;
 
-    public ViewCoursesCommand(StudentController studentController, Student student) {
-        this.studentController = studentController;
+    public ViewCoursesCommand(Student student) {
         this.student = student;
     }
 
@@ -44,7 +47,7 @@ public class ViewCoursesCommand implements Command {
         } catch (IllegalArgumentException e) {
             System.out.println("Invalid input: " + e.getMessage());
         } catch (Exception e) {
-            System.out.println("An error occurred: " + e.getMessage());
+            logger.severe("An error occurred: " + e.getMessage());
         }
     }
 }

@@ -2,7 +2,6 @@ package main.java.kbtu.chill_guys.university_management_system.service;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.evaluation.Period;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
@@ -39,6 +38,7 @@ public class StudentService {
         //TODO
         return 0;
     }
+
     // Проверяет, доступен ли выбранный год
     public boolean isYearValid(Student student, String selectedYear) {
         int startYear = student.getEnrollmentDate().getYear();
@@ -57,7 +57,7 @@ public class StudentService {
         return student.getSemesterDisciplines().keySet().stream()
                 .anyMatch(semester ->
                         (semester.getYearStart() + "-" + semester.getYearEnd()).equals(selectedYear)
-                                && semester.getPeriod() == selectedPeriod);
+                        && semester.getPeriod() == selectedPeriod);
     }
 
     // Возвращает курсы по выбранному году и периоду
@@ -66,11 +66,11 @@ public class StudentService {
                 .filter(entry -> {
                     Semester semester = entry.getKey();
                     return (semester.getYearStart() + "-" + semester.getYearEnd()).equals(year)
-                            && semester.getPeriod() == period;
+                           && semester.getPeriod() == period;
                 })
                 .map(entry -> entry.getValue().getName())
                 .collect(Collectors.toList());
     }
-    
-    
+
+
 }

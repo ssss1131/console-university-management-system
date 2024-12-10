@@ -1,10 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.repository;
 
 import main.java.kbtu.chill_guys.university_management_system.model.User;
-import main.java.kbtu.chill_guys.university_management_system.util.Constant;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.UUID;
 import java.util.Vector;
 
@@ -33,17 +30,18 @@ public class UserRepository extends AbstractRepository<User> implements GeneralR
 
     @Override
     public void save(User user) {
-        Vector<User> users = getAllLines();
-        users.removeIf(existingUser -> existingUser.getId().equals(user.getId()));
-        users.add(user);
-        saveData(users);
+        //TODO надо валидацию добавить что login уникальный
+//        Vector<User> users = getAllLines();
+//        users.removeIf(existingUser -> existingUser.getId().equals(user.getId())); //TODO UUID всегда уникальный есть ли смысл в этом коде?
+//        users.add(user);
+        addLine(user);
     }
 
     @Override
     public void delete(UUID id) {
         Vector<User> users = getAllLines();
         users.removeIf(user -> user.getId().equals(id));
-        saveData(users);
+        saveAllLines(users);
     }
 
     @Override
