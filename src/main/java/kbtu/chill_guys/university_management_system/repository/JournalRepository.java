@@ -1,14 +1,17 @@
 package main.java.kbtu.chill_guys.university_management_system.repository;
 
 import main.java.kbtu.chill_guys.university_management_system.model.Journal;
+import main.java.kbtu.chill_guys.university_management_system.util.Constant;
 
 import java.nio.file.Path;
 import java.util.UUID;
 import java.util.Vector;
 
+import static main.java.kbtu.chill_guys.university_management_system.util.Constant.JOURNAL_PATH;
+
 public class JournalRepository extends AbstractRepository<Journal> {
-    public JournalRepository(Path path) {
-        super(path);
+    public JournalRepository() {
+        super(JOURNAL_PATH);
     }
 
     public Journal findById(UUID id) {
@@ -19,16 +22,13 @@ public class JournalRepository extends AbstractRepository<Journal> {
     }
 
     public void save(Journal journal) {
-        Vector<Journal> journals = getAllLines();
-        journals.removeIf(existingJournal -> existingJournal.getId().equals(journal.getId()));
-        journals.add(journal);
-        saveData(journals);
+        addLine(journal);
     }
 
     public void delete(UUID id) {
         Vector<Journal> journals = getAllLines();
         journals.removeIf(journal -> journal.getId().equals(id));
-        saveData(journals);
+        saveAllLines(journals);
     }
 
     public Vector<Journal> findAll() {

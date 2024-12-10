@@ -9,11 +9,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class JournalController {
-    private final JournalService journalService;
+    private final JournalService journalService = new JournalService();
 
-    public JournalController(JournalService journalService) {
-        this.journalService = journalService;
-    }
 
     public void createJournal(Journal journal) {
         journalService.createJournal(journal);

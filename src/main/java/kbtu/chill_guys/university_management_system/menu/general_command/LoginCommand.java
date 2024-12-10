@@ -7,15 +7,11 @@ import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.view.AuthView;
 
 public class LoginCommand implements Command {
-    private final AuthController authController;
-    private final AuthView authView;
-    private final Menu menu;
+    private final AuthController authController = new AuthController();
+    private final AuthView authView = new AuthView();
+    private final Menu menu = Menu.getInstance();
 
-    public LoginCommand(AuthController authController, AuthView authView, Menu menu) {
-        this.authController = authController;
-        this.authView = authView;
-        this.menu = menu;
-    }
+
 
     @Override
     public void execute() {

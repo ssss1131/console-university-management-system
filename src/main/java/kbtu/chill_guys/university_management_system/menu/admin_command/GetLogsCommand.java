@@ -6,16 +6,10 @@ import main.java.kbtu.chill_guys.university_management_system.menu.Command;
 import main.java.kbtu.chill_guys.university_management_system.view.AdminView;
 
 import java.util.List;
-import java.util.Vector;
 
 public class GetLogsCommand implements Command {
-    private AdminController controller;
-    private AdminView view;
-
-    public GetLogsCommand(AdminController controller, AdminView view) {
-        this.controller = controller;
-        this.view = view;
-    }
+    private AdminController controller = new AdminController();
+    private AdminView view = new AdminView();
 
     @Override
     public void execute() {

@@ -7,13 +7,8 @@ import main.java.kbtu.chill_guys.university_management_system.view.JournalView;
 import java.util.UUID;
 
 public class DeleteJournalCommand implements Command {
-    private final JournalController controller;
-    private final JournalView view;
-
-    public DeleteJournalCommand(JournalController controller, JournalView view) {
-        this.controller = controller;
-        this.view = view;
-    }
+    private final JournalController controller = new JournalController();
+    private final JournalView view = new JournalView();
 
     @Override
     public void execute() {

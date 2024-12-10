@@ -6,13 +6,8 @@ import main.java.kbtu.chill_guys.university_management_system.model.Journal;
 import main.java.kbtu.chill_guys.university_management_system.view.JournalView;
 
 public class CreateJournalCommand implements Command {
-    private final JournalController controller;
-    private final JournalView view;
-
-    public CreateJournalCommand(JournalController controller, JournalView view) {
-        this.controller = controller;
-        this.view = view;
-    }
+    private final JournalController controller = new JournalController();
+    private final JournalView view = new JournalView();
 
     @Override
     public void execute() {

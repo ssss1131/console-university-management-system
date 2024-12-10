@@ -9,33 +9,46 @@ import main.java.kbtu.chill_guys.university_management_system.permission.CanBeRe
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewCourses;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewMarks;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewTeachers;
+import main.java.kbtu.chill_guys.university_management_system.util.GpaCalculationUtil;
 
 import java.time.LocalDate;
 import java.util.*;
 
-public abstract class Student extends User implements CanViewCourses, CanBeResearcher, CanViewMarks, CanViewTeachers {
+public class Student extends User implements CanViewCourses, CanBeResearcher, CanViewMarks, CanViewTeachers {
     private School school;
     private LocalDate enrollmentDate;
+    private double gpaNumeric;
     private Gpa gpa;
     private Integer credits;
     private Integer studyDuration;
     private Organization organization;
-    private Map<Semester, Subject> semesterDisciplines = new HashMap<>();
+    private Map<Semester, Discipline> semesterDisciplines = new HashMap<>();
 
     public Student() {
         super();
     }
 
     public Student(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName,
-                   Vector<Post> notifications, School school, LocalDate enrollmentDate, Gpa gpa, Integer credits,
+                   Vector<Post> notifications, School school, LocalDate enrollmentDate, double gpaNumeric, Integer credits,
                    Integer studyDuration, Organization organization) {
         super(id, role, email, password, salt, firstName, lastName, notifications);
+        this.gpa = GpaCalculationUtil.fromNumeric(gpaNumeric);
         this.school = school;
         this.enrollmentDate = enrollmentDate;
-        this.gpa = gpa;
+        this.gpaNumeric = gpaNumeric;
         this.credits = credits;
         this.studyDuration = studyDuration;
         this.organization = organization;
+    }
+
+    public Student(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, Vector<Post> notifications, School school, LocalDate enrollmentDate, double gpaNumeric, Integer credits, Integer studyDuration) {
+        super(id, role, email, password, salt, firstName, lastName, notifications);
+        this.gpa = GpaCalculationUtil.fromNumeric(gpaNumeric);
+        this.school = school;
+        this.enrollmentDate = enrollmentDate;
+        this.gpaNumeric = gpaNumeric;
+        this.credits = credits;
+        this.studyDuration = studyDuration;
     }
 
     public School getSchool() {
@@ -86,12 +99,20 @@ public abstract class Student extends User implements CanViewCourses, CanBeResea
         this.organization = organization;
     }
 
-    public Map<Semester, Subject> getSemesterDisciplines() {
+    public Map<Semester, Discipline> getSemesterDisciplines() {
         return semesterDisciplines;
     }
 
-    public void addSemesterDiscipline(Semester semester, Subject subject) {
-        semesterDisciplines.put(semester, subject);
+    public double getGpaNumeric() {
+        return gpaNumeric;
+    }
+
+    public void setGpaNumeric(double gpaNumeric) {
+        this.gpaNumeric = gpaNumeric;
+    }
+
+    public void addSemesterDiscipline(Semester semester, Discipline discipline) {
+        semesterDisciplines.put(semester, discipline);
     }
 
     @Override
@@ -100,12 +121,12 @@ public abstract class Student extends User implements CanViewCourses, CanBeResea
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Student student = (Student) o;
-        return school == student.school && Objects.equals(enrollmentDate, student.enrollmentDate) && gpa == student.gpa && Objects.equals(credits, student.credits) && Objects.equals(studyDuration, student.studyDuration) && Objects.equals(organization, student.organization) && Objects.equals(semesterDisciplines, student.semesterDisciplines);
+        return Double.compare(gpaNumeric, student.gpaNumeric) == 0 && school == student.school && Objects.equals(enrollmentDate, student.enrollmentDate) && gpa == student.gpa && Objects.equals(credits, student.credits) && Objects.equals(studyDuration, student.studyDuration) && Objects.equals(organization, student.organization) && Objects.equals(semesterDisciplines, student.semesterDisciplines);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), school, enrollmentDate, gpa, credits, studyDuration, organization, semesterDisciplines);
+        return Objects.hash(super.hashCode(), school, enrollmentDate, gpaNumeric, gpa, credits, studyDuration, organization, semesterDisciplines);
     }
 
     @Override
@@ -113,6 +134,7 @@ public abstract class Student extends User implements CanViewCourses, CanBeResea
         return "Student{" +
                "school=" + school +
                ", enrollmentDate=" + enrollmentDate +
+               ", gpaNumeric=" + gpaNumeric +
                ", gpa=" + gpa +
                ", credits=" + credits +
                ", studyDuration=" + studyDuration +

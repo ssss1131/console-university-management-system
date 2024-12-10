@@ -9,11 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class JournalService {
-    private final JournalRepository journalRepository;
-
-    public JournalService(JournalRepository journalRepository) {
-        this.journalRepository = journalRepository;
-    }
+    private final JournalRepository journalRepository = new JournalRepository();
 
     public void createJournal(Journal journal) {
         journalRepository.save(journal);

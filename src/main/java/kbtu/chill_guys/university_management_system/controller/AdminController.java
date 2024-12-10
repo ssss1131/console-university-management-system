@@ -13,11 +13,7 @@ import java.util.UUID;
 import java.util.Vector;
 
 public class AdminController {
-    private final AdminService adminService;
-
-    public AdminController(AdminService adminService) {
-        this.adminService = adminService;
-    }
+    private final AdminService adminService = new AdminService();
 
     public List<String> getLogs(LogPeriod period) {
         return adminService.getLogs(period);
