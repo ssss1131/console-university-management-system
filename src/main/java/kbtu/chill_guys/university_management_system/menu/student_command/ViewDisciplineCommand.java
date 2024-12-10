@@ -8,12 +8,11 @@ import main.java.kbtu.chill_guys.university_management_system.model.student.Stud
 import java.util.List;
 import java.util.Scanner;
 
-public class ViewCoursesCommand implements Command {
-    private final StudentController studentController;
+public class ViewDisciplineCommand implements Command {
+    private final StudentController studentController = new StudentController();
     private final Student student;
 
-    public ViewCoursesCommand(StudentController studentController, Student student) {
-        this.studentController = studentController;
+    public ViewDisciplineCommand(Student student) {
         this.student = student;
     }
 
@@ -32,7 +31,7 @@ public class ViewCoursesCommand implements Command {
             Period period = Period.valueOf(periodInput); // Преобразуем в enum
 
             // Шаг 3: Получение курсов через контроллер
-            List<String> courses = studentController.getCourses(student, year, period);
+            List<String> courses = studentController.getDiscipline(student, year, period);
 
             // Шаг 4: Отображение курсов
             System.out.println("Courses for " + year + " " + period + ":");

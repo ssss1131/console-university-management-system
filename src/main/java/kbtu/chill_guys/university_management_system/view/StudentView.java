@@ -2,15 +2,10 @@ package main.java.kbtu.chill_guys.university_management_system.view;
 
 import main.java.kbtu.chill_guys.university_management_system.controller.StudentController;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.evaluation.Period;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
-import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
 
 
 public class StudentView {
@@ -45,7 +40,7 @@ public class StudentView {
     public void displayAcademicStanding() {
         //TODO
     }
-    public void showCoursesMenu(Student student, StudentController studentController) {
+    public void showDisciplineMenu(Student student, StudentController studentController) {
         Scanner scanner = new Scanner(System.in);
 
         try {
@@ -55,10 +50,10 @@ public class StudentView {
 
             // Шаг 2: Получение периода
             System.out.print("Enter period (SPRING/FALL): ");
-            String period = scanner.nextLine().toUpperCase();
+            Period period = Period.valueOf(scanner.nextLine().toUpperCase());
 
             // Шаг 3: Получение и отображение курсов
-            List<String> courses = studentController.getCourses(student, year, period);
+            List<String> courses = studentController.getDiscipline(student, year, period);
             System.out.println("Courses for " + year + " " + period + ":");
             if (courses.isEmpty()) {
                 System.out.println("No courses found.");

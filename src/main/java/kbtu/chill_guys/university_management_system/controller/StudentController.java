@@ -13,7 +13,8 @@ import java.util.Map;
 import java.util.Vector;
 
 public class StudentController {
-    private StudentService studentService;
+    private StudentService studentService = new StudentService();
+
 
     public StudentService getStudentService() {
         return this.studentService;
@@ -42,7 +43,7 @@ public class StudentController {
         return null;
     }
 
-//    public Vector<Course> getCourses() {
+//    public Vector<Course> getDisipline() {
 //        //TODO
 //        return null;
 //    }
@@ -102,7 +103,18 @@ public class StudentController {
         return "";
     }
 
-    public List<String> getCourses(Student student, String year, Period period) {
-        return null;
+    public List<String> getDiscipline(Student student, String year, Period period) {
+        // Проверка года
+        if (!studentService.isYearValid(student, year)) {
+            throw new IllegalArgumentException("Invalid year. Please enter a valid year.");
+        }
+
+        // Проверка периода
+        if (!studentService.isPeriodValid(student, year, period)) {
+            throw new IllegalArgumentException("Invalid period. Please enter a valid period.");
+        }
+
+        // Возврат курсов
+        return studentService.getDisciplineByYearAndPeriod(student, year, period);
     }
 }
