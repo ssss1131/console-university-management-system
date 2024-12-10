@@ -7,7 +7,6 @@ import java.util.UUID;
 import java.util.Vector;
 
 public class Journal implements Serializable {
-    private static final long serialVersionUID = 1L;
     private String name;
     private UUID id;
     private Vector<User> subscribers;
