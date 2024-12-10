@@ -14,9 +14,11 @@ public class Post implements Serializable {
     public String getTitle() {
         return title;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
+
     public LocalDate getDate() {
         return this.date;
     }

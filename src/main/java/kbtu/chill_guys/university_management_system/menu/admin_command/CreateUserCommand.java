@@ -14,7 +14,6 @@ public class CreateUserCommand implements Command {
 
     @Override
     public void execute() {
-
         Map<String, Object> data = view.getUserInput();
 
         User user = controller.createUser(data);

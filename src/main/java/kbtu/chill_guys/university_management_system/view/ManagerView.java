@@ -1,5 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.view;
 
+import main.java.kbtu.chill_guys.university_management_system.menu.Menu;
+import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 
 import java.time.LocalDate;
@@ -26,10 +28,12 @@ public class ManagerView {
         System.out.println("Enter post content:");
         post.setContent(scanner.nextLine());
 
-        System.out.println("Enter author name:");
-//        User author = new User(); // Укажите текущего пользователя
-//        author.setFirstName(scanner.nextLine());
-//        post.setAuthor(author);
+        User loggedUser = Menu.getInstance().getLoggedUser();
+        if (loggedUser != null) {
+            post.setAuthor(loggedUser);
+        } else {
+            System.out.println("No logged-in user found. Unable to set author.");
+        }
 
         post.setDate(LocalDate.now());
         return post;
