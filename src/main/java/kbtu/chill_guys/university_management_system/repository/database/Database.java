@@ -60,7 +60,6 @@ public final class Database {
         try (ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(basePath.resolve(path)))) {
             oos.writeObject(data);
         } catch (IOException e) {
-
             logger.warning("Error saving data, cause path incorrect: " + e.getMessage());
         }
     }
