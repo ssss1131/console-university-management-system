@@ -1,40 +1,12 @@
 package main.java.kbtu.chill_guys.university_management_system.service;
 
-
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
+import main.java.kbtu.chill_guys.university_management_system.repository.PostRepository;
 
-import java.util.Vector;
-
-/**
-* @generated
-*/
 public class NewsManagementService {
-    
-    
-    /**
-    * @generated
-    */
+    private final PostRepository postRepository = new PostRepository();
 
-    
-    
-
-    //                          Operations                                  
-    
-    /**
-    * @generated
-    */
-    public Vector<Post> getNews() {
-        //TODO
-        return null;
+    public void addPost(Post post) {
+        postRepository.savePost(post);
     }
-    
-    /**
-    * @generated
-    */
-    public void addNews() {
-        //TODO
-
-    }
-    
-    
 }
