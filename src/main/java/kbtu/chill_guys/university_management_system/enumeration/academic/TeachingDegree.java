@@ -4,6 +4,5 @@ public enum TeachingDegree {
     ASSISTANT,
     TUTOR,
     LECTOR,
-    SENIOR_LECTOR,
-    PROFESSOR
+    SENIOR_LECTOR
 }

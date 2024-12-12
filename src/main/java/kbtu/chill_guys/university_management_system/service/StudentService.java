@@ -55,12 +55,12 @@ public class StudentService {
         return false;
     }
 
-    public boolean isPeriodValid(Student student, String selectedYear, Period selectedPeriod) {
-        return student.getSemesterDisciplines().keySet().stream()
-                .anyMatch(semester ->
-                        (semester.getYearStart() + "-" + semester.getYearEnd()).equals(selectedYear)
-                                && semester.getPeriod() == selectedPeriod);
-    }
+//    public boolean isPeriodValid(Student student, String selectedYear, Period selectedPeriod) {
+//        return student.getSemesterDisciplines().keySet().stream()
+//                .anyMatch(semester ->
+//                        (semester.getYearStart() + "-" + semester.getYearEnd()).equals(selectedYear)
+//                                && semester.getPeriod() == selectedPeriod);
+//    }
 
 
     public List<String> getDisciplineByYearAndPeriod(Student student, String year, Period period) {

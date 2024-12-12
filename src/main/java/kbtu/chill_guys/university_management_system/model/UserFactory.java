@@ -18,6 +18,8 @@ import java.util.UUID;
 import java.util.Vector;
 import java.util.logging.Logger;
 
+import static main.java.kbtu.chill_guys.university_management_system.util.Constant.*;
+
 public final class UserFactory {
 
     private static final Logger logger = Logger.getLogger(UserFactory.class.getName());
@@ -30,56 +32,59 @@ public final class UserFactory {
         UUID uuid = UUID.randomUUID();
         Vector<Post> notifications = new Vector<>();
 
-        String email = (String) data.get("email");
-        String password = (String) data.get("password");
-        String salt = (String) data.get("salt");
-        String firstName = (String) data.get("firstName");
-        String lastName = (String) data.get("lastName");
+        String email = (String) data.get(EMAIL_ATTRIBUTE);
+        String password = (String) data.get(PASSWORD_ATTRIBUTE);
+        String salt = (String) data.get(SALT_ATTRIBUTE);
+        String firstName = (String) data.get(FIRSTNAME_ATTRIBUTE);
+        String lastName = (String) data.get(LASTNAME_ATTRIBUTE);
 
         switch (role) {
             case ADMIN:
                 return new Admin(uuid, role, email, password, salt, firstName, lastName, notifications);
             case TEACHER:
                 return new Teacher(uuid, role, email, password, salt, firstName, lastName, notifications,
-                        (Integer) data.get("salary"),
-                        (Rating) data.get("rating"),
-                        (School) data.get("school"),
-                        (TeachingDegree) data.get("teachingDegree")
+                        (Integer) data.get(SALARY_ATTRIBUTE),
+                        (Integer) data.get(RATING_ATTRIBUTE),
+                        (School) data.get(SCHOOL_ATTRIBUTE),
+                        (TeachingDegree) data.get(TEACHING_DEGREE_ATTRIBUTE)
                 );
+                //TODO подумать насчет профессора, надо либо добавить его в TeachingDegree но убрать при выборе дигрии,
+            // потом ставить с помощью конструктора выше но degree всегда TeachingDegree.PROFESSOR
             case MANAGER:
                 return new Manager(uuid, role, email, password, salt, firstName, lastName, notifications,
-                        (Integer) data.get("salary"),
-                        (ManagerType) data.get("managerType")
+                        (Integer) data.get(SALARY_ATTRIBUTE),
+                        (ManagerType) data.get(MANAGER_TYPE_ATTRIBUTE)
                 );
             case DEAN:
                 return new Dean(uuid, role, email, password, salt, firstName, lastName, notifications,
-                        (Integer) data.get("salary")
+                        (Integer) data.get(SALARY_ATTRIBUTE)
                 );
             case BACHELOR, PHD, MASTER:
-                School school = (School) data.get("school");
-                LocalDate enrollmentDate = LocalDate.parse((String) data.get("enrollmentDate"));
-                double gpa = (double) data.get("gpa");
-                int credits = (int) data.get("credits");
-                int studyDuration = (int) data.get("studyDuration");
+                School school = (School) data.get(SCHOOL_ATTRIBUTE);
+                LocalDate enrollmentDate = LocalDate.parse((String) data.get(ENROLLMENT_DATE_ATTRIBUTE));
+                int credits = (int) data.get(CREDITS_ATTRIBUTE);
+                int studyDuration = (int) data.get(STUDY_DURATION_ATTRIBUTE);
 
                 switch (role) {
+                    //TODO organization надо добавить
                     case BACHELOR:
-                        Specialization specialization = (Specialization) data.get("program");
+                        Specialization specialization = (Specialization) data.get(PROGRAM_ATTRIBUTE);
                         return new Bachelor(uuid, role, email, password, salt, firstName, lastName, notifications, school,
-                                enrollmentDate, gpa, credits, studyDuration, specialization);
+                                enrollmentDate, credits, studyDuration, specialization);
 
                     case MASTER:
-                        MasterProgram masterProgram = (MasterProgram) data.get("program");
+                        MasterProgram masterProgram = (MasterProgram) data.get(PROGRAM_ATTRIBUTE);
                         return new Master(uuid, role, email, password, salt, firstName, lastName, notifications, school,
-                                enrollmentDate, gpa, credits, studyDuration, masterProgram);
+                                enrollmentDate, credits, studyDuration, masterProgram);
 
                     case PHD:
-                        PhdProgram phdProgram = (PhdProgram) data.get("program");
+                        PhdProgram phdProgram = (PhdProgram) data.get(PROGRAM_ATTRIBUTE);
                         return new PHD(uuid, role, email, password, salt, firstName, lastName, notifications, school,
-                                enrollmentDate, gpa, credits, studyDuration, phdProgram);
+                                enrollmentDate, credits, studyDuration, phdProgram);
 
                     default:
-                        throw new IllegalArgumentException("Неверная роль: " + role);
+                        logger.warning("Not handled role, need some validation");
+                        throw new IllegalArgumentException("incorrect role:  " + role);
                 }
 
 

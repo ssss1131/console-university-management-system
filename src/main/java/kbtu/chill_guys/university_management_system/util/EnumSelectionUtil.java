@@ -23,10 +23,10 @@ public class EnumSelectionUtil {
                 if (choice >= 1 && choice <= enumValues.length) {
                     return enumValues[choice - 1];
                 } else {
-                    System.out.println("Некорректный номер. Попробуйте ещё раз.");
+                    System.out.println("Incorrect number. Please try again");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Введите корректное число.");
+                System.out.println("Enter correct number");
             }
         }
     }

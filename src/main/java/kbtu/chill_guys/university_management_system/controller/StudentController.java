@@ -110,9 +110,9 @@ public class StudentController {
         }
 
         // Проверка периода
-        if (!studentService.isPeriodValid(student, year, period)) {
-            throw new IllegalArgumentException("Invalid period. Please enter a valid period.");
-        }
+//        if (!studentService.isPeriodValid(student, year, period)) {
+//            throw new IllegalArgumentException("Invalid period. Please enter a valid period.");
+//        }
 
         // Возврат курсов
         return studentService.getDisciplineByYearAndPeriod(student, year, period);

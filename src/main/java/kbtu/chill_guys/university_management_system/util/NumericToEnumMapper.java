@@ -1,18 +1,14 @@
 package main.java.kbtu.chill_guys.university_management_system.util;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Gpa;
-import main.java.kbtu.chill_guys.university_management_system.exception.InvalidGpaException;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Rating;
 
-public class GpaCalculationUtil {
+public class NumericToEnumMapper {
 
-    private GpaCalculationUtil() {
+    private NumericToEnumMapper() {
     }
 
-    public static Gpa fromNumeric(double numericGpa) {
-        if (numericGpa > 4.0 || numericGpa < 0.0) {
-            throw new InvalidGpaException("GPA must be in the range 0.0 to 4.0");
-        }
-
+    public static Gpa mapGpa(double numericGpa) {
         if (numericGpa >= 3.85) return Gpa.A;
         if (numericGpa >= 3.7) return Gpa.A_MINUS;
         if (numericGpa >= 3.3) return Gpa.B_PLUS;
@@ -26,5 +22,19 @@ public class GpaCalculationUtil {
         if (numericGpa >= 0.7) return Gpa.D_MINUS;
 
         return Gpa.F;
+    }
+
+    public static Rating mapRating(int score){
+        if (score < 20) {
+            return Rating.VERY_POOR;
+        } else if (score < 40) {
+            return Rating.POOR;
+        } else if (score < 60) {
+            return Rating.AVERAGE;
+        } else if (score < 80) {
+            return Rating.GOOD;
+        } else {
+            return Rating.EXCELLENT;
+        }
     }
 }

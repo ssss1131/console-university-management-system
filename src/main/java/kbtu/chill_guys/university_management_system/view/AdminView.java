@@ -1,57 +1,49 @@
 package main.java.kbtu.chill_guys.university_management_system.view;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.MasterProgram;
-import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.OrganizationRole;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.PhdProgram;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Specialization;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.TeachingDegree;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.ManagerType;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.LogPeriod;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
-import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
-import main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil;
+import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
 
 import java.util.*;
 
-public class AdminView {
-    private final Scanner scanner = new Scanner(System.in);
+import static main.java.kbtu.chill_guys.university_management_system.util.Constant.*;
+import static main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil.selectEnum;
+import static main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil.*;
 
-    private static final String CANCEL = "cancel";
+public class AdminView {
 
     public Map<String, Object> getUserInput() {
         Map<String, Object> data = new HashMap<>();
 
-        System.out.println("Enter user role (e.g., admin, bachelor, phd, master, teacher, manager, dean): ");
-        UserRole role = UserRole.valueOf(scanner.nextLine().toUpperCase());
-        data.put("role", role);
+        System.out.println("Enter user role:");
+        UserRole role = selectEnum(UserRole.class);
+        data.put(USER_ROLE_ATTRIBUTE, role);
 
-        System.out.println("Enter email: ");
-        data.put("email", scanner.nextLine());
+        System.out.println("Enter email:");
+        data.put(EMAIL_ATTRIBUTE, validateNonEmptyInput("Email cannot be empty"));
 
-        System.out.println("Enter password: ");
-        data.put("password", scanner.nextLine());
+        System.out.println("Enter password:");
+        data.put(PASSWORD_ATTRIBUTE, validateNonEmptyInput("Password cannot be empty"));
 
-        System.out.println("Enter first name: ");
-        data.put("firstName", scanner.nextLine());
+        System.out.println("Enter first name:");
+        data.put(FIRSTNAME_ATTRIBUTE, validateNonEmptyInput("First name cannot be empty"));
 
-        System.out.println("Enter last name: ");
-        data.put("lastName", scanner.nextLine());
+        System.out.println("Enter last name:");
+        data.put(LASTNAME_ATTRIBUTE, validateNonEmptyInput("Last name cannot be empty"));
 
         switch (role) {
-            case BACHELOR, MASTER, PHD:
-                handleStudentInput(data);
-                break;
-            case TEACHER:
-                handleTeacherInput(data);
-                break;
-            case MANAGER:
-                handleManagerInput(data);
-                break;
-            case DEAN:
-                handleDeanInput(data);
-                break;
+            case BACHELOR, MASTER, PHD -> handleStudentInput(data);
+            case TEACHER -> handleTeacherInput(data);
+            case MANAGER -> handleManagerInput(data);
+            case DEAN -> handleDeanInput(data);
         }
 
         return data;
@@ -63,79 +55,78 @@ public class AdminView {
     }
 
     private void handleStudentInput(Map<String, Object> data) {
-        System.out.println("Enter school: ");
-        data.put("school", School.valueOf(scanner.nextLine().toUpperCase()));
+        System.out.println("Enter school:");
+        data.put(SCHOOL_ATTRIBUTE, selectEnum(School.class));
 
-        System.out.println("Enter enrollment date (yyyy-mm-dd): ");
-        data.put("enrollmentDate", scanner.nextLine());
+        System.out.println("Enter enrollment date (yyyy-MM-dd):");
+        data.put(ENROLLMENT_DATE_ATTRIBUTE, validateDateInput("Invalid date format. Please enter a valid date."));
 
-        System.out.println("Enter GPA: ");
-        data.put("gpa", Double.parseDouble(scanner.nextLine()));
+        System.out.println("Enter credits:");
+        data.put(CREDITS_ATTRIBUTE, validateIntegerInput("Credits must be a positive integer", 0, Integer.MAX_VALUE));
 
-        System.out.println("Enter credits: ");
-        data.put("credits", Integer.parseInt(scanner.nextLine()));
+        System.out.println("Enter study duration (years):");
+        data.put(STUDY_DURATION_ATTRIBUTE, validateIntegerInput("Study duration must be a positive integer", 0, Integer.MAX_VALUE));
 
-        System.out.println("Enter study duration (years): ");
-        data.put("studyDuration", Integer.parseInt(scanner.nextLine()));
-
-        System.out.println("Enter specialization: ");
-
-        UserRole role = (UserRole) data.get("role");
-        if (role == UserRole.MASTER) {
-            System.out.println("Choose a Master Program: ");
-            data.put("program", EnumSelectionUtil.selectEnum(MasterProgram.class));
-        } else if (role == UserRole.PHD) {
-            System.out.println("Choose a PhD Program: ");
-            data.put("program", EnumSelectionUtil.selectEnum(PhdProgram.class));
-        } else {
-            System.out.println("Choose a Bachelor Program: ");
-            data.put("program", EnumSelectionUtil.selectEnum(Specialization.class));
+        UserRole role = (UserRole) data.get(USER_ROLE_ATTRIBUTE);
+        switch (role) {
+            case MASTER -> {
+                System.out.println("Choose a Master Program:");
+                data.put(PROGRAM_ATTRIBUTE, selectEnum(MasterProgram.class));
+            }
+            case PHD -> {
+                System.out.println("Choose a PhD Program:");
+                data.put(PROGRAM_ATTRIBUTE, selectEnum(PhdProgram.class));
+            }
+            case BACHELOR -> {
+                System.out.println("Choose a Bachelor Program:");
+                data.put(PROGRAM_ATTRIBUTE, selectEnum(Specialization.class));
+            }
         }
 
-        System.out.printf("Enter organization(or %s): ", CANCEL);
-        if (scanner.nextLine().equalsIgnoreCase(CANCEL)) {
-            return;
+        System.out.printf("Enter organization (or %s to skip): ", ORGANIZATION_CANCEL);
+        String input = validateNonEmptyInput("Invalid organization input.");
+        if (!input.equalsIgnoreCase(ORGANIZATION_CANCEL)) {
+            data.put(ORGANIZATION_ATTRIBUTE, getOrganizationInput());
         }
-        data.put("organization", getOrganizationInput());
     }
 
     private void handleTeacherInput(Map<String, Object> data) {
-        System.out.println("Enter rating: ");
-        data.put("rating", Integer.parseInt(scanner.nextLine()));
+        System.out.println("Enter salary:");
+        data.put(SALARY_ATTRIBUTE, validateIntegerInput("Salary must be a positive integer", 0, Integer.MAX_VALUE));
 
-        System.out.println("Enter school: ");
-        data.put("school", School.valueOf(scanner.nextLine().toUpperCase()));
+        System.out.println("Enter rating:");
+        data.put(RATING_ATTRIBUTE, validateIntegerInput("Rating must be a positive integer", 0, 100));
 
-        System.out.println("Enter teaching degree: ");
-        data.put("teachingDegree", scanner.nextLine());
+        System.out.println("Enter school:");
+        data.put(SCHOOL_ATTRIBUTE, selectEnum(School.class));
+
+        System.out.println("Enter teaching degree:");
+        data.put(TEACHING_DEGREE_ATTRIBUTE, selectEnum(TeachingDegree.class));
     }
 
     private void handleManagerInput(Map<String, Object> data) {
-        System.out.println("Enter salary: ");
-        data.put("salary", Integer.parseInt(scanner.nextLine()));
+        System.out.println("Enter salary:");
+        data.put(SALARY_ATTRIBUTE, validateIntegerInput("Salary must be a positive integer", 0, Integer.MAX_VALUE));
 
-        System.out.println("Enter manager type: ");
-        data.put("managerType", ManagerType.valueOf(scanner.nextLine().toUpperCase()));
+        System.out.println("Enter manager type:");
+        data.put(MANAGER_TYPE_ATTRIBUTE, selectEnum(ManagerType.class));
     }
 
     private void handleDeanInput(Map<String, Object> data) {
-        System.out.println("Enter salary: ");
-        data.put("salary", Integer.parseInt(scanner.nextLine()));
+        System.out.println("Enter salary:");
+        data.put(SALARY_ATTRIBUTE, validateIntegerInput("Salary must be a positive integer", 0, Integer.MAX_VALUE));
     }
 
     private Organization getOrganizationInput() {
-        System.out.println("Enter organization name: ");
-        String name = scanner.nextLine();
+        System.out.println("Enter organization name:");
+        String name = validateNonEmptyInput("Organization name cannot be empty");
 
-        System.out.println("Enter organization description: ");
-        String description = scanner.nextLine();
-
-        Map<Student, OrganizationRole> members = new HashMap<>();
+        System.out.println("Enter organization description:");
+        String description = validateNonEmptyInput("Organization description cannot be empty");
 
         Organization organization = new Organization();
         organization.setName(name);
         organization.setDescription(description);
-        organization.setMembers(members);
 
         return organization;
     }
@@ -145,14 +136,13 @@ public class AdminView {
     }
 
     public UUID getUserIdForDeletion() {
-        System.out.println("Enter the ID of the user to delete: ");
-        String id = scanner.nextLine();
-        return UUID.fromString(id);
+        System.out.println("Enter the ID of the user to delete:");
+        return InputValidatorUtil.validateUUIDInput("Invalid UUID format. Please try again.");
     }
 
     public LogPeriod getLogPeriod() {
-        System.out.println("Enter log period (DAY, WEEK, MONTH): ");
-        return LogPeriod.valueOf(scanner.nextLine().toUpperCase());
+        System.out.println("Enter log period:");
+        return selectEnum(LogPeriod.class);
     }
 
     public void displayLogs(List<String> logs) {
@@ -164,3 +154,4 @@ public class AdminView {
         }
     }
 }
+

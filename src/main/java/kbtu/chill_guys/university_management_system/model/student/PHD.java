@@ -13,13 +13,13 @@ import java.util.Vector;
 public class PHD extends GraduateStudent {
     private PhdProgram phdProgram;
 
-    public PHD(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, Vector<Post> notifications, School school, LocalDate enrollmentDate, double gpa, Integer credits, Integer studyDuration, PhdProgram phdProgram) {
-        super(id, role, email, password, salt, firstName, lastName, notifications, school, enrollmentDate, gpa, credits, studyDuration);
+    public PHD(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, Vector<Post> notifications, School school, LocalDate enrollmentDate, Integer credits, Integer studyDuration, PhdProgram phdProgram) {
+        super(id, role, email, password, salt, firstName, lastName, notifications, school, enrollmentDate, credits, studyDuration);
         this.phdProgram = phdProgram;
     }
 
-    public PHD(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, Vector<Post> notifications, School school, LocalDate enrollmentDate, double gpa, Integer credits, Integer studyDuration, Organization organization, PhdProgram phdProgram) {
-        super(id, role, email, password, salt, firstName, lastName, notifications, school, enrollmentDate, gpa, credits, studyDuration, organization);
+    public PHD(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, Vector<Post> notifications, School school, LocalDate enrollmentDate, Integer credits, Integer studyDuration, Organization organization, PhdProgram phdProgram) {
+        super(id, role, email, password, salt, firstName, lastName, notifications, school, enrollmentDate, credits, studyDuration, organization);
         this.phdProgram = phdProgram;
     }
 
