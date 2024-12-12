@@ -28,7 +28,7 @@ public class AdminView {
         data.put(USER_ROLE_ATTRIBUTE, role);
 
         System.out.println("Enter email:");
-        data.put(EMAIL_ATTRIBUTE, validateNonEmptyInput("Email cannot be empty"));
+        data.put(EMAIL_ATTRIBUTE, validateEmailInput("Invalid email format. Please try again."));
 
         System.out.println("Enter password:");
         data.put(PASSWORD_ATTRIBUTE, validateNonEmptyInput("Password cannot be empty"));

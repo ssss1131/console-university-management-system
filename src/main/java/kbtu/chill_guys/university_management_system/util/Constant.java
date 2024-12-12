@@ -2,6 +2,7 @@ package main.java.kbtu.chill_guys.university_management_system.util;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.regex.Pattern;
 
 public class Constant {
     public static final Path USERS_PATH = Paths.get("account.ser");
@@ -30,8 +31,7 @@ public class Constant {
 
 
     public static final Integer MIN_H_INDEX = 3;
-
-
-
-
+    public static final Pattern EMAIL_PATTERN = Pattern.compile(
+            "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$"
+    );
 }

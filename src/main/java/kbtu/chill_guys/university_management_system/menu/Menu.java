@@ -103,16 +103,24 @@ public class Menu {
             }
         }
     }
-    //TODO поменять название или разделить на два метода чет название супер странное
-    private boolean isAuthorized(String commandName) {
-        if (loggedUser == null) {
-            return commandName.equals("login");
-        }
 
-        if (commandName.equals("logout")) {
+    private boolean isAuthorized(String commandName) {
+        if (isCommandAccessibleToAll(commandName)) {
             return true;
         }
 
+        if (loggedUser != null) {
+            return isRoleAuthorizedForCommand(commandName);
+        }
+
+        return false;
+    }
+
+    private boolean isCommandAccessibleToAll(String commandName) {
+        return commandName.equals("login") || commandName.equals("logout");
+    }
+
+    private boolean isRoleAuthorizedForCommand(String commandName) {
         UserRole[] roles = commandRoles.get(commandName);
         if (roles == null) return true;
 
@@ -123,4 +131,5 @@ public class Menu {
         }
         return false;
     }
+
 }
