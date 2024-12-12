@@ -11,8 +11,6 @@ public class LoginCommand implements Command {
     private final AuthView authView = new AuthView();
     private final Menu menu = Menu.getInstance();
 
-
-
     @Override
     public void execute() {
         String email = authView.getEmail();

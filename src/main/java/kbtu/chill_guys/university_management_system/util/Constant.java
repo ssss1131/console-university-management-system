@@ -26,6 +26,10 @@ public class Constant {
     public static final String TEACHING_DEGREE_ATTRIBUTE = "teachingDegree";
     public static final String SALARY_ATTRIBUTE = "salary";
     public static final String MANAGER_TYPE_ATTRIBUTE = "managerType";
+    public static final String TITLE_ATTRIBUTE = "title";
+    public static final String CONTENT_ATTRIBUTE = "content";
+    public static final String AUTHOR_ATTRIBUTE = "author";
+    public static final String DATE_ATTRIBUTE = "date";
 
     public static final String ORGANIZATION_CANCEL = "cancel";
 
