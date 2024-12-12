@@ -5,14 +5,14 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.util.L
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static main.java.kbtu.chill_guys.university_management_system.util.Constant.LOG_FILE_PATH;
+
 public class LogRepository {
-    private static final Path LOG_FILE_PATH = Path.of("logs", "application.log.0");
     private static final DateTimeFormatter LOG_DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public List<String> getLogs(LogPeriod period) {

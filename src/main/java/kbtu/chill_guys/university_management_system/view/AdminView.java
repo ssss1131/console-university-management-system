@@ -83,9 +83,9 @@ public class AdminView {
             }
         }
 
-        System.out.printf("Enter organization (or %s to skip): ", ORGANIZATION_CANCEL);
+        System.out.printf("Enter organization (or %s to skip): ", ORGANIZATION_CANCEL_INPUT);
         String input = validateNonEmptyInput("Invalid organization input.");
-        if (!input.equalsIgnoreCase(ORGANIZATION_CANCEL)) {
+        if (!input.equalsIgnoreCase(ORGANIZATION_CANCEL_INPUT)) {
             data.put(ORGANIZATION_ATTRIBUTE, getOrganizationInput());
         }
     }

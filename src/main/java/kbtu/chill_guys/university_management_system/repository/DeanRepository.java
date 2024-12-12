@@ -6,9 +6,6 @@ import main.java.kbtu.chill_guys.university_management_system.model.academic.Com
 import java.nio.file.Path;
 import java.util.Vector;
 
-/**
-* @generated
-*/
 public class DeanRepository extends AbstractRepository {
     public DeanRepository(Path path) {
         super(path);

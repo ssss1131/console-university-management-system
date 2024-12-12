@@ -6,9 +6,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Semester implements Serializable {
-    private int yearStart;
-    private int yearEnd;
-    private Period period;
+    private final int yearStart;
+    private final int yearEnd;
+    private final Period period;
 
     public Semester(int yearStart, int yearEnd, Period period) {
         this.yearStart = yearStart;

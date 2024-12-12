@@ -5,13 +5,6 @@ import main.java.kbtu.chill_guys.university_management_system.controller.Manager
 public class ApproveStudentRegistrationCommand {
     private ManagerController controller;
 
-    public ManagerController getController() {
-        return this.controller;
-    }
-    public void setController(ManagerController controller) {
-        this.controller = controller;
-    }
-
     public void execute() {
         //TODO
     }
