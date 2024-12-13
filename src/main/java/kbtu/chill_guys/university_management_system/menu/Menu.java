@@ -53,6 +53,7 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         LOGGER.info("Application starting...");
         while (true) {
+            System.out.println();
             displayAvailableCommands();
             System.out.println("Enter command: ");
             String commandName = scanner.nextLine().toLowerCase();

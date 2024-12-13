@@ -1,5 +1,6 @@
 package main.java.kbtu.chill_guys.university_management_system.model.academic;
 
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Program;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.StudentRole;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.evaluation.CourseType;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
@@ -16,14 +17,16 @@ public class Discipline implements Serializable {
     private int credits;
     private Semester semester;
     private StudentRole targetAudience;
-    private Set<String> prerequisites = new HashSet<>(); // set from codes of discipline
+    private Set<Program> targetSpecializations;
+    private Set<String> prerequisites; // set from codes of disciplines
     private CourseType courseType;
 
-    public Discipline(String code, String name, School school, int credits, Semester semester, StudentRole targetAudience, Set<String> prerequisites, CourseType courseType) {
+    public Discipline(String code, String name, School school, int credits, Semester semester, StudentRole targetAudience,Set<Program> programs, Set<String> prerequisites, CourseType courseType) {
         this.code = code;
         this.name = name;
         this.school = school;
         this.credits = credits;
+        this.targetSpecializations = programs;
         this.semester = semester;
         this.targetAudience = targetAudience;
         this.prerequisites = prerequisites;
@@ -62,6 +65,10 @@ public class Discipline implements Serializable {
         return courseType;
     }
 
+    public Set<Program> getTargetSpecializations() {
+        return targetSpecializations;
+    }
+
     public static class Builder {
         private String code;
         private String name;
@@ -69,6 +76,7 @@ public class Discipline implements Serializable {
         private int credits;
         private Semester semester;
         private StudentRole targetAudience;
+        private Set<Program> targetSpecializations;
         private Set<String> prerequisites = new HashSet<>();
         private CourseType courseType;
 
@@ -102,6 +110,11 @@ public class Discipline implements Serializable {
             return this;
         }
 
+        public Builder targetSpecializations(Set<Program> program){
+            this.targetSpecializations = program != null ? program : new HashSet<>();
+            return this;
+        }
+
         public Builder prerequisites(Set<String> prerequisites) {
             this.prerequisites = prerequisites != null ? prerequisites : new HashSet<>();
             return this;
@@ -113,14 +126,12 @@ public class Discipline implements Serializable {
         }
 
         public Discipline build() {
-            if (code == null || name == null || school == null || semester == null || targetAudience == null || courseType == null) {
+            if (code == null || name == null || school == null || semester == null || targetAudience == null || courseType == null || targetSpecializations == null) {
                 throw new IllegalArgumentException("All required fields must be provided!");
             }
-            return new Discipline(code, name, school, credits, semester, targetAudience, prerequisites, courseType);
+            return new Discipline(code, name, school, credits, semester, targetAudience,targetSpecializations, prerequisites, courseType);
         }
     }
-
-
 
 
 
@@ -148,20 +159,8 @@ public class Discipline implements Serializable {
                ", semester=" + semester +
                ", targetAudience=" + targetAudience +
                ", prerequisites=" + prerequisites +
+               ", specializations=" + targetSpecializations +
                ", courseType=" + courseType +
                '}';
-    }
-
-    public double getMinandMax() {
-        //TODO
-        return 0.0;
-    }
-
-    public void viewGradebook() {
-        //TODO
-    }
-
-    public void getTranscript() {
-        //TODO
     }
 }

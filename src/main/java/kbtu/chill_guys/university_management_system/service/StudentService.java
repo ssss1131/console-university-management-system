@@ -58,7 +58,7 @@ public class StudentService {
 //    public boolean isPeriodValid(Student student, String selectedYear, Period selectedPeriod) {
 //        return student.getSemesterDisciplines().keySet().stream()
 //                .anyMatch(semester ->
-//                        (semester.getYearStart() + "-" + semester.getYearEnd()).equals(selectedYear)
+//                        (semester.getYear() + "-" + semester.getYearEnd()).equals(selectedYear)
 //                                && semester.getPeriod() == selectedPeriod);
 //    }
 

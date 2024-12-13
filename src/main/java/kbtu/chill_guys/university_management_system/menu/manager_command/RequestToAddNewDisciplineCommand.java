@@ -1,6 +1,5 @@
 package main.java.kbtu.chill_guys.university_management_system.menu.manager_command;
 
-import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Status;
 import main.java.kbtu.chill_guys.university_management_system.menu.Command;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.storage.DisciplineStatusStorage;
@@ -17,7 +16,7 @@ public class RequestToAddNewDisciplineCommand implements Command {
     public void execute() {
         Discipline discipline = view.getNewDisciplineInput();
         disciplineStatusStorage.setStatus(discipline, PENDING_APPROVAL);
-        view.showRequestSentConfirmation(discipline);
+        view.showRequestSentConfirmation();
 
     }
 }
