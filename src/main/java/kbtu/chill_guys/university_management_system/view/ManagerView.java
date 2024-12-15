@@ -46,6 +46,7 @@ public class ManagerView {
             post.setAuthor(loggedUser);
         } else {
             System.out.println("No logged-in user found. Unable to set author.");
+            return null;
         }
 
         post.setDate(LocalDate.now());
