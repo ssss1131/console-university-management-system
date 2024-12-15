@@ -2,7 +2,6 @@ package main.java.kbtu.chill_guys.university_management_system.service;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.LogPeriod;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
-import main.java.kbtu.chill_guys.university_management_system.repository.GeneralRepository;
 
 import main.java.kbtu.chill_guys.university_management_system.repository.LogRepository;
 
@@ -15,7 +14,7 @@ import java.util.logging.Logger;
 
 
 public class AdminService {
-    private final GeneralRepository generalRepository = new UserRepository();
+    private final UserRepository userRepository = new UserRepository();
     private static final Logger logger = Logger.getLogger(AdminService.class.getName());
     private final LogRepository logRepository = new LogRepository();
 
@@ -24,19 +23,19 @@ public class AdminService {
     }
 
     public void createUser(User user) {
-        generalRepository.save(user);
+        userRepository.save(user);
         logger.info("Saved new user: " + user.getEmail());
     }
 
     public void modifyUser(User user) {
-        generalRepository.save(user);
+        userRepository.save(user);
     }
 
     public void removeUser(UUID id) {
-        generalRepository.delete(id);
+        userRepository.delete(id);
     }
 
     public boolean isExistingUser(UUID id) {
-        return generalRepository.findById(id) != null;
+        return userRepository.findById(id) != null;
     }
 }

@@ -7,13 +7,11 @@ import java.util.Vector;
 
 import static main.java.kbtu.chill_guys.university_management_system.util.Constant.USERS_PATH;
 
-public class UserRepository extends AbstractRepository<User> implements GeneralRepository {
+public class UserRepository extends AbstractRepository<User> {
 
     public UserRepository() {
         super(USERS_PATH);
     }
-
-    @Override
     public User findById(UUID id) {
         return getAllLines().stream()
                 .filter(user -> user.getId().equals(id))
@@ -28,7 +26,7 @@ public class UserRepository extends AbstractRepository<User> implements GeneralR
                 .orElse(null);
     }
 
-    @Override
+
     public void save(User user) {
         //TODO надо валидацию добавить что login уникальный
 //        Vector<User> users = getAllLines();
@@ -37,14 +35,14 @@ public class UserRepository extends AbstractRepository<User> implements GeneralR
         addLine(user);
     }
 
-    @Override
+
     public void delete(UUID id) {
         Vector<User> users = getAllLines();
         users.removeIf(user -> user.getId().equals(id));
         saveAllLines(users);
     }
 
-    @Override
+
     public Vector<User> findAll() {
         return getAllLines();
     }

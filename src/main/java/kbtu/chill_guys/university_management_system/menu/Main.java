@@ -3,11 +3,14 @@ package main.java.kbtu.chill_guys.university_management_system.menu;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.menu.admin_command.DeleteUserCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.admin_command.GetLogsCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.dean_command.ApproveNewDisciplineCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.general_command.LogoutCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.admin_command.CreateUserCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.admin_command.UpdateUserCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.general_command.LoginCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.manager_command.AddNewsCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.manager_command.FinalizeApprovedDisciplinesCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.manager_command.RequestToAddNewDisciplineCommand;
 import main.java.kbtu.chill_guys.university_management_system.util.LoggerUtil;
 import main.java.kbtu.chill_guys.university_management_system.menu.journal_command.CreateJournalCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.journal_command.DeleteJournalCommand;
@@ -31,7 +34,9 @@ public class Main {
         menu.registerCommand("Publish post", new PublishPostCommand(), UserRole.MANAGER);
 
         menu.registerCommand("Add news", new AddNewsCommand(), UserRole.MANAGER);
-
+        menu.registerCommand("create discipline", new RequestToAddNewDisciplineCommand(), UserRole.MANAGER);
+        menu.registerCommand("finalize approved disciplines", new FinalizeApprovedDisciplinesCommand(), UserRole.MANAGER);
+        menu.registerCommand("approve new disciplines", new ApproveNewDisciplineCommand(), UserRole.DEAN);
         menu.run();
     }
 }

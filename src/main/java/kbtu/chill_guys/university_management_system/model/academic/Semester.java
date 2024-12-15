@@ -5,24 +5,19 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.evalua
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Semester implements Serializable {
-    private int yearStart;
-    private int yearEnd;
-    private Period period;
+public class Semester implements Serializable, Comparable<Semester> {
+    private final int year;
+    private final Period period;
 
-    public Semester(int yearStart, int yearEnd, Period period) {
-        this.yearStart = yearStart;
-        this.yearEnd = yearEnd;
+    public Semester(int year, Period period) {
+        this.year = year;
         this.period = period;
     }
 
-    public int getYearStart() {
-        return yearStart;
+    public int getYear() {
+        return year;
     }
 
-    public int getYearEnd() {
-        return yearEnd;
-    }
 
     public Period getPeriod() {
         return period;
@@ -30,7 +25,7 @@ public class Semester implements Serializable {
 
     @Override
     public String toString() {
-        return yearStart + "-" + yearEnd + " " + period;
+        return year + " " + period;
     }
 
     @Override
@@ -38,12 +33,25 @@ public class Semester implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Semester semester = (Semester) o;
-        return yearStart == semester.yearStart && yearEnd == semester.yearEnd && period.equals(semester.period);
+        return year == semester.year && period == semester.period;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(yearStart, yearEnd, period);
+        return Objects.hash(year, period);
     }
+
+    @Override
+    public int compareTo(Semester semester) {
+
+        if (this.year != semester.year) {
+            return Integer.compare(this.year, semester.year);
+        }
+
+        return this.period == semester.period ? 0 :
+                this.period == Period.FALL ? 1 : -1;
+
+    }
+
 }
 
