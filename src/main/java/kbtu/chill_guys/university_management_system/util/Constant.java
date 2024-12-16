@@ -12,6 +12,8 @@ public class Constant {
     public static final Path POST_PATH = Paths.get("media_db", "post.ser");
     public static final Path LOG_FILE_PATH = Path.of("logs", "application.log.0");
     public static final Path DISCIPLINE_STATUS_PATH = Paths.get("academic_db","discipline_status.ser");
+    public static final Path STUDENT_DISCIPLINE_PATH = Paths.get("academic_db", "student_discipline.ser");
+    public static final Path DISCIPLINE_REGISTRATION_PATH = Paths.get("academic_db", "discipline_registration.ser");
 
     public static final String USER_ROLE_ATTRIBUTE = "role";
     public static final String EMAIL_ATTRIBUTE = "email";

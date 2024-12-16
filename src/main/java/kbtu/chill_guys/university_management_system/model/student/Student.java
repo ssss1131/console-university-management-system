@@ -1,6 +1,8 @@
 package main.java.kbtu.chill_guys.university_management_system.model.student;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Gpa;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Program;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.StudentRole;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
@@ -14,7 +16,7 @@ import main.java.kbtu.chill_guys.university_management_system.util.NumericToEnum
 import java.time.LocalDate;
 import java.util.*;
 
-public class Student extends User implements CanViewCourses, CanBeResearcher, CanViewMarks, CanViewTeachers {
+public abstract class Student extends User implements CanViewCourses, CanBeResearcher, CanViewMarks, CanViewTeachers {
     private School school;
     private LocalDate enrollmentDate;
     private double gpaNumeric;
@@ -102,20 +104,10 @@ public class Student extends User implements CanViewCourses, CanBeResearcher, Ca
         this.gpa = NumericToEnumMapper.mapGpa(gpaNumeric);
     }
 
+    public abstract Program getProgram();
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Student student = (Student) o;
-        return Double.compare(gpaNumeric, student.gpaNumeric) == 0 && school == student.school && Objects.equals(enrollmentDate, student.enrollmentDate) && gpa == student.gpa && Objects.equals(credits, student.credits) && Objects.equals(studyDuration, student.studyDuration) && Objects.equals(organization, student.organization);
-    }
+    public abstract StudentRole getStudentRole();
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), school, enrollmentDate, gpaNumeric, gpa, credits, studyDuration, organization);
-    }
 
 
     @Override
@@ -131,42 +123,4 @@ public class Student extends User implements CanViewCourses, CanBeResearcher, Ca
                "} " + super.toString();
     }
 
-    public boolean registerForCourse() {
-        //TODO
-        return false;
-    }
-
-    public boolean dropCourse() {
-        //TODO
-        return false;
-    }
-
-    public void rateTeacher() {
-        //TODO
-    }
-
-    public Transcript viewTranscript() {
-        //TODO
-        return null;
-    }
-
-    public boolean joinOrganization() {
-        //TODO
-        return false;
-    }
-
-    public boolean leaveOrganization() {
-        //TODO
-        return false;
-    }
-
-//    public Map<Course, Integer> viewAttendance() {
-//        //TODO
-//        return null;
-//    }
-
-    public String viewAcademicStanding() {
-        //TODO
-        return "";
-    }
 }

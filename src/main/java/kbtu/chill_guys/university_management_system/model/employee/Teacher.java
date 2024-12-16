@@ -57,20 +57,6 @@ public class Teacher extends Employee implements CanViewStudents {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Teacher teacher = (Teacher) o;
-        return rating == teacher.rating && school == teacher.school && teachingDegree == teacher.teachingDegree && Objects.equals(disciplines, teacher.disciplines);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), rating, school, teachingDegree, disciplines);
-    }
-
-    @Override
     public String toString() {
         return "Teacher{" +
                "rating=" + rating +

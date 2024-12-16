@@ -61,8 +61,7 @@ public class AdminView {
         System.out.println("Enter enrollment date (yyyy-MM-dd):");
         data.put(ENROLLMENT_DATE_ATTRIBUTE, validateDateInput("Invalid date format. Please enter a valid date."));
 
-        System.out.println("Enter credits:");
-        data.put(CREDITS_ATTRIBUTE, validateIntegerInput("Credits must be a positive integer", 0, Integer.MAX_VALUE));
+        data.put(CREDITS_ATTRIBUTE, 0);
 
         System.out.println("Enter study duration (years):");
         data.put(STUDY_DURATION_ATTRIBUTE, validateIntegerInput("Study duration must be a positive integer", 0, Integer.MAX_VALUE));

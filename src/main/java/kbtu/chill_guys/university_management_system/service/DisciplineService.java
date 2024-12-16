@@ -23,4 +23,8 @@ public class DisciplineService {
                 .findFirst();
         return first.isEmpty();
     }
+
+    public List<Discipline> getAllDisciplines(){
+        return disciplineRepository.getAll();
+    }
 }

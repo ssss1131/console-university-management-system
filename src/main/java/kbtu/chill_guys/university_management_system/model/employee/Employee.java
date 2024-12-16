@@ -42,20 +42,6 @@ public abstract class Employee extends User implements CanViewCourses, CanBeRese
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Employee employee = (Employee) o;
-        return Objects.equals(salary, employee.salary);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), salary);
-    }
-
-    @Override
     public String toString() {
         return "Employee{" +
                "salary=" + salary +

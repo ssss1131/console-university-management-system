@@ -1,46 +1,18 @@
 package main.java.kbtu.chill_guys.university_management_system.service;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.evaluation.Period;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
+import main.java.kbtu.chill_guys.university_management_system.menu.Menu;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
-import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
-import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 import main.java.kbtu.chill_guys.university_management_system.repository.DisciplineRepository;
+import main.java.kbtu.chill_guys.university_management_system.storage.DisciplineRegistrationStorage;
 
-import java.time.LocalDate;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class StudentService {
-    private final DisciplineRepository disiplineRepository = new DisciplineRepository();
 
-
-    public Vector<Transcript> showTranscript() {
-        //TODO
-        return null;
-    }
-
-    public Vector<Organization> showOrganizations() {
-        //TODO
-        return null;
-    }
-
-    public Vector<Teacher> showTeachers() {
-        //TODO
-        return null;
-    }
-
-    public Map<LocalDate, Boolean> showAttendace() {
-        //TODO
-        return null;
-    }
-
-    public int showAcademicStanding() {
-        //TODO
-        return 0;
-    }
+    private final DisciplineRepository disciplineRepository = new DisciplineRepository();
+    private final Student student = (Student) Menu.getInstance().getLoggedUser();
 
 
     public boolean isYearValid(Student student, String selectedYear) {
@@ -64,7 +36,7 @@ public class StudentService {
 
 
     public List<String> getDisciplineByYearAndPeriod(Student student, String year, Period period) {
-        return disiplineRepository.findCoursesByYearAndPeriod(year, period);
+        return disciplineRepository.findCoursesByYearAndPeriod(year, period);
     }
     
     
