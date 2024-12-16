@@ -2,6 +2,8 @@ package main.java.kbtu.chill_guys.university_management_system.model.student;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Gpa;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.MasterProgram;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Program;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.StudentRole;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
@@ -33,18 +35,15 @@ public class Master extends GraduateStudent {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Master master = (Master) o;
-        return masterProgram == master.masterProgram;
+    public Program getProgram() {
+        return masterProgram;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), masterProgram);
+    public StudentRole getStudentRole() {
+        return StudentRole.MASTER;
     }
+
 
     @Override
     public String toString() {

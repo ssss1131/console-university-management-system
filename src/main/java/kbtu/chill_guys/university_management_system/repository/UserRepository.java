@@ -29,9 +29,6 @@ public class UserRepository extends AbstractRepository<User> {
 
     public void save(User user) {
         //TODO надо валидацию добавить что login уникальный
-//        Vector<User> users = getAllLines();
-//        users.removeIf(existingUser -> existingUser.getId().equals(user.getId())); //TODO UUID всегда уникальный есть ли смысл в этом коде?
-//        users.add(user);
         addLine(user);
     }
 

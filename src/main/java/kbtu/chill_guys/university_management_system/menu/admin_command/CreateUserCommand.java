@@ -20,4 +20,6 @@ public class CreateUserCommand implements Command {
 
         view.displayUserCreated(user);
     }
+
+
 }

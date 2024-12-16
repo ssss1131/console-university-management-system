@@ -100,11 +100,11 @@ public abstract class User implements Serializable, Subscriber {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && role == user.role && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(salt, user.salt) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(notifications, user.notifications);
+        return Objects.equals(id, user.id) && Objects.equals(email, user.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, role, email, password, salt, firstName, lastName, notifications);
+        return Objects.hash(id, email);
     }
 }

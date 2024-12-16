@@ -1,6 +1,8 @@
 package main.java.kbtu.chill_guys.university_management_system.model.student;
 
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Program;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Specialization;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.StudentRole;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Gpa;
@@ -17,6 +19,16 @@ public class Bachelor extends Student {
     private Specialization specialization;
 
     public Bachelor() {
+    }
+
+    @Override
+    public Program getProgram() {
+        return specialization;
+    }
+
+    @Override
+    public StudentRole getStudentRole() {
+        return StudentRole.BACHELOR;
     }
 
     public Bachelor(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName,
@@ -42,19 +54,6 @@ public class Bachelor extends Student {
         this.specialization = specialization;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Bachelor bachelor = (Bachelor) o;
-        return specialization == bachelor.specialization;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), specialization);
-    }
 
     @Override
     public String toString() {

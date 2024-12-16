@@ -17,6 +17,5 @@ public class RequestToAddNewDisciplineCommand implements Command {
         Discipline discipline = view.getNewDisciplineInput();
         disciplineStatusStorage.setStatus(discipline, PENDING_APPROVAL);
         view.showRequestSentConfirmation();
-
     }
 }

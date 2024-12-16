@@ -18,8 +18,9 @@ import static main.java.kbtu.chill_guys.university_management_system.util.Consta
 public class DisciplineStatusStorage implements Serializable {
 
     private static final Path PATH = BASE_PATH.resolve(DISCIPLINE_STATUS_PATH);
-    private static DisciplineStatusStorage instance;
     private static final Logger logger = Logger.getLogger(DisciplineStatusStorage.class.getName());
+
+    private static DisciplineStatusStorage instance;
 
     private final Map<Discipline, Status> disciplineStatuses = new HashMap<>();
 

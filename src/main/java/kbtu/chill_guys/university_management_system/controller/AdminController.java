@@ -8,10 +8,7 @@ import main.java.kbtu.chill_guys.university_management_system.service.AdminServi
 import main.java.kbtu.chill_guys.university_management_system.util.Constant;
 import main.java.kbtu.chill_guys.university_management_system.util.PasswordUtil;
 
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import java.util.Vector;
+import java.util.*;
 
 import static main.java.kbtu.chill_guys.university_management_system.util.Constant.*;
 

@@ -40,19 +40,6 @@ public class Professor extends Teacher implements Researcher {
         this.researchPapers = researchPapers;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Professor professor = (Professor) o;
-        return Objects.equals(researchProjects, professor.researchProjects) && Objects.equals(researchPapers, professor.researchPapers);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), researchProjects, researchPapers);
-    }
 
     @Override
     public String toString() {

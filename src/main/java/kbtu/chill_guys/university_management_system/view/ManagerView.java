@@ -10,14 +10,17 @@ import main.java.kbtu.chill_guys.university_management_system.model.academic.Dis
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
 import main.java.kbtu.chill_guys.university_management_system.service.DisciplineService;
+import main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static main.java.kbtu.chill_guys.university_management_system.util.Constant.CANCEL_INPUT;
 import static main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil.selectEnum;
 import static main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil.selectMultipleEnums;
+import static main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil.validateIntegerInput;
 
 public class ManagerView {
     private final Scanner scanner = new Scanner(System.in);
@@ -101,10 +104,10 @@ public class ManagerView {
         School school = selectEnum(School.class);
 
         System.out.println("Enter discipline credits:");
-        int credits = InputValidatorUtil.validateIntegerInput("Credits must be a positive integer.", 1, 6);
+        int credits = validateIntegerInput("Credits must be a positive integer.", 1, 6);
 
         System.out.println("Enter semester year:");
-        int yearStart = InputValidatorUtil.validateIntegerInput("Year must be a valid positive number.", 2001, 2100);
+        int yearStart = validateIntegerInput("Year must be a valid positive number.", 2001, 2100);
 
         System.out.println("Select semester period:");
         Period period = selectEnum(Period.class);
@@ -223,4 +226,132 @@ public class ManagerView {
         }
     }
 
+
+
+
+    public Semester getSemesterInput() {
+        System.out.println("Enter year (e.g., 2023): ");
+        int year = validateIntegerInput("Year must be a valid positive number.", 2001, 2100);
+        System.out.println("Select semester period (SPRING/FALL): ");
+        Period period = EnumSelectionUtil.selectEnum(Period.class);
+        return new Semester(year, period);
+    }
+
+    public StudentRole getStudentRoleInput() {
+        System.out.println("Select student role:");
+        return EnumSelectionUtil.selectEnum(StudentRole.class);
+    }
+
+    public int getCourseInput() {
+        System.out.println("Enter course number (e.g., 1): ");
+        return validateIntegerInput("Course number must be a positive integer.", 1, 7);
+    }
+
+    public List<Discipline> selectDisciplinesForCourse(List<Discipline> availableDisciplines) {
+        if (availableDisciplines.isEmpty()) {
+            System.out.println("No available disciplines to assign to the course.");
+            return new ArrayList<>();
+        }
+
+        System.out.println("Available disciplines:");
+        for (int i = 0; i < availableDisciplines.size(); i++) {
+            Discipline discipline = availableDisciplines.get(i);
+            System.out.printf("%d. %s (Code: %s, Credits: %d)%n",
+                    i + 1, discipline.getName(), discipline.getCode(), discipline.getCredits());
+        }
+
+        while (true) {
+            try {
+                System.out.println("Enter the numbers of disciplines to assign to the course (comma-separated):");
+                String[] input = scanner.nextLine().split(",");
+
+                List<Discipline> selectedDisciplines = Arrays.stream(input)
+                        .map(String::trim)
+                        .mapToInt(Integer::parseInt)
+                        .filter(index -> index >= 1 && index <= availableDisciplines.size())
+                        .mapToObj(index -> availableDisciplines.get(index - 1))
+                        .collect(Collectors.toList());
+
+                if (selectedDisciplines.isEmpty()) {
+                    System.out.println("No disciplines selected. Please choose at least one discipline.");
+                    continue;
+                }
+
+                return selectedDisciplines;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter numbers separated by commas.");
+            }
+        }
+    }
+
+
+    public Program selectProgram(StudentRole role){
+        System.out.println("Select programs for whom will open registration: ");
+        switch (role){
+            case BACHELOR -> {
+                return selectEnum(Specialization.class);
+            }
+            case MASTER -> {
+                return selectEnum(MasterProgram.class);
+            }
+            case PHD -> {
+                return selectEnum(PhdProgram.class);
+            }
+        }
+        throw new IllegalArgumentException("not existing role");
+    }
+
+    public void showRegistrationInfo(Map<Integer, Map<StudentRole, Map<Program, List<Discipline>>>> registrationMap, Semester semester) {
+        if(semester!=null){
+            showSemesterInfo(semester);
+        }
+
+        if (registrationMap.isEmpty()) {
+            System.out.println("No registration information available.");
+            return;
+        }
+
+        System.out.println("=== Registration Information ===");
+        for (Map.Entry<Integer, Map<StudentRole, Map<Program, List<Discipline>>>> courseEntry : registrationMap.entrySet()) {
+            int course = courseEntry.getKey();
+            System.out.println("\nCourse: " + course);
+
+            Map<StudentRole, Map<Program, List<Discipline>>> roleMap = courseEntry.getValue();
+            for (Map.Entry<StudentRole, Map<Program, List<Discipline>>> roleEntry : roleMap.entrySet()) {
+                StudentRole role = roleEntry.getKey();
+                System.out.println("  Role: " + role);
+
+                Map<Program, List<Discipline>> programMap = roleEntry.getValue();
+                for (Map.Entry<Program, List<Discipline>> programEntry : programMap.entrySet()) {
+                    Program program = programEntry.getKey();
+                    System.out.println("    Program: " + program);
+
+                    List<Discipline> disciplines = programEntry.getValue();
+                    if (disciplines.isEmpty()) {
+                        System.out.println("      No disciplines registered.");
+                    } else {
+                        System.out.println("      Disciplines:");
+                        for (Discipline discipline : disciplines) {
+                            System.out.printf("        - Code: %s, Name: %s, Credits: %d, Semester: %s%n",
+                                    discipline.getCode(), discipline.getName(), discipline.getCredits(), discipline.getSemester());
+                        }
+                    }
+                }
+            }
+        }
+        System.out.println("================================");
+    }
+
+    public void showSemesterInfo(Semester semester) {
+        System.out.println("Registration is open for " + semester);
+    }
+
+    public void showSuccessClosingRegistration(Semester semester) {
+        if(semester == null){
+            System.out.println("registration already closed!");
+        }else {
+            System.out.println("Registration for " + semester + " successfully closed!");
+        }
+
+    }
 }

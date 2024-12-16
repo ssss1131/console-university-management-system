@@ -1,6 +1,8 @@
 package main.java.kbtu.chill_guys.university_management_system.model.student;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.PhdProgram;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Program;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.StudentRole;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
@@ -32,17 +34,13 @@ public class PHD extends GraduateStudent {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        PHD phd = (PHD) o;
-        return phdProgram == phd.phdProgram;
+    public Program getProgram() {
+        return phdProgram;
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), phdProgram);
+    public StudentRole getStudentRole() {
+        return StudentRole.PHD;
     }
 
     @Override

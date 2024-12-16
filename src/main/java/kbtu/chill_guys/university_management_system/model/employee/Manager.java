@@ -29,19 +29,6 @@ public class Manager extends Employee implements CanViewRequests, CanViewTeacher
         this.managerType = managerType;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Manager manager = (Manager) o;
-        return managerType == manager.managerType;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), managerType);
-    }
 
     @Override
     public String toString() {

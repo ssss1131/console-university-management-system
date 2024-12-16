@@ -51,20 +51,6 @@ public abstract class GraduateStudent extends Student implements Researcher {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        GraduateStudent that = (GraduateStudent) o;
-        return Objects.equals(project, that.project) && Objects.equals(researchProjects, that.researchProjects) && Objects.equals(researchPapers, that.researchPapers);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), project, researchProjects, researchPapers);
-    }
-
-    @Override
     public String toString() {
         return "GraduateStudent{" +
                "project=" + project +
