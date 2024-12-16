@@ -35,25 +35,25 @@ public class ManagerView {
         //TODO
     }
 
-    public Post getPostInput() {
-        Post post = new Post();
+    public Map<String, Object> getPostInput() {
+        Map<String, Object> data = new HashMap<>();
 
         System.out.println("Enter post title:");
-        post.setTitle(scanner.nextLine());
+        data.put("title", scanner.nextLine());
 
         System.out.println("Enter post content:");
-        post.setContent(scanner.nextLine());
+        data.put("content", scanner.nextLine());
 
         User loggedUser = Menu.getInstance().getLoggedUser();
         if (loggedUser != null) {
-            post.setAuthor(loggedUser);
+            data.put("author", loggedUser);
         } else {
             System.out.println("No logged-in user found. Unable to set author.");
             return null;
         }
 
-        post.setDate(LocalDate.now());
-        return post;
+        data.put("date", LocalDate.now());
+        return data;
     }
 
     public void displayPostAdded(Post post) {

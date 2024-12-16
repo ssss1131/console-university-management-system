@@ -15,6 +15,11 @@ public class AddNewsCommand implements Command {
     public void execute() {
         Map<String, Object> data = view.getPostInput();
 
+        if (data == null) {
+            System.out.println("Failed to create post. Please ensure you are logged in.");
+            return;
+        }
+
         Post post = controller.createPost(data);
 
         view.displayPostAdded(post);
