@@ -26,6 +26,8 @@ public class Main {
         menu.registerCommand("Login", new LoginCommand());
         menu.registerCommand("Logout", new LogoutCommand());
 
+
+
         menu.registerCommand("Get logs", new GetLogsCommand(), UserRole.ADMIN);
         menu.registerCommand("Create new user", new CreateUserCommand(), UserRole.ADMIN);
         menu.registerCommand("Update user", new UpdateUserCommand(), UserRole.ADMIN);

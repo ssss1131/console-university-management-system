@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.Vector;
 
 public class ApproveNewDisciplineCommand implements Command {
-
     private final DisciplineStatusStorage disciplineStatusStorage = DisciplineStatusStorage.getInstance();
     private final DeanView deanView = new DeanView();
 
