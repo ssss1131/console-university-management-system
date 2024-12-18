@@ -2,29 +2,20 @@ package main.java.kbtu.chill_guys.university_management_system.view;
 
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 
-import java.util.Scanner;
 import java.util.UUID;
 
-public class JournalView {
-    private final Scanner scanner = new Scanner(System.in);
+public interface JournalView {
+    String getJournalName();
 
-    public String getJournalName() {
-        System.out.println("Enter journal name: ");
-        return scanner.nextLine();
-    }
+    UUID getJournalId();
 
-    public UUID getJournalId() {
-        System.out.println("Enter journal ID: ");
-        return UUID.fromString(scanner.nextLine());
-    }
+    Post getPostInput();
 
-    public Post getPostInput() {
-        System.out.println("Enter post content: ");
-        String content = scanner.nextLine();
-        return new Post(); // assuming Post has a constructor that accepts content
-    }
+    void displayMessage(String message);
 
-    public void displayMessage(String message) {
-        System.out.println(message);
-    }
+    void postPublished();
+
+    void journalCreated(UUID id);
+
+    void journalDeleted();
 }

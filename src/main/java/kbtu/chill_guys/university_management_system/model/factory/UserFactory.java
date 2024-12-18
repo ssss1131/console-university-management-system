@@ -1,9 +1,11 @@
-package main.java.kbtu.chill_guys.university_management_system.model;
+package main.java.kbtu.chill_guys.university_management_system.model.factory;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.*;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.ManagerType;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
+import main.java.kbtu.chill_guys.university_management_system.model.Admin;
+import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Dean;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Manager;

@@ -55,7 +55,7 @@ public final class InputValidatorUtil {
             try {
                 System.out.println("Enter date (yyyy-MM-dd):");
                 String input = scanner.nextLine().trim();
-                LocalDate.parse(input); // Проверка формата и допустимости даты
+                LocalDate.parse(input);
                 return input;
             } catch (Exception e) {
                 System.out.println(errorMessage);
