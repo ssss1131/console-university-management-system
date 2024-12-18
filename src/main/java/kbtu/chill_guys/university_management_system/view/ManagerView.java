@@ -17,7 +17,7 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static main.java.kbtu.chill_guys.university_management_system.util.Constant.CANCEL_INPUT;
+import static main.java.kbtu.chill_guys.university_management_system.util.Constant.*;
 import static main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil.selectEnum;
 import static main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil.selectMultipleEnums;
 import static main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil.validateIntegerInput;
@@ -39,20 +39,20 @@ public class ManagerView {
         Map<String, Object> data = new HashMap<>();
 
         System.out.println("Enter post title:");
-        data.put("title", scanner.nextLine());
+        data.put(TITLE_ATTRIBUTE, scanner.nextLine());
 
         System.out.println("Enter post content:");
-        data.put("content", scanner.nextLine());
+        data.put(CONTENT_ATTRIBUTE, scanner.nextLine());
 
         User loggedUser = Menu.getInstance().getLoggedUser();
         if (loggedUser != null) {
-            data.put("author", loggedUser);
+            data.put(AUTHOR_ATTRIBUTE, loggedUser);
         } else {
             System.out.println("No logged-in user found. Unable to set author.");
             return null;
         }
 
-        data.put("date", LocalDate.now());
+        data.put(DATE_ATTRIBUTE, LocalDate.now());
         return data;
     }
 

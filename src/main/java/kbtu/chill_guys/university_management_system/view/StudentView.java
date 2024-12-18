@@ -94,9 +94,12 @@ public class StudentView {
     }
 
 
-    public void showMessage(String message){
-        System.out.println(message);
+    public void showClosedRegistrationInfo(){
+        System.out.println("Registration is closed!");
+    }
 
+    public void showNoneAvailableDisciplines(){
+        System.out.println("No available disciplines for registration.");
     }
 
 

@@ -22,7 +22,7 @@ public class RegisterToSemesterCommand implements Command {
 
         boolean haveOpenedRegistration = disciplineRegistrationService.haveOpenedRegistration();
         if (!haveOpenedRegistration) {
-            studentView.showMessage("Registration is closed!");
+            studentView.showClosedRegistrationInfo();
             return;
         }
 
@@ -32,7 +32,7 @@ public class RegisterToSemesterCommand implements Command {
                 student, semester);
 
         if (availableDisciplines==null || availableDisciplines.isEmpty()) {
-            studentView.showMessage("No available disciplines for registration.");
+            studentView.showNoneAvailableDisciplines();
             return;
         }
         studentView.displayAvailableDisciplines(availableDisciplines);
