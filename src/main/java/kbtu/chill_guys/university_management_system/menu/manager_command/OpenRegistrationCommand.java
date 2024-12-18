@@ -2,21 +2,25 @@ package main.java.kbtu.chill_guys.university_management_system.menu.manager_comm
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Program;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.StudentRole;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.util.Language;
 import main.java.kbtu.chill_guys.university_management_system.menu.Command;
+import main.java.kbtu.chill_guys.university_management_system.menu.Menu;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
+import main.java.kbtu.chill_guys.university_management_system.model.factory.ViewFactory;
 import main.java.kbtu.chill_guys.university_management_system.service.DisciplineRegistrationService;
 import main.java.kbtu.chill_guys.university_management_system.view.ManagerView;
 
 import java.util.List;
 
 public class OpenRegistrationCommand implements Command {
-
-    private final ManagerView view = new ManagerView();
     private final DisciplineRegistrationService service = new DisciplineRegistrationService();
 
     @Override
     public void execute() {
+        Language currentLanguage = Menu.getInstance().getLanguage();
+        ManagerView view = ViewFactory.getManagerView(currentLanguage);
+
         Semester semester;
         if(!service.haveOpenedRegistration()){
             semester = view.getSemesterInput();

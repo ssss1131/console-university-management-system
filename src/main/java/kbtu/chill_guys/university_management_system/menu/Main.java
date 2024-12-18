@@ -17,6 +17,7 @@ import main.java.kbtu.chill_guys.university_management_system.util.LoggerUtil;
 import main.java.kbtu.chill_guys.university_management_system.menu.journal_command.CreateJournalCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.journal_command.DeleteJournalCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.journal_command.PublishPostCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.setting_command.SelectLanguageCommand;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,7 +27,8 @@ public class Main {
         menu.registerCommand("Login", new LoginCommand());
         menu.registerCommand("Logout", new LogoutCommand());
 
-
+        menu.registerCommand("Select language", new SelectLanguageCommand(), UserRole.ADMIN, UserRole.BACHELOR,
+                UserRole.DEAN, UserRole.MANAGER, UserRole.MASTER, UserRole.PHD, UserRole.TEACHER, UserRole.PROFESSOR);
 
         menu.registerCommand("Get logs", new GetLogsCommand(), UserRole.ADMIN);
         menu.registerCommand("Create new user", new CreateUserCommand(), UserRole.ADMIN);
