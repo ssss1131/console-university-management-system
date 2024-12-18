@@ -26,8 +26,12 @@ public class GetStudentRegistrationInfoCommand implements Command {
         Student student = (Student) Menu.getInstance().getLoggedUser();
 
         Semester semester = disciplineRegistrationService.getSemester();
-        List<Discipline> disciplines = storage.getDisciplines(student, semester);
-        view.showRegisteredDisciplines(disciplines, semester);
+        if(semester!=null){
+            List<Discipline> disciplines = storage.getDisciplines(student, semester);
+            view.showRegisteredDisciplines(disciplines, semester);
+        }else{
+            view.showClosedRegistrationInfo();
+        }
 
     }
 }

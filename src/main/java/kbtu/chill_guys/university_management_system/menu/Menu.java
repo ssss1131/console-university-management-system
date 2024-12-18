@@ -8,6 +8,9 @@ import main.java.kbtu.chill_guys.university_management_system.util.CommandSelect
 import java.util.*;
 import java.util.logging.Logger;
 
+import static main.java.kbtu.chill_guys.university_management_system.service.ResearcherService.isResearcher;
+import static main.java.kbtu.chill_guys.university_management_system.util.Constant.researcherMethods;
+
 public class Menu {
     private static final Menu INSTANCE = new Menu();
     private static final Logger LOGGER = Logger.getLogger(Menu.class.getName());
@@ -75,6 +78,9 @@ public class Menu {
                     .filter(cmd -> !cmd.equalsIgnoreCase("login"))
                     .filter(this::isAuthorized)
                     .forEach(availableCommands::add);
+            if(isResearcher(loggedUser)){
+                availableCommands.addAll(researcherMethods);
+            }
         }
         return availableCommands;
     }
@@ -96,6 +102,7 @@ public class Menu {
                 return true;
             }
         }
-        return false;
+        return isResearcher(loggedUser) && researcherMethods.contains(commandName);
     }
+
 }
