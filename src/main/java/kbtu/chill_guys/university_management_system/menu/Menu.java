@@ -3,12 +3,12 @@ package main.java.kbtu.chill_guys.university_management_system.menu;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.Language;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
+import main.java.kbtu.chill_guys.university_management_system.service.ResearcherService;
 import main.java.kbtu.chill_guys.university_management_system.util.CommandSelectionUtil;
 
 import java.util.*;
 import java.util.logging.Logger;
 
-import static main.java.kbtu.chill_guys.university_management_system.service.ResearcherService.isResearcher;
 import static main.java.kbtu.chill_guys.university_management_system.util.Constant.researcherMethods;
 
 public class Menu {
@@ -68,19 +68,22 @@ public class Menu {
     private List<String> displayAvailableCommands() {
         System.out.println("Current language: " + language);
         List<String> availableCommands = new ArrayList<>();
+
         if (loggedUser == null) {
             commands.keySet().stream()
                     .filter(cmd -> cmd.equalsIgnoreCase("login"))
                     .forEach(availableCommands::add);
         } else {
             System.out.println("Current user: " + loggedUser.getFirstName() + " " + loggedUser.getLastName());
+
+            boolean isResearcher = ResearcherService.getInstance().isResearcher(loggedUser);
+
             commands.keySet().stream()
                     .filter(cmd -> !cmd.equalsIgnoreCase("login"))
                     .filter(this::isAuthorized)
+                    .filter(cmd -> isResearcher || !researcherMethods.contains(cmd))
+                    .filter(cmd -> !(cmd.equalsIgnoreCase("i want to be researcher!!") && isResearcher))
                     .forEach(availableCommands::add);
-            if(isResearcher(loggedUser)){
-                availableCommands.addAll(researcherMethods);
-            }
         }
         return availableCommands;
     }
@@ -102,7 +105,7 @@ public class Menu {
                 return true;
             }
         }
-        return isResearcher(loggedUser) && researcherMethods.contains(commandName);
+        return false;
     }
 
 }

@@ -7,7 +7,6 @@ import main.java.kbtu.chill_guys.university_management_system.model.student.Stud
 import main.java.kbtu.chill_guys.university_management_system.permission.CanBeResearcher;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewCourses;
 
-import java.util.Objects;
 import java.util.UUID;
 import java.util.Vector;
 

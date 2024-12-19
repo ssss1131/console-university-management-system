@@ -12,6 +12,17 @@ public class ResearcherView {
     public void displayInfoAboutResearcher() {
         //TODO
     }
-    
-    
+
+
+    public void displayInvalidUser() {
+        System.out.println("you cant be researcher((");
+    }
+
+    public void displaySuccessBecomingResearcher() {
+        System.out.println("now you are researcher!!");
+    }
+
+    public void displayAlreadyIsResearcher() {
+        System.out.println("you are already a researcher\uD83E\uDD14");
+    }
 }

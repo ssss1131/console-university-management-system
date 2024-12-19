@@ -1,7 +1,10 @@
 package main.java.kbtu.chill_guys.university_management_system.util;
 
+import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -42,11 +45,18 @@ public final class Constant {
     public static final String AUTHOR_ATTRIBUTE = "author";
     public static final String DATE_ATTRIBUTE = "date";
 
+    public static final List<String> researcherMethods = List.of("get my research papers");
+    public static final UserRole[] ALL_RESEARCH_ROLES = {
+            UserRole.BACHELOR,
+            UserRole.MASTER,
+            UserRole.PHD,
+            UserRole.PROFESSOR,
+            UserRole.RESEARCH_SUPERVISOR,
+            UserRole.MANAGER,
+            UserRole.TEACHER
+    };
 
     public static final String CANCEL_INPUT = "cancel";
-
-
-    public static final  List<String> researcherMethods = List.of("");//TODO
     public static final Integer MIN_H_INDEX = 3;
     public static final Pattern EMAIL_PATTERN = Pattern.compile(
             "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$"

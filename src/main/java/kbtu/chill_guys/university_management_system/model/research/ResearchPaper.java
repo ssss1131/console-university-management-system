@@ -96,12 +96,4 @@ public class ResearchPaper implements Serializable {
                ", publicationDate=" + publicationDate +
                '}';
     }
-
-    public String getCitation() {
-        //TODO
-        return "";
-    }
-    public void addAuthor() {
-        //TODO
-    }
 }
