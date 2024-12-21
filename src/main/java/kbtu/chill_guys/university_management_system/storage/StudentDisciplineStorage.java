@@ -3,6 +3,7 @@ package main.java.kbtu.chill_guys.university_management_system.storage;
 import main.java.kbtu.chill_guys.university_management_system.exception.DataPersistenceException;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 
 import java.io.*;
@@ -21,6 +22,7 @@ public class StudentDisciplineStorage implements Serializable {
     private static StudentDisciplineStorage instance;
 
     private final Map<Student, Map<Semester, List<Discipline>>> studentDisciplineHistory = new HashMap<>();
+    private final TeacherDisciplineStorage teacherDisciplineStorage = TeacherDisciplineStorage.getInstance();
 
     private StudentDisciplineStorage(){
     }
@@ -64,13 +66,13 @@ public class StudentDisciplineStorage implements Serializable {
         return new StudentDisciplineStorage();
     }
 
-    public void addDiscipline(Student student, Semester semester, Discipline discipline) {
-        studentDisciplineHistory
-                .computeIfAbsent(student, k -> new HashMap<>())
-                .computeIfAbsent(semester, k -> new ArrayList<>())
-                .add(discipline);
-        saveToFile();
-    }
+//    public void addDiscipline(Student student, Semester semester, Discipline discipline) {
+//        studentDisciplineHistory
+//                .computeIfAbsent(student, k -> new HashMap<>())
+//                .computeIfAbsent(semester, k -> new ArrayList<>())
+//                .add(discipline);
+//        saveToFile();
+//    }
 
     public List<Discipline> getDisciplines(Student student, Semester semester) {
         return studentDisciplineHistory
@@ -97,6 +99,32 @@ public class StudentDisciplineStorage implements Serializable {
                 saveToFile();
             }
         }
+    }
+
+    public void addDiscipline(Student student, Semester semester, Discipline discipline) {
+        studentDisciplineHistory
+                .computeIfAbsent(student, k -> new HashMap<>())
+                .computeIfAbsent(semester, k -> new ArrayList<>())
+                .add(discipline);
+
+        Teacher teacher = teacherDisciplineStorage.getTeacherForDiscipline(semester, discipline);
+        if (teacher != null) {
+            teacherDisciplineStorage.registerStudentToTeacherDiscipline(teacher, semester, discipline, student);
+        }
+
+        saveToFile();
+    }
+
+    public List<Teacher> getTeachersForStudentDisciplines(Student student, Semester semester) {
+        List<Discipline> disciplines = getDisciplines(student, semester);
+        List<Teacher> teachers = new ArrayList<>();
+        for (Discipline discipline : disciplines) {
+            Teacher teacher = teacherDisciplineStorage.getTeacherForDiscipline(semester, discipline);
+            if (teacher != null) {
+                teachers.add(teacher);
+            }
+        }
+        return teachers;
     }
 
     @Override

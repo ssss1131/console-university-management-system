@@ -1,6 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.view.kz;
 
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
@@ -154,5 +155,47 @@ public class StudentViewKz implements StudentView {
                     discipline.getCredits(),
                     discipline.getCourseType());
         }
+    }
+
+    @Override
+    public void showNoSemesterSelectedMessage() {
+        System.out.println("Семестр таңдалмады.");
+    }
+
+    @Override
+    public void showDiscipline(Discipline discipline) {
+        System.out.printf("Пән: %s (Коды: %s, Кредиттер: %d, Семестр: %s, Курстың түрі: %s)%n",
+                discipline.getName(), discipline.getCode(), discipline.getCredits(),
+                discipline.getSemester(), discipline.getCourseType());
+    }
+
+    @Override
+    public void showNoDisciplinesAvailableMessage() {
+        System.out.println("Пәндер жоқ.");
+    }
+
+    @Override
+    public void showMarksHeader() {
+        System.out.printf("%-10s %-10s %-15s %-10s %-20s%n", "Күні", "Сабақ", "Қатысу", "Баға", "Пікір");
+    }
+
+    @Override
+    public void showMarkRow(LessonRecord record) {
+        System.out.printf("%-10s %-10s %-15s %-10.2f %-20s%n",
+                record.getDate(), record.getLesson(), record.getAttendance(), record.getGrade(), record.getComment());
+    }
+
+    @Override
+    public void showMarksFooter(double totalMarks, int totalPresence, int totalAbsence) {
+        System.out.println("------------------------------------------------");
+        System.out.printf("Бағалардың жалпы сомасы: %.2f%n", totalMarks);
+        System.out.printf("Жалпы қатысу саны: %d%n", totalPresence);
+        System.out.printf("Жалпы болмау саны: %d%n", totalAbsence);
+        System.out.println("================================================");
+    }
+
+    @Override
+    public void showNoMarksMessage(Discipline discipline) {
+        System.out.println("Пән: "  + discipline.getName() + " бойынша бағалар жоқ!");
     }
 }

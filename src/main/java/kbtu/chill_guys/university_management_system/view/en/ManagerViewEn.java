@@ -9,6 +9,7 @@ import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.service.DisciplineService;
 import main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
@@ -365,6 +366,59 @@ public class ManagerViewEn implements ManagerView {
         }else {
             System.out.println("Registration for " + semester + " successfully closed!");
         }
-
     }
+
+    @Override
+    public void showNoDisciplinesAvailableMessage() {
+        System.out.println("No available disciplines for assignment.");
+    }
+
+    @Override
+    public void showNoTeachersAvailableMessage() {
+        System.out.println("No available teachers for assignment.");
+    }
+
+    @Override
+    public void showDisciplineAssignedMessage(Discipline discipline, Teacher teacher) {
+        System.out.printf("Discipline '%s' has been successfully assigned to teacher %s %s.%n",
+                discipline.getName(), teacher.getFirstName(), teacher.getLastName());
+    }
+
+    @Override
+    public Discipline selectDiscipline(List<Discipline> disciplines) {
+        if (disciplines.isEmpty()) {
+            System.out.println("No available disciplines to choose from.");
+            return null;
+        }
+
+        System.out.println("Select a discipline from the list:");
+        for (int i = 0; i < disciplines.size(); i++) {
+            Discipline discipline = disciplines.get(i);
+            System.out.printf("%d. %s (Code: %s, School: %s, Semester: %s)%n",
+                    i + 1, discipline.getName(), discipline.getCode(), discipline.getSchool(), discipline.getSemester());
+        }
+
+        int choice = validateIntegerInput("Enter the discipline number:", 1, disciplines.size());
+        return disciplines.get(choice - 1);
+    }
+
+    @Override
+    public Teacher selectTeacher(List<Teacher> teachers) {
+        if (teachers.isEmpty()) {
+            System.out.println("No available teachers to select.");
+            return null;
+        }
+
+        System.out.println("Select a teacher from the list:");
+        for (int i = 0; i < teachers.size(); i++) {
+            Teacher teacher = teachers.get(i);
+            System.out.printf("%d. %s %s (School: %s, Level: %s, Rating: %s)%n",
+                    i + 1, teacher.getFirstName(), teacher.getLastName(),
+                    teacher.getSchool(), teacher.getTeachingDegree(), teacher.getRating());
+        }
+
+        int choice = InputValidatorUtil.validateIntegerInput("Enter the teacher number:", 1, teachers.size());
+        return teachers.get(choice - 1);
+    }
+
 }

@@ -14,10 +14,12 @@ import main.java.kbtu.chill_guys.university_management_system.menu.researcher_co
 import main.java.kbtu.chill_guys.university_management_system.menu.student_command.GetStudentRegistrationInfoCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.student_command.RegisterToSemesterCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.student_command.ViewStudentDisciplinesCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.student_command.ViewStudentMarksCommand;
 import main.java.kbtu.chill_guys.university_management_system.util.LoggerUtil;
 import main.java.kbtu.chill_guys.university_management_system.menu.journal_command.CreateJournalCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.journal_command.DeleteJournalCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.setting_command.SelectLanguageCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.teacher_command.PutMarkCommand;
 
 import static main.java.kbtu.chill_guys.university_management_system.util.Constant.ALL_RESEARCH_ROLES;
 
@@ -46,14 +48,12 @@ public class Main {
         menu.registerCommand("create discipline", new RequestToAddNewDisciplineCommand(), UserRole.MANAGER);
         menu.registerCommand("finalize approved disciplines", new FinalizeApprovedDisciplinesCommand(), UserRole.MANAGER);
         menu.registerCommand("approve new disciplines", new ApproveNewDisciplineCommand(), UserRole.DEAN);
-        menu.registerCommand("show my disciplines", new ViewStudentDisciplinesCommand(), UserRole.BACHELOR, UserRole.PHD, UserRole.MASTER);
         menu.registerCommand("show all disciplines", new ShowDisciplinesCommand(), UserRole.ADMIN, UserRole.BACHELOR, UserRole.DEAN, UserRole.MANAGER, UserRole.MASTER, UserRole.PHD, UserRole.TEACHER, UserRole.PROFESSOR);
+        menu.registerCommand("assign discipline to teacher", new AssignDisciplineToTeacherCommand(), UserRole.MANAGER);
 
         menu.registerCommand("open registration", new OpenRegistrationCommand(), UserRole.MANAGER);
         menu.registerCommand("close registration", new CloseRegistrationCommand(), UserRole.MANAGER);
-        menu.registerCommand("register to disciplines", new RegisterToSemesterCommand(), UserRole.BACHELOR, UserRole.MASTER, UserRole.PHD);
         menu.registerCommand("get info about registration", new GetInfoAboutRegistrationCommand(), UserRole.MANAGER);
-        menu.registerCommand("show registration info", new GetStudentRegistrationInfoCommand(), UserRole.PHD, UserRole.MASTER, UserRole.BACHELOR);
 
         menu.registerCommand("i want to be researcher!!", new AddResearcherCommand(), ALL_RESEARCH_ROLES);
         menu.registerCommand("get my research papers", new GetResearchPapersCommand(), ALL_RESEARCH_ROLES);
@@ -62,6 +62,13 @@ public class Main {
         menu.registerCommand("get my research projects", new GetResearchProjectsCommand(), ALL_RESEARCH_ROLES);
         menu.registerCommand("get my research papers sorted", new GetSortedResearchPapersCommand(), ALL_RESEARCH_ROLES);
         menu.registerCommand("get all research papers sorted", new GetSortedAllResearchPapersCommand(), ALL_RESEARCH_ROLES);
+
+        menu.registerCommand("show my disciplines", new ViewStudentDisciplinesCommand(), UserRole.BACHELOR, UserRole.PHD, UserRole.MASTER);
+        menu.registerCommand("view my marks", new ViewStudentMarksCommand(), UserRole.BACHELOR, UserRole.MASTER, UserRole.PHD);
+        menu.registerCommand("register to disciplines", new RegisterToSemesterCommand(), UserRole.BACHELOR, UserRole.MASTER, UserRole.PHD);
+        menu.registerCommand("show registration info", new GetStudentRegistrationInfoCommand(), UserRole.PHD, UserRole.MASTER, UserRole.BACHELOR);
+
+        menu.registerCommand("put mark", new PutMarkCommand(), UserRole.TEACHER);
 
         menu.run();
     }

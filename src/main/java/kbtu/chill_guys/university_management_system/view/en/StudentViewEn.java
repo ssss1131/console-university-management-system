@@ -1,6 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.view.en;
 
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
@@ -170,5 +171,50 @@ public class StudentViewEn implements StudentView {
                     discipline.getCredits(),
                     discipline.getCourseType());
         }
+    }
+
+
+
+
+    @Override
+    public void showNoSemesterSelectedMessage() {
+        System.out.println("No semester selected.");
+    }
+
+    @Override
+    public void showDiscipline(Discipline discipline) {
+        System.out.printf("Discipline: %s (Code: %s, Credits: %d, Semester: %s, Course Type: %s)%n",
+                discipline.getName(), discipline.getCode(), discipline.getCredits(),
+                discipline.getSemester(), discipline.getCourseType());
+    }
+
+    @Override
+    public void showNoDisciplinesAvailableMessage() {
+        System.out.println("No disciplines available.");
+    }
+
+    @Override
+    public void showMarksHeader() {
+        System.out.printf("%-10s %-10s %-15s %-10s %-20s%n", "Date", "Lesson", "Attendance", "Grade", "Comment");
+    }
+
+    @Override
+    public void showMarkRow(LessonRecord record) {
+        System.out.printf("%-10s %-10s %-15s %-10.2f %-20s%n",
+                record.getDate(), record.getLesson(), record.getAttendance(), record.getGrade(), record.getComment());
+    }
+
+    @Override
+    public void showMarksFooter(double totalMarks, int totalPresence, int totalAbsence) {
+        System.out.println("------------------------------------------------");
+        System.out.printf("Total Marks: %.2f%n", totalMarks);
+        System.out.printf("Total Presence: %d%n", totalPresence);
+        System.out.printf("Total Absence: %d%n", totalAbsence);
+        System.out.println("================================================");
+    }
+
+    @Override
+    public void showNoMarksMessage(Discipline discipline) {
+        System.out.println("No marks for Discipline: " + discipline.getName());
     }
 }

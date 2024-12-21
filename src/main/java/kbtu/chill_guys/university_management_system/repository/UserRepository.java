@@ -1,9 +1,12 @@
 package main.java.kbtu.chill_guys.university_management_system.repository;
 
+import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
 import static main.java.kbtu.chill_guys.university_management_system.util.Constant.USERS_PATH;
 
@@ -42,5 +45,11 @@ public class UserRepository extends AbstractRepository<User> {
 
     public Vector<User> findAll() {
         return getAllLines();
+    }
+
+    public List<User> findUsersByRole(UserRole role) {
+        return getAllLines().stream()
+                .filter(user -> user.getRole().equals(role))
+                .collect(Collectors.toList());
     }
 }

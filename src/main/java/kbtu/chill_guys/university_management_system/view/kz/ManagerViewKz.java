@@ -9,6 +9,7 @@ import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.service.DisciplineService;
 import main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
@@ -364,4 +365,58 @@ public class ManagerViewKz implements ManagerView {
             System.out.println(semester + " үшін тіркеу сәтті жабылды!");
         }
     }
+
+    @Override
+    public void showNoDisciplinesAvailableMessage() {
+        System.out.println("Тағайындауға пәндер жоқ.");
+    }
+
+    @Override
+    public void showNoTeachersAvailableMessage() {
+        System.out.println("Тағайындауға мұғалімдер жоқ.");
+    }
+
+    @Override
+    public void showDisciplineAssignedMessage(Discipline discipline, Teacher teacher) {
+        System.out.printf("Пән '%s' мұғалімге %s %s сәтті тағайындалды.%n",
+                discipline.getName(), teacher.getFirstName(), teacher.getLastName());
+    }
+
+    @Override
+    public Discipline selectDiscipline(List<Discipline> disciplines) {
+        if (disciplines.isEmpty()) {
+            System.out.println("Таңдау үшін пәндер жоқ.");
+            return null;
+        }
+
+        System.out.println("Тізімнен пәнді таңдаңыз:");
+        for (int i = 0; i < disciplines.size(); i++) {
+            Discipline discipline = disciplines.get(i);
+            System.out.printf("%d. %s (Код: %s, Мектеп: %s, Семестр: %s)%n",
+                    i + 1, discipline.getName(), discipline.getCode(), discipline.getSchool(), discipline.getSemester());
+        }
+
+        int choice = validateIntegerInput("Пәннің нөмірін енгізіңіз:", 1, disciplines.size());
+        return disciplines.get(choice - 1);
+    }
+
+    @Override
+    public Teacher selectTeacher(List<Teacher> teachers) {
+        if (teachers.isEmpty()) {
+            System.out.println("Таңдау үшін мұғалімдер жоқ.");
+            return null;
+        }
+
+        System.out.println("Тізімнен мұғалімді таңдаңыз:");
+        for (int i = 0; i < teachers.size(); i++) {
+            Teacher teacher = teachers.get(i);
+            System.out.printf("%d. %s %s (Мектеп: %s, Деңгей: %s, Рейтинг: %s)%n",
+                    i + 1, teacher.getFirstName(), teacher.getLastName(),
+                    teacher.getSchool(), teacher.getTeachingDegree(), teacher.getRating());
+        }
+
+        int choice = validateIntegerInput("Мұғалімнің нөмірін енгізіңіз:", 1, teachers.size());
+        return teachers.get(choice - 1);
+    }
+
 }

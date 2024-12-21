@@ -1,6 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.view;
 
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 
@@ -26,4 +27,18 @@ public interface StudentView {
     void showExactDisciplines(List<Discipline> disciplines);
 
     void showAllDisciplines(Map<Semester, List<Discipline>> disciplinesBySemester);
+
+    void showMarksHeader();
+
+    void showMarkRow(LessonRecord record);
+
+    void showMarksFooter(double totalMarks, int totalPresence, int totalAbsence);
+
+    void showNoMarksMessage(Discipline discipline);
+
+    void showNoSemesterSelectedMessage();
+
+    void showDiscipline(Discipline discipline);
+
+    void showNoDisciplinesAvailableMessage();
 }
