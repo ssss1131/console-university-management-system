@@ -6,7 +6,6 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.academ
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.*;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanBeResearcher;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewCourses;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewMarks;
@@ -30,9 +29,9 @@ public abstract class Student extends User implements CanViewCourses, CanBeResea
     }
 
     public Student(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName,
-                   Vector<Post> notifications, School school, LocalDate enrollmentDate, Integer credits,
+                   School school, LocalDate enrollmentDate, Integer credits,
                    Integer studyDuration, Organization organization) {
-        super(id, role, email, password, salt, firstName, lastName, notifications);
+        super(id, role, email, password, salt, firstName, lastName);
         this.school = school;
         this.enrollmentDate = enrollmentDate;
         this.credits = credits;
@@ -40,8 +39,8 @@ public abstract class Student extends User implements CanViewCourses, CanBeResea
         this.organization = organization;
     }
 
-    public Student(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, Vector<Post> notifications, School school, LocalDate enrollmentDate, Integer credits, Integer studyDuration) {
-        super(id, role, email, password, salt, firstName, lastName, notifications);
+    public Student(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, School school, LocalDate enrollmentDate, Integer credits, Integer studyDuration) {
+        super(id, role, email, password, salt, firstName, lastName);
         this.school = school;
         this.enrollmentDate = enrollmentDate;
         this.credits = credits;

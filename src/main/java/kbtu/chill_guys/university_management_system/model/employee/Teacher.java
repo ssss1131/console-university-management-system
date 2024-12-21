@@ -21,8 +21,8 @@ public class Teacher extends Employee implements CanViewStudents {
     private Vector<Discipline> disciplines;
 
     public Teacher(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName,
-                   Vector<Post> notifications, int salary, int rating, School school, TeachingDegree teachingDegree) {
-        super(id, role, email, password, salt, firstName, lastName, notifications, salary);
+                   int salary, int rating, School school, TeachingDegree teachingDegree) {
+        super(id, role, email, password, salt, firstName, lastName, salary);
         this.rating = mapRating(rating);
         this.school = school;
         this.teachingDegree = teachingDegree;

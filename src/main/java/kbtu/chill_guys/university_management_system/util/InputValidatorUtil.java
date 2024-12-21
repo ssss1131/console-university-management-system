@@ -63,6 +63,26 @@ public final class InputValidatorUtil {
         }
     }
 
+    public static String validateDateInput(String errorMessage, LocalDate prevDate) {
+        while (true) {
+            try {
+                System.out.println("Enter date (yyyy-MM-dd):");
+                String input = new Scanner(System.in).nextLine().trim();
+                LocalDate enteredDate = LocalDate.parse(input);
+
+                if (prevDate != null && !enteredDate.isAfter(prevDate)) {
+                    System.out.println("The date must be after " + prevDate + ". Please try again.");
+                    continue;
+                }
+
+                return input;
+            } catch (Exception e) {
+                System.out.println(errorMessage);
+            }
+        }
+    }
+
+
     public static UUID validateUUIDInput(String errorMessage) {
         while (true) {
             try {

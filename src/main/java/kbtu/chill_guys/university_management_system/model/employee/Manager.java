@@ -13,11 +13,12 @@ import java.util.Vector;
 public class Manager extends Employee implements CanViewRequests, CanViewTeachers {
     private ManagerType managerType;
 
-    public Manager() {}
+    public Manager() {
+    }
 
     public Manager(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName,
-                   Vector<Post> notifications, int salary, ManagerType managerType) {
-        super(id, role, email, password, salt, firstName, lastName, notifications, salary);
+                   int salary, ManagerType managerType) {
+        super(id, role, email, password, salt, firstName, lastName, salary);
         this.managerType = managerType;
     }
 

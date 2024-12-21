@@ -1,6 +1,9 @@
 package main.java.kbtu.chill_guys.university_management_system.model.research;
 
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Journal;
+import main.java.kbtu.chill_guys.university_management_system.exception.NotResearcherException;
+import main.java.kbtu.chill_guys.university_management_system.model.Journal;
+import main.java.kbtu.chill_guys.university_management_system.model.User;
+import main.java.kbtu.chill_guys.university_management_system.permission.CanBeResearcher;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -14,9 +17,19 @@ public class ResearchProject implements Serializable {
     private Journal journal;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-    private final Vector<Researcher> participants = new Vector<>();
-    private final Vector<ResearchPaper> publishedPapers = new Vector<>();
+    private final Vector<User> participants;
+    private final Vector<ResearchPaper> publishedPapers;
 
+
+    public ResearchProject(String title, String description, Journal journal, LocalDateTime startDate, LocalDateTime endDate, Vector<User> participants, Vector<ResearchPaper> publishedPapers) {
+        this.title = title;
+        this.description = description;
+        this.journal = journal;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.participants = participants;
+        this.publishedPapers = publishedPapers;
+    }
 
     public String getTitle() {
         return this.title;
@@ -50,7 +63,7 @@ public class ResearchProject implements Serializable {
         this.description = description;
     }
 
-    public Vector<Researcher> getParticipants() {
+    public Vector<User> getParticipants() {
         return this.participants;
     }
 
@@ -74,8 +87,12 @@ public class ResearchProject implements Serializable {
         this.publishedPapers.addAll(papers);
     }
 
-    public void addParticipant(Researcher researcher) {
-        participants.add(researcher);
+    public void addParticipant(User researcher) {
+        if(researcher instanceof Researcher || researcher instanceof CanBeResearcher){
+            participants.add(researcher);
+        } else {
+            throw new NotResearcherException("you cant be participant if you are not researcher");
+        }
     }
 
     @Override

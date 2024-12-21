@@ -56,4 +56,24 @@ public class ResearchSupervisor extends Employee implements Researcher {
                ", supervisedResearchPapers=" + supervisedResearchPapers +
                "} " + super.toString();
     }
+
+    @Override
+    public Vector<ResearchPaper> getResearchPapers() {
+        return supervisedResearchPapers;
+    }
+
+    @Override
+    public Vector<ResearchProject> getResearchProjects() {
+        return supervisedProjects;
+    }
+
+    @Override
+    public void addResearchPaper(ResearchProject researchProject) {
+
+    }
+
+    @Override
+    public void addResearchProjects(ResearchProject researchProject) {
+
+    }
 }
