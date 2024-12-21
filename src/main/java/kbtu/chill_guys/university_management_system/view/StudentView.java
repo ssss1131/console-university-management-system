@@ -2,6 +2,8 @@ package main.java.kbtu.chill_guys.university_management_system.view;
 
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
+import main.java.kbtu.chill_guys.university_management_system.model.student.DiplomaProject;
+import main.java.kbtu.chill_guys.university_management_system.model.student.GraduateStudent;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 
 import java.util.List;
@@ -26,4 +28,6 @@ public interface StudentView {
     void showExactDisciplines(List<Discipline> disciplines);
 
     void showAllDisciplines(Map<Semester, List<Discipline>> disciplinesBySemester);
+
+    void showDiploma(DiplomaProject project, GraduateStudent student);
 }

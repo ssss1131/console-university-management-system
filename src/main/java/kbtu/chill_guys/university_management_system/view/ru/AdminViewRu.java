@@ -48,9 +48,22 @@ public class AdminViewRu implements AdminView {
             case TEACHER -> handleTeacherInput(data);
             case MANAGER -> handleManagerInput(data);
             case DEAN -> handleDeanInput(data);
+            case PROFESSOR -> handleProfessorInput(data);
+            case RESEARCH_SUPERVISOR -> handleResearchSupervisorInput(data);
         }
 
         return data;
+    }
+
+    private void handleProfessorInput(Map<String, Object> data) {
+        System.out.println("Введите зарплату:");
+        data.put(SALARY_ATTRIBUTE, validateIntegerInput("Зарплата не может быть отрицательной", 0, Integer.MAX_VALUE));
+
+        System.out.println("Введите рейтинг:");
+        data.put(RATING_ATTRIBUTE, validateIntegerInput("Рейтинг должен быть положительным целым числом", 0, 100));
+
+        System.out.println("Введите школу:");
+        data.put(SCHOOL_ATTRIBUTE, selectEnum(School.class));
     }
 
     @Override
@@ -160,6 +173,12 @@ public class AdminViewRu implements AdminView {
             System.out.println("Логи за выбранный период:");
             logs.forEach(System.out::println);
         }
+    }
+
+    @Override
+    public void handleResearchSupervisorInput(Map<String, Object> data) {
+        System.out.println("Введите зарплату:");
+        data.put(SALARY_ATTRIBUTE, validateIntegerInput("Зарплата не может быть отрицательной", 0, Integer.MAX_VALUE));
     }
 }
 

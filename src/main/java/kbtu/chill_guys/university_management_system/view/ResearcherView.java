@@ -1,6 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.view;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.util.Format;
 import main.java.kbtu.chill_guys.university_management_system.model.Journal;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
@@ -37,4 +38,16 @@ public interface ResearcherView {
     Comparator<ResearchPaper> getSortPreference();
 
     School getSchool();
+
+    void showTopCitedResearcher(User user, int totalCitations, int year);
+
+    void showTopCitedResearcherOfSchool(User user, School school, int totalCitations);
+
+    int selectPublicationYear(List<Integer> years);
+
+    ResearchPaper selectResearchPaper(List<ResearchPaper> papers);
+
+    Format selectCitationFormat();
+
+    void displayCitation(ResearchPaper paper, Format format);
 }

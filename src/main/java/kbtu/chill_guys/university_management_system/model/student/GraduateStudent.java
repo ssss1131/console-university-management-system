@@ -1,20 +1,17 @@
 package main.java.kbtu.chill_guys.university_management_system.model.student;
 
-import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Gpa;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchProject;
 import main.java.kbtu.chill_guys.university_management_system.model.research.Researcher;
 
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.Vector;
 
 public abstract class GraduateStudent extends Student implements Researcher {
-    private DiplomaProject project;
+    private DiplomaProject project = new DiplomaProject();
     private Vector<ResearchProject> researchProjects;
     private Vector<ResearchPaper> researchPapers;
 

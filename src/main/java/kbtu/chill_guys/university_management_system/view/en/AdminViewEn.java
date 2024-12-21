@@ -45,9 +45,27 @@ public class AdminViewEn implements AdminView {
             case TEACHER -> handleTeacherInput(data);
             case MANAGER -> handleManagerInput(data);
             case DEAN -> handleDeanInput(data);
+            case PROFESSOR -> handleProfessorInput(data);
+            case RESEARCH_SUPERVISOR -> handleResearchSupervisorInput(data);
         }
 
         return data;
+    }
+
+    public void handleResearchSupervisorInput(Map<String, Object> data) {
+        System.out.println("Enter salary:");
+        data.put(SALARY_ATTRIBUTE, validateIntegerInput("Salary must be a positive integer", 0, Integer.MAX_VALUE));
+    }
+
+    private void handleProfessorInput(Map<String, Object> data) {
+        System.out.println("Enter salary:");
+        data.put(SALARY_ATTRIBUTE, validateIntegerInput("Salary must be a positive integer", 0, Integer.MAX_VALUE));
+
+        System.out.println("Enter rating:");
+        data.put(RATING_ATTRIBUTE, validateIntegerInput("Rating must be a positive integer and in range 0 - 100", 0, 100));
+
+        System.out.println("Enter school:");
+        data.put(SCHOOL_ATTRIBUTE, selectEnum(School.class));
     }
 
     @Override
@@ -67,7 +85,6 @@ public class AdminViewEn implements AdminView {
 
         System.out.println("Enter study duration (years):");
         data.put(STUDY_DURATION_ATTRIBUTE, validateIntegerInput("Study duration must be a positive integer", 0, Integer.MAX_VALUE));
-
         UserRole role = (UserRole) data.get(USER_ROLE_ATTRIBUTE);
         switch (role) {
             case MASTER -> {

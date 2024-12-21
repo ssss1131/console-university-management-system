@@ -2,7 +2,12 @@ package main.java.kbtu.chill_guys.university_management_system.view.ru;
 
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
+import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
+import main.java.kbtu.chill_guys.university_management_system.model.student.DiplomaProject;
+import main.java.kbtu.chill_guys.university_management_system.model.student.GraduateStudent;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
+import main.java.kbtu.chill_guys.university_management_system.repository.UserRepository;
+import main.java.kbtu.chill_guys.university_management_system.service.ResearcherService;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
 import main.java.kbtu.chill_guys.university_management_system.view.StudentView;
 
@@ -142,6 +147,98 @@ public class StudentViewRu implements StudentView {
             showDisciplineList(disciplines);
         }
     }
+
+    @Override
+    public void showDiploma(DiplomaProject project, GraduateStudent student) {
+        while (true) {
+            System.out.println("\n=== Детали дипломного проекта ===");
+            System.out.printf("Тема: %s%n", project.getTitle());
+            System.out.printf("Описание: %s%n", project.getDescription());
+            System.out.printf("Научный руководитель: %s%n",
+                    project.getSupervisor() != null ? project.getSupervisor().getFirstName() : "Не назначен");
+            System.out.println("Опубликованные статьи:");
+            if (project.getPublishedPapers().isEmpty()) {
+                System.out.println("  Опубликованных статей нет.");
+            } else {
+                for (int i = 0; i < project.getPublishedPapers().size(); i++) {
+                    ResearchPaper paper = project.getPublishedPapers().get(i);
+                    System.out.printf("  %d. %s (DOI: %s)%n", i + 1, paper.getTitle(), paper.getDoi());
+                }
+            }
+
+            System.out.println("\nДействия:");
+            System.out.println("1. Изменить тему");
+            System.out.println("2. Изменить описание");
+            System.out.println("3. Добавить статьи");
+            System.out.println("4. Выйти");
+
+            int choice = InputValidatorUtil.validateIntegerInput("Выберите действие: ", 1, 4);
+
+            switch (choice) {
+                case 1 -> {
+                    System.out.println("Введите новую тему:");
+                    String newTitle = InputValidatorUtil.validateNonEmptyInput("Тема не может быть пустой.");
+                    project.setTitle(newTitle);
+                    System.out.println("Тема успешно обновлена.");
+                }
+                case 2 -> {
+                    System.out.println("Введите новое описание:");
+                    String newDescription = InputValidatorUtil.validateNonEmptyInput("Описание не может быть пустым.");
+                    project.setDescription(newDescription);
+                    System.out.println("Описание успешно обновлено.");
+                }
+                case 3 -> {
+                    System.out.println("Выберите статьи для добавления:");
+                    List<ResearchPaper> availablePapers = ResearcherService.getInstance().getResearchPapers(student);
+                    Vector<ResearchPaper> selectedPapers = selectResearchPapers(availablePapers);
+                    project.getPublishedPapers().addAll(selectedPapers);
+                    System.out.println("Статьи успешно добавлены в дипломный проект.");
+                }
+                case 4 -> {
+                    System.out.println("Выход из просмотра дипломного проекта.");
+                    UserRepository userRepository = new UserRepository();
+                    userRepository.update(student);
+                    return;
+                }
+            }
+        }
+    }
+
+    private Vector<ResearchPaper> selectResearchPapers(List<ResearchPaper> papers) {
+        if (papers.isEmpty()) {
+            System.out.println("Нет доступных статей.");
+            return new Vector<>();
+        }
+
+        System.out.println("Доступные статьи:");
+        for (int i = 0; i < papers.size(); i++) {
+            System.out.printf("%d. %s (DOI: %s)%n", i + 1, papers.get(i).getTitle(), papers.get(i).getDoi());
+        }
+
+        System.out.println("Введите номера статей (через запятую) или нажмите Enter для пропуска:");
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine().trim();
+
+        Vector<ResearchPaper> selectedPapers = new Vector<>();
+        if (!input.isEmpty()) {
+            try {
+                String[] indices = input.split(",");
+                for (String index : indices) {
+                    int paperIndex = Integer.parseInt(index.trim()) - 1;
+                    if (paperIndex >= 0 && paperIndex < papers.size()) {
+                        selectedPapers.add(papers.get(paperIndex));
+                    } else {
+                        System.out.println("Некорректный номер статьи: " + (paperIndex + 1));
+                    }
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Некорректный ввод. Пропуск выбора статей.");
+            }
+        }
+
+        return selectedPapers;
+    }
+
 
     private void showDisciplineList(List<Discipline> disciplines) {
         System.out.printf("%-10s %-30s %-10s %-15s%n", "Код", "Название", "Кредиты", "Тип курса");

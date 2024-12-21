@@ -3,19 +3,22 @@ package main.java.kbtu.chill_guys.university_management_system.model.student;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.ResearchSupervisor;
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Vector;
 
-public class DiplomaProject {
+public class DiplomaProject implements Serializable {
     private String title;
     private String description;
     private ResearchSupervisor supervisor;
     private Vector<ResearchPaper> publishedPapers = new Vector<>();
 
-    public DiplomaProject(String title, String description, ResearchSupervisor supervisor) {
+    public DiplomaProject() {
+    }
+
+    public DiplomaProject(String title, String description) {
         this.title = title;
         this.description = description;
-        this.supervisor = supervisor;
     }
 
     public String getTitle() {

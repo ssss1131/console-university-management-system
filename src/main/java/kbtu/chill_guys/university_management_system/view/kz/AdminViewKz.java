@@ -49,9 +49,22 @@ public class AdminViewKz implements AdminView {
             case TEACHER -> handleTeacherInput(data);
             case MANAGER -> handleManagerInput(data);
             case DEAN -> handleDeanInput(data);
+            case PROFESSOR -> handleProfessorInput(data);
+            case RESEARCH_SUPERVISOR -> handleResearchSupervisorInput(data);
         }
 
         return data;
+    }
+
+    private void handleProfessorInput(Map<String, Object> data) {
+        System.out.println("Жалақыны енгізіңіз:");
+        data.put(SALARY_ATTRIBUTE, validateIntegerInput("Жалақы теріс болмауы керек", 0, Integer.MAX_VALUE));
+
+        System.out.println("Рейтингті енгізіңіз:");
+        data.put(RATING_ATTRIBUTE, validateIntegerInput("Рейтинг оң бүтін сан болуы керек", 0, 100));
+
+        System.out.println("Мектепті енгізіңіз:");
+        data.put(SCHOOL_ATTRIBUTE, selectEnum(School.class));
     }
 
     @Override
@@ -161,5 +174,11 @@ public class AdminViewKz implements AdminView {
             System.out.println("Таңдалған кезең үшін журналдар:");
             logs.forEach(System.out::println);
         }
+    }
+
+    @Override
+    public void handleResearchSupervisorInput(Map<String, Object> data) {
+        System.out.println("Жалақыны енгізіңіз:");
+        data.put(SALARY_ATTRIBUTE, validateIntegerInput("Жалақы теріс болмауы керек", 0, Integer.MAX_VALUE));
     }
 }

@@ -4,6 +4,8 @@ import main.java.kbtu.chill_guys.university_management_system.comparator.Citatio
 import main.java.kbtu.chill_guys.university_management_system.comparator.PublicationDateComparator;
 import main.java.kbtu.chill_guys.university_management_system.comparator.TitleLengthComparator;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.util.Format;
+import main.java.kbtu.chill_guys.university_management_system.exception.InvalidFormatException;
 import main.java.kbtu.chill_guys.university_management_system.exception.NotExistingComparatorException;
 import main.java.kbtu.chill_guys.university_management_system.menu.Menu;
 import main.java.kbtu.chill_guys.university_management_system.model.Journal;
@@ -252,6 +254,56 @@ public class ResearcherViewEn implements ResearcherView {
         return EnumSelectionUtil.selectEnum(School.class);
     }
 
+    @Override
+    public void showTopCitedResearcher(User user, int totalCitations, int year) {
+        if (user == null) {
+            System.out.println("No top-cited researcher found.");
+            return;
+        }
+
+        System.out.println("\n=== Top-Cited Researcher ===");
+        System.out.printf("%-20s: %s %s%n", "Name", user.getFirstName(), user.getLastName());
+        System.out.printf("%-20s: %d%n", "Total Citations", totalCitations);
+        System.out.printf("%-20s: %d%n", "Year", year);
+        System.out.println("=".repeat(50));
+    }
+
+    @Override
+    public void showTopCitedResearcherOfSchool(User user, School school, int totalCitations) {
+        if (user == null) {
+            System.out.println("No top-cited researcher found for school: " + school);
+            return;
+        }
+
+        System.out.println("\n=== Top-Cited Researcher of School ===");
+        System.out.printf("%-20s: %s %s%n", "Name", user.getFirstName(), user.getLastName());
+        System.out.printf("%-20s: %s%n", "School", school);
+        System.out.printf("%-20s: %d%n", "Total Citations", totalCitations);
+        System.out.println("=".repeat(50));
+    }
+
+
+
+
+    @Override
+    public int selectPublicationYear(List<Integer> years) {
+        if (years.isEmpty()) {
+            System.out.println("No publication years available.");
+            return -1;
+        }
+
+        System.out.println("Available publication years:");
+        for (int i = 0; i < years.size(); i++) {
+            System.out.printf("%d. %d%n", i + 1, years.get(i));
+        }
+
+        int choice = InputValidatorUtil.validateIntegerInput(
+                "Select a year by its number: ", 1, years.size());
+
+        return years.get(choice - 1);
+    }
+
+
 
     private String truncateText(String text, int maxLength) {
         if (text.length() <= maxLength) {
@@ -332,6 +384,71 @@ public class ResearcherViewEn implements ResearcherView {
 
         return selectedPapers;
     }
+
+    @Override
+    public ResearchPaper selectResearchPaper(List<ResearchPaper> papers) {
+        if (papers.isEmpty()) {
+            System.out.println("No research papers available.");
+            return null;
+        }
+
+        System.out.println("Available Research Papers:");
+        for (int i = 0; i < papers.size(); i++) {
+            System.out.printf("%d. %s%n", i + 1, papers.get(i).getTitle());
+        }
+
+        int choice = InputValidatorUtil.validateIntegerInput("Select a research paper by its number: ", 1, papers.size());
+        return papers.get(choice - 1);
+    }
+
+    @Override
+    public Format selectCitationFormat() {
+        System.out.println("Select citation format:");
+        System.out.println("1. Plain Text");
+        System.out.println("2. BibTeX");
+
+        int choice = InputValidatorUtil.validateIntegerInput("Enter your choice: ", 1, 2);
+
+        return switch (choice) {
+            case 1 -> Format.PLAIN_TEXT;
+            case 2 -> Format.BIBTEX;
+            default -> throw new InvalidFormatException("Invalid choice!");
+        };
+    }
+
+
+    @Override
+    public void displayCitation(ResearchPaper paper, Format format) {
+        System.out.println("\n=== Citation ===");
+
+        String citation = switch (format) {
+            case PLAIN_TEXT -> String.format("%s. %s. %s. DOI: %s. Published on: %s.",
+                    paper.getAuthorsAsString(),
+                    paper.getTitle(),
+                    paper.getJournal().getName(),
+                    paper.getDoi(),
+                    paper.getPublicationDate());
+            case BIBTEX -> String.format("""
+                @article{%s,
+                    author = {%s},
+                    title = {%s},
+                    journal = {%s},
+                    year = {%d},
+                    doi = {%s}
+                }
+                """,
+                    paper.getDoi(),
+                    paper.getAuthorsAsString(),
+                    paper.getTitle(),
+                    paper.getJournal().getName(),
+                    paper.getPublicationDate().getYear(),
+                    paper.getDoi());
+        };
+
+        System.out.println(citation);
+        System.out.println("=".repeat(50));
+    }
+
 
 
 }

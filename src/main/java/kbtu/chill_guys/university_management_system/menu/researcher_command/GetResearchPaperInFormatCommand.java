@@ -1,17 +1,20 @@
-package main.java.kbtu.chill_guys.university_management_system.menu.general_command;
+package main.java.kbtu.chill_guys.university_management_system.menu.researcher_command;
 
-import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.util.Format;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.Language;
 import main.java.kbtu.chill_guys.university_management_system.menu.Command;
 import main.java.kbtu.chill_guys.university_management_system.menu.Menu;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.model.factory.ViewFactory;
+import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
 import main.java.kbtu.chill_guys.university_management_system.service.ResearcherService;
 import main.java.kbtu.chill_guys.university_management_system.view.ResearcherView;
 
-public class GetTopCitedResearcherBySchoolCommand implements Command {
+import java.util.List;
 
-    private final ResearcherService service = ResearcherService.getInstance();
+public class GetResearchPaperInFormatCommand implements Command {
+
+    private final ResearcherService service  = ResearcherService.getInstance();
     private ResearcherView view;
 
     @Override
@@ -19,12 +22,11 @@ public class GetTopCitedResearcherBySchoolCommand implements Command {
         Language language = Menu.getInstance().getLanguage();
         view = ViewFactory.getResearcherView(language);
 
-        School school = view.getSchool();
+        User user = Menu.getInstance().getLoggedUser();
+        List<ResearchPaper> papers = service.getResearchPapers(user);
+        ResearchPaper researchPaper = view.selectResearchPaper(papers);
+        Format format = view.selectCitationFormat();
+        view.displayCitation(researchPaper, format);
 
-        User user = service.getTopCitedResearcherBySchool(school);
-        int totalCitations = service.calculateTotalCitations(user);
-
-        view.showTopCitedResearcherOfSchool(user, school, totalCitations);
     }
 }
-

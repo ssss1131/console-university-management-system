@@ -3,10 +3,12 @@ package main.java.kbtu.chill_guys.university_management_system.model.research;
 import main.java.kbtu.chill_guys.university_management_system.model.Journal;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
 
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
 public class ResearchPaper implements Serializable {
 
@@ -27,6 +29,13 @@ public class ResearchPaper implements Serializable {
         this.publicationDate = publicationDate;
         this.authors = authors;
     }
+
+    public String getAuthorsAsString() {
+        return this.getAuthors().stream()
+                .map(author -> author.getFirstName() + " " + author.getLastName())
+                .collect(Collectors.joining(", "));
+    }
+
 
     public String getTitle() {
         return this.title;
@@ -64,7 +73,7 @@ public class ResearchPaper implements Serializable {
         return this.authors;
     }
 
-    public void addAuthor(User researcher){
+    public void addAuthor(User researcher) {
         authors.add(researcher);
     }
 
