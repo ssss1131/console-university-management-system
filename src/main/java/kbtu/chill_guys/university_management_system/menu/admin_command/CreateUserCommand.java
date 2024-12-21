@@ -25,4 +25,10 @@ public class CreateUserCommand implements Command {
 
         view.displayUserCreated(user);
     }
+
+    public static void main(String[] args) {
+        CreateUserCommand createUserCommand = new CreateUserCommand();
+        createUserCommand.execute();
+    }
+
 }

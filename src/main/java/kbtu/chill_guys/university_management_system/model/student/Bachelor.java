@@ -18,7 +18,19 @@ import java.util.Vector;
 public class Bachelor extends Student {
     private Specialization specialization;
 
-    public Bachelor() {
+    public Bachelor(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName,
+                    School school, LocalDate enrollmentDate, double gpa, int credits,
+                    int studyDuration, Organization organization, Specialization specialization) {
+        super(id, role, email, password, salt, firstName, lastName, school, enrollmentDate, credits,
+                studyDuration, organization);
+        this.specialization = specialization;
+    }
+
+    public Bachelor(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName,
+                    School school, LocalDate enrollmentDate, Integer credits,
+                    Integer studyDuration, Specialization specialization) {
+        super(id, role, email, password, salt, firstName, lastName, school, enrollmentDate, credits, studyDuration);
+        this.specialization = specialization;
     }
 
     @Override
@@ -29,21 +41,6 @@ public class Bachelor extends Student {
     @Override
     public StudentRole getStudentRole() {
         return StudentRole.BACHELOR;
-    }
-
-    public Bachelor(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName,
-                    Vector<Post> notifications, School school, LocalDate enrollmentDate, double gpa, int credits,
-                    int studyDuration, Organization organization, Specialization specialization) {
-        super(id, role, email, password, salt, firstName, lastName, notifications, school, enrollmentDate, credits,
-                studyDuration, organization);
-        this.specialization = specialization;
-    }
-
-    public Bachelor(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName,
-                    Vector<Post> notifications, School school, LocalDate enrollmentDate, Integer credits,
-                    Integer studyDuration, Specialization specialization) {
-        super(id, role, email, password, salt, firstName, lastName, notifications, school, enrollmentDate, credits, studyDuration);
-        this.specialization = specialization;
     }
 
     public Specialization getSpecialization() {

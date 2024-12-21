@@ -1,6 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.model;
 
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
+import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
+import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchProject;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -10,7 +11,8 @@ public class Journal implements Serializable {
     private String name;
     private UUID id;
     private Vector<User> subscribers;
-    private Vector<Post> posts;
+    private Vector<ResearchPaper> researchPapers;
+    private Vector<ResearchProject> researchProjects;
 
     public Journal() {}
 
@@ -18,7 +20,8 @@ public class Journal implements Serializable {
         this.name = name;
         this.id = id != null ? id : UUID.randomUUID();
         this.subscribers = new Vector<>();
-        this.posts = new Vector<>();
+        this.researchPapers = new Vector<>();
+        this.researchProjects = new Vector<>();
     }
 
     // Getters
@@ -34,8 +37,8 @@ public class Journal implements Serializable {
         return subscribers;
     }
 
-    public Vector<Post> getPosts() {
-        return posts;
+    public Vector<ResearchPaper> getResearchPapers() {
+        return researchPapers;
     }
 
     // Setters
@@ -51,11 +54,10 @@ public class Journal implements Serializable {
         this.subscribers = subscribers;
     }
 
-    public void setPosts(Vector<Post> posts) {
-        this.posts = posts;
+    public void setResearchPapers(Vector<ResearchPaper> researchPapers) {
+        this.researchPapers = researchPapers;
     }
 
-    // Additional methods
     public boolean addSubscriber(User subscriber) {
         if (subscriber != null && !subscribers.contains(subscriber)) {
             return subscribers.add(subscriber);
@@ -67,12 +69,20 @@ public class Journal implements Serializable {
         return subscribers.remove(subscriber);
     }
 
-    public void publish(Post post) {
+    public void publish(ResearchPaper post) {
         if (post != null) {
-            posts.add(post);
+            researchPapers.add(post);
             for (Subscriber subscriber : subscribers) {
                 subscriber.update(post);
             }
         }
+    }
+
+    public void addPost(ResearchPaper paper){
+        researchPapers.add(paper);
+    }
+
+    public void addProject(ResearchProject project){
+        researchProjects.add(project);
     }
 }

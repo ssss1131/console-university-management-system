@@ -18,12 +18,12 @@ public abstract class GraduateStudent extends Student implements Researcher {
     private Vector<ResearchProject> researchProjects;
     private Vector<ResearchPaper> researchPapers;
 
-    public GraduateStudent(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, Vector<Post> notifications, School school, LocalDate enrollmentDate, Integer credits, Integer studyDuration, Organization organization) {
-        super(id, role, email, password, salt, firstName, lastName, notifications, school, enrollmentDate, credits, studyDuration, organization);
+    public GraduateStudent(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, School school, LocalDate enrollmentDate, Integer credits, Integer studyDuration, Organization organization) {
+        super(id, role, email, password, salt, firstName, lastName, school, enrollmentDate, credits, studyDuration, organization);
     }
 
-    public GraduateStudent(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, Vector<Post> notifications, School school, LocalDate enrollmentDate, Integer credits, Integer studyDuration) {
-        super(id, role, email, password, salt, firstName, lastName, notifications, school, enrollmentDate, credits, studyDuration);
+    public GraduateStudent(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, School school, LocalDate enrollmentDate, Integer credits, Integer studyDuration) {
+        super(id, role, email, password, salt, firstName, lastName, school, enrollmentDate, credits, studyDuration);
     }
 
     public DiplomaProject getProject() {

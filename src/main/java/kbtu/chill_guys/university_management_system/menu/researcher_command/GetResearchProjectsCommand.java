@@ -5,13 +5,13 @@ import main.java.kbtu.chill_guys.university_management_system.menu.Command;
 import main.java.kbtu.chill_guys.university_management_system.menu.Menu;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.model.factory.ViewFactory;
-import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
+import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchProject;
 import main.java.kbtu.chill_guys.university_management_system.service.ResearcherService;
 import main.java.kbtu.chill_guys.university_management_system.view.ResearcherView;
 
 import java.util.List;
 
-public class GetResearchPapersCommand implements Command {
+public class GetResearchProjectsCommand implements Command {
 
     private final ResearcherService service  = ResearcherService.getInstance();
     private ResearcherView view;
@@ -22,7 +22,7 @@ public class GetResearchPapersCommand implements Command {
         view = ViewFactory.getResearcherView(language);
 
         User user = Menu.getInstance().getLoggedUser();
-        List<ResearchPaper> papers = service.getResearchPapers(user);
-        view.displayResearchPapers(papers);
+        List<ResearchProject> projects = service.getResearchProjects(user);
+        view.displayResearchProjects(projects);
     }
 }

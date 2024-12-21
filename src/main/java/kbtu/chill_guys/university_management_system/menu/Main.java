@@ -10,14 +10,13 @@ import main.java.kbtu.chill_guys.university_management_system.menu.admin_command
 import main.java.kbtu.chill_guys.university_management_system.menu.general_command.LoginCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.general_command.ShowDisciplinesCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.manager_command.*;
-import main.java.kbtu.chill_guys.university_management_system.menu.researcher_command.GetResearchPapersCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.researcher_command.*;
 import main.java.kbtu.chill_guys.university_management_system.menu.student_command.GetStudentRegistrationInfoCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.student_command.RegisterToSemesterCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.student_command.ViewStudentDisciplinesCommand;
 import main.java.kbtu.chill_guys.university_management_system.util.LoggerUtil;
 import main.java.kbtu.chill_guys.university_management_system.menu.journal_command.CreateJournalCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.journal_command.DeleteJournalCommand;
-import main.java.kbtu.chill_guys.university_management_system.menu.journal_command.PublishPostCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.setting_command.SelectLanguageCommand;
 
 import static main.java.kbtu.chill_guys.university_management_system.util.Constant.ALL_RESEARCH_ROLES;
@@ -40,7 +39,7 @@ public class Main {
 
         menu.registerCommand("Create journal", new CreateJournalCommand(), UserRole.MANAGER);
         menu.registerCommand("Delete journal", new DeleteJournalCommand(), UserRole.MANAGER);
-        menu.registerCommand("Publish post", new PublishPostCommand(), UserRole.MANAGER);
+//        menu.registerCommand("Publish post", new PublishPostCommand(), UserRole.MANAGER);
 
         menu.registerCommand("Add news", new AddNewsCommand(), UserRole.MANAGER);
 
@@ -58,6 +57,11 @@ public class Main {
 
         menu.registerCommand("i want to be researcher!!", new AddResearcherCommand(), ALL_RESEARCH_ROLES);
         menu.registerCommand("get my research papers", new GetResearchPapersCommand(), ALL_RESEARCH_ROLES);
+        menu.registerCommand("add new research paper", new AddResearchPaperCommand(), ALL_RESEARCH_ROLES);
+        menu.registerCommand("add new research project", new AddResearchProjectCommand(), ALL_RESEARCH_ROLES);
+        menu.registerCommand("get my research projects", new GetResearchProjectsCommand(), ALL_RESEARCH_ROLES);
+        menu.registerCommand("get my research papers sorted", new GetSortedResearchPapersCommand(), ALL_RESEARCH_ROLES);
+        menu.registerCommand("get all research papers sorted", new GetSortedAllResearchPapersCommand(), ALL_RESEARCH_ROLES);
 
         menu.run();
     }

@@ -62,4 +62,12 @@ public class ViewFactory {
             case KZ -> new StudentViewKz();
         };
     }
+
+    public static ResearcherView getResearcherView(Language language){
+        return switch (language){
+            case EN -> new ResearcherViewEn();
+            case RU -> new ResearcherViewRu();
+            case KZ -> new ResearcherViewKz();
+        };
+    }
 }

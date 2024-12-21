@@ -9,9 +9,10 @@ import main.java.kbtu.chill_guys.university_management_system.model.research.Res
 import main.java.kbtu.chill_guys.university_management_system.service.ResearcherService;
 import main.java.kbtu.chill_guys.university_management_system.view.ResearcherView;
 
+import java.util.Comparator;
 import java.util.List;
 
-public class GetResearchPapersCommand implements Command {
+public class GetSortedResearchPapersCommand implements Command {
 
     private final ResearcherService service  = ResearcherService.getInstance();
     private ResearcherView view;
@@ -22,7 +23,9 @@ public class GetResearchPapersCommand implements Command {
         view = ViewFactory.getResearcherView(language);
 
         User user = Menu.getInstance().getLoggedUser();
+        Comparator<ResearchPaper> comparator = view.getSortPreference();
         List<ResearchPaper> papers = service.getResearchPapers(user);
+        papers.sort(comparator);
         view.displayResearchPapers(papers);
     }
 }

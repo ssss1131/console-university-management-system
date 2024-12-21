@@ -17,9 +17,8 @@ public abstract class Employee extends User implements CanViewCourses, CanBeRese
         super();
     }
 
-    public Employee(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName,
-                    Vector<Post> notifications, int salary) {
-        super(id, role, email, password, salt, firstName, lastName, notifications);
+    public Employee(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, int salary) {
+        super(id, role, email, password, salt, firstName, lastName);
         this.salary = salary;
     }
 

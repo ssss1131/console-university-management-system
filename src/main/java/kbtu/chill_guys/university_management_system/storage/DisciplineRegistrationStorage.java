@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 import static main.java.kbtu.chill_guys.university_management_system.util.Constant.BASE_PATH;
 import static main.java.kbtu.chill_guys.university_management_system.util.Constant.DISCIPLINE_REGISTRATION_PATH;
 
-public class DisciplineRegistrationStorage implements Serializable {
+public class DisciplineRegistrationStorage implements Serializable{
 
     private static final Path PATH = BASE_PATH.resolve(DISCIPLINE_REGISTRATION_PATH);
     private static final Logger logger = Logger.getLogger(DisciplineRegistrationStorage.class.getName());

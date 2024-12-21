@@ -1,35 +1,24 @@
 package main.java.kbtu.chill_guys.university_management_system.service;
 
 import main.java.kbtu.chill_guys.university_management_system.model.Journal;
-import main.java.kbtu.chill_guys.university_management_system.model.User;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
-import main.java.kbtu.chill_guys.university_management_system.repository.JournalRepository;
+import main.java.kbtu.chill_guys.university_management_system.storage.JournalStorage;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class JournalService {
-    private final JournalRepository journalRepository = new JournalRepository();
+
+    private final JournalStorage journalStorage = JournalStorage.getInstance();
 
     public void createJournal(Journal journal) {
-        journalRepository.save(journal);
+        journalStorage.addNewJournal(journal);
     }
 
-    public void deleteJournal(UUID id) {
-        journalRepository.delete(id);
+    public void deleteJournal(Journal journal){
+        journalStorage.delete(journal);
     }
 
     public List<Journal> getAllJournals() {
-        return journalRepository.findAll();
-    }
-
-    public void publishPost(UUID journalId, Post post) {
-        Journal journal = journalRepository.findById(journalId);
-        if (journal != null) {
-            journal.publish(post);
-            journalRepository.save(journal);
-        } else {
-            throw new IllegalArgumentException("Journal not found.");
-        }
+        return new ArrayList<>(journalStorage.getPapersByJournal().keySet());
     }
 }

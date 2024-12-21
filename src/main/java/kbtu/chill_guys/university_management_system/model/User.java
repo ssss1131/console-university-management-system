@@ -2,6 +2,7 @@ package main.java.kbtu.chill_guys.university_management_system.model;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
+import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -16,11 +17,10 @@ public abstract class User implements Serializable, Subscriber {
     private String salt;
     private String firstName;
     private String lastName;
-    private Vector<Post> notifications;
 
     public User() {}
 
-    public User(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, Vector<Post> notifications) {
+    public User(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName) {
         this.id = id;
         this.role = role;
         this.email = email;
@@ -28,7 +28,6 @@ public abstract class User implements Serializable, Subscriber {
         this.salt = salt;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.notifications = notifications;
     }
 
     public UUID getId() {
@@ -63,13 +62,6 @@ public abstract class User implements Serializable, Subscriber {
         this.lastName = lastName;
     }
 
-    public Vector<Post> getNotifications() {
-        return this.notifications;
-    }
-
-    public void setNotifications(Vector<Post> notifications) {
-        this.notifications = notifications;
-    }
 
     public  UserRole getRole() {
         return role;
@@ -83,8 +75,10 @@ public abstract class User implements Serializable, Subscriber {
         return password;
     }
 
-    public void update(Post post) {
-        getNotifications().add(post);
+
+    @Override
+    public void update(ResearchPaper post) {
+
     }
 
     @Override

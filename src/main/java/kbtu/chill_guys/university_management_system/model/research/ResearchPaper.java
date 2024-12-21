@@ -1,11 +1,11 @@
 package main.java.kbtu.chill_guys.university_management_system.model.research;
 
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Journal;
+import main.java.kbtu.chill_guys.university_management_system.model.Journal;
+import main.java.kbtu.chill_guys.university_management_system.model.User;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
-import java.util.UUID;
 import java.util.Vector;
 
 public class ResearchPaper implements Serializable {
@@ -14,10 +14,19 @@ public class ResearchPaper implements Serializable {
     private String thesis;
     private Journal journal;
     private Integer citations;
-    private final Vector<Researcher> authors = new Vector<>();
+    private final Vector<User> authors;
     private String doi;
     private LocalDate publicationDate;
 
+    public ResearchPaper(String title, String thesis, Journal journal, Integer citations, String doi, LocalDate publicationDate, Vector<User> authors) {
+        this.title = title;
+        this.thesis = thesis;
+        this.journal = journal;
+        this.citations = citations;
+        this.doi = doi;
+        this.publicationDate = publicationDate;
+        this.authors = authors;
+    }
 
     public String getTitle() {
         return this.title;
@@ -51,11 +60,11 @@ public class ResearchPaper implements Serializable {
         this.citations = citations;
     }
 
-    public Vector<Researcher> getAuthors() {
+    public Vector<User> getAuthors() {
         return this.authors;
     }
 
-    public void addAuthor(Researcher researcher){
+    public void addAuthor(User researcher){
         authors.add(researcher);
     }
 
