@@ -161,5 +161,93 @@ public class AdminViewRu implements AdminView {
             logs.forEach(System.out::println);
         }
     }
+
+    @Override
+    public void displayUserAlreadyExists() {
+        System.out.println("Почта должна быть уникальной. Попробуйте еще раз!");
+    }
+
+    @Override
+    public void displayAllUsers(List<User> users) {
+        System.out.println("=== Пользователи ===");
+        for (int i = 0; i < users.size(); i++) {
+            System.out.printf("%d. %s %s (Email: %s, Роль: %s)%n",
+                    i + 1, users.get(i).getFirstName(), users.get(i).getLastName(), users.get(i).getEmail(), users.get(i).getRole());
+        }
+    }
+
+    @Override
+    public int getUserIndexForDeletion(int maxIndex) {
+        return InputValidatorUtil.validateIntegerInput(
+                "Введите номер пользователя, которого хотите удалить:",
+                1,
+                maxIndex
+        ) - 1;
+    }
+
+    @Override
+    public boolean confirmDeletion(User user) {
+        System.out.printf("Вы уверены, что хотите удалить пользователя %s %s (Email: %s)? (да/нет): ",
+                user.getFirstName(), user.getLastName(), user.getEmail());
+        String input = InputValidatorUtil.validateNonEmptyInput("Пожалуйста, введите 'да' или 'нет'.");
+        return input.equalsIgnoreCase("да");
+    }
+
+    @Override
+    public void displayNoUsersToDelete() {
+        System.out.println("Нет пользователей для удаления!");
+    }
+
+    @Override
+    public void displayUserDeletionCancelled() {
+        System.out.println("Удаление пользователя отменено.");
+    }
+
+    @Override
+    public void displayUserDeletedSuccessfully() {
+        System.out.println("Пользователь успешно удалён.");
+    }
+
+    @Override
+    public Map<String, Object> getFieldsForUpdate(User user) {
+        System.out.println("Выберите поля для изменения пользователя: ");
+        System.out.println("1. Имя");
+        System.out.println("2. Фамилия");
+        System.out.println("3. Электронная почта");
+        System.out.println("Введите номера через запятую (например, 1,3):");
+
+        String input = InputValidatorUtil.validateNonEmptyInput("Некорректный ввод. Попробуйте снова.");
+        String[] fields = input.split(",");
+
+        Map<String, Object> updatedFields = new HashMap<>();
+        for (String field : fields) {
+            switch (field.trim()) {
+                case "1" -> {
+                    System.out.println("Введите новое имя:");
+                    updatedFields.put("firstName", validateNonEmptyInput("Имя не может быть пустым."));
+                }
+                case "2" -> {
+                    System.out.println("Введите новую фамилию:");
+                    updatedFields.put("lastName", validateNonEmptyInput("Фамилия не может быть пустой."));
+                }
+                case "3" -> {
+                    System.out.println("Введите новую электронную почту:");
+                    updatedFields.put("email", validateEmailInput("Некорректный формат электронной почты. Попробуйте снова."));
+                }
+                default -> System.out.println("Неверный номер поля: " + field.trim());
+            }
+        }
+        return updatedFields;
+    }
+
+    @Override
+    public void displayNoUsersForUpdate() {
+        System.out.println("Нет пользователей для изменения!");
+    }
+
+    @Override
+    public void displayUserUpdatedSuccessfully() {
+        System.out.println("Пользователь успешно обновлён.");
+    }
 }
 

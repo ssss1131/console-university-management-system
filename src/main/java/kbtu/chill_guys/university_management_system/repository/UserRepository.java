@@ -15,6 +15,7 @@ public class UserRepository extends AbstractRepository<User> {
     public UserRepository() {
         super(USERS_PATH);
     }
+
     public User findById(UUID id) {
         return getAllLines().stream()
                 .filter(user -> user.getId().equals(id))
@@ -29,19 +30,26 @@ public class UserRepository extends AbstractRepository<User> {
                 .orElse(null);
     }
 
-
     public void save(User user) {
-        //TODO надо валидацию добавить что login уникальный
-        addLine(user);
-    }
+        Vector<User> users = getAllLines();
 
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getId().equals(user.getId())) {
+                users.set(i, user);
+                saveAllLines(users);
+                return;
+            }
+        }
+
+        users.add(user);
+        saveAllLines(users);
+    }
 
     public void delete(UUID id) {
         Vector<User> users = getAllLines();
         users.removeIf(user -> user.getId().equals(id));
         saveAllLines(users);
     }
-
 
     public Vector<User> findAll() {
         return getAllLines();

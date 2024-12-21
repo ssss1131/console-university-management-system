@@ -1,31 +1,41 @@
 package main.java.kbtu.chill_guys.university_management_system.menu.admin_command;
 
-import main.java.kbtu.chill_guys.university_management_system.controller.AdminController;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.Language;
 import main.java.kbtu.chill_guys.university_management_system.menu.Command;
 import main.java.kbtu.chill_guys.university_management_system.menu.Menu;
-import main.java.kbtu.chill_guys.university_management_system.model.factory.ViewFactory;
+import main.java.kbtu.chill_guys.university_management_system.service.AdminService;
 import main.java.kbtu.chill_guys.university_management_system.view.AdminView;
+import main.java.kbtu.chill_guys.university_management_system.model.User;
+import main.java.kbtu.chill_guys.university_management_system.model.factory.ViewFactory;
 
-import java.util.UUID;
+import java.util.List;
 
 public class DeleteUserCommand implements Command {
-    private final AdminController controller = new AdminController();
+    private final AdminService adminService = new AdminService();
 
     @Override
     public void execute() {
         Language currentLanguage = Menu.getInstance().getLanguage();
         AdminView view = ViewFactory.getAdminView(currentLanguage);
 
-        UUID userId = view.getUserIdForDeletion();
-
-        if (!controller.isExistingUser(userId)) {
-            view.displayMessage("User not found!");
+        List<User> users = adminService.getAllUsers();
+        if (users.isEmpty()) {
+            view.displayNoUsersToDelete();
             return;
         }
 
-        controller.removeUser(userId);
+        view.displayAllUsers(users);
 
-        view.displayMessage("User deleted successfully!");
+        int userIndex = view.getUserIndexForDeletion(users.size());
+        User selectedUser = users.get(userIndex);
+
+        boolean confirm = view.confirmDeletion(selectedUser);
+        if (!confirm) {
+            view.displayUserDeletionCancelled();
+            return;
+        }
+
+        adminService.removeUser(selectedUser.getId());
+        view.displayUserDeletedSuccessfully();
     }
 }

@@ -28,9 +28,6 @@ public class AdminViewEn implements AdminView {
         UserRole role = selectEnum(UserRole.class);
         data.put(USER_ROLE_ATTRIBUTE, role);
 
-        System.out.println("Enter email:");
-        data.put(EMAIL_ATTRIBUTE, validateEmailInput("Invalid email format. Please try again."));
-
         System.out.println("Enter password:");
         data.put(PASSWORD_ATTRIBUTE, validateNonEmptyInput("Password cannot be empty"));
 
@@ -157,6 +154,95 @@ public class AdminViewEn implements AdminView {
             System.out.println("Logs for the selected period:");
             logs.forEach(System.out::println);
         }
+    }
+
+    @Override
+    public void displayUserAlreadyExists() {
+        System.out.println("The mail must be unique. Try again!");
+    }
+
+
+    @Override
+    public void displayAllUsers(List<User> users) {
+        System.out.println("=== Users ===");
+        for (int i = 0; i < users.size(); i++) {
+            System.out.printf("%d. %s %s (Email: %s, Role: %s)%n",
+                    i + 1, users.get(i).getFirstName(), users.get(i).getLastName(), users.get(i).getEmail(), users.get(i).getRole());
+        }
+    }
+
+    @Override
+    public int getUserIndexForDeletion(int maxIndex) {
+        return InputValidatorUtil.validateIntegerInput(
+                "Enter the number of the user you want to delete:",
+                1,
+                maxIndex
+        ) - 1;
+    }
+
+    @Override
+    public boolean confirmDeletion(User user) {
+        System.out.printf("Are you sure you want to delete user %s %s (Email: %s)? (yes/no): ",
+                user.getFirstName(), user.getLastName(), user.getEmail());
+        String input = InputValidatorUtil.validateNonEmptyInput("Please enter 'yes' or 'no'.");
+        return input.equalsIgnoreCase("yes");
+    }
+
+    @Override
+    public void displayNoUsersToDelete() {
+        System.out.println("No users available to delete!");
+    }
+
+    @Override
+    public void displayUserDeletionCancelled() {
+        System.out.println("User deletion cancelled.");
+    }
+
+    @Override
+    public void displayUserDeletedSuccessfully() {
+        System.out.println("User deleted successfully.");
+    }
+
+    @Override
+    public Map<String, Object> getFieldsForUpdate(User user) {
+        System.out.println("Select fields to update for user: ");
+        System.out.println("1. First Name");
+        System.out.println("2. Last Name");
+        System.out.println("3. Email");
+        System.out.println("Enter the numbers separated by commas (e.g., 1,3):");
+
+        String input = InputValidatorUtil.validateNonEmptyInput("Invalid input. Please try again.");
+        String[] fields = input.split(",");
+
+        Map<String, Object> updatedFields = new HashMap<>();
+        for (String field : fields) {
+            switch (field.trim()) {
+                case "1" -> {
+                    System.out.println("Enter new first name:");
+                    updatedFields.put("firstName", validateNonEmptyInput("First name cannot be empty."));
+                }
+                case "2" -> {
+                    System.out.println("Enter new last name:");
+                    updatedFields.put("lastName", validateNonEmptyInput("Last name cannot be empty."));
+                }
+                case "3" -> {
+                    System.out.println("Enter new email:");
+                    updatedFields.put("email", validateEmailInput("Invalid email format. Please try again."));
+                }
+                default -> System.out.println("Invalid field number: " + field.trim());
+            }
+        }
+        return updatedFields;
+    }
+
+    @Override
+    public void displayNoUsersForUpdate() {
+        System.out.println("No users available to update!");
+    }
+
+    @Override
+    public void displayUserUpdatedSuccessfully() {
+        System.out.println("User updated successfully.");
     }
 }
 

@@ -18,18 +18,6 @@ public class AdminController {
         return adminService.getLogs(period);
     }
 
-    public User createUser(Map<String, Object> data) {
-        UserRole role = (UserRole) data.get(USER_ROLE_ATTRIBUTE);
-        String password = (String) data.get(PASSWORD_ATTRIBUTE);
-        String salt = PasswordUtil.generateSalt();
-        String hashedPassword = PasswordUtil.hashPassword(password, salt);
-        data.put(PASSWORD_ATTRIBUTE, hashedPassword);
-        data.put(SALT_ATTRIBUTE, salt);
-        User user = UserFactory.createUser(role, data);
-        adminService.createUser(user);
-        return user;
-    }
-
     public void modifyUser(Map<String, Object> data) {
         UserRole role = (UserRole) data.get(USER_ROLE_ATTRIBUTE);
         User user = UserFactory.createUser(role, data);
