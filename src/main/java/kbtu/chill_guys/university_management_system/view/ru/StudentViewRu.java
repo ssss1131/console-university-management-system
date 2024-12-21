@@ -198,4 +198,9 @@ public class StudentViewRu implements StudentView {
     public void showNoMarksMessage(Discipline discipline) {
         System.out.println("Оценки по дисциплине: " + discipline.getName() + " отсутствуют!");
     }
+
+    @Override
+    public void showSemesterHeader(Semester semester) {
+        System.out.printf("\n=== Семестр: %s ===\n", semester.toString());
+    }
 }

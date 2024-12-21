@@ -6,7 +6,6 @@ import main.java.kbtu.chill_guys.university_management_system.service.Researcher
 import main.java.kbtu.chill_guys.university_management_system.view.ResearcherView;
 
 public class GetTopCitedResearcherBySchoolCommand implements Command {
-
     private final ResearcherService service = ResearcherService.getInstance();
     private ResearcherView view;
 

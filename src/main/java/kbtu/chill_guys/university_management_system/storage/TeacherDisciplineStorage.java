@@ -14,7 +14,6 @@ import static main.java.kbtu.chill_guys.university_management_system.util.Consta
 import static main.java.kbtu.chill_guys.university_management_system.util.Constant.TEACHER_DISCIPLINE_PATH;
 
 public class TeacherDisciplineStorage implements Serializable {
-
     private static final Path PATH = BASE_PATH.resolve(TEACHER_DISCIPLINE_PATH);
     private static final Logger logger = Logger.getLogger(TeacherDisciplineStorage.class.getName());
 
@@ -130,5 +129,13 @@ public class TeacherDisciplineStorage implements Serializable {
             }
         }
         return Map.of();
+    }
+
+    public List<LessonRecord> getLessonRecordsForStudent(Teacher teacher, Semester semester, Discipline discipline, Student student) {
+        return teacherLessonRecords
+                .getOrDefault(teacher, Collections.emptyMap())
+                .getOrDefault(semester, Collections.emptyMap())
+                .getOrDefault(discipline, Collections.emptyMap())
+                .getOrDefault(student, Collections.emptyList());
     }
 }

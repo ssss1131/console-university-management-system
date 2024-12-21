@@ -198,4 +198,9 @@ public class StudentViewKz implements StudentView {
     public void showNoMarksMessage(Discipline discipline) {
         System.out.println("Пән: "  + discipline.getName() + " бойынша бағалар жоқ!");
     }
+
+    @Override
+    public void showSemesterHeader(Semester semester) {
+        System.out.printf("\n=== Семестр: %s ===\n", semester.toString());
+    }
 }

@@ -217,4 +217,9 @@ public class StudentViewEn implements StudentView {
     public void showNoMarksMessage(Discipline discipline) {
         System.out.println("No marks for Discipline: " + discipline.getName());
     }
+
+    @Override
+    public void showSemesterHeader(Semester semester) {
+        System.out.printf("\n=== Semester: %s ===\n", semester.toString());
+    }
 }

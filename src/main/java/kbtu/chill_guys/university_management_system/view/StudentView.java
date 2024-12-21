@@ -41,4 +41,6 @@ public interface StudentView {
     void showDiscipline(Discipline discipline);
 
     void showNoDisciplinesAvailableMessage();
+
+    void showSemesterHeader(Semester semester);
 }

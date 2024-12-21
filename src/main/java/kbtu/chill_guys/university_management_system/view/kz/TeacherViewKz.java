@@ -81,4 +81,25 @@ public class TeacherViewKz implements TeacherView {
     public void showRecordAddedMessage(LessonRecord record) {
         System.out.println("Жазба сәтті қосылды: " + record);
     }
+
+    @Override
+    public void showStudentRecords(Student student, List<LessonRecord> lessonRecords) {
+        System.out.printf("=== Студент жазбалары: %s %s ===%n", student.getFirstName(), student.getLastName());
+        if (lessonRecords.isEmpty()) {
+            System.out.println("Жазбалар жоқ.");
+            return;
+        }
+
+        System.out.println("Күні       | Сабақ          | Қатысу     | Баға   | Пікірлер");
+        System.out.println("----------------------------------------------------------");
+        for (LessonRecord record : lessonRecords) {
+            System.out.printf("%s | %-14s | %-10s | %-5.2f | %s%n",
+                    record.getDate(),
+                    record.getLesson(),
+                    record.getAttendance(),
+                    record.getGrade(),
+                    record.getComment());
+        }
+        System.out.println("----------------------------------------------------------");
+    }
 }

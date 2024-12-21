@@ -11,11 +11,20 @@ import java.util.List;
 
 public interface TeacherView {
     Semester selectSemester();
+
     void showNoSemesterSelectedMessage();
+
     Discipline selectDiscipline(List<Discipline> disciplines);
+
     Student selectStudent(List<Student> students);
+
     LessonRecord createLessonRecord();
+
     void showNoDisciplinesMessage(Semester semester);
+
     void showNoStudentsMessage(Discipline discipline);
+
     void showRecordAddedMessage(LessonRecord record);
+
+    void showStudentRecords(Student student, List<LessonRecord> lessonRecords);
 }

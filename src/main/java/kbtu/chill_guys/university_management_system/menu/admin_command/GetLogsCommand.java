@@ -1,6 +1,5 @@
 package main.java.kbtu.chill_guys.university_management_system.menu.admin_command;
 
-import main.java.kbtu.chill_guys.university_management_system.controller.AdminController;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.Language;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.LogPeriod;
 import main.java.kbtu.chill_guys.university_management_system.menu.Command;

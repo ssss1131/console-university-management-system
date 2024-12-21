@@ -81,4 +81,25 @@ public class TeacherViewRu implements TeacherView {
     public void showRecordAddedMessage(LessonRecord record) {
         System.out.println("Запись успешно добавлена: " + record);
     }
+
+    @Override
+    public void showStudentRecords(Student student, List<LessonRecord> lessonRecords) {
+        System.out.printf("=== Записи студента: %s %s ===%n", student.getFirstName(), student.getLastName());
+        if (lessonRecords.isEmpty()) {
+            System.out.println("Записей нет.");
+            return;
+        }
+
+        System.out.println("Дата       | Занятие        | Посещаемость | Оценка | Комментарии");
+        System.out.println("---------------------------------------------------------------");
+        for (LessonRecord record : lessonRecords) {
+            System.out.printf("%s | %-14s | %-12s | %-6.2f | %s%n",
+                    record.getDate(),
+                    record.getLesson(),
+                    record.getAttendance(),
+                    record.getGrade(),
+                    record.getComment());
+        }
+        System.out.println("---------------------------------------------------------------");
+    }
 }

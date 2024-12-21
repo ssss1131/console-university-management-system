@@ -66,14 +66,6 @@ public class StudentDisciplineStorage implements Serializable {
         return new StudentDisciplineStorage();
     }
 
-//    public void addDiscipline(Student student, Semester semester, Discipline discipline) {
-//        studentDisciplineHistory
-//                .computeIfAbsent(student, k -> new HashMap<>())
-//                .computeIfAbsent(semester, k -> new ArrayList<>())
-//                .add(discipline);
-//        saveToFile();
-//    }
-
     public List<Discipline> getDisciplines(Student student, Semester semester) {
         return studentDisciplineHistory
                 .getOrDefault(student, Collections.emptyMap())
@@ -125,6 +117,22 @@ public class StudentDisciplineStorage implements Serializable {
             }
         }
         return teachers;
+    }
+
+    public List<Student> getStudentsByDiscipline(Discipline discipline) {
+        List<Student> students = new ArrayList<>();
+        for (Map.Entry<Student, Map<Semester, List<Discipline>>> entry : studentDisciplineHistory.entrySet()) {
+            Student student = entry.getKey();
+            Map<Semester, List<Discipline>> semesterMap = entry.getValue();
+
+            for (List<Discipline> disciplines : semesterMap.values()) {
+                if (disciplines.contains(discipline)) {
+                    students.add(student);
+                    break;
+                }
+            }
+        }
+        return students;
     }
 
     @Override

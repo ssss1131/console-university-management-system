@@ -80,4 +80,25 @@ public class TeacherViewEn implements TeacherView {
     public void showRecordAddedMessage(LessonRecord record) {
         System.out.println("Record added successfully: " + record);
     }
+
+    @Override
+    public void showStudentRecords(Student student, List<LessonRecord> lessonRecords) {
+        System.out.printf("=== Records for student: %s %s ===%n", student.getFirstName(), student.getLastName());
+        if (lessonRecords.isEmpty()) {
+            System.out.println("No records available.");
+            return;
+        }
+
+        System.out.println("Date       | Lesson         | Attendance | Grade | Comments");
+        System.out.println("-----------------------------------------------------------");
+        for (LessonRecord record : lessonRecords) {
+            System.out.printf("%s | %-14s | %-10s | %-5.2f | %s%n",
+                    record.getDate(),
+                    record.getLesson(),
+                    record.getAttendance(),
+                    record.getGrade(),
+                    record.getComment());
+        }
+        System.out.println("-----------------------------------------------------------");
+    }
 }
