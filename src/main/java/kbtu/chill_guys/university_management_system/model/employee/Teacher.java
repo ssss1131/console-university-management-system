@@ -18,7 +18,6 @@ public class Teacher extends Employee implements CanViewStudents {
     private Rating rating;
     private School school;
     private TeachingDegree teachingDegree;
-    private Vector<Discipline> disciplines;
 
     public Teacher(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName,
                    int salary, int rating, School school, TeachingDegree teachingDegree) {
@@ -68,7 +67,6 @@ public class Teacher extends Employee implements CanViewStudents {
                "rating=" + rating +
                ", school=" + school +
                ", teachingDegree=" + teachingDegree +
-               ", disciplines=" + disciplines +
                "} " + super.toString();
     }
 }

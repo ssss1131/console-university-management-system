@@ -21,5 +21,23 @@ public interface AdminView {
 
     void displayLogs(List<String> logs);
 
-    void handleResearchSupervisorInput(Map<String, Object> data);
+    void displayUserAlreadyExists();
+
+    void displayAllUsers(List<User> users);
+
+    int getUserIndexForDeletion(int maxIndex);
+
+    boolean confirmDeletion(User user);
+
+    void displayNoUsersToDelete();
+
+    void displayUserDeletionCancelled();
+
+    void displayUserDeletedSuccessfully();
+
+    Map<String, Object> getFieldsForUpdate(User user);
+
+    void displayNoUsersForUpdate();
+
+    void displayUserUpdatedSuccessfully();
 }

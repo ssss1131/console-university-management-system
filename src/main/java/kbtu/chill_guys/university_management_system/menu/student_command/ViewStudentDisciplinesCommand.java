@@ -12,7 +12,6 @@ import main.java.kbtu.chill_guys.university_management_system.view.StudentView;
 import java.util.Set;
 
 public class ViewStudentDisciplinesCommand implements Command {
-
     private final StudentDisciplineStorage storage = StudentDisciplineStorage.getInstance();
 
     @Override

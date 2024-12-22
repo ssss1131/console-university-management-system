@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.UUID;
 
 public class DeleteJournalCommand implements Command {
-
     private final JournalService journalService = new JournalService();
 
     @Override

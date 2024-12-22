@@ -15,6 +15,7 @@ import java.util.List;
 public class FinalizeApprovedDisciplinesCommand implements Command {
     private final DisciplineStatusStorage disciplineStatusStorage = DisciplineStatusStorage.getInstance();
     private final DisciplineRepository disciplineRepository = new DisciplineRepository();
+
     @Override
     public void execute() {
         Language currentLanguage = Menu.getInstance().getLanguage();

@@ -13,16 +13,13 @@ import java.util.Comparator;
 import java.util.List;
 
 public class GetSortedAllResearchPapersCommand implements Command {
-
     private final ResearcherService service  = ResearcherService.getInstance();
-    private ResearcherView view;
 
     @Override
     public void execute() {
         Language language = Menu.getInstance().getLanguage();
-        view = ViewFactory.getResearcherView(language);
+        ResearcherView view = ViewFactory.getResearcherView(language);
 
-        User user = Menu.getInstance().getLoggedUser();
         Comparator<ResearchPaper> comparator = view.getSortPreference();
         List<ResearchPaper> papers = service.getResearchPapers();
         papers.sort(comparator);

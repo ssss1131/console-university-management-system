@@ -10,7 +10,6 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.organi
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.LogPeriod;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
-import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
 import main.java.kbtu.chill_guys.university_management_system.view.AdminView;
 
@@ -54,6 +53,11 @@ public class AdminViewKz implements AdminView {
         }
 
         return data;
+    }
+
+    private void handleResearchSupervisorInput(Map<String, Object> data) {
+        System.out.println("Жалақыны енгізіңіз:");
+        data.put(SALARY_ATTRIBUTE, validateIntegerInput("Жалақы теріс болмауы керек", 0, Integer.MAX_VALUE));
     }
 
     private void handleProfessorInput(Map<String, Object> data) {
@@ -157,8 +161,90 @@ public class AdminViewKz implements AdminView {
     }
 
     @Override
-    public void handleResearchSupervisorInput(Map<String, Object> data) {
-        System.out.println("Жалақыны енгізіңіз:");
-        data.put(SALARY_ATTRIBUTE, validateIntegerInput("Жалақы теріс болмауы керек", 0, Integer.MAX_VALUE));
+    public void displayUserAlreadyExists() {
+        System.out.println("Пошта бірегей болуы керек. Қайталап көріңіз!");
+    }
+
+    @Override
+    public void displayAllUsers(List<User> users) {
+        System.out.println("=== Қолданушылар ===");
+        for (int i = 0; i < users.size(); i++) {
+            System.out.printf("%d. %s %s (Электрондық пошта: %s, Рөлі: %s)%n",
+                    i + 1, users.get(i).getFirstName(), users.get(i).getLastName(), users.get(i).getEmail(), users.get(i).getRole());
+        }
+    }
+
+    @Override
+    public int getUserIndexForDeletion(int maxIndex) {
+        return InputValidatorUtil.validateIntegerInput(
+                "Жою үшін қолданушының нөмірін енгізіңіз:",
+                1,
+                maxIndex
+        ) - 1;
+    }
+
+    @Override
+    public boolean confirmDeletion(User user) {
+        System.out.printf("Қолданушыны жоюға сенімдісіз бе? %s %s (Электрондық пошта: %s)? (иә/жоқ): ",
+                user.getFirstName(), user.getLastName(), user.getEmail());
+        String input = InputValidatorUtil.validateNonEmptyInput("Өтінеміз, 'иә' немесе 'жоқ' деп жазыңыз.");
+        return input.equalsIgnoreCase("иә");
+    }
+
+    @Override
+    public void displayNoUsersToDelete() {
+        System.out.println("Жоюға қолданушылар жоқ!");
+    }
+
+    @Override
+    public void displayUserDeletionCancelled() {
+        System.out.println("Қолданушыны жою тоқтатылды.");
+    }
+
+    @Override
+    public void displayUserDeletedSuccessfully() {
+        System.out.println("Қолданушы сәтті жойылды.");
+    }
+
+    @Override
+    public Map<String, Object> getFieldsForUpdate(User user) {
+        System.out.println("Пайдаланушыны жаңарту үшін өрістерді таңдаңыз: ");
+        System.out.println("1. Аты");
+        System.out.println("2. Тегі");
+        System.out.println("3. Электрондық пошта");
+        System.out.println("Сандарды үтір арқылы енгізіңіз (мысалы, 1,3):");
+
+        String input = InputValidatorUtil.validateNonEmptyInput("Қате енгізу. Қайта көріңіз.");
+        String[] fields = input.split(",");
+
+        Map<String, Object> updatedFields = new HashMap<>();
+        for (String field : fields) {
+            switch (field.trim()) {
+                case "1" -> {
+                    System.out.println("Жаңа атын енгізіңіз:");
+                    updatedFields.put("firstName", validateNonEmptyInput("Аты бос болмауы керек."));
+                }
+                case "2" -> {
+                    System.out.println("Жаңа тегін енгізіңіз:");
+                    updatedFields.put("lastName", validateNonEmptyInput("Тегі бос болмауы керек."));
+                }
+                case "3" -> {
+                    System.out.println("Жаңа электрондық поштаны енгізіңіз:");
+                    updatedFields.put("email", validateEmailInput("Электрондық пошта пішімі қате. Қайта көріңіз."));
+                }
+                default -> System.out.println("Өрістің қате нөмірі: " + field.trim());
+            }
+        }
+        return updatedFields;
+    }
+
+    @Override
+    public void displayNoUsersForUpdate() {
+        System.out.println("Жаңартуға қолжетімді пайдаланушылар жоқ!");
+    }
+
+    @Override
+    public void displayUserUpdatedSuccessfully() {
+        System.out.println("Пайдаланушы сәтті жаңартылды.");
     }
 }

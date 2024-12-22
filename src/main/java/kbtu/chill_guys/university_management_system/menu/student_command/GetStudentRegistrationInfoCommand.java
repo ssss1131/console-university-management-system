@@ -14,7 +14,6 @@ import main.java.kbtu.chill_guys.university_management_system.view.StudentView;
 import java.util.List;
 
 public class GetStudentRegistrationInfoCommand implements Command {
-
     private final StudentDisciplineStorage storage = StudentDisciplineStorage.getInstance();
     private final DisciplineRegistrationService disciplineRegistrationService = new DisciplineRegistrationService();
 

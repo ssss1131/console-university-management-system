@@ -22,6 +22,7 @@ public final class Constant {
 
     public static final Path DISCIPLINE_STATUS_PATH = Paths.get("academic_db","discipline_status.ser");
     public static final Path STUDENT_DISCIPLINE_PATH = Paths.get("academic_db", "student_discipline.ser");
+    public static final Path TEACHER_DISCIPLINE_PATH = Paths.get("academic_db", "teacher_discipline.ser");
     public static final Path DISCIPLINE_REGISTRATION_PATH = Paths.get("academic_db", "discipline_registration.ser");
     public static final Path JOURNAL_STORAGE_PATH = Paths.get("media_db", "journal_storage.ser");
 
@@ -69,5 +70,4 @@ public final class Constant {
     public static final Pattern EMAIL_PATTERN = Pattern.compile(
             "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$"
     );
-
 }
