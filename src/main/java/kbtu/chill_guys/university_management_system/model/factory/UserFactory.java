@@ -69,7 +69,6 @@ public final class UserFactory {
                 int studyDuration = (int) data.get(STUDY_DURATION_ATTRIBUTE);
 
                 switch (role) {
-                    //TODO organization надо добавить
                     case BACHELOR:
                         Specialization specialization = (Specialization) data.get(PROGRAM_ATTRIBUTE);
                         return new Bachelor(uuid, role, email, password, salt, firstName, lastName, school,

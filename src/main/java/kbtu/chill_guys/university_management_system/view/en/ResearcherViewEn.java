@@ -29,7 +29,6 @@ public class ResearcherViewEn implements ResearcherView {
     private final Scanner scanner = new Scanner(System.in);
     
     private final ResearcherService researcherService = ResearcherService.getInstance();
-    private final JournalService service = new JournalService();
     
     private final JournalStorage storage = JournalStorage.getInstance();
     private final JournalView view = new JournalViewEn();

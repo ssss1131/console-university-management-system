@@ -100,11 +100,6 @@ public class AdminViewRu implements AdminView {
             }
         }
 
-        System.out.printf("Введите организацию (или %s, которые следует пропустить): ", CANCEL_INPUT);
-        String input = validateNonEmptyInput("Неверный ввод данных организацией.");
-        if (!input.equalsIgnoreCase(CANCEL_INPUT)) {
-            data.put(ORGANIZATION_ATTRIBUTE, getOrganizationInput());
-        }
     }
 
     private void handleTeacherInput(Map<String, Object> data) {
@@ -132,20 +127,6 @@ public class AdminViewRu implements AdminView {
     private void handleDeanInput(Map<String, Object> data) {
         System.out.println("Введите зарплату:");
         data.put(SALARY_ATTRIBUTE, validateIntegerInput("Зарплата не может быть отрицательной", 0, Integer.MAX_VALUE));
-    }
-
-    private Organization getOrganizationInput() {
-        System.out.println("Введите название организации:");
-        String name = InputValidatorUtil.validateNonEmptyInput("Название организации не может быть пустым");
-
-        System.out.println("Введите описание организации:");
-        String description = InputValidatorUtil.validateNonEmptyInput("Описание организации не может быть пустым");
-
-        Organization organization = new Organization();
-        organization.setName(name);
-        organization.setDescription(description);
-
-        return organization;
     }
 
     @Override

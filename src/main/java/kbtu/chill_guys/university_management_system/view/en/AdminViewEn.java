@@ -100,12 +100,6 @@ public class AdminViewEn implements AdminView {
                 data.put(PROGRAM_ATTRIBUTE, selectEnum(Specialization.class));
             }
         }
-
-        System.out.printf("Enter organization (or %s to skip): ", CANCEL_INPUT);
-        String input = validateNonEmptyInput("Invalid organization input.");
-        if (!input.equalsIgnoreCase(CANCEL_INPUT)) {
-            data.put(ORGANIZATION_ATTRIBUTE, getOrganizationInput());
-        }
     }
 
     private void handleTeacherInput(Map<String, Object> data) {
@@ -133,20 +127,6 @@ public class AdminViewEn implements AdminView {
     private void handleDeanInput(Map<String, Object> data) {
         System.out.println("Enter salary:");
         data.put(SALARY_ATTRIBUTE, validateIntegerInput("Salary must be a positive integer", 0, Integer.MAX_VALUE));
-    }
-
-    private Organization getOrganizationInput() {
-        System.out.println("Enter organization name:");
-        String name = validateNonEmptyInput("Organization name cannot be empty");
-
-        System.out.println("Enter organization description:");
-        String description = validateNonEmptyInput("Organization description cannot be empty");
-
-        Organization organization = new Organization();
-        organization.setName(name);
-        organization.setDescription(description);
-
-        return organization;
     }
 
     @Override
