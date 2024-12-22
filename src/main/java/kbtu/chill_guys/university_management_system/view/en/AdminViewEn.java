@@ -8,7 +8,6 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.organi
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.LogPeriod;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
-import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
 import main.java.kbtu.chill_guys.university_management_system.view.AdminView;

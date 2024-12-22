@@ -4,13 +4,9 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.academ
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.TeachingDegree;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewStudents;
 
-import java.util.Objects;
 import java.util.UUID;
-import java.util.Vector;
 
 import static main.java.kbtu.chill_guys.university_management_system.util.NumericToEnumMapper.mapRating;
 

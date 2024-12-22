@@ -2,7 +2,6 @@ package main.java.kbtu.chill_guys.university_management_system.model.employee;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanBeResearcher;
 import main.java.kbtu.chill_guys.university_management_system.permission.CanViewCourses;

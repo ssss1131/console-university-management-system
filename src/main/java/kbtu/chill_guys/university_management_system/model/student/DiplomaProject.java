@@ -3,7 +3,6 @@ package main.java.kbtu.chill_guys.university_management_system.model.student;
 import main.java.kbtu.chill_guys.university_management_system.exception.InvalidHIndexException;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.ResearchSupervisor;
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
-import main.java.kbtu.chill_guys.university_management_system.util.Constant;
 
 import java.io.Serializable;
 import java.util.Objects;

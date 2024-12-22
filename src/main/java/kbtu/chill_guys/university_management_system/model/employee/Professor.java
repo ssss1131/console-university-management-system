@@ -1,9 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.model.employee;
 
-import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.TeachingDegree;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchProject;
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
 import main.java.kbtu.chill_guys.university_management_system.model.research.Researcher;

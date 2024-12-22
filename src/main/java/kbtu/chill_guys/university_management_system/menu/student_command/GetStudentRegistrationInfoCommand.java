@@ -28,9 +28,6 @@ public class GetStudentRegistrationInfoCommand implements Command {
         if(semester!=null){
             List<Discipline> disciplines = storage.getDisciplines(student, semester);
             view.showRegisteredDisciplines(disciplines, semester);
-        }else{
-//            view.showClosedRegistrationInfo(); TODO надо добавить везде его
         }
-
     }
 }

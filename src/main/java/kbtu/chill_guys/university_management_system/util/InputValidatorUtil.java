@@ -1,10 +1,14 @@
 package main.java.kbtu.chill_guys.university_management_system.util;
 
+import main.java.kbtu.chill_guys.university_management_system.enumeration.util.Language;
+import main.java.kbtu.chill_guys.university_management_system.menu.Menu;
+
 import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.UUID;
 
 import static main.java.kbtu.chill_guys.university_management_system.util.Constant.EMAIL_PATTERN;
+import static main.java.kbtu.chill_guys.university_management_system.util.LanguageConstants.*;
 
 public final class InputValidatorUtil {
 
@@ -50,7 +54,7 @@ public final class InputValidatorUtil {
                     System.out.println(errorMessage);
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a number.");
+                System.out.println(INVALID_NUMBER_MESSAGE.get(Menu.getInstance().getLanguage()));
             }
         }
     }
@@ -58,7 +62,7 @@ public final class InputValidatorUtil {
     public static String validateDateInput(String errorMessage) {
         while (true) {
             try {
-                System.out.println("Enter date (yyyy-MM-dd):");
+                System.out.println(ENTER_DATE_MESSAGE.get(Menu.getInstance().getLanguage()));
                 String input = scanner.nextLine().trim();
                 LocalDate.parse(input);
                 return input;
@@ -71,12 +75,12 @@ public final class InputValidatorUtil {
     public static String validateDateInput(String errorMessage, LocalDate prevDate) {
         while (true) {
             try {
-                System.out.println("Enter date (yyyy-MM-dd):");
+                System.out.println(ENTER_DATE_MESSAGE.get(Menu.getInstance().getLanguage()));
                 String input = new Scanner(System.in).nextLine().trim();
                 LocalDate enteredDate = LocalDate.parse(input);
 
                 if (prevDate != null && !enteredDate.isAfter(prevDate)) {
-                    System.out.println("The date must be after " + prevDate + ". Please try again.");
+                    System.out.println(DATE_AFTER_MESSAGE.get(Menu.getInstance().getLanguage()) + prevDate);
                     continue;
                 }
 

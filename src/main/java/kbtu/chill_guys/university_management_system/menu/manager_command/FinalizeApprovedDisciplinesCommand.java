@@ -33,12 +33,11 @@ public class FinalizeApprovedDisciplinesCommand implements Command {
                     disciplineRepository.save(discipline);
                     disciplineStatusStorage.removeDiscipline(discipline);
                 }
-                System.out.println("Selected disciplines have been added to the database.");
+                view.showSuccessAddingFinalizedDisciplines();
             }
         } else {
-            System.out.println("\nNo approved disciplines to finalize.");
+            view.showNoApprovedDisciplines();
         }
-        System.out.println("-----------------------------------------------------");
 
     }
 }

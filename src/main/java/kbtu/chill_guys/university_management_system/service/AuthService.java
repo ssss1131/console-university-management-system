@@ -4,8 +4,6 @@ import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.repository.UserRepository;
 import main.java.kbtu.chill_guys.university_management_system.util.PasswordUtil;
 
-import java.util.Map;
-
 public class AuthService {
     private final UserRepository userRepository = new UserRepository();
 

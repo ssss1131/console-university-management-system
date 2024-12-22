@@ -1,10 +1,12 @@
 package main.java.kbtu.chill_guys.university_management_system.view;
 
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.OrganizationRole;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
 import main.java.kbtu.chill_guys.university_management_system.model.student.DiplomaProject;
 import main.java.kbtu.chill_guys.university_management_system.model.student.GraduateStudent;
+import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 
 import java.util.List;
@@ -21,8 +23,6 @@ public interface StudentView {
     void displayInfo(Student student);
 
     void showRegisteredDisciplines(List<Discipline> disciplines, Semester semester);
-
-    void showMessage(String message);
 
     Semester getSemester(Set<Semester> semesters);
 
@@ -47,4 +47,20 @@ public interface StudentView {
     void showSemesterHeader(Semester semester);
 
     void showDiploma(DiplomaProject project, GraduateStudent student);
+
+    String getOrganizationName();
+
+    void showAlreadyExistingOrganizationName();
+
+    String getOrganizationDescription();
+
+    Organization selectOrganization(List<Organization> organizations);
+
+    OrganizationRole selectOrganizationRole(List<OrganizationRole> availableRoles);
+
+    void showOrganizationInfo(List<Organization> organization);
+
+    void showClosedRegistration();
+
+    void noneAvailableDisciplines();
 }

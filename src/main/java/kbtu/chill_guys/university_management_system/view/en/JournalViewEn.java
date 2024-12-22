@@ -1,7 +1,6 @@
 package main.java.kbtu.chill_guys.university_management_system.view.en;
 
 import main.java.kbtu.chill_guys.university_management_system.model.Journal;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
 import main.java.kbtu.chill_guys.university_management_system.view.JournalView;
 

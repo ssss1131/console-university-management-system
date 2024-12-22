@@ -12,7 +12,6 @@ import main.java.kbtu.chill_guys.university_management_system.model.academic.Sem
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.ResearchSupervisor;
 import main.java.kbtu.chill_guys.university_management_system.model.student.GraduateStudent;
-import main.java.kbtu.chill_guys.university_management_system.service.DisciplineService;
 import main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
 import main.java.kbtu.chill_guys.university_management_system.view.ManagerView;
@@ -477,5 +476,20 @@ public class ManagerViewEn implements ManagerView {
         }
 
         return supervisors.get(choice - 1);
+    }
+
+    @Override
+    public void showSuccessAddingFinalizedDisciplines() {
+        System.out.println("Selected disciplines have been added to the database.");
+    }
+
+    @Override
+    public void showNoApprovedDisciplines() {
+        System.out.println("\nNo approved disciplines to finalize.");
+    }
+
+    @Override
+    public void showUnsuccessfulOpeningRegistration() {
+        System.out.println("Cant open registration because none disciplines was selected");
     }
 }

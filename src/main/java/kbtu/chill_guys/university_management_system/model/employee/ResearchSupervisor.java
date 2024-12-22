@@ -3,11 +3,8 @@ package main.java.kbtu.chill_guys.university_management_system.model.employee;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchProject;
-import main.java.kbtu.chill_guys.university_management_system.model.student.GraduateStudent;
 import main.java.kbtu.chill_guys.university_management_system.model.research.Researcher;
 
-import java.io.Serializable;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.Vector;
 

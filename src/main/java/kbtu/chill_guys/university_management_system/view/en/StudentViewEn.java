@@ -1,13 +1,14 @@
 package main.java.kbtu.chill_guys.university_management_system.view.en;
 
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.OrganizationRole;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
 import main.java.kbtu.chill_guys.university_management_system.model.student.DiplomaProject;
 import main.java.kbtu.chill_guys.university_management_system.model.student.GraduateStudent;
+import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
-import main.java.kbtu.chill_guys.university_management_system.repository.UserRepository;
 import main.java.kbtu.chill_guys.university_management_system.service.ResearcherService;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
 import main.java.kbtu.chill_guys.university_management_system.view.StudentView;
@@ -101,12 +102,6 @@ public class StudentViewEn implements StudentView {
                     discipline.getCourseType());
         }
         System.out.println("===============================================================\n");
-    }
-
-    @Override
-    public void showMessage(String message){
-        System.out.println(message);
-
     }
 
     @Override
@@ -220,6 +215,108 @@ public class StudentViewEn implements StudentView {
                 }
             }
         }
+    }
+
+    @Override
+    public String getOrganizationName() {
+        System.out.println("Enter organization name:");
+        return InputValidatorUtil.validateNonEmptyInput("Enter non empty name");
+    }
+
+    @Override
+    public void showAlreadyExistingOrganizationName() {
+        System.out.println("This name already exists. Please enter unique name");
+    }
+
+    @Override
+    public String getOrganizationDescription() {
+        System.out.println("Enter organization description: ");
+        return InputValidatorUtil.validateNonEmptyInput("Enter non empty description");
+    }
+
+    @Override
+    public Organization selectOrganization(List<Organization> organizations) {
+        if (organizations == null || organizations.isEmpty()) {
+            System.out.println("No organizations available.");
+            return null;
+        }
+
+        System.out.println("\n=== Available Organizations ===");
+        for (int i = 0; i < organizations.size(); i++) {
+            Organization organization = organizations.get(i);
+            System.out.printf("%d. %s - %s%n", i + 1, organization.getName(), organization.getDescription());
+            if (organization.getMembers().isEmpty()) {
+                System.out.println("   Members: No members yet.");
+            } else {
+                System.out.println("   Members:");
+                organization.getMembers().forEach((student, role) ->
+                        System.out.printf("      - %s %s (%s)%n", student.getFirstName(), student.getLastName(), role));
+            }
+        }
+        System.out.println("Select an organization by number or press 0 to cancel: ");
+        int choice = InputValidatorUtil.validateIntegerInput(
+                "Enter valid number ", 0, organizations.size());
+
+        if (choice == 0) {
+            System.out.println("Selection canceled.");
+            return null;
+        }
+
+        return organizations.get(choice - 1);
+    }
+
+    @Override
+    public OrganizationRole selectOrganizationRole(List<OrganizationRole> availableRoles) {
+        if (availableRoles.isEmpty()) {
+            System.out.println("Not available roles");
+            return null;
+        }
+
+        System.out.println("\n=== available roles ===");
+        for (int i = 0; i < availableRoles.size(); i++) {
+            System.out.printf("%d. %s%n", i + 1, availableRoles.get(i));
+        }
+        System.out.println("========================\n");
+        System.out.println("Select role number: ");
+        int choice = InputValidatorUtil.validateIntegerInput(
+                "Enter valid number ", 1, availableRoles.size());
+
+        return availableRoles.get(choice - 1);
+    }
+
+    @Override
+    public void showOrganizationInfo(List<Organization> organizations) {
+        if (organizations.isEmpty()) {
+            System.out.println("You are not a member of any organization.");
+            return;
+        }
+
+        System.out.println("\n=== Organization Information ===");
+
+        for (Organization organization : organizations) {
+            System.out.printf("Name: %s%n", organization.getName());
+            System.out.printf("Description: %s%n", organization.getDescription());
+            System.out.println("Members:");
+            if (organization.getMembers().isEmpty()) {
+                System.out.println("  No members in this organization.");
+            } else {
+                organization.getMembers().forEach((student, role) -> {
+                    System.out.printf("  - %s %s (Role: %s)%n",
+                            student.getFirstName(), student.getLastName(), role.name());
+                });
+            }
+            System.out.println("=".repeat(50));
+        }
+    }
+
+    @Override
+    public void showClosedRegistration() {
+        System.out.println("Registration is closed!");
+    }
+
+    @Override
+    public void noneAvailableDisciplines() {
+        System.out.println("No available disciplines for registration.");
     }
 
     private Vector<ResearchPaper> selectResearchPapers(List<ResearchPaper> papers) {

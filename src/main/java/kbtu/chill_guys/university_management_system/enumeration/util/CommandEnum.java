@@ -31,6 +31,9 @@ public enum CommandEnum {
     VIEW_MARKS("View my marks", "Посмотреть мои оценки", "Менің бағаларымды көру"),
     REGISTER_DISCIPLINES("Register to disciplines", "Зарегистрироваться на дисциплины", "Пәндерге тіркелу"),
     SHOW_REGISTRATION_INFO("Show registration info", "Показать информацию о регистрации", "Тіркеу туралы ақпаратты көрсету"),
+    CREATE_ORGANIZATION("create organization", "создать организацию", "организация ашу"),
+    JOIN_ORGANIZATION("join organization","вступить в организацию","организацияга кыру"),
+    VIEW_ORGANIZATION_INFO("view my organizations info", "посмотреть инфу о моих организациях", "менын организациялар жайлы кору"),
 
     PUT_MARK("Put mark", "Поставить оценку", "Баға қою"),
     VIEW_STUDENTS("View info about students", "Просмотр информации о студентах", "Студенттер туралы ақпаратты қарау"),

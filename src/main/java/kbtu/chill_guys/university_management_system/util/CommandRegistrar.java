@@ -85,6 +85,9 @@ public final class CommandRegistrar {
         menu.registerCommand(REGISTER_DISCIPLINES, new RegisterToSemesterCommand(), UserRole.BACHELOR, UserRole.MASTER, UserRole.PHD);
         menu.registerCommand(SHOW_REGISTRATION_INFO, new GetStudentRegistrationInfoCommand(), UserRole.PHD, UserRole.MASTER, UserRole.BACHELOR);
         menu.registerCommand(SHOW_AND_EDIT_DIPLOMA_PROJECT, new ShowInfoAboutDiplomaProjectCommand(), UserRole.MASTER, UserRole.PHD);
+        menu.registerCommand(CREATE_ORGANIZATION, new CreateOrganizationCommand(), UserRole.BACHELOR, UserRole.MASTER, UserRole.PHD);
+        menu.registerCommand(JOIN_ORGANIZATION, new JoinOrganizationCommand(),  UserRole.BACHELOR, UserRole.MASTER, UserRole.PHD);
+        menu.registerCommand(VIEW_ORGANIZATION_INFO, new ViewOrganizationInfoCommand(),  UserRole.BACHELOR, UserRole.MASTER, UserRole.PHD);
     }
 
     private static void registerTeacherCommands(Menu menu) {

@@ -1,4 +1,5 @@
 package main.java.kbtu.chill_guys.university_management_system.util;
+
 import java.io.IOException;
 import java.util.logging.LogManager;
 

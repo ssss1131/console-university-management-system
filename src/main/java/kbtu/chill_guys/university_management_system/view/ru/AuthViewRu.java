@@ -4,8 +4,6 @@ import main.java.kbtu.chill_guys.university_management_system.view.AuthView;
 
 import java.util.Scanner;
 
-import java.util.Scanner;
-
 public class AuthViewRu implements AuthView {
     private final Scanner scanner = new Scanner(System.in);
 

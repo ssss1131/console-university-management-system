@@ -1,6 +1,5 @@
 package main.java.kbtu.chill_guys.university_management_system.menu.teacher_command;
 
-import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Attendance;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.Language;
 import main.java.kbtu.chill_guys.university_management_system.menu.Command;
 import main.java.kbtu.chill_guys.university_management_system.menu.Menu;
@@ -22,10 +21,6 @@ public class ViewStudentsCommand implements Command {
         TeacherView view = ViewFactory.getTeacherView(currentLanguage);
 
         Teacher teacher = (Teacher) Menu.getInstance().getLoggedUser();
-        if (teacher == null) {
-            System.out.println("No teacher is logged in.");
-            return;
-        }
 
         Semester semester = view.selectSemester();
         if (semester == null) {

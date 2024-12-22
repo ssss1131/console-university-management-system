@@ -12,6 +12,8 @@ import java.util.*;
 import java.util.logging.Logger;
 
 import static main.java.kbtu.chill_guys.university_management_system.util.Constant.researcherMethods;
+import static main.java.kbtu.chill_guys.university_management_system.util.LanguageConstants.AVAILABLE_COMMANDS_MESSAGE;
+import static main.java.kbtu.chill_guys.university_management_system.util.LanguageConstants.UNKNOWN_COMMAND_MESSAGE;
 
 public class Menu {
     private static final Menu INSTANCE = new Menu();
@@ -52,7 +54,7 @@ public class Menu {
     public void run() {
         LOGGER.info("Application starting...");
         while (true) {
-            System.out.println("\nAvailable commands:");
+            System.out.println("\n" + AVAILABLE_COMMANDS_MESSAGE.get(language));
             List<CommandEnum> availableCommands = displayAvailableCommands();
 
             String selectedCommand = CommandSelectionUtil.selectCommand(
@@ -69,7 +71,7 @@ public class Menu {
                 commands.get(selectedEnum.get()).execute();
                 LOGGER.info("Command " + selectedEnum.get().getTranslation(language) + " executed successfully.");
             } else {
-                System.out.println("Unknown command or insufficient permissions.");
+                System.out.println(UNKNOWN_COMMAND_MESSAGE.get(language));
             }
         }
     }

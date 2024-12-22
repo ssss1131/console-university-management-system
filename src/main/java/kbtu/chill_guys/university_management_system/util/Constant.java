@@ -5,7 +5,6 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.util.U
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -26,6 +25,7 @@ public final class Constant {
     public static final Path DISCIPLINE_STATUS_PATH = Paths.get("academic_db", "discipline_status.ser");
     public static final Path STUDENT_DISCIPLINE_PATH = Paths.get("academic_db", "student_discipline.ser");
     public static final Path TEACHER_DISCIPLINE_PATH = Paths.get("academic_db", "teacher_discipline.ser");
+    public static final Path ORGANIZATION_PATH = Paths.get("academic_db", "organization.ser");
     public static final Path DISCIPLINE_REGISTRATION_PATH = Paths.get("academic_db", "discipline_registration.ser");
     public static final Path TRANSCRIPT_PATH = Paths.get("academic_db", "transcript.ser");
     public static final Path JOURNAL_STORAGE_PATH = Paths.get("media_db", "journal_storage.ser");

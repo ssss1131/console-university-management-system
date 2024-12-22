@@ -1,13 +1,14 @@
 package main.java.kbtu.chill_guys.university_management_system.view.kz;
 
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.OrganizationRole;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
 import main.java.kbtu.chill_guys.university_management_system.model.student.DiplomaProject;
 import main.java.kbtu.chill_guys.university_management_system.model.student.GraduateStudent;
+import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
-import main.java.kbtu.chill_guys.university_management_system.repository.UserRepository;
 import main.java.kbtu.chill_guys.university_management_system.service.ResearcherService;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
 import main.java.kbtu.chill_guys.university_management_system.view.StudentView;
@@ -89,10 +90,6 @@ public class StudentViewKz implements StudentView {
         showDisciplineList(disciplines);
     }
 
-    @Override
-    public void showMessage(String message) {
-        System.out.println(message);
-    }
 
     @Override
     public Semester getSemester(Set<Semester> semesters) {
@@ -204,6 +201,109 @@ public class StudentViewKz implements StudentView {
             }
         }
     }
+
+    @Override
+    public String getOrganizationName() {
+        System.out.println("Ұйымның атауын енгізіңіз:");
+        return InputValidatorUtil.validateNonEmptyInput("Бос емес атау енгізіңіз.");
+    }
+
+    @Override
+    public void showAlreadyExistingOrganizationName() {
+        System.out.println("Мұндай атау қазірдің өзінде бар. Қайталанбайтын атау енгізіңіз.");
+    }
+
+    @Override
+    public String getOrganizationDescription() {
+        System.out.println("Ұйымның сипаттамасын енгізіңіз:");
+        return InputValidatorUtil.validateNonEmptyInput("Бос емес сипаттама енгізіңіз.");
+    }
+
+    @Override
+    public Organization selectOrganization(List<Organization> organizations) {
+        if (organizations == null || organizations.isEmpty()) {
+            System.out.println("Қол жетімді ұйымдар жоқ.");
+            return null;
+        }
+
+        System.out.println("\n=== Қол жетімді ұйымдар ===");
+        for (int i = 0; i < organizations.size(); i++) {
+            Organization organization = organizations.get(i);
+            System.out.printf("%d. %s - %s%n", i + 1, organization.getName(), organization.getDescription());
+            if (organization.getMembers().isEmpty()) {
+                System.out.println("   Қатысушылар: Қатысушылар жоқ.");
+            } else {
+                System.out.println("   Қатысушылар:");
+                organization.getMembers().forEach((student, role) ->
+                        System.out.printf("      - %s %s (%s)%n", student.getFirstName(), student.getLastName(), role));
+            }
+        }
+        System.out.println("Ұйымды нөмір бойынша таңдаңыз немесе бас тарту үшін 0 пернесін басыңыз:");
+        int choice = InputValidatorUtil.validateIntegerInput(
+                "Дұрыс нөмір енгізіңіз: ", 0, organizations.size());
+
+        if (choice == 0) {
+            System.out.println("Таңдау жойылды.");
+            return null;
+        }
+
+        return organizations.get(choice - 1);
+    }
+
+    @Override
+    public OrganizationRole selectOrganizationRole(List<OrganizationRole> availableRoles) {
+        if (availableRoles.isEmpty()) {
+            System.out.println("Қол жетімді рөлдер жоқ.");
+            return null;
+        }
+
+        System.out.println("\n=== Қол жетімді рөлдер ===");
+        for (int i = 0; i < availableRoles.size(); i++) {
+            System.out.printf("%d. %s%n", i + 1, availableRoles.get(i));
+        }
+        System.out.println("========================\n");
+        System.out.println("Рөл нөмірін таңдаңыз:");
+        int choice = InputValidatorUtil.validateIntegerInput(
+                "Дұрыс нөмір енгізіңіз: ", 1, availableRoles.size());
+
+        return availableRoles.get(choice - 1);
+    }
+
+    @Override
+    public void showOrganizationInfo(List<Organization> organizations) {
+        if (organizations.isEmpty()) {
+            System.out.println("Сіз ешбір ұйымның мүшесі емессіз.");
+            return;
+        }
+
+        System.out.println("\n=== Ұйым туралы ақпарат ===");
+
+        for (Organization organization : organizations) {
+            System.out.printf("Атауы: %s%n", organization.getName());
+            System.out.printf("Сипаттамасы: %s%n", organization.getDescription());
+            System.out.println("Қатысушылар:");
+            if (organization.getMembers().isEmpty()) {
+                System.out.println("  Бұл ұйымға қатысушылар әлі жоқ.");
+            } else {
+                organization.getMembers().forEach((student, role) -> {
+                    System.out.printf("  - %s %s (Рөлі: %s)%n",
+                            student.getFirstName(), student.getLastName(), role.name());
+                });
+            }
+            System.out.println("=".repeat(50));
+        }
+    }
+
+    @Override
+    public void showClosedRegistration() {
+        System.out.println("Регистрация жабык!");
+    }
+
+    @Override
+    public void noneAvailableDisciplines() {
+        System.out.println("Бос дисциплиналар жок");
+    }
+
 
     private Vector<ResearchPaper> selectResearchPapers(List<ResearchPaper> papers) {
         if (papers.isEmpty()) {
