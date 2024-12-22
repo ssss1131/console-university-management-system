@@ -1,6 +1,6 @@
 package main.java.kbtu.chill_guys.university_management_system.menu.employee_command;
 
-import main.java.kbtu.chill_guys.university_management_system.controller.MessageController;
+import main.java.kbtu.chill_guys.university_management_system.service.MessageService;
 import main.java.kbtu.chill_guys.university_management_system.menu.Command;
 import main.java.kbtu.chill_guys.university_management_system.menu.Menu;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
@@ -11,11 +11,11 @@ import java.util.logging.Logger;
 
 public class SendMessageCommand implements Command {
     private static final Logger LOGGER = Logger.getLogger(SendMessageCommand.class.getName());
-    private final MessageController messageController;
+    private final MessageService messageService;
     private final Menu menu;
 
     public SendMessageCommand() {
-        this.messageController = new MessageController();
+        this.messageService = new MessageService();
         this.menu = Menu.getInstance();
     }
 
@@ -36,7 +36,7 @@ public class SendMessageCommand implements Command {
             String messageContent = view.getMessageContent();
 
             // Send message
-            messageController.sendMessage(currentUser.getEmail(), receiverEmail, messageContent);
+            messageService.sendMessage(currentUser.getEmail(), receiverEmail, messageContent);
 
             // Show success message
             view.displayMessageSent();
