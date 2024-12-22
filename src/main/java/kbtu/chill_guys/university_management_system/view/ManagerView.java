@@ -19,7 +19,11 @@ public interface ManagerView {
 
     void displayDisciplinesByStatus(List<Discipline> assignedDisciplines, List<Discipline> cancelledDisciplines);
 
-    Discipline getNewDisciplineInput();
+    String getCode();
+
+    void showAlreadyExistingMessage();
+
+    Discipline getNewDisciplineInput(String code, List<Discipline> disciplines);
 
     void showRequestSentConfirmation();
 

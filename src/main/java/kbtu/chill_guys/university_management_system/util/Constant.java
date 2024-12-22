@@ -1,5 +1,6 @@
 package main.java.kbtu.chill_guys.university_management_system.util;
 
+import main.java.kbtu.chill_guys.university_management_system.enumeration.util.CommandEnum;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 
 import java.nio.file.Path;
@@ -8,19 +9,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import static main.java.kbtu.chill_guys.university_management_system.enumeration.util.CommandEnum.*;
+
 public final class Constant {
 
 
-    private Constant(){
+    private Constant() {
     }
 
     public static final Path BASE_PATH = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "db");
     public static final Path USERS_PATH = Paths.get("account.ser");
-    public static final Path DISCIPLINE_PATH = Paths.get("academic_db","discipline.ser");
+    public static final Path DISCIPLINE_PATH = Paths.get("academic_db", "discipline.ser");
     public static final Path POST_PATH = Paths.get("media_db", "post.ser");
     public static final Path LOG_FILE_PATH = Path.of("logs", "application.log.0");
 
-    public static final Path DISCIPLINE_STATUS_PATH = Paths.get("academic_db","discipline_status.ser");
+    public static final Path DISCIPLINE_STATUS_PATH = Paths.get("academic_db", "discipline_status.ser");
     public static final Path STUDENT_DISCIPLINE_PATH = Paths.get("academic_db", "student_discipline.ser");
     public static final Path TEACHER_DISCIPLINE_PATH = Paths.get("academic_db", "teacher_discipline.ser");
     public static final Path DISCIPLINE_REGISTRATION_PATH = Paths.get("academic_db", "discipline_registration.ser");
@@ -52,8 +55,8 @@ public final class Constant {
     public static final String AUTHOR_ATTRIBUTE = "author";
     public static final String DATE_ATTRIBUTE = "date";
 
-    public static final List<String> researcherMethods = List.of("get my research papers", "add new research paper", "add new research project", "get my research projects","get my research papers sorted", "get all research papers sorted",
-            "show my research paper in format");
+    public static final List<CommandEnum> researcherMethods = List.of(GET_RESEARCH_PAPERS, ADD_RESEARCH_PAPER, ADD_RESEARCH_PROJECT, GET_RESEARCH_PROJECTS,
+            GET_SORTED_RESEARCH_PAPERS, SHOW_RESEARCH_PAPER_IN_FORMAT);
     public static final UserRole[] ALL_RESEARCH_ROLES = {
             UserRole.BACHELOR,
             UserRole.MASTER,

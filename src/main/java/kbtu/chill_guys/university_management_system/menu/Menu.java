@@ -4,10 +4,14 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.util.C
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.Language;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
+import main.java.kbtu.chill_guys.university_management_system.service.ResearcherService;
 import main.java.kbtu.chill_guys.university_management_system.util.CommandSelectionUtil;
+import main.java.kbtu.chill_guys.university_management_system.util.Constant;
 
 import java.util.*;
 import java.util.logging.Logger;
+
+import static main.java.kbtu.chill_guys.university_management_system.util.Constant.researcherMethods;
 
 public class Menu {
     private static final Menu INSTANCE = new Menu();
@@ -76,9 +80,14 @@ public class Menu {
         if (loggedUser == null) {
             availableCommands.add(CommandEnum.LOGIN);
         } else {
+            boolean isResearcher = ResearcherService.getInstance().isResearcher(loggedUser);
+
+
             commands.keySet().stream()
                     .filter(cmd -> cmd != CommandEnum.LOGIN)
                     .filter(this::isAuthorized)
+                    .filter(cmd -> isResearcher || !researcherMethods.contains(cmd))
+                    .filter(cmd -> !(cmd.equals(CommandEnum.ADD_RESEARCHER) && isResearcher))
                     .forEach(availableCommands::add);
         }
 
