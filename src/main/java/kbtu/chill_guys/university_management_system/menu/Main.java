@@ -5,6 +5,8 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.util.U
 import main.java.kbtu.chill_guys.university_management_system.menu.admin_command.DeleteUserCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.admin_command.GetLogsCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.dean_command.ApproveNewDisciplineCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.employee_command.SendMessageCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.employee_command.ViewMessagesCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.general_command.*;
 import main.java.kbtu.chill_guys.university_management_system.menu.admin_command.CreateUserCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.admin_command.UpdateUserCommand;
@@ -76,6 +78,9 @@ public class Main {
 
         menu.registerCommand(CommandEnum.PUT_MARK, new PutMarkCommand(), UserRole.TEACHER);
         menu.registerCommand(CommandEnum.VIEW_STUDENTS, new ViewStudentsCommand(), UserRole.TEACHER);
+
+        menu.registerCommand(CommandEnum.VIEW_MESSAGES, new ViewMessagesCommand(), UserRole.TEACHER, UserRole.MANAGER, UserRole.DEAN);
+        menu.registerCommand(CommandEnum.SEND_MESSAGE, new SendMessageCommand(), UserRole.TEACHER, UserRole.MANAGER, UserRole.DEAN);
 
         menu.run();
     }

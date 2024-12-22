@@ -10,22 +10,22 @@ public class MessageViewRu implements MessageView {
 
     @Override
     public String getReceiverEmail() {
-        System.out.println("Напишите почту получателя: ");
+        System.out.println("Введите почту получателя: ");
         return scanner.nextLine();
     }
 
     @Override
     public String getMessageContent() {
-        System.out.println("Enter your message: ");
+        System.out.println("Введите сообщение: ");
         return scanner.nextLine();
     }
 
     @Override
     public void displayMessages(List<String> messages) {
         if (messages.isEmpty()) {
-            System.out.println("You have no messages.");
+            System.out.println("У вас нет сообщений.");
         } else {
-            System.out.println("Your messages:");
+            System.out.println("Ваши сообщения:");
             for (String message : messages) {
                 System.out.println("- " + message);
             }
@@ -34,11 +34,11 @@ public class MessageViewRu implements MessageView {
 
     @Override
     public void displayMessageSent() {
-        System.out.println("Message sent successfully.");
+        System.out.println("Сообщение отправлено.");
     }
 
     @Override
     public void displayError(String errorMessage) {
-        System.out.println("Error: " + errorMessage);
+        System.out.println("Ошибка: " + errorMessage);
     }
 }

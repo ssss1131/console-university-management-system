@@ -10,22 +10,22 @@ public class MessageViewKz implements MessageView {
 
     @Override
     public String getReceiverEmail() {
-        System.out.println("Enter the receiver's email: ");
+        System.out.println("Алушының электрондық поштасын енгізіңіз: ");
         return scanner.nextLine();
     }
 
     @Override
     public String getMessageContent() {
-        System.out.println("Enter your message: ");
+        System.out.println("Хабарламаңызды енгізіңіз: ");
         return scanner.nextLine();
     }
 
     @Override
     public void displayMessages(List<String> messages) {
         if (messages.isEmpty()) {
-            System.out.println("You have no messages.");
+            System.out.println("Сізде хабар жоқ.");
         } else {
-            System.out.println("Your messages:");
+            System.out.println("Сіздің хабарламаларыңыз:");
             for (String message : messages) {
                 System.out.println("- " + message);
             }
@@ -34,11 +34,11 @@ public class MessageViewKz implements MessageView {
 
     @Override
     public void displayMessageSent() {
-        System.out.println("Message sent successfully.");
+        System.out.println("Хабар жіберілді.");
     }
 
     @Override
     public void displayError(String errorMessage) {
-        System.out.println("Error: " + errorMessage);
+        System.out.println("Қате: " + errorMessage);
     }
 }
