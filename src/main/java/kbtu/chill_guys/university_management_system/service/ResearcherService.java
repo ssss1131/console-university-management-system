@@ -120,7 +120,14 @@ public class ResearcherService {
                 .max(Comparator.comparingInt(this::calculateTotalCitations)).orElse(null);
     }
 
-    private int calculateTotalCitations(User researcher) {
+    public User getTopCitedResearcherByYear(int year) {
+        List<User> researchers = getResearchers();
+        return researchers.stream()
+                .max(Comparator.comparingInt(user -> calculateCitationsByYear(user, year)))
+                .orElse(null);
+    }
+
+    public int calculateTotalCitations(User researcher) {
         Vector<ResearchPaper> researchPapers = researchPaperRepository.getAllLines();
         return researchPapers.stream()
                 .filter(paper -> paper.getAuthors().contains(researcher))
@@ -128,5 +135,23 @@ public class ResearcherService {
                 .sum();
     }
 
+
+    private int calculateCitationsByYear(User researcher, int year) {
+        Vector<ResearchPaper> researchPapers = researchPaperRepository.getAllLines();
+        return researchPapers.stream()
+                .filter(paper -> paper.getAuthors().contains(researcher))
+                .filter(paper -> paper.getPublicationDate().getYear() == year)
+                .mapToInt(ResearchPaper::getCitations)
+                .sum();
+    }
+
+    public List<Integer> getAllPublicationYears() {
+        Vector<ResearchPaper> researchPapers = researchPaperRepository.getAllLines();
+        return researchPapers.stream()
+                .map(paper -> paper.getPublicationDate().getYear())
+                .distinct()
+                .sorted()
+                .toList();
+    }
 
 }

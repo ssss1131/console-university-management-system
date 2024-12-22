@@ -1,21 +1,28 @@
 package main.java.kbtu.chill_guys.university_management_system.model.student;
 
+import main.java.kbtu.chill_guys.university_management_system.exception.InvalidHIndexException;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.ResearchSupervisor;
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
+import main.java.kbtu.chill_guys.university_management_system.util.Constant;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.Vector;
 
-public class DiplomaProject {
+import static main.java.kbtu.chill_guys.university_management_system.util.Constant.MIN_H_INDEX;
+
+public class DiplomaProject implements Serializable {
     private String title;
     private String description;
     private ResearchSupervisor supervisor;
     private Vector<ResearchPaper> publishedPapers = new Vector<>();
 
-    public DiplomaProject(String title, String description, ResearchSupervisor supervisor) {
+    public DiplomaProject() {
+    }
+
+    public DiplomaProject(String title, String description) {
         this.title = title;
         this.description = description;
-        this.supervisor = supervisor;
     }
 
     public String getTitle() {
@@ -39,6 +46,9 @@ public class DiplomaProject {
     }
 
     public void setSupervisor(ResearchSupervisor supervisor) {
+        if(supervisor.calculateHIndex() < MIN_H_INDEX){
+            throw new InvalidHIndexException("H index of supervisor is less than required");
+        }
         this.supervisor = supervisor;
     }
 

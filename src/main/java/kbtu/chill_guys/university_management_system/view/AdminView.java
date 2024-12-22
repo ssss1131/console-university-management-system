@@ -20,4 +20,6 @@ public interface AdminView {
     LogPeriod getLogPeriod();
 
     void displayLogs(List<String> logs);
+
+    void handleResearchSupervisorInput(Map<String, Object> data);
 }

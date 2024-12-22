@@ -7,10 +7,7 @@ import main.java.kbtu.chill_guys.university_management_system.model.research.Res
 
 import java.io.*;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Logger;
 
 import static main.java.kbtu.chill_guys.university_management_system.util.Constant.BASE_PATH;
@@ -104,5 +101,17 @@ public class JournalStorage implements Serializable {
 
     public boolean isNewJournal(Journal journal) {
         return !(papersByJournal.containsKey(journal) || projectsByJournal.containsKey(journal));
+    }
+
+    public List<ResearchPaper> getPapers(Journal journal){
+        return papersByJournal.get(journal);
+    }
+
+    public List<ResearchProject> getProjects(Journal journal){
+        return projectsByJournal.get(journal);
+    }
+
+    public Set<Journal> getJournals() {
+        return projectsByJournal.keySet();
     }
 }

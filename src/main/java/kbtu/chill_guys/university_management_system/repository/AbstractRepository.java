@@ -47,4 +47,16 @@ public abstract class AbstractRepository<T> {
             saveAllLines(data);
         }
     }
+
+    public void update(T line) {
+        Vector<T> data = getAllLines();
+        int index = data.indexOf(line);
+        if (index != -1) {
+            data.set(index, line);
+        } else {
+            data.add(line);
+        }
+        saveAllLines(data);
+    }
+
 }

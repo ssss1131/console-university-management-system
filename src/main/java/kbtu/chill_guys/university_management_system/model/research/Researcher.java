@@ -7,7 +7,7 @@ public interface Researcher {
     Vector<ResearchPaper> getResearchPapers();
     Vector<ResearchProject> getResearchProjects();
 
-    void addResearchPaper(ResearchProject researchProject);
+    void addResearchPaper(ResearchPaper researchPaper);
     void addResearchProjects(ResearchProject researchProject);
 
     default int calculateHIndex(){

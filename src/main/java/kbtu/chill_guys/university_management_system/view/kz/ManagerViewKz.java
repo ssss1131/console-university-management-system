@@ -9,10 +9,14 @@ import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.ResearchSupervisor;
+import main.java.kbtu.chill_guys.university_management_system.model.student.GraduateStudent;
+import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 import main.java.kbtu.chill_guys.university_management_system.service.DisciplineService;
 import main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
 import main.java.kbtu.chill_guys.university_management_system.view.ManagerView;
+import org.w3c.dom.ls.LSOutput;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -364,4 +368,72 @@ public class ManagerViewKz implements ManagerView {
             System.out.println(semester + " үшін тіркеу сәтті жабылды!");
         }
     }
+
+    @Override
+    public GraduateStudent showFreeStudents(List<GraduateStudent> students) {
+        if (students.isEmpty()) {
+            System.out.println("Ешқандай бос студенттер жоқ.");
+            return null;
+        }
+
+        System.out.println("\n=== Бос студенттер ===");
+        System.out.printf("%-5s %-15s %-15s %-20s %-10s%n",
+                "№", "Аты", "Тегі", "Мектебі", "Кредиттер");
+        System.out.println("-".repeat(90));
+
+        int index = 1;
+        for (GraduateStudent student : students) {
+            System.out.printf("%-5d %-15s %-15s %-20s %-10d %n",
+                    index++,
+                    student.getFirstName(),
+                    student.getLastName(),
+                    student.getSchool().name(),
+                    student.getCredits() != null ? student.getCredits() : 0);
+        }
+
+        System.out.println("-".repeat(90));
+        System.out.println("Студентті нөмірі бойынша таңдаңыз немесе бас тарту үшін 0 басыңыз: ");
+        int choice = InputValidatorUtil.validateIntegerInput(
+                "Нормальный сан жазаныз", 0, students.size());
+
+        if (choice == 0) {
+            return null;
+        }
+
+        return students.get(choice - 1);
+    }
+
+    @Override
+    public ResearchSupervisor showSupervisors(List<ResearchSupervisor> supervisors) {
+        if (supervisors.isEmpty()) {
+            System.out.println("Қолжетімді ғылыми жетекшілер жоқ.");
+            return null;
+        }
+
+        System.out.println("\n=== Қолжетімді ғылыми жетекшілер ===");
+        System.out.printf("%-5s %-15s %-15s%n", "№", "Аты", "Тегі");
+        System.out.println("-".repeat(60));
+
+        int index = 1;
+        for (ResearchSupervisor supervisor : supervisors) {
+            System.out.printf("%-5d %-15s %-15s%n",
+                    index++,
+                    supervisor.getFirstName(),
+                    supervisor.getLastName());
+        }
+
+        System.out.println("-".repeat(60));
+
+        System.out.println("Ғылыми жетекшіні нөмірі бойынша таңдаңыз немесе бас тарту үшін 0 басыңыз: ");
+        int choice = InputValidatorUtil.validateIntegerInput(
+                "Нормальный сан жазаныз", 0, supervisors.size());
+
+        if (choice == 0) {
+            return null;
+        }
+
+        return supervisors.get(choice - 1);
+    }
+
+
 }

@@ -17,7 +17,6 @@ public final class Constant {
     public static final Path BASE_PATH = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "db");
     public static final Path USERS_PATH = Paths.get("account.ser");
     public static final Path DISCIPLINE_PATH = Paths.get("academic_db","discipline.ser");
-    public static final Path JOURNAL_PATH = Paths.get("media_db","journal.ser");
     public static final Path POST_PATH = Paths.get("media_db", "post.ser");
     public static final Path LOG_FILE_PATH = Path.of("logs", "application.log.0");
 
@@ -52,7 +51,8 @@ public final class Constant {
     public static final String AUTHOR_ATTRIBUTE = "author";
     public static final String DATE_ATTRIBUTE = "date";
 
-    public static final List<String> researcherMethods = List.of("get my research papers", "add new research paper");
+    public static final List<String> researcherMethods = List.of("get my research papers", "add new research paper", "add new research project", "get my research projects","get my research papers sorted", "get all research papers sorted",
+            "show my research paper in format");
     public static final UserRole[] ALL_RESEARCH_ROLES = {
             UserRole.BACHELOR,
             UserRole.MASTER,
@@ -62,6 +62,7 @@ public final class Constant {
             UserRole.MANAGER,
             UserRole.TEACHER
     };
+    public static final UserRole[] ALL_ROLES = {UserRole.BACHELOR, UserRole.DEAN, UserRole.MANAGER, UserRole.MASTER, UserRole.PHD, UserRole.TEACHER, UserRole.PROFESSOR, UserRole.RESEARCH_SUPERVISOR};
 
     public static final String CANCEL_INPUT = "cancel";
     public static final Integer MIN_H_INDEX = 3;
