@@ -90,10 +90,6 @@ public class StudentViewRu implements StudentView {
         showDisciplineList(disciplines);
     }
 
-    @Override
-    public void showMessage(String message) {
-        System.out.println(message);
-    }
 
     @Override
     public Semester getSemester(Set<Semester> semesters) {
@@ -296,6 +292,16 @@ public class StudentViewRu implements StudentView {
             }
             System.out.println("=".repeat(50));
         }
+    }
+
+    @Override
+    public void showClosedRegistration() {
+        System.out.println("Регистрация закрыта!");
+    }
+
+    @Override
+    public void noneAvailableDisciplines() {
+        System.out.println("Нету подходящих дисциплин");
     }
 
 

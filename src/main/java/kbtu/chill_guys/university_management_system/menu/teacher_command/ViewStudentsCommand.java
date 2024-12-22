@@ -21,10 +21,6 @@ public class ViewStudentsCommand implements Command {
         TeacherView view = ViewFactory.getTeacherView(currentLanguage);
 
         Teacher teacher = (Teacher) Menu.getInstance().getLoggedUser();
-        if (teacher == null) {
-            System.out.println("No teacher is logged in.");
-            return;
-        }
 
         Semester semester = view.selectSemester();
         if (semester == null) {

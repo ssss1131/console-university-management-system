@@ -39,7 +39,7 @@ public class OpenRegistrationCommand implements Command {
         if (!selectedDisciplines.isEmpty()){
             service.openRegistration(course, role, semester, selectedDisciplines, program);
         } else {
-            System.out.println("Cant open registration because none disciplines was selected");
+            view.showUnsuccessfulOpeningRegistration();
         }
     }
 }

@@ -24,8 +24,6 @@ public interface StudentView {
 
     void showRegisteredDisciplines(List<Discipline> disciplines, Semester semester);
 
-    void showMessage(String message);
-
     Semester getSemester(Set<Semester> semesters);
 
     void showExactDisciplines(List<Discipline> disciplines);
@@ -61,4 +59,8 @@ public interface StudentView {
     OrganizationRole selectOrganizationRole(List<OrganizationRole> availableRoles);
 
     void showOrganizationInfo(List<Organization> organization);
+
+    void showClosedRegistration();
+
+    void noneAvailableDisciplines();
 }

@@ -105,12 +105,6 @@ public class StudentViewEn implements StudentView {
     }
 
     @Override
-    public void showMessage(String message){
-        System.out.println(message);
-
-    }
-
-    @Override
     public Semester getSemester(Set<Semester> semesters) {
         System.out.println("Would you like to view disciplines for a specific semester or all semesters?");
         System.out.println("1. Specific Semester");
@@ -313,6 +307,16 @@ public class StudentViewEn implements StudentView {
             }
             System.out.println("=".repeat(50));
         }
+    }
+
+    @Override
+    public void showClosedRegistration() {
+        System.out.println("Registration is closed!");
+    }
+
+    @Override
+    public void noneAvailableDisciplines() {
+        System.out.println("No available disciplines for registration.");
     }
 
     private Vector<ResearchPaper> selectResearchPapers(List<ResearchPaper> papers) {

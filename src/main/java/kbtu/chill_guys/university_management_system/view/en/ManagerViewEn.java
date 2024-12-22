@@ -477,4 +477,19 @@ public class ManagerViewEn implements ManagerView {
 
         return supervisors.get(choice - 1);
     }
+
+    @Override
+    public void showSuccessAddingFinalizedDisciplines() {
+        System.out.println("Selected disciplines have been added to the database.");
+    }
+
+    @Override
+    public void showNoApprovedDisciplines() {
+        System.out.println("\nNo approved disciplines to finalize.");
+    }
+
+    @Override
+    public void showUnsuccessfulOpeningRegistration() {
+        System.out.println("Cant open registration because none disciplines was selected");
+    }
 }

@@ -25,7 +25,7 @@ public class RegisterToSemesterCommand implements Command {
 
         boolean haveOpenedRegistration = disciplineRegistrationService.haveOpenedRegistration();
         if (!haveOpenedRegistration) {
-            view.showMessage("Registration is closed!");
+            view.showClosedRegistration();
             return;
         }
 
@@ -35,7 +35,7 @@ public class RegisterToSemesterCommand implements Command {
                 student, semester);
 
         if (availableDisciplines==null || availableDisciplines.isEmpty()) {
-            view.showMessage("No available disciplines for registration.");
+            view.noneAvailableDisciplines();
             return;
         }
         view.displayAvailableDisciplines(availableDisciplines);

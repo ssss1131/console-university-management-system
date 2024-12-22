@@ -90,10 +90,6 @@ public class StudentViewKz implements StudentView {
         showDisciplineList(disciplines);
     }
 
-    @Override
-    public void showMessage(String message) {
-        System.out.println(message);
-    }
 
     @Override
     public Semester getSemester(Set<Semester> semesters) {
@@ -296,6 +292,16 @@ public class StudentViewKz implements StudentView {
             }
             System.out.println("=".repeat(50));
         }
+    }
+
+    @Override
+    public void showClosedRegistration() {
+        System.out.println("Регистрация жабык!");
+    }
+
+    @Override
+    public void noneAvailableDisciplines() {
+        System.out.println("Бос дисциплиналар жок");
     }
 
 

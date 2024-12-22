@@ -477,4 +477,19 @@ public class ManagerViewKz implements ManagerView {
 
         return supervisors.get(choice - 1);
     }
+
+    @Override
+    public void showSuccessAddingFinalizedDisciplines() {
+        System.out.println("Сатты косылды букыл финалданган дисциплиналар");
+    }
+
+    @Override
+    public void showNoApprovedDisciplines() {
+        System.out.println("\nКабылданган дисциплиналар жок");
+    }
+
+    @Override
+    public void showUnsuccessfulOpeningRegistration() {
+        System.out.println("Тандалган дисциплиналар болган жок, сондыктан регистрация ашылынбайды");
+    }
 }

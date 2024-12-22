@@ -58,4 +58,10 @@ public interface ManagerView {
     GraduateStudent showFreeStudents(List<GraduateStudent> students);
 
     ResearchSupervisor showSupervisors(List<ResearchSupervisor> researchSupervisors);
+
+    void showSuccessAddingFinalizedDisciplines();
+
+    void showNoApprovedDisciplines();
+
+    void showUnsuccessfulOpeningRegistration();
 }

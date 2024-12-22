@@ -1,8 +1,10 @@
 package main.java.kbtu.chill_guys.university_management_system.util;
 
+import main.java.kbtu.chill_guys.university_management_system.enumeration.util.Language;
+import main.java.kbtu.chill_guys.university_management_system.menu.Menu;
 import main.java.kbtu.chill_guys.university_management_system.service.AdminService;
 
-import java.util.Scanner;
+import static main.java.kbtu.chill_guys.university_management_system.util.LanguageConstants.*;
 
 public class EmailValidator {
     private final AdminService adminService;
@@ -12,12 +14,14 @@ public class EmailValidator {
     }
 
     public String validateUniqueEmail() {
-        Scanner scanner = new Scanner(System.in);
+        Language language = Menu.getInstance().getLanguage();
         while (true) {
-            System.out.println("Enter email:");
-            String email = InputValidatorUtil.validateEmailInput("Invalid email format. Please try again.");
+            System.out.println(ENTER_EMAIL_MESSAGE.get(language));
+            String email = InputValidatorUtil.validateEmailInput(
+                    INVALID_EMAIL_FORMAT_MESSAGE.get(language)
+            );
             if (adminService.isEmailExists(email)) {
-                System.out.println("The email is already in use. Please enter a different email.");
+                System.out.println(EMAIL_ALREADY_IN_USE_MESSAGE.get(language));
             } else {
                 return email;
             }

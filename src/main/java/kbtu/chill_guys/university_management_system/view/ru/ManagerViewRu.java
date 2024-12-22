@@ -477,4 +477,19 @@ public class ManagerViewRu implements ManagerView {
 
         return supervisors.get(choice - 1);
     }
+
+    @Override
+    public void showSuccessAddingFinalizedDisciplines() {
+        System.out.println("Удачно сохранено финализированные дисциплины");
+    }
+
+    @Override
+    public void showNoApprovedDisciplines() {
+        System.out.println("\nОтсутствует подтвержденные дисциплины");
+    }
+
+    @Override
+    public void showUnsuccessfulOpeningRegistration() {
+        System.out.println("Невозможно открыть регистрацию, по причине отсутствия выбранных дисциплин");
+    }
 }
