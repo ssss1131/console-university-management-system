@@ -67,6 +67,7 @@ public class Main {
         menu.registerCommand("get top researcher by school", new GetTopCitedResearcherBySchoolCommand(), ALL_ROLES);
         menu.registerCommand("show my research paper in format", new GetResearchPaperInFormatCommand(), ALL_RESEARCH_ROLES);
         menu.registerCommand("show and edit my diploma project", new ShowInfoAboutDiplomaProjectCommand(), UserRole.MASTER, UserRole.PHD);
+        menu.registerCommand("view journals", new ViewJournalCommand(), ALL_ROLES);
 
         menu.run();
     }
