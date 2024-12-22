@@ -2,7 +2,6 @@ package main.java.kbtu.chill_guys.university_management_system.service;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.LogPeriod;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
-import main.java.kbtu.chill_guys.university_management_system.menu.Menu;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.model.factory.UserFactory;
 import main.java.kbtu.chill_guys.university_management_system.repository.LogRepository;

@@ -7,6 +7,8 @@ import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.service.AdminService;
 import main.java.kbtu.chill_guys.university_management_system.util.EmailValidator;
 import main.java.kbtu.chill_guys.university_management_system.util.PasswordUtil;
+import main.java.kbtu.chill_guys.university_management_system.model.research.Researcher;
+import main.java.kbtu.chill_guys.university_management_system.service.ResearcherService;
 import main.java.kbtu.chill_guys.university_management_system.view.AdminView;
 import main.java.kbtu.chill_guys.university_management_system.model.factory.ViewFactory;
 
@@ -14,6 +16,7 @@ import java.util.Map;
 
 public class CreateUserCommand implements Command {
     private final AdminService adminService = new AdminService();
+    private final ResearcherService service = ResearcherService.getInstance();
 
     @Override
     public void execute() {
@@ -33,8 +36,11 @@ public class CreateUserCommand implements Command {
 
         data.put("password", hashedPassword);
         data.put("salt", salt);
-
         User user = adminService.createUser(data);
+
+        if(user instanceof Researcher){
+            service.addResearcher(user);
+        }
 
         view.displayUserCreated(user);
     }

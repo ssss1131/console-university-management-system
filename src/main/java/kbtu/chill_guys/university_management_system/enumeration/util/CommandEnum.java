@@ -14,6 +14,8 @@ public enum CommandEnum {
 
     CREATE_JOURNAL("Create journal", "Создать журнал", "Журнал жасау"),
     DELETE_JOURNAL("Delete journal", "Удалить журнал", "Журналды жою"),
+    VIEW_JOURNAL("View journals", "Просмотр журналов", "Журналдарды қарау"),
+
     ADD_NEWS("Add news", "Добавить новости", "Жаңалық қосу"),
     REQUEST_NEW_DISCIPLINE("Create discipline", "Создать дисциплину", "Пән жасау"),
     FINALIZE_DISCIPLINES("Finalize approved disciplines", "Завершить утвержденные дисциплины", "Бекітілген пәндерді аяқтау"),
@@ -37,6 +39,27 @@ public enum CommandEnum {
     GET_RESEARCH_PROJECTS("Get my research projects", "Получить мои исследовательские проекты", "Менің зерттеу жобаларымды алу"),
     GET_SORTED_RESEARCH_PAPERS("Get my research papers sorted", "Получить мои исследования отсортированными", "Менің зерттеу жұмыстарымды сұрыптау"),
     GET_SORTED_ALL_RESEARCH_PAPERS("Get all research papers sorted", "Получить все исследования отсортированными", "Барлық зерттеу жұмыстарын сұрыптау"),
+    ASSIGN_SUPERVISOR("Assign supervisor to student", "Назначить руководителя студенту", "Студентке ғылыми жетекшіні тағайындаңыз"),
+    GET_TOP_RESEARCHER_BY_YEAR(
+            "Get top researcher by year",
+            "Получить лучшего исследователя года",
+            "Жылдың үздік зерттеушісін алу"
+    ),
+    GET_TOP_RESEARCHER_BY_SCHOOL(
+            "Get top researcher by school",
+            "Получить лучшего исследователя по школе",
+            "Мектеп бойынша үздік зерттеушіні алу"
+    ),
+    SHOW_RESEARCH_PAPER_IN_FORMAT(
+            "Show my research paper in format",
+            "Показать мою исследовательскую работу в формате",
+            "Зерттеу жұмысымды форматта көрсету"
+    ),
+    SHOW_AND_EDIT_DIPLOMA_PROJECT(
+            "Show and edit my diploma project",
+            "Показать и редактировать мой дипломный проект",
+            "Дипломдық жобамды көрсету және өңдеу"
+    ),
 
     SHOW_DISCIPLINES("Show all disciplines", "Показать все дисциплины", "Барлық пәндерді көрсету");
 

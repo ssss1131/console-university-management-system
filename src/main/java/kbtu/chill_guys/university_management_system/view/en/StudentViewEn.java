@@ -3,7 +3,12 @@ package main.java.kbtu.chill_guys.university_management_system.view.en;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
+import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
+import main.java.kbtu.chill_guys.university_management_system.model.student.DiplomaProject;
+import main.java.kbtu.chill_guys.university_management_system.model.student.GraduateStudent;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
+import main.java.kbtu.chill_guys.university_management_system.repository.UserRepository;
+import main.java.kbtu.chill_guys.university_management_system.service.ResearcherService;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
 import main.java.kbtu.chill_guys.university_management_system.view.StudentView;
 
@@ -12,6 +17,7 @@ import java.util.logging.Logger;
 
 public class StudentViewEn implements StudentView {
     private static final Logger logger = Logger.getLogger(StudentView.class.getName());
+
 
     private final Scanner scanner = new Scanner(System.in);
 
@@ -159,6 +165,99 @@ public class StudentViewEn implements StudentView {
         }
         System.out.println("==================================\n");
     }
+
+    @Override
+    public void showDiploma(DiplomaProject project, GraduateStudent student) {
+        while (true) {
+            System.out.println("\n=== Diploma Project Details ===");
+            System.out.printf("Title: %s%n", project.getTitle());
+            System.out.printf("Description: %s%n", project.getDescription());
+            System.out.printf("Supervisor: %s%n",
+                    project.getSupervisor() != null ? project.getSupervisor().getFirstName() : "Not assigned");
+            System.out.println("Published Papers: ");
+            if (project.getPublishedPapers().isEmpty()) {
+                System.out.println("  No published papers.");
+            } else {
+                for (int i = 0; i < project.getPublishedPapers().size(); i++) {
+                    ResearchPaper paper = project.getPublishedPapers().get(i);
+                    System.out.printf("  %d. %s (DOI: %s)%n", i + 1, paper.getTitle(), paper.getDoi());
+                }
+            }
+
+            System.out.println("\nActions:");
+            System.out.println("1. Edit Title");
+            System.out.println("2. Edit Description");
+            System.out.println("3. Add Research Paper");
+            System.out.println("4. Exit and save changes");
+
+            int choice = InputValidatorUtil.validateIntegerInput("Select an action: ", 1, 4);
+
+            switch (choice) {
+                case 1 -> {
+                    System.out.println("Enter new title:");
+                    String newTitle = InputValidatorUtil.validateNonEmptyInput("Title cannot be empty.");
+                    project.setTitle(newTitle);
+                    System.out.println("Title updated successfully.");
+                }
+                case 2 -> {
+                    System.out.println("Enter new description:");
+                    String newDescription = InputValidatorUtil.validateNonEmptyInput("Description cannot be empty.");
+                    project.setDescription(newDescription);
+                    System.out.println("Description updated successfully.");
+                }
+                case 3 -> {
+                    System.out.println("Select research papers to add:");
+                    List<ResearchPaper> availablePapers = ResearcherService.getInstance().getResearchPapers(student)
+                            .stream().filter(researchPaper -> !project.getPublishedPapers().contains(researchPaper))
+                            .toList();
+                    Vector<ResearchPaper> selectedPapers = selectResearchPapers(availablePapers);
+                    project.getPublishedPapers().addAll(selectedPapers);
+                    System.out.println("Selected papers added to the diploma project.");
+                }
+                case 4 -> {
+                    System.out.println("Exiting diploma project view.");
+                    return;
+                }
+            }
+        }
+    }
+
+    private Vector<ResearchPaper> selectResearchPapers(List<ResearchPaper> papers) {
+        if (papers.isEmpty()) {
+            System.out.println("No research papers available.");
+            return new Vector<>();
+        }
+
+        System.out.println("Available Research Papers:");
+        for (int i = 0; i < papers.size(); i++) {
+            System.out.printf("%d. %s (DOI: %s)%n", i + 1, papers.get(i).getTitle(), papers.get(i).getDoi());
+        }
+
+        System.out.println("Enter paper numbers (comma-separated) or press Enter to skip:");
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine().trim();
+
+        Vector<ResearchPaper> selectedPapers = new Vector<>();
+        if (!input.isEmpty()) {
+            try {
+                String[] indices = input.split(",");
+                for (String index : indices) {
+                    int paperIndex = Integer.parseInt(index.trim()) - 1;
+                    if (paperIndex >= 0 && paperIndex < papers.size()) {
+                        selectedPapers.add(papers.get(paperIndex));
+                    } else {
+                        System.out.println("Invalid paper number: " + (paperIndex + 1));
+                    }
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Skipping paper selection.");
+            }
+        }
+
+        return selectedPapers;
+    }
+
+
 
     private void showDisciplineList(List<Discipline> disciplines) {
         System.out.printf("%-10s %-30s %-10s %-15s%n", "Code", "Name", "Credits", "Course Type");

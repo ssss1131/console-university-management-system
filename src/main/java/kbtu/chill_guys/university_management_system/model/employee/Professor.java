@@ -17,8 +17,8 @@ public class Professor extends Teacher implements Researcher {
     private final Vector<ResearchPaper> researchPapers = new Vector<>();
 
 
-    public Professor(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, int salary, int rating, School school, TeachingDegree teachingDegree) {
-        super(id, role, email, password, salt, firstName, lastName, salary, rating, school, teachingDegree);
+    public Professor(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, int salary, int rating, School school) {
+        super(id, role, email, password, salt, firstName, lastName, salary, rating, school);
     }
 
     @Override
@@ -27,13 +27,14 @@ public class Professor extends Teacher implements Researcher {
     }
 
     @Override
-    public void addResearchPaper(ResearchProject researchProject) {
-
+    public void addResearchPaper(ResearchPaper researchPaper) {
+        this.researchPapers.add(researchPaper);
     }
+
 
     @Override
     public void addResearchProjects(ResearchProject researchProject) {
-
+        this.researchProjects.add(researchProject);
     }
 
     @Override

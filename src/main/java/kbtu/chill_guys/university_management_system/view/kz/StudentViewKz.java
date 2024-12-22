@@ -3,7 +3,12 @@ package main.java.kbtu.chill_guys.university_management_system.view.kz;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
+import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
+import main.java.kbtu.chill_guys.university_management_system.model.student.DiplomaProject;
+import main.java.kbtu.chill_guys.university_management_system.model.student.GraduateStudent;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
+import main.java.kbtu.chill_guys.university_management_system.repository.UserRepository;
+import main.java.kbtu.chill_guys.university_management_system.service.ResearcherService;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
 import main.java.kbtu.chill_guys.university_management_system.view.StudentView;
 
@@ -143,6 +148,98 @@ public class StudentViewKz implements StudentView {
             showDisciplineList(disciplines);
         }
     }
+
+    @Override
+    public void showDiploma(DiplomaProject project, GraduateStudent student) {
+        while (true) {
+            System.out.println("\n=== Дипломдық Жоба Толығы ===");
+            System.out.printf("Тақырып: %s%n", project.getTitle());
+            System.out.printf("Сипаттама: %s%n", project.getDescription());
+            System.out.printf("Ғылыми жетекші: %s%n",
+                    project.getSupervisor() != null ? project.getSupervisor().getFirstName() : "Таңдалмаған");
+            System.out.println("Жарияланған мақалалар:");
+            if (project.getPublishedPapers().isEmpty()) {
+                System.out.println("  Жарияланған мақалалар жоқ.");
+            } else {
+                for (int i = 0; i < project.getPublishedPapers().size(); i++) {
+                    ResearchPaper paper = project.getPublishedPapers().get(i);
+                    System.out.printf("  %d. %s (DOI: %s)%n", i + 1, paper.getTitle(), paper.getDoi());
+                }
+            }
+
+            System.out.println("\nӘрекеттер:");
+            System.out.println("1. Тақырыпты өзгерту");
+            System.out.println("2. Сипаттаманы өзгерту");
+            System.out.println("3. Мақалаларды қосу");
+            System.out.println("4. Шығу жане сактау");
+
+            int choice = InputValidatorUtil.validateIntegerInput("Әрекетті таңдаңыз: ", 1, 4);
+
+            switch (choice) {
+                case 1 -> {
+                    System.out.println("Жаңа тақырыпты енгізіңіз:");
+                    String newTitle = InputValidatorUtil.validateNonEmptyInput("Тақырып бос болмауы керек.");
+                    project.setTitle(newTitle);
+                    System.out.println("Тақырып сәтті жаңартылды.");
+                }
+                case 2 -> {
+                    System.out.println("Жаңа сипаттаманы енгізіңіз:");
+                    String newDescription = InputValidatorUtil.validateNonEmptyInput("Сипаттама бос болмауы керек.");
+                    project.setDescription(newDescription);
+                    System.out.println("Сипаттама сәтті жаңартылды.");
+                }
+                case 3 -> {
+                    System.out.println("Қосылатын мақалаларды таңдаңыз:");
+                    List<ResearchPaper> availablePapers = ResearcherService.getInstance().getResearchPapers(student)
+                            .stream().filter(researchPaper -> !project.getPublishedPapers().contains(researchPaper))
+                            .toList();
+                    Vector<ResearchPaper> selectedPapers = selectResearchPapers(availablePapers);
+                    project.getPublishedPapers().addAll(selectedPapers);
+                    System.out.println("Мақалалар дипломдық жобаға сәтті қосылды.");
+                }
+                case 4 -> {
+                    System.out.println("Дипломдық жоба терезесінен шығу.");
+                    return;
+                }
+            }
+        }
+    }
+
+    private Vector<ResearchPaper> selectResearchPapers(List<ResearchPaper> papers) {
+        if (papers.isEmpty()) {
+            System.out.println("Қолжетімді мақалалар жоқ.");
+            return new Vector<>();
+        }
+
+        System.out.println("Қолжетімді мақалалар:");
+        for (int i = 0; i < papers.size(); i++) {
+            System.out.printf("%d. %s (DOI: %s)%n", i + 1, papers.get(i).getTitle(), papers.get(i).getDoi());
+        }
+
+        System.out.println("Мақала нөмірлерін енгізіңіз (үтірмен бөліңіз) немесе өткізіп жіберу үшін Enter басыңыз:");
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine().trim();
+
+        Vector<ResearchPaper> selectedPapers = new Vector<>();
+        if (!input.isEmpty()) {
+            try {
+                String[] indices = input.split(",");
+                for (String index : indices) {
+                    int paperIndex = Integer.parseInt(index.trim()) - 1;
+                    if (paperIndex >= 0 && paperIndex < papers.size()) {
+                        selectedPapers.add(papers.get(paperIndex));
+                    } else {
+                        System.out.println("Қате нөмір: " + (paperIndex + 1));
+                    }
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Қате енгізу. Таңдау өткізіледі.");
+            }
+        }
+
+        return selectedPapers;
+    }
+
 
     private void showDisciplineList(List<Discipline> disciplines) {
         System.out.printf("%-10s %-30s %-10s %-15s%n", "Код", "Атауы", "Кредиттер", "Курс түрі");

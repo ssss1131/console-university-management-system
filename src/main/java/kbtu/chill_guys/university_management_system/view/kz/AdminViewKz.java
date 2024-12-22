@@ -10,7 +10,6 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.organi
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.LogPeriod;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
-import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
 import main.java.kbtu.chill_guys.university_management_system.view.AdminView;
 
@@ -49,9 +48,27 @@ public class AdminViewKz implements AdminView {
             case TEACHER -> handleTeacherInput(data);
             case MANAGER -> handleManagerInput(data);
             case DEAN -> handleDeanInput(data);
+            case PROFESSOR -> handleProfessorInput(data);
+            case RESEARCH_SUPERVISOR -> handleResearchSupervisorInput(data);
         }
 
         return data;
+    }
+
+    private void handleResearchSupervisorInput(Map<String, Object> data) {
+        System.out.println("Жалақыны енгізіңіз:");
+        data.put(SALARY_ATTRIBUTE, validateIntegerInput("Жалақы теріс болмауы керек", 0, Integer.MAX_VALUE));
+    }
+
+    private void handleProfessorInput(Map<String, Object> data) {
+        System.out.println("Жалақыны енгізіңіз:");
+        data.put(SALARY_ATTRIBUTE, validateIntegerInput("Жалақы теріс болмауы керек", 0, Integer.MAX_VALUE));
+
+        System.out.println("Рейтингті енгізіңіз:");
+        data.put(RATING_ATTRIBUTE, validateIntegerInput("Рейтинг оң бүтін сан болуы керек", 0, 100));
+
+        System.out.println("Мектепті енгізіңіз:");
+        data.put(SCHOOL_ATTRIBUTE, selectEnum(School.class));
     }
 
     @Override
@@ -87,12 +104,6 @@ public class AdminViewKz implements AdminView {
                 data.put(PROGRAM_ATTRIBUTE, selectEnum(Specialization.class));
             }
         }
-
-        System.out.printf("Ұйым атауын енгізіңіз (немесе өткізіп жіберу үшін %s енгізіңіз): ", CANCEL_INPUT);
-        String input = validateNonEmptyInput("Ұйым туралы мәліметтерді дұрыс енгізу.");
-        if (!input.equalsIgnoreCase(CANCEL_INPUT)) {
-            data.put(ORGANIZATION_ATTRIBUTE, getOrganizationInput());
-        }
     }
 
     private void handleTeacherInput(Map<String, Object> data) {
@@ -120,20 +131,6 @@ public class AdminViewKz implements AdminView {
     private void handleDeanInput(Map<String, Object> data) {
         System.out.println("Жалақыны енгізіңіз:");
         data.put(SALARY_ATTRIBUTE, validateIntegerInput("Жалақы теріс болмауы керек", 0, Integer.MAX_VALUE));
-    }
-
-    private Organization getOrganizationInput() {
-        System.out.println("Ұйымның атауын енгізіңіз:");
-        String name = InputValidatorUtil.validateNonEmptyInput("Ұйым атауы бос болмауы керек");
-
-        System.out.println("Ұйымның сипаттамасын енгізіңіз:");
-        String description = InputValidatorUtil.validateNonEmptyInput("Ұйымның сипаттамасы бос болмауы керек");
-
-        Organization organization = new Organization();
-        organization.setName(name);
-        organization.setDescription(description);
-
-        return organization;
     }
 
     @Override

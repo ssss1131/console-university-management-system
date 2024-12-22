@@ -10,6 +10,8 @@ import main.java.kbtu.chill_guys.university_management_system.model.academic.Dis
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.ResearchSupervisor;
+import main.java.kbtu.chill_guys.university_management_system.model.student.GraduateStudent;
 import main.java.kbtu.chill_guys.university_management_system.service.DisciplineService;
 import main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
@@ -27,15 +29,6 @@ import static main.java.kbtu.chill_guys.university_management_system.util.InputV
 public class ManagerViewRu implements ManagerView {
     private final Scanner scanner = new Scanner(System.in);
     private final DisciplineService disciplineService = new DisciplineService();
-
-    public void addNewCourses() {
-
-    }
-
-
-    public void displayCoursesForRegistration() {
-        //TODO
-    }
 
     @Override
     public Map<String, Object> getPostInput() {
@@ -418,5 +411,70 @@ public class ManagerViewRu implements ManagerView {
 
         int choice = InputValidatorUtil.validateIntegerInput("Введите номер учителя:", 1, teachers.size());
         return teachers.get(choice - 1);
+    }
+
+    @Override
+    public GraduateStudent showFreeStudents(List<GraduateStudent> students) {
+        if (students.isEmpty()) {
+            System.out.println("Нет доступных студентов.");
+            return null;
+        }
+
+        System.out.println("\n=== Свободные студенты ===");
+        System.out.printf("%-5s %-15s %-15s %-20s %-10s%n",
+                "№", "Имя", "Фамилия", "Школа", "Кредиты");
+        System.out.println("-".repeat(90));
+
+        int index = 1;
+        for (GraduateStudent student : students) {
+            System.out.printf("%-5d %-15s %-15s %-20s %-10d %n",
+                    index++,
+                    student.getFirstName(),
+                    student.getLastName(),
+                    student.getSchool().name(),
+                    student.getCredits() != null ? student.getCredits() : 0);
+        }
+
+        System.out.println("-".repeat(90));
+        System.out.println("Выберите студента по номеру или нажмите 0 для отмены: ");
+        int choice = InputValidatorUtil.validateIntegerInput(
+                "Выберите нормальное число", 0, students.size());
+
+        if (choice == 0) {
+            return null;
+        }
+
+        return students.get(choice - 1);
+    }
+
+    @Override
+    public ResearchSupervisor showSupervisors(List<ResearchSupervisor> supervisors) {
+        if (supervisors.isEmpty()) {
+            System.out.println("Нет доступных научных руководителей.");
+            return null;
+        }
+
+        System.out.println("\n=== Доступные научные руководители ===");
+        System.out.printf("%-5s %-15s %-15s%n", "№", "Имя", "Фамилия");
+        System.out.println("-".repeat(60));
+
+        int index = 1;
+        for (ResearchSupervisor supervisor : supervisors) {
+            System.out.printf("%-5d %-15s %-15s%n",
+                    index++,
+                    supervisor.getFirstName(),
+                    supervisor.getLastName());
+        }
+
+        System.out.println("-".repeat(60));
+        System.out.println("Выберите научного руководителя по номеру или нажмите 0 для отмены: ");
+        int choice = InputValidatorUtil.validateIntegerInput(
+                "Выберите нормальное число", 0, supervisors.size());
+
+        if (choice == 0) {
+            return null;
+        }
+
+        return supervisors.get(choice - 1);
     }
 }

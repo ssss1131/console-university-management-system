@@ -5,12 +5,11 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.academ
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.StudentRole;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.organization.School;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
+import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchProject;
 
 import java.time.LocalDate;
 import java.util.UUID;
-import java.util.Vector;
 
 public class Master extends GraduateStudent {
     private MasterProgram masterProgram;
@@ -52,12 +51,12 @@ public class Master extends GraduateStudent {
     }
 
     @Override
-    public void addResearchPaper(ResearchProject researchProject) {
-
+    public void addResearchPaper(ResearchPaper researchPaper) {
+        getResearchPapers().add(researchPaper);
     }
 
     @Override
     public void addResearchProjects(ResearchProject researchProject) {
-
+        getResearchProjects().add(researchProject);
     }
 }

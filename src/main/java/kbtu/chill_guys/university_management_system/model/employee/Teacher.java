@@ -27,6 +27,12 @@ public class Teacher extends Employee implements CanViewStudents {
         this.teachingDegree = teachingDegree;
     }
 
+    public Teacher(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, int salary, int rating, School school) {
+        super(id, role, email, password, salt, firstName, lastName, salary);
+        this.rating = mapRating(rating);
+        this.school = school;
+    }
+
     public Teacher() {
 
     }

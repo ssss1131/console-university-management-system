@@ -10,6 +10,8 @@ import main.java.kbtu.chill_guys.university_management_system.model.academic.Dis
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.ResearchSupervisor;
+import main.java.kbtu.chill_guys.university_management_system.model.student.GraduateStudent;
 import main.java.kbtu.chill_guys.university_management_system.service.DisciplineService;
 import main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
@@ -27,15 +29,6 @@ import static main.java.kbtu.chill_guys.university_management_system.util.InputV
 public class ManagerViewEn implements ManagerView {
     private final Scanner scanner = new Scanner(System.in);
     private final DisciplineService disciplineService = new DisciplineService();
-
-    public void addNewCourses() {
-
-    }
-
-
-    public void displayCoursesForRegistration() {
-        //TODO
-    }
 
     @Override
     public Map<String, Object> getPostInput() {
@@ -147,7 +140,7 @@ public class ManagerViewEn implements ManagerView {
                 .filter(discipline -> discipline.getTargetAudience() == targetAudience)
                 .toList();
         Set<String> prerequisites = new HashSet<>();
-        if(!schoolDisciplines.isEmpty()){
+        if (!schoolDisciplines.isEmpty()) {
             System.out.println("Choose prerequisites (by number) or leave empty(e.g 1,3,5):");
             for (int i = 0; i < schoolDisciplines.size(); i++) {
                 Discipline discipline = schoolDisciplines.get(i);
@@ -213,7 +206,7 @@ public class ManagerViewEn implements ManagerView {
         while (true) {
             try {
                 String input = new Scanner(System.in).nextLine();
-                if(input.equalsIgnoreCase(CANCEL_INPUT)){
+                if (input.equalsIgnoreCase(CANCEL_INPUT)) {
                     System.out.println("exiting");
                     return List.of();
                 }
@@ -296,9 +289,9 @@ public class ManagerViewEn implements ManagerView {
 
 
     @Override
-    public Program selectProgram(StudentRole role){
+    public Program selectProgram(StudentRole role) {
         System.out.println("Select programs for whom will open registration: ");
-        switch (role){
+        switch (role) {
             case BACHELOR -> {
                 return selectEnum(Specialization.class);
             }
@@ -314,7 +307,7 @@ public class ManagerViewEn implements ManagerView {
 
     @Override
     public void showRegistrationInfo(Map<Integer, Map<StudentRole, Map<Program, List<Discipline>>>> registrationMap, Semester semester) {
-        if(semester!=null){
+        if (semester != null) {
             showSemesterInfo(semester);
         }
 
@@ -361,9 +354,9 @@ public class ManagerViewEn implements ManagerView {
 
     @Override
     public void showSuccessClosingRegistration(Semester semester) {
-        if(semester == null){
+        if (semester == null) {
             System.out.println("registration already closed!");
-        }else {
+        } else {
             System.out.println("Registration for " + semester + " successfully closed!");
         }
     }
@@ -421,4 +414,68 @@ public class ManagerViewEn implements ManagerView {
         return teachers.get(choice - 1);
     }
 
+    @Override
+    public GraduateStudent showFreeStudents(List<GraduateStudent> students) {
+        if (students.isEmpty()) {
+            System.out.println("No free students available.");
+            return null;
+        }
+
+        System.out.println("\n=== Free Students ===");
+        System.out.printf("%-5s %-15s %-15s %-20s %-10s%n",
+                "No.", "First Name", "Last Name", "School", "Credits");
+        System.out.println("-".repeat(90));
+
+        int index = 1;
+        for (GraduateStudent student : students) {
+
+            System.out.printf("%-5d %-15s %-15s %-20s %-10d %n",
+                    index++,
+                    student.getFirstName(),
+                    student.getLastName(),
+                    student.getSchool().name(),
+                    student.getCredits() != null ? student.getCredits() : 0);
+        }
+
+        System.out.println("-".repeat(90));
+        System.out.println("Select a student by number or press 0 to cancel:");
+        int choice = InputValidatorUtil.validateIntegerInput(
+                "Enter valid positive number", 0, students.size());
+
+        if (choice == 0) {
+            return null;
+        }
+
+        return students.get(choice - 1);
+    }
+
+    @Override
+    public ResearchSupervisor showSupervisors(List<ResearchSupervisor> supervisors) {
+        if (supervisors.isEmpty()) {
+            System.out.println("No supervisors available.");
+            return null;
+        }
+
+        System.out.println("\n=== Available Supervisors ===");
+        System.out.printf("%-5s %-15s %-15s %n", "No.", "First Name", "Last Name");
+        System.out.println("-".repeat(60));
+
+        int index = 1;
+        for (ResearchSupervisor supervisor : supervisors) {
+            System.out.printf("%-5d %-15s %-15s%n",
+                    index++,
+                    supervisor.getFirstName(),
+                    supervisor.getLastName());
+        }
+
+        System.out.println("-".repeat(60));
+        System.out.println("Select a supervisor by number or press 0 to cancel:");
+        int choice = InputValidatorUtil.validateIntegerInput("Enter valid positive number", 0, supervisors.size());
+
+        if (choice == 0) {
+            return null;
+        }
+
+        return supervisors.get(choice - 1);
+    }
 }
