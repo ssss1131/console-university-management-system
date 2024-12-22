@@ -1,14 +1,15 @@
 package main.java.kbtu.chill_guys.university_management_system.service;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Attendance;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.UrgencyLevel;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.*;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 import main.java.kbtu.chill_guys.university_management_system.repository.UserRepository;
+import main.java.kbtu.chill_guys.university_management_system.storage.ComplaintStorage;
 import main.java.kbtu.chill_guys.university_management_system.storage.StudentDisciplineStorage;
 import main.java.kbtu.chill_guys.university_management_system.storage.TeacherDisciplineStorage;
-import main.java.kbtu.chill_guys.university_management_system.util.NumericToEnumMapper;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,6 +19,7 @@ public class TeacherService {
     private final TeacherDisciplineStorage storage = TeacherDisciplineStorage.getInstance();
     private final StudentDisciplineStorage studentStorage = StudentDisciplineStorage.getInstance();
     private final UserRepository userRepository = new UserRepository();
+    private final ComplaintStorage complaintStorage = ComplaintStorage.getInstance();
 
     public List<Discipline> getDisciplines(Teacher teacher, Semester semester) {
         return storage.getDisciplines(teacher, semester);
@@ -70,5 +72,4 @@ public class TeacherService {
 
         userRepository.save(teacher);
     }
-
 }

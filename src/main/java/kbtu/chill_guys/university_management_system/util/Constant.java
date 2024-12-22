@@ -19,6 +19,8 @@ public final class Constant {
     public static final Path BASE_PATH = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "db");
     public static final Path USERS_PATH = Paths.get("account.ser");
     public static final Path DISCIPLINE_PATH = Paths.get("academic_db", "discipline.ser");
+    public static final Path COMPLAINT_PATH = Paths.get("academic_db", "complaint.ser");
+
     public static final Path POST_PATH = Paths.get("media_db", "post.ser");
     public static final Path LOG_FILE_PATH = Path.of("logs", "application.log.0");
 

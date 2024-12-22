@@ -1,6 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.view.ru;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Attendance;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.UrgencyLevel;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.evaluation.Period;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
@@ -140,5 +141,23 @@ public class TeacherViewRu implements TeacherView {
     @Override
     public void showTeacherRating(Teacher teacher) {
         System.out.printf("Ваш рейтинг: %s (%d баллов)%n", teacher.getRating(), teacher.getRating().getScore());
+    }
+
+    @Override
+    public String getComment() {
+        System.out.println("Введите ваш комментарий:");
+        return InputValidatorUtil.validateNonEmptyInput("Комментарий не может быть пустым. Пожалуйста, попробуйте снова.");
+    }
+
+    @Override
+    public UrgencyLevel selectUrgencyLevel() {
+        System.out.println("Выберите уровень срочности:");
+        return EnumSelectionUtil.selectEnum(UrgencyLevel.class);
+    }
+
+    @Override
+    public void showComplaintCreatedMessage(Discipline discipline, Student student, UrgencyLevel urgencyLevel) {
+        System.out.printf("Жалоба на %s %s по предмету %s с уровнем срочности %s успешно создана.%n",
+                student.getFirstName(), student.getLastName(), discipline.getName(), urgencyLevel);
     }
 }

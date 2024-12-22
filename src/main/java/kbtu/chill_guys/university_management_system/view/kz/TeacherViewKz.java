@@ -1,6 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.view.kz;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Attendance;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.UrgencyLevel;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.evaluation.Period;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
@@ -140,5 +141,23 @@ public class TeacherViewKz implements TeacherView {
     @Override
     public void showTeacherRating(Teacher teacher) {
         System.out.printf("Сіздің рейтингіңіз: %s (%d ұпай)%n", teacher.getRating(), teacher.getRating().getScore());
+    }
+
+    @Override
+    public String getComment() {
+        System.out.println("Пікіріңізді енгізіңіз:");
+        return InputValidatorUtil.validateNonEmptyInput("Пікір бос болмауы керек. Қайта енгізіңіз.");
+    }
+
+    @Override
+    public UrgencyLevel selectUrgencyLevel() {
+        System.out.println("Шұғылдық деңгейін таңдаңыз:");
+        return EnumSelectionUtil.selectEnum(UrgencyLevel.class);
+    }
+
+    @Override
+    public void showComplaintCreatedMessage(Discipline discipline, Student student, UrgencyLevel urgencyLevel) {
+        System.out.printf("%s пәні бойынша %s студентіне %s %s шұғылдық деңгейімен шағым сәтті құрылды.%n",
+                discipline.getName(), student.getFirstName(), student.getLastName(), urgencyLevel);
     }
 }

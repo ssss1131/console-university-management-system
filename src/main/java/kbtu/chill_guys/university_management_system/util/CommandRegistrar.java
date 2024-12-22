@@ -7,6 +7,7 @@ import main.java.kbtu.chill_guys.university_management_system.menu.admin_command
 import main.java.kbtu.chill_guys.university_management_system.menu.admin_command.GetLogsCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.admin_command.UpdateUserCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.dean_command.ApproveNewDisciplineCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.dean_command.ManageComplaintCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.employee_command.SendMessageCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.employee_command.ViewMessagesCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.general_command.*;
@@ -20,6 +21,7 @@ import main.java.kbtu.chill_guys.university_management_system.menu.teacher_comma
 import main.java.kbtu.chill_guys.university_management_system.menu.teacher_command.PutMarkCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.teacher_command.ViewStudentsCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.teacher_command.ViewTeacherRatingCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.teacher_command.CreateComplaintCommand;
 
 import static main.java.kbtu.chill_guys.university_management_system.enumeration.util.CommandEnum.*;
 import static main.java.kbtu.chill_guys.university_management_system.util.Constant.ALL_ROLES;
@@ -101,9 +103,11 @@ public final class CommandRegistrar {
         menu.registerCommand(ASSIGN_DISCIPLINE, new AssignDisciplineToTeacherCommand(), UserRole.MANAGER);
         menu.registerCommand(CLOSE_ATTESTATION, new CloseAttestationCommand(), UserRole.TEACHER);
         menu.registerCommand(VIEW_TEACHER_RATING, new ViewTeacherRatingCommand(), UserRole.TEACHER);
+        menu.registerCommand(CREATE_COMPLAINT_COMMAND, new CreateComplaintCommand(), UserRole.TEACHER);
     }
 
     private static void registerDeanCommands(Menu menu){
         menu.registerCommand(APPROVE_NEW_DISCIPLINES, new ApproveNewDisciplineCommand(), UserRole.DEAN);
+        menu.registerCommand(MANAGE_COMPLAINT, new ManageComplaintCommand(), UserRole.DEAN);
     }
 }

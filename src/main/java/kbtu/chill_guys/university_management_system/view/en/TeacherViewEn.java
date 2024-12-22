@@ -1,6 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.view.en;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Attendance;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.UrgencyLevel;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.evaluation.Period;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
@@ -139,5 +140,23 @@ public class TeacherViewEn implements TeacherView {
     @Override
     public void showTeacherRating(Teacher teacher) {
         System.out.printf("Your rating: %s (%d points)%n", teacher.getRating(), teacher.getRating().getScore());
+    }
+
+    @Override
+    public String getComment() {
+        System.out.println("Enter your comment:");
+        return InputValidatorUtil.validateNonEmptyInput("Comment cannot be empty. Please try again.");
+    }
+
+    @Override
+    public UrgencyLevel selectUrgencyLevel() {
+        System.out.println("Select urgency level:");
+        return EnumSelectionUtil.selectEnum(UrgencyLevel.class);
+    }
+
+    @Override
+    public void showComplaintCreatedMessage(Discipline discipline, Student student, UrgencyLevel urgencyLevel) {
+        System.out.printf("Complaint against %s %s in %s with urgency %s successfully created.%n",
+                student.getFirstName(), student.getLastName(), discipline.getName(), urgencyLevel);
     }
 }

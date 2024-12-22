@@ -14,6 +14,7 @@ public enum CommandEnum {
     DELETE_USER("Delete user", "Удалить пользователя", "Қолданушыны жою"),
 
     APPROVE_NEW_DISCIPLINES("Approve new disciplines", "Утвердить новые дисциплины", "Жаңа пәндерді бекіту"),
+    MANAGE_COMPLAINT("Manage complaint about student", "Управление жалобой на студента", "Студенттің шағымын басқарыңыз"),
 
     CREATE_JOURNAL("Create journal", "Создать журнал", "Журнал жасау"),
     DELETE_JOURNAL("Delete journal", "Удалить журнал", "Журналды жою"),
@@ -41,6 +42,7 @@ public enum CommandEnum {
     VIEW_TRANSCRIPT("View my transcript", "Посмотреть мой транскрипт", "Менің транскриптімді қараңыз"),
     RATE_TEACHER("Rate teacher", "Оценить учителя", "Мұғалімді бағалау"),
     VIEW_TEACHER_RATING("View your rating", "Посмотреть ваш рейтинг", "Рейтингіңізді көру"),
+    CREATE_COMPLAINT_COMMAND("Create complaint about student marks", "Подать жалобу на оценки учащегося", "Студенттік бағалар туралы шағым жасаңыз"),
 
     ADD_RESEARCHER("I want to be researcher!!", "Я хочу стать исследователем!!", "Мен зерттеуші болғым келеді!!"),
     GET_RESEARCH_PAPERS("Get my research papers", "Получить мои исследовательские работы", "Менің зерттеу жұмыстарымды алу"),

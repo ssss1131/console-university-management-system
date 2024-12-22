@@ -1,6 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.view;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Attendance;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.UrgencyLevel;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.evaluation.Period;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
@@ -37,4 +38,10 @@ public interface TeacherView {
     boolean confirmAttestationClosure();
 
     void showTeacherRating(Teacher teacher);
+
+    String getComment();
+
+    UrgencyLevel selectUrgencyLevel();
+
+    void showComplaintCreatedMessage(Discipline discipline, Student student, UrgencyLevel urgencyLevel);
 }
