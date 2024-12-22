@@ -7,6 +7,7 @@ import java.io.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 import static main.java.kbtu.chill_guys.university_management_system.util.Constant.BASE_PATH;
@@ -54,7 +55,7 @@ public class TranscriptStorage implements Serializable {
         transcripts.add(transcript);
     }
 
-    public List<Transcript> getTranscriptsForStudent(String studentId) {
+    public List<Transcript> getTranscriptsForStudent(UUID studentId) {
         return transcripts.stream()
                 .filter(t -> t.getStudent().getId().equals(studentId))
                 .toList();

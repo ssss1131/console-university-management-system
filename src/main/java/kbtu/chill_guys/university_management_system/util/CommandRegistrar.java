@@ -19,6 +19,7 @@ import main.java.kbtu.chill_guys.university_management_system.menu.student_comma
 import main.java.kbtu.chill_guys.university_management_system.menu.teacher_command.CloseAttestationCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.teacher_command.PutMarkCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.teacher_command.ViewStudentsCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.teacher_command.ViewTeacherRatingCommand;
 
 import static main.java.kbtu.chill_guys.university_management_system.enumeration.util.CommandEnum.*;
 import static main.java.kbtu.chill_guys.university_management_system.util.Constant.ALL_ROLES;
@@ -88,6 +89,8 @@ public final class CommandRegistrar {
         menu.registerCommand(CREATE_ORGANIZATION, new CreateOrganizationCommand(), UserRole.BACHELOR, UserRole.MASTER, UserRole.PHD);
         menu.registerCommand(JOIN_ORGANIZATION, new JoinOrganizationCommand(),  UserRole.BACHELOR, UserRole.MASTER, UserRole.PHD);
         menu.registerCommand(VIEW_ORGANIZATION_INFO, new ViewOrganizationInfoCommand(),  UserRole.BACHELOR, UserRole.MASTER, UserRole.PHD);
+        menu.registerCommand(VIEW_TRANSCRIPT, new ViewTranscriptCommand(),  UserRole.BACHELOR, UserRole.MASTER, UserRole.PHD);
+        menu.registerCommand(RATE_TEACHER, new RateTeacherCommand(),  UserRole.BACHELOR, UserRole.MASTER, UserRole.PHD);
     }
 
     private static void registerTeacherCommands(Menu menu) {
@@ -97,6 +100,7 @@ public final class CommandRegistrar {
         menu.registerCommand(SEND_MESSAGE, new SendMessageCommand(), UserRole.TEACHER, UserRole.MANAGER, UserRole.DEAN);
         menu.registerCommand(ASSIGN_DISCIPLINE, new AssignDisciplineToTeacherCommand(), UserRole.MANAGER);
         menu.registerCommand(CLOSE_ATTESTATION, new CloseAttestationCommand(), UserRole.TEACHER);
+        menu.registerCommand(VIEW_TEACHER_RATING, new ViewTeacherRatingCommand(), UserRole.TEACHER);
     }
 
     private static void registerDeanCommands(Menu menu){

@@ -1,6 +1,7 @@
 package main.java.kbtu.chill_guys.university_management_system.menu.teacher_command;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Attendance;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Gpa;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.TraditionalGrade;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.Language;
 import main.java.kbtu.chill_guys.university_management_system.menu.Command;
@@ -61,6 +62,7 @@ public class CloseAttestationCommand implements Command {
             transcript.setPeriod(semester.getPeriod());
             transcript.setGpaNumeric((int) totalGrade);
             transcript.setTotalGrade(totalGrade);
+            transcript.setGpaLetter(Gpa.valueOf(gpaLetter));
             transcript.setGpaTraditional(traditionalGrade.name());
             transcriptService.saveTranscript(transcript);
 
@@ -74,11 +76,11 @@ public class CloseAttestationCommand implements Command {
         double total = 0;
         int count = 0;
         for (LessonRecord record : records) {
-            if (record.getAttendance() == Attendance.PRESENT) {
+            if (record.getAttendance() == Attendance.PRESENT && record.getGrade() != null && record.getGrade() >= 0) {
                 total += record.getGrade();
                 count++;
             }
         }
-        return count > 0 ? total / count : 0.0;
+        return count > 0 ? total : 0.0;
     }
 }

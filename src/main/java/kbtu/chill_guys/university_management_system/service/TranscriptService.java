@@ -2,7 +2,9 @@ package main.java.kbtu.chill_guys.university_management_system.service;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Gpa;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.TraditionalGrade;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
+import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 import main.java.kbtu.chill_guys.university_management_system.storage.TranscriptStorage;
 
 public class TranscriptService {
@@ -30,5 +32,12 @@ public class TranscriptService {
     public void saveTranscript(Transcript transcript) {
         storage.addTranscript(transcript);
         TranscriptStorage.saveToFile();
+    }
+
+    public Transcript getTranscriptForDiscipline(Student student, Discipline discipline) {
+        return storage.getTranscriptsForStudent(student.getId()).stream()
+                .filter(transcript -> transcript.getSubject().equals(discipline))
+                .findFirst()
+                .orElse(null);
     }
 }

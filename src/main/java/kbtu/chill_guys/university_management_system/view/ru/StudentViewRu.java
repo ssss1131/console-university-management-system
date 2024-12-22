@@ -4,6 +4,8 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.academ
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
 import main.java.kbtu.chill_guys.university_management_system.model.student.DiplomaProject;
 import main.java.kbtu.chill_guys.university_management_system.model.student.GraduateStudent;
@@ -399,5 +401,53 @@ public class StudentViewRu implements StudentView {
     @Override
     public void showSemesterHeader(Semester semester) {
         System.out.printf("\n=== Семестр: %s ===\n", semester.toString());
+    }
+
+    @Override
+    public void showDisciplineWithoutGrades(Discipline discipline) {
+        System.out.printf("Дисциплина: %s (Оценки недоступны; аттестация еще не закрыта)%n", discipline.getName());
+    }
+
+    @Override
+    public void showTranscriptRecordWithGrades(Transcript transcript) {
+        System.out.printf(
+                "Дисциплина: %s | Итоговая оценка: %.2f | GPA: %s | Традиционная оценка: %s%n",
+                transcript.getSubject().getName(),
+                transcript.getTotalGrade(),
+                transcript.getGpaLetter(),
+                transcript.getGpaTraditional()
+        );
+    }
+
+    @Override
+    public Teacher selectTeacher(List<Teacher> teachers) {
+        System.out.println("Выберите преподавателя для оценки:");
+        for (int i = 0; i < teachers.size(); i++) {
+            System.out.printf("%d. %s %s (Рейтинг: %s)%n", i + 1, teachers.get(i).getFirstName(), teachers.get(i).getLastName(), teachers.get(i).getRating());
+        }
+
+        int choice = InputValidatorUtil.validateIntegerInput("Введите ваш выбор: ", 1, teachers.size());
+        return teachers.get(choice - 1);
+    }
+
+    @Override
+    public int getTeacherRating() {
+        System.out.println("Введите оценку преподавателю (0-100):");
+        return InputValidatorUtil.validateIntegerInput("Неверная оценка. Пожалуйста, введите число от 0 до 100.", 0, 100);
+    }
+
+    @Override
+    public void showTeacherRatedMessage(Teacher teacher, int rating) {
+        System.out.printf("Вы оценили %s %s на %d баллов. Их новый рейтинг: %s.%n",
+                teacher.getFirstName(),
+                teacher.getLastName(),
+                rating,
+                teacher.getRating()
+        );
+    }
+
+    @Override
+    public void showNoTeachersAvailableMessage() {
+        System.out.println("Нет доступных учителей.");
     }
 }

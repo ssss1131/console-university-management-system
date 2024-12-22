@@ -8,19 +8,16 @@ import main.java.kbtu.chill_guys.university_management_system.model.student.Stud
 import main.java.kbtu.chill_guys.university_management_system.repository.UserRepository;
 import main.java.kbtu.chill_guys.university_management_system.storage.StudentDisciplineStorage;
 import main.java.kbtu.chill_guys.university_management_system.storage.TeacherDisciplineStorage;
+import main.java.kbtu.chill_guys.university_management_system.util.NumericToEnumMapper;
 
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class TeacherService {
     private final TeacherDisciplineStorage storage = TeacherDisciplineStorage.getInstance();
     private final StudentDisciplineStorage studentStorage = StudentDisciplineStorage.getInstance();
     private final UserRepository userRepository = new UserRepository();
-
-
 
     public List<Discipline> getDisciplines(Teacher teacher, Semester semester) {
         return storage.getDisciplines(teacher, semester);
@@ -63,4 +60,15 @@ public class TeacherService {
     public void closeAttestation(Discipline selectedDiscipline ) {
         storage.closeAttestation(selectedDiscipline);
     }
+
+    public void updateTeacherRating(Teacher teacher, int newRatingScore) {
+        int currentScore = teacher.getScore();
+
+        int updatedScore = (int) (currentScore * 0.9 + newRatingScore * 0.1);
+
+        teacher.setRating(updatedScore);
+
+        userRepository.save(teacher);
+    }
+
 }

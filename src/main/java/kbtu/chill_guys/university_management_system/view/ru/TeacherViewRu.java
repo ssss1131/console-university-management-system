@@ -6,6 +6,7 @@ import main.java.kbtu.chill_guys.university_management_system.model.academic.Dis
 import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 import main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
@@ -136,4 +137,8 @@ public class TeacherViewRu implements TeacherView {
         return input.equalsIgnoreCase("да");
     }
 
+    @Override
+    public void showTeacherRating(Teacher teacher) {
+        System.out.printf("Ваш рейтинг: %s (%d баллов)%n", teacher.getRating(), teacher.getRating().getScore());
+    }
 }

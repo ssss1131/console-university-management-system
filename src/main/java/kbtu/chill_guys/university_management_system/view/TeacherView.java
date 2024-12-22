@@ -6,6 +6,7 @@ import main.java.kbtu.chill_guys.university_management_system.model.academic.Dis
 import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 
 import java.util.List;
@@ -34,4 +35,6 @@ public interface TeacherView {
     void showAttestationClosedMessage(Discipline discipline, Semester semester);
 
     boolean confirmAttestationClosure();
+
+    void showTeacherRating(Teacher teacher);
 }

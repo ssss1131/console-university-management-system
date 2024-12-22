@@ -4,6 +4,8 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.academ
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
 import main.java.kbtu.chill_guys.university_management_system.model.student.DiplomaProject;
 import main.java.kbtu.chill_guys.university_management_system.model.student.GraduateStudent;
@@ -417,5 +419,53 @@ public class StudentViewEn implements StudentView {
     @Override
     public void showSemesterHeader(Semester semester) {
         System.out.printf("\n=== Semester: %s ===\n", semester.toString());
+    }
+
+    @Override
+    public void showDisciplineWithoutGrades(Discipline discipline) {
+        System.out.printf("Discipline: %s (GPA not available; attestation not closed yet)%n", discipline.getName());
+    }
+
+    @Override
+    public void showTranscriptRecordWithGrades(Transcript transcript) {
+        System.out.printf(
+                "Discipline: %s | Total Grade: %.2f | GPA: %s | Traditional Grade: %s%n",
+                transcript.getSubject().getName(),
+                transcript.getTotalGrade(),
+                transcript.getGpaLetter(),
+                transcript.getGpaTraditional()
+        );
+    }
+
+    @Override
+    public Teacher selectTeacher(List<Teacher> teachers) {
+        System.out.println("Select a teacher to rate:");
+        for (int i = 0; i < teachers.size(); i++) {
+            System.out.printf("%d. %s %s (Rating: %s)%n", i + 1, teachers.get(i).getFirstName(), teachers.get(i).getLastName(), teachers.get(i).getRating());
+        }
+
+        int choice = InputValidatorUtil.validateIntegerInput("Enter your choice: ", 1, teachers.size());
+        return teachers.get(choice - 1);
+    }
+
+    @Override
+    public int getTeacherRating() {
+        System.out.println("Enter a rating for the teacher (0-100):");
+        return InputValidatorUtil.validateIntegerInput("Invalid rating. Please enter a number between 0 and 100.", 0, 100);
+    }
+
+    @Override
+    public void showTeacherRatedMessage(Teacher teacher, int rating) {
+        System.out.printf("You rated %s %s with %d points. Their new rating is %s.%n",
+                teacher.getFirstName(),
+                teacher.getLastName(),
+                rating,
+                teacher.getRating()
+        );
+    }
+
+    @Override
+    public void showNoTeachersAvailableMessage() {
+        System.out.println("There are no teachers available.");
     }
 }

@@ -4,6 +4,8 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.academ
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.student.DiplomaProject;
 import main.java.kbtu.chill_guys.university_management_system.model.student.GraduateStudent;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Organization;
@@ -63,4 +65,16 @@ public interface StudentView {
     void showClosedRegistration();
 
     void noneAvailableDisciplines();
+
+    void showDisciplineWithoutGrades(Discipline discipline);
+
+    void showTranscriptRecordWithGrades(Transcript transcript);
+
+    Teacher selectTeacher(List<Teacher> teachers);
+
+    int getTeacherRating();
+
+    void showTeacherRatedMessage(Teacher teacher, int rating);
+
+    void showNoTeachersAvailableMessage();
 }
