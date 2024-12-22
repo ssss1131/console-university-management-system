@@ -11,6 +11,5 @@ public enum Gpa {
     C_MINUS,
     D_PLUS,
     D,
-    D_MINUS,
     F
 }

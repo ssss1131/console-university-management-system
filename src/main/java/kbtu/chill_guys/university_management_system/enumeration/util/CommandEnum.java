@@ -34,6 +34,7 @@ public enum CommandEnum {
 
     PUT_MARK("Put mark", "Поставить оценку", "Баға қою"),
     VIEW_STUDENTS("View info about students", "Просмотр информации о студентах", "Студенттер туралы ақпаратты қарау"),
+    CLOSE_ATTESTATION("Close attestation", "Закрыть аттестацию", "Аттестаттауды жабу"),
 
     ADD_RESEARCHER("I want to be researcher!!", "Я хочу стать исследователем!!", "Мен зерттеуші болғым келеді!!"),
     GET_RESEARCH_PAPERS("Get my research papers", "Получить мои исследовательские работы", "Менің зерттеу жұмыстарымды алу"),

@@ -10,13 +10,17 @@ import main.java.kbtu.chill_guys.university_management_system.storage.StudentDis
 import main.java.kbtu.chill_guys.university_management_system.storage.TeacherDisciplineStorage;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class TeacherService {
     private final TeacherDisciplineStorage storage = TeacherDisciplineStorage.getInstance();
     private final StudentDisciplineStorage studentStorage = StudentDisciplineStorage.getInstance();
     private final UserRepository userRepository = new UserRepository();
+
+
 
     public List<Discipline> getDisciplines(Teacher teacher, Semester semester) {
         return storage.getDisciplines(teacher, semester);
@@ -26,7 +30,11 @@ public class TeacherService {
         return storage.getStudentsInDiscipline(teacher, semester, discipline);
     }
 
-    public void addLessonRecord(Teacher teacher, Semester semester, Discipline discipline, Student student, LocalDate date, String lessonName, Attendance attendance, double grade, String comment) {
+    public void addLessonRecord(Teacher teacher, Semester semester, Discipline discipline, Student student, LocalDate date, String lessonName, Attendance attendance, Double grade, String comment) {
+        if (storage.isAttestationClosed(discipline)) {
+            throw new IllegalStateException("Cannot add grades. Attestation for this discipline is already closed.");
+        }
+
         LessonRecord record = new LessonRecord(date, lessonName, attendance, grade, comment);
         storage.addLessonRecord(teacher, semester, discipline, student, record);
     }
@@ -50,5 +58,9 @@ public class TeacherService {
 
     public List<LessonRecord> getLessonRecords(Teacher teacher, Semester semester, Discipline discipline, Student student) {
         return storage.getLessonRecordsForStudent(teacher, semester, discipline, student);
+    }
+
+    public void closeAttestation(Discipline selectedDiscipline ) {
+        storage.closeAttestation(selectedDiscipline);
     }
 }

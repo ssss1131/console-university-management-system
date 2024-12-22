@@ -16,6 +16,7 @@ import main.java.kbtu.chill_guys.university_management_system.menu.manager_comma
 import main.java.kbtu.chill_guys.university_management_system.menu.researcher_command.*;
 import main.java.kbtu.chill_guys.university_management_system.menu.setting_command.SelectLanguageCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.student_command.*;
+import main.java.kbtu.chill_guys.university_management_system.menu.teacher_command.CloseAttestationCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.teacher_command.PutMarkCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.teacher_command.ViewStudentsCommand;
 
@@ -92,10 +93,10 @@ public final class CommandRegistrar {
         menu.registerCommand(VIEW_MESSAGES, new ViewMessagesCommand(), UserRole.TEACHER, UserRole.MANAGER, UserRole.DEAN);
         menu.registerCommand(SEND_MESSAGE, new SendMessageCommand(), UserRole.TEACHER, UserRole.MANAGER, UserRole.DEAN);
         menu.registerCommand(ASSIGN_DISCIPLINE, new AssignDisciplineToTeacherCommand(), UserRole.MANAGER);
+        menu.registerCommand(CLOSE_ATTESTATION, new CloseAttestationCommand(), UserRole.TEACHER);
     }
 
     private static void registerDeanCommands(Menu menu){
         menu.registerCommand(APPROVE_NEW_DISCIPLINES, new ApproveNewDisciplineCommand(), UserRole.DEAN);
     }
-
 }

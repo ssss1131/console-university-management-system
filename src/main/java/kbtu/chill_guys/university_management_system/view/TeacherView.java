@@ -5,6 +5,7 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.evalua
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 
 import java.util.List;
@@ -27,4 +28,10 @@ public interface TeacherView {
     void showRecordAddedMessage(LessonRecord record);
 
     void showStudentRecords(Student student, List<LessonRecord> lessonRecords);
+
+    void showTranscriptUpdatedMessage(Student student, Discipline discipline, Transcript transcript);
+
+    void showAttestationClosedMessage(Discipline discipline, Semester semester);
+
+    boolean confirmAttestationClosure();
 }
