@@ -1,6 +1,5 @@
 package main.java.kbtu.chill_guys.university_management_system.util;
 
-import main.java.kbtu.chill_guys.university_management_system.enumeration.util.CommandEnum;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.menu.Menu;
 import main.java.kbtu.chill_guys.university_management_system.menu.admin_command.CreateUserCommand;
@@ -84,18 +83,19 @@ public final class CommandRegistrar {
         menu.registerCommand(VIEW_MARKS, new ViewStudentMarksCommand(), UserRole.BACHELOR, UserRole.MASTER, UserRole.PHD);
         menu.registerCommand(REGISTER_DISCIPLINES, new RegisterToSemesterCommand(), UserRole.BACHELOR, UserRole.MASTER, UserRole.PHD);
         menu.registerCommand(SHOW_REGISTRATION_INFO, new GetStudentRegistrationInfoCommand(), UserRole.PHD, UserRole.MASTER, UserRole.BACHELOR);
-        menu.registerCommand(CommandEnum.SHOW_AND_EDIT_DIPLOMA_PROJECT, new ShowInfoAboutDiplomaProjectCommand(), UserRole.MASTER, UserRole.PHD);
+        menu.registerCommand(SHOW_AND_EDIT_DIPLOMA_PROJECT, new ShowInfoAboutDiplomaProjectCommand(), UserRole.MASTER, UserRole.PHD);
     }
 
     private static void registerTeacherCommands(Menu menu) {
         menu.registerCommand(PUT_MARK, new PutMarkCommand(), UserRole.TEACHER);
         menu.registerCommand(VIEW_STUDENTS, new ViewStudentsCommand(), UserRole.TEACHER);
-        menu.registerCommand(CommandEnum.VIEW_MESSAGES, new ViewMessagesCommand(), UserRole.TEACHER, UserRole.MANAGER, UserRole.DEAN);
-        menu.registerCommand(CommandEnum.SEND_MESSAGE, new SendMessageCommand(), UserRole.TEACHER, UserRole.MANAGER, UserRole.DEAN);
+        menu.registerCommand(VIEW_MESSAGES, new ViewMessagesCommand(), UserRole.TEACHER, UserRole.MANAGER, UserRole.DEAN);
+        menu.registerCommand(SEND_MESSAGE, new SendMessageCommand(), UserRole.TEACHER, UserRole.MANAGER, UserRole.DEAN);
+        menu.registerCommand(ASSIGN_DISCIPLINE, new AssignDisciplineToTeacherCommand(), UserRole.MANAGER);
     }
 
     private static void registerDeanCommands(Menu menu){
-        menu.registerCommand(CommandEnum.APPROVE_NEW_DISCIPLINES, new ApproveNewDisciplineCommand(), UserRole.DEAN);
+        menu.registerCommand(APPROVE_NEW_DISCIPLINES, new ApproveNewDisciplineCommand(), UserRole.DEAN);
     }
 
 }
