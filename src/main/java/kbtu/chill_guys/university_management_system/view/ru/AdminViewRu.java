@@ -31,9 +31,6 @@ public class AdminViewRu implements AdminView {
         UserRole role = selectEnum(UserRole.class);
         data.put(USER_ROLE_ATTRIBUTE, role);
 
-        System.out.println("Введите email:");
-        data.put(EMAIL_ATTRIBUTE, validateEmailInput("Неправильный формат email. Попробуйте еще раз."));
-
         System.out.println("Введите пароль:");
         data.put(PASSWORD_ATTRIBUTE, validateNonEmptyInput("Пароль не может быть пустым!"));
 

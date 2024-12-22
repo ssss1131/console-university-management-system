@@ -14,6 +14,8 @@ public class Transcript implements Serializable {
     private Period period;
     private int gpaNumeric;
     private Gpa gpaLetter;
+    private String gpaTraditional;
+    private double totalGrade;
 
     public Student getStudent() {
         return student;
@@ -63,28 +65,53 @@ public class Transcript implements Serializable {
         this.period = period;
     }
 
+    public String getGpaTraditional() {
+        return gpaTraditional;
+    }
+
+    public void setGpaTraditional(String gpaTraditional) {
+        this.gpaTraditional = gpaTraditional;
+    }
+
+    public double getTotalGrade() {
+        return totalGrade;
+    }
+
+    public void setTotalGrade(double totalGrade) {
+        this.totalGrade = totalGrade;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transcript that = (Transcript) o;
-        return year == that.year && gpaNumeric == that.gpaNumeric && Objects.equals(student, that.student) && Objects.equals(discipline, that.discipline) && period == that.period && gpaLetter == that.gpaLetter;
+        return year == that.year &&
+                gpaNumeric == that.gpaNumeric &&
+                Double.compare(that.totalGrade, totalGrade) == 0 &&
+                Objects.equals(student, that.student) &&
+                Objects.equals(discipline, that.discipline) &&
+                period == that.period &&
+                gpaLetter == that.gpaLetter &&
+                Objects.equals(gpaTraditional, that.gpaTraditional);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(student, discipline, year, period, gpaNumeric, gpaLetter);
+        return Objects.hash(student, discipline, year, period, gpaNumeric, gpaLetter, gpaTraditional, totalGrade);
     }
 
     @Override
     public String toString() {
         return "Transcript{" +
-               "student=" + student +
-               ", subject=" + discipline +
-               ", year=" + year +
-               ", period=" + period +
-               ", gpaNumeric=" + gpaNumeric +
-               ", gpaLetter=" + gpaLetter +
-               '}';
+                "student=" + student +
+                ", discipline=" + discipline +
+                ", year=" + year +
+                ", period=" + period +
+                ", gpaNumeric=" + gpaNumeric +
+                ", gpaLetter=" + gpaLetter +
+                ", gpaTraditional='" + gpaTraditional + '\'' +
+                ", totalGrade=" + totalGrade +
+                '}';
     }
 }
