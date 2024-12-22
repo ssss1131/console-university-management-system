@@ -3,13 +3,19 @@ package main.java.kbtu.chill_guys.university_management_system.model.student;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.OrganizationRole;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class Organization implements Serializable{
     private String name;
     private String description;
-    private Map<Student, OrganizationRole> members;
+    private Map<Student, OrganizationRole> members = new HashMap<>();
+
+    public Organization(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 
     public String getName() {
         return this.name;
@@ -31,21 +37,16 @@ public class Organization implements Serializable{
         return this.members;
     }
 
-    public void setMembers(Map<Student, OrganizationRole> members) {
-        this.members = members;
+    public void addMember(Student student, OrganizationRole role) {
+        members.put(student, role);
     }
 
-    public void addMember() {
-        //TODO
+    public void changeRole(Student student, OrganizationRole role) {
+        members.put(student, role);
     }
 
-    public boolean changeRole() {
-        //TODO
-        return false;
-    }
-
-    public void removeMember() {
-        //TODO
+    public void removeMember(Student student) {
+        members.remove(student);
     }
 
     @Override
@@ -53,12 +54,12 @@ public class Organization implements Serializable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Organization that = (Organization) o;
-        return Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(members, that.members);
+        return Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, description, members);
+        return Objects.hashCode(name);
     }
 
     @Override
