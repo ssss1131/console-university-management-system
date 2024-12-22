@@ -187,7 +187,7 @@ public class StudentViewEn implements StudentView {
             System.out.println("1. Edit Title");
             System.out.println("2. Edit Description");
             System.out.println("3. Add Research Paper");
-            System.out.println("4. Exit");
+            System.out.println("4. Exit and save changes");
 
             int choice = InputValidatorUtil.validateIntegerInput("Select an action: ", 1, 4);
 
@@ -206,15 +206,15 @@ public class StudentViewEn implements StudentView {
                 }
                 case 3 -> {
                     System.out.println("Select research papers to add:");
-                    List<ResearchPaper> availablePapers = ResearcherService.getInstance().getResearchPapers(student);
+                    List<ResearchPaper> availablePapers = ResearcherService.getInstance().getResearchPapers(student)
+                            .stream().filter(researchPaper -> !project.getPublishedPapers().contains(researchPaper))
+                            .toList();
                     Vector<ResearchPaper> selectedPapers = selectResearchPapers(availablePapers);
                     project.getPublishedPapers().addAll(selectedPapers);
                     System.out.println("Selected papers added to the diploma project.");
                 }
                 case 4 -> {
                     System.out.println("Exiting diploma project view.");
-                    UserRepository userRepository = new UserRepository();
-                    userRepository.update(student);
                     return;
                 }
             }

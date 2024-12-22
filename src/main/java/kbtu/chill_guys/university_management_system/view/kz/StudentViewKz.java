@@ -170,7 +170,7 @@ public class StudentViewKz implements StudentView {
             System.out.println("1. Тақырыпты өзгерту");
             System.out.println("2. Сипаттаманы өзгерту");
             System.out.println("3. Мақалаларды қосу");
-            System.out.println("4. Шығу");
+            System.out.println("4. Шығу жане сактау");
 
             int choice = InputValidatorUtil.validateIntegerInput("Әрекетті таңдаңыз: ", 1, 4);
 
@@ -189,15 +189,15 @@ public class StudentViewKz implements StudentView {
                 }
                 case 3 -> {
                     System.out.println("Қосылатын мақалаларды таңдаңыз:");
-                    List<ResearchPaper> availablePapers = ResearcherService.getInstance().getResearchPapers(student);
+                    List<ResearchPaper> availablePapers = ResearcherService.getInstance().getResearchPapers(student)
+                            .stream().filter(researchPaper -> !project.getPublishedPapers().contains(researchPaper))
+                            .toList();
                     Vector<ResearchPaper> selectedPapers = selectResearchPapers(availablePapers);
                     project.getPublishedPapers().addAll(selectedPapers);
                     System.out.println("Мақалалар дипломдық жобаға сәтті қосылды.");
                 }
                 case 4 -> {
                     System.out.println("Дипломдық жоба терезесінен шығу.");
-                    UserRepository userRepository = new UserRepository();
-                    userRepository.update(student);
                     return;
                 }
             }

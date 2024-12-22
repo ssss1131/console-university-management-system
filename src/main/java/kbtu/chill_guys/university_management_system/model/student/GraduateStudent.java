@@ -12,8 +12,8 @@ import java.util.Vector;
 
 public abstract class GraduateStudent extends Student implements Researcher {
     private DiplomaProject project = new DiplomaProject();
-    private Vector<ResearchProject> researchProjects;
-    private Vector<ResearchPaper> researchPapers;
+    private Vector<ResearchProject> researchProjects = new Vector<>();
+    private Vector<ResearchPaper> researchPapers = new Vector<>();
 
     public GraduateStudent(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, School school, LocalDate enrollmentDate, Integer credits, Integer studyDuration, Organization organization) {
         super(id, role, email, password, salt, firstName, lastName, school, enrollmentDate, credits, studyDuration, organization);

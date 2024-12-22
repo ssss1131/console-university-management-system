@@ -170,7 +170,7 @@ public class StudentViewRu implements StudentView {
             System.out.println("1. Изменить тему");
             System.out.println("2. Изменить описание");
             System.out.println("3. Добавить статьи");
-            System.out.println("4. Выйти");
+            System.out.println("4. Выйти и сохранить изменения");
 
             int choice = InputValidatorUtil.validateIntegerInput("Выберите действие: ", 1, 4);
 
@@ -189,15 +189,15 @@ public class StudentViewRu implements StudentView {
                 }
                 case 3 -> {
                     System.out.println("Выберите статьи для добавления:");
-                    List<ResearchPaper> availablePapers = ResearcherService.getInstance().getResearchPapers(student);
+                    List<ResearchPaper> availablePapers = ResearcherService.getInstance().getResearchPapers(student)
+                            .stream().filter(researchPaper -> !project.getPublishedPapers().contains(researchPaper))
+                            .toList();
                     Vector<ResearchPaper> selectedPapers = selectResearchPapers(availablePapers);
                     project.getPublishedPapers().addAll(selectedPapers);
                     System.out.println("Статьи успешно добавлены в дипломный проект.");
                 }
                 case 4 -> {
                     System.out.println("Выход из просмотра дипломного проекта.");
-                    UserRepository userRepository = new UserRepository();
-                    userRepository.update(student);
                     return;
                 }
             }

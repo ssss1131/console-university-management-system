@@ -23,9 +23,10 @@ public class GetTopResearcherByYearCommand implements Command {
         List<Integer> allPublicationYears = service.getAllPublicationYears();
 
         int year = view.selectPublicationYear(allPublicationYears);
-
-        User user = service.getTopCitedResearcherByYear(year);
-        int totalCitations = service.calculateTotalCitations(user);
-        view.showTopCitedResearcher(user, totalCitations, year);
+        if(allPublicationYears != null && !allPublicationYears.isEmpty()){
+            User user = service.getTopCitedResearcherByYear(year);
+            int totalCitations = service.calculateTotalCitations(user);
+            view.showTopCitedResearcher(user, totalCitations, year);
+        }
     }
 }

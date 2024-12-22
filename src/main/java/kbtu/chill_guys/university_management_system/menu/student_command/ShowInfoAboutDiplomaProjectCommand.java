@@ -6,11 +6,13 @@ import main.java.kbtu.chill_guys.university_management_system.menu.Menu;
 import main.java.kbtu.chill_guys.university_management_system.model.factory.ViewFactory;
 import main.java.kbtu.chill_guys.university_management_system.model.student.DiplomaProject;
 import main.java.kbtu.chill_guys.university_management_system.model.student.GraduateStudent;
+import main.java.kbtu.chill_guys.university_management_system.repository.UserRepository;
 import main.java.kbtu.chill_guys.university_management_system.view.StudentView;
 
 public class ShowInfoAboutDiplomaProjectCommand implements Command {
 
     private StudentView view;
+    private final UserRepository userRepository = new UserRepository();
 
     @Override
     public void execute() {
@@ -22,5 +24,6 @@ public class ShowInfoAboutDiplomaProjectCommand implements Command {
             student.setProject(new DiplomaProject());
         }
         view.showDiploma(student.getProject(), student);
+        userRepository.update(student);
     }
 }

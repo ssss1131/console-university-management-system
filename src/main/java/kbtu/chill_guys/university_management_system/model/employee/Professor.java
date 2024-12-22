@@ -27,13 +27,14 @@ public class Professor extends Teacher implements Researcher {
     }
 
     @Override
-    public void addResearchPaper(ResearchProject researchProject) {
-
+    public void addResearchPaper(ResearchPaper researchPaper) {
+        this.researchPapers.add(researchPaper);
     }
+
 
     @Override
     public void addResearchProjects(ResearchProject researchProject) {
-
+        this.researchProjects.add(researchProject);
     }
 
     @Override

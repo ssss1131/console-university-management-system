@@ -13,9 +13,8 @@ import java.util.Vector;
 
 public class ResearchSupervisor extends Employee implements Researcher {
     private Integer hIndex;
-    private Vector<ResearchProject> supervisedProjects ;
-    private Vector<GraduateStudent> supervisedStudents ;
-    private Vector<ResearchPaper> supervisedResearchPapers;
+    private Vector<ResearchProject> supervisedProjects = new Vector<>();
+    private Vector<ResearchPaper> supervisedResearchPapers = new Vector<>();
 
     public ResearchSupervisor(UUID id, UserRole role, String email, String password, String salt, String firstName, String lastName, int salary) {
         super(id, role, email, password, salt, firstName, lastName, salary);
@@ -37,13 +36,6 @@ public class ResearchSupervisor extends Employee implements Researcher {
         this.supervisedProjects  = supervisedProjects ;
     }
 
-    public Vector<GraduateStudent> getSupervisedStudents () {
-        return this.supervisedStudents ;
-    }
-
-    public void setSupervisedStudents (Vector<GraduateStudent> supervisedStudents ) {
-        this.supervisedStudents  = supervisedStudents ;
-    }
 
     public Vector<ResearchPaper> getSupervisedResearchPapers() {
         return this.supervisedResearchPapers;
@@ -58,7 +50,6 @@ public class ResearchSupervisor extends Employee implements Researcher {
         return "ResearchSupervisor{" +
                "hIndex=" + hIndex +
                ", supervisedProjects=" + supervisedProjects +
-               ", supervisedStudents=" + supervisedStudents +
                ", supervisedResearchPapers=" + supervisedResearchPapers +
                "} " + super.toString();
     }
@@ -74,12 +65,12 @@ public class ResearchSupervisor extends Employee implements Researcher {
     }
 
     @Override
-    public void addResearchPaper(ResearchProject researchProject) {
-
+    public void addResearchPaper(ResearchPaper researchPaper) {
+        supervisedResearchPapers.add(researchPaper);
     }
 
     @Override
     public void addResearchProjects(ResearchProject researchProject) {
-
+        supervisedProjects.add(researchProject);
     }
 }
