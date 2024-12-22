@@ -28,6 +28,7 @@ public final class Constant {
     public static final Path TEACHER_DISCIPLINE_PATH = Paths.get("academic_db", "teacher_discipline.ser");
     public static final Path DISCIPLINE_REGISTRATION_PATH = Paths.get("academic_db", "discipline_registration.ser");
     public static final Path JOURNAL_STORAGE_PATH = Paths.get("media_db", "journal_storage.ser");
+    public static final Path MESSAGE_STORAGE_PATH = Paths.get("media_db", "message_storage.ser");
 
     public static final Path RESEARCHERS_PATH = Paths.get("research_db", "researchers.ser");
     public static final Path RESEARCH_PAPER_PATH = Paths.get("research_db", "research_paper.ser");

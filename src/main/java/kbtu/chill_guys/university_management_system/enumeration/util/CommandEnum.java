@@ -5,6 +5,9 @@ public enum CommandEnum {
     LOGOUT("Logout", "Выйти", "Шығу"),
     SELECT_LANGUAGE("Select language", "Выбрать язык", "Тілді таңдау"),
 
+    SEND_MESSAGE("Send message", "Отправить сообщение", "Хабарлама жіберу"),
+    VIEW_MESSAGES("View messages", "Просмотр сообщений", "Хабарларды көру"),
+
     GET_LOGS("Get logs", "Получить логи", "Журналдарды алу"),
     CREATE_USER("Create new user", "Создать нового пользователя", "Жаңа қолданушы жасау"),
     UPDATE_USER("Update user", "Обновить пользователя", "Қолданушыны жаңарту"),

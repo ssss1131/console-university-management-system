@@ -78,4 +78,11 @@ public class ViewFactory {
             case KZ -> new TeacherViewKz();
         };
     }
+    public static MessageView getMessageView(Language language){
+        return switch (language){
+            case EN -> new MessageViewEn();
+            case RU -> new MessageViewRu();
+            case KZ -> new MessageViewKz();
+        };
+    }
 }

@@ -8,6 +8,8 @@ import main.java.kbtu.chill_guys.university_management_system.menu.admin_command
 import main.java.kbtu.chill_guys.university_management_system.menu.admin_command.GetLogsCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.admin_command.UpdateUserCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.dean_command.ApproveNewDisciplineCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.employee_command.SendMessageCommand;
+import main.java.kbtu.chill_guys.university_management_system.menu.employee_command.ViewMessagesCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.general_command.*;
 import main.java.kbtu.chill_guys.university_management_system.menu.journal_command.CreateJournalCommand;
 import main.java.kbtu.chill_guys.university_management_system.menu.journal_command.DeleteJournalCommand;
@@ -88,6 +90,8 @@ public final class CommandRegistrar {
     private static void registerTeacherCommands(Menu menu) {
         menu.registerCommand(PUT_MARK, new PutMarkCommand(), UserRole.TEACHER);
         menu.registerCommand(VIEW_STUDENTS, new ViewStudentsCommand(), UserRole.TEACHER);
+        menu.registerCommand(CommandEnum.VIEW_MESSAGES, new ViewMessagesCommand(), UserRole.TEACHER, UserRole.MANAGER, UserRole.DEAN);
+        menu.registerCommand(CommandEnum.SEND_MESSAGE, new SendMessageCommand(), UserRole.TEACHER, UserRole.MANAGER, UserRole.DEAN);
     }
 
     private static void registerDeanCommands(Menu menu){
