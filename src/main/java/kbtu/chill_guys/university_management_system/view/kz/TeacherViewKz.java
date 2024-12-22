@@ -1,10 +1,13 @@
 package main.java.kbtu.chill_guys.university_management_system.view.kz;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Attendance;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.UrgencyLevel;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.evaluation.Period;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 import main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
@@ -49,23 +52,27 @@ public class TeacherViewKz implements TeacherView {
 
     @Override
     public LessonRecord createLessonRecord() {
-        System.out.println("Сабақтың атауын енгізіңіз:");
-        String lesson = InputValidatorUtil.validateNonEmptyInput("Сабақтың атауы бос болмауы керек. Қайталап көріңіз.");
+        System.out.println("Сабақ атауын енгізіңіз:");
+        String lesson = InputValidatorUtil.validateNonEmptyInput("Сабақ атауы бос болмауы керек. Қайта енгізіңіз.");
 
-        String dateInput = InputValidatorUtil.validateDateInput("Күннің пішімі дұрыс емес. yyyy-MM-dd форматында енгізіңіз.");
+        String dateInput = InputValidatorUtil.validateDateInput("Күні қате форматта енгізілді. yyyy-MM-dd форматында пайдаланыңыз.");
         LocalDate date = LocalDate.parse(dateInput);
 
-        System.out.println("Қатысу мәртебесін таңдаңыз:");
+        System.out.println("Қатысу түрін таңдаңыз:");
         Attendance attendance = EnumSelectionUtil.selectEnum(Attendance.class);
 
-        System.out.println("Бағаны енгізіңіз (0-100):");
-        double grade = InputValidatorUtil.validateIntegerInput("Баға 0-ден 100-ге дейін болуы керек.", 0, 100);
+        Double grade = null;
+        if (attendance != Attendance.ABSENT) {
+            System.out.println("Бағаны енгізіңіз (0-100):");
+            grade = (double) InputValidatorUtil.validateIntegerInput("Баға 0 мен 100 арасында болуы керек.", 0, 100);
+        }
 
-        System.out.println("Пікірді енгізіңіз:");
-        String comment = InputValidatorUtil.validateNonEmptyInput("Пікір бос болмауы керек. Қайталап көріңіз.");
+        System.out.println("Пікір жазыңыз (міндетті емес, өткізіп жіберу үшін Enter басыңыз):");
+        String comment = InputValidatorUtil.validateOptionalInput();
 
-        return new LessonRecord(date, lesson, attendance, grade, comment);
+        return new LessonRecord(date, lesson, attendance, grade != null ? grade : 0.0, comment);
     }
+
 
     @Override
     public void showNoDisciplinesMessage(Semester semester) {
@@ -101,5 +108,56 @@ public class TeacherViewKz implements TeacherView {
                     record.getComment());
         }
         System.out.println("----------------------------------------------------------");
+    }
+
+    @Override
+    public void showTranscriptUpdatedMessage(Student student, Discipline discipline, Transcript transcript) {
+        System.out.printf(
+                "Транскрипт жаңартылды: студент %s %s, пән: %s, Қорытынды баға: %.2f, GPA: %s, Дәстүрлі баға: %s%n",
+                student.getFirstName(),
+                student.getLastName(),
+                discipline.getName(),
+                transcript.getTotalGrade(),
+                transcript.getGpaLetter(),
+                transcript.getGpaTraditional()
+        );
+    }
+
+    @Override
+    public void showAttestationClosedMessage(Discipline discipline, Semester semester) {
+        System.out.printf("Аттестация %s пәні бойынша %s семестрінде сәтті жабылды.%n",
+                discipline.getName(),
+                semester
+        );
+    }
+
+    @Override
+    public boolean confirmAttestationClosure() {
+        System.out.println("Сіз бұл пән бойынша аттестацияны жабуға сенімдісіз бе? (иә/жоқ):");
+        String input = InputValidatorUtil.validateNonEmptyInput("Иә немесе жоқ деп енгізіңіз.");
+        return input.equalsIgnoreCase("иә");
+    }
+
+    @Override
+    public void showTeacherRating(Teacher teacher) {
+        System.out.printf("Сіздің рейтингіңіз: %s (%d ұпай)%n", teacher.getRating(), teacher.getRating().getScore());
+    }
+
+    @Override
+    public String getComment() {
+        System.out.println("Пікіріңізді енгізіңіз:");
+        return InputValidatorUtil.validateNonEmptyInput("Пікір бос болмауы керек. Қайта енгізіңіз.");
+    }
+
+    @Override
+    public UrgencyLevel selectUrgencyLevel() {
+        System.out.println("Шұғылдық деңгейін таңдаңыз:");
+        return EnumSelectionUtil.selectEnum(UrgencyLevel.class);
+    }
+
+    @Override
+    public void showComplaintCreatedMessage(Discipline discipline, Student student, UrgencyLevel urgencyLevel) {
+        System.out.printf("%s пәні бойынша %s студентіне %s %s шұғылдық деңгейімен шағым сәтті құрылды.%n",
+                discipline.getName(), student.getFirstName(), student.getLastName(), urgencyLevel);
     }
 }

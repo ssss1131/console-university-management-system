@@ -14,6 +14,7 @@ public enum CommandEnum {
     DELETE_USER("Delete user", "Удалить пользователя", "Қолданушыны жою"),
 
     APPROVE_NEW_DISCIPLINES("Approve new disciplines", "Утвердить новые дисциплины", "Жаңа пәндерді бекіту"),
+    MANAGE_COMPLAINT("Manage complaint about student", "Управление жалобой на студента", "Студенттің шағымын басқарыңыз"),
 
     CREATE_JOURNAL("Create journal", "Создать журнал", "Журнал жасау"),
     DELETE_JOURNAL("Delete journal", "Удалить журнал", "Журналды жою"),
@@ -31,12 +32,17 @@ public enum CommandEnum {
     VIEW_MARKS("View my marks", "Посмотреть мои оценки", "Менің бағаларымды көру"),
     REGISTER_DISCIPLINES("Register to disciplines", "Зарегистрироваться на дисциплины", "Пәндерге тіркелу"),
     SHOW_REGISTRATION_INFO("Show registration info", "Показать информацию о регистрации", "Тіркеу туралы ақпаратты көрсету"),
-    CREATE_ORGANIZATION("create organization", "создать организацию", "организация ашу"),
-    JOIN_ORGANIZATION("join organization","вступить в организацию","организацияга кыру"),
-    VIEW_ORGANIZATION_INFO("view my organizations info", "посмотреть инфу о моих организациях", "менын организациялар жайлы кору"),
+    CREATE_ORGANIZATION("Create organization", "Создать организацию", "Организация ашу"),
+    JOIN_ORGANIZATION("Join organization","Вступить в организацию","Организацияга кыру"),
+    VIEW_ORGANIZATION_INFO("View my organizations info", "Посмотреть инфу о моих организациях", "Менын организациялар жайлы кору"),
 
-    PUT_MARK("Put mark", "Поставить оценку", "Баға қою"),
+    PUT_MARK("Put student mark", "Поставить оценку студенту", "Студент баға қою"),
     VIEW_STUDENTS("View info about students", "Просмотр информации о студентах", "Студенттер туралы ақпаратты қарау"),
+    CLOSE_ATTESTATION("Close attestation", "Закрыть аттестацию", "Аттестаттауды жабу"),
+    VIEW_TRANSCRIPT("View my transcript", "Посмотреть мой транскрипт", "Менің транскриптімді қараңыз"),
+    RATE_TEACHER("Rate teacher", "Оценить учителя", "Мұғалімді бағалау"),
+    VIEW_TEACHER_RATING("View your rating", "Посмотреть ваш рейтинг", "Рейтингіңізді көру"),
+    CREATE_COMPLAINT_COMMAND("Create complaint about student marks", "Подать жалобу на оценки учащегося", "Студенттік бағалар туралы шағым жасаңыз"),
 
     ADD_RESEARCHER("I want to be researcher!!", "Я хочу стать исследователем!!", "Мен зерттеуші болғым келеді!!"),
     GET_RESEARCH_PAPERS("Get my research papers", "Получить мои исследовательские работы", "Менің зерттеу жұмыстарымды алу"),

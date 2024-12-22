@@ -19,7 +19,6 @@ public class NumericToEnumMapper {
         if (numericGpa >= 1.7) return Gpa.C_MINUS;
         if (numericGpa >= 1.3) return Gpa.D_PLUS;
         if (numericGpa >= 1.0) return Gpa.D;
-        if (numericGpa >= 0.7) return Gpa.D_MINUS;
 
         return Gpa.F;
     }

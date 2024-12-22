@@ -19,6 +19,8 @@ public final class Constant {
     public static final Path BASE_PATH = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "db");
     public static final Path USERS_PATH = Paths.get("account.ser");
     public static final Path DISCIPLINE_PATH = Paths.get("academic_db", "discipline.ser");
+    public static final Path COMPLAINT_PATH = Paths.get("academic_db", "complaint.ser");
+
     public static final Path POST_PATH = Paths.get("media_db", "post.ser");
     public static final Path LOG_FILE_PATH = Path.of("logs", "application.log.0");
 
@@ -27,8 +29,10 @@ public final class Constant {
     public static final Path TEACHER_DISCIPLINE_PATH = Paths.get("academic_db", "teacher_discipline.ser");
     public static final Path ORGANIZATION_PATH = Paths.get("academic_db", "organization.ser");
     public static final Path DISCIPLINE_REGISTRATION_PATH = Paths.get("academic_db", "discipline_registration.ser");
+    public static final Path TRANSCRIPT_PATH = Paths.get("academic_db", "transcript.ser");
     public static final Path JOURNAL_STORAGE_PATH = Paths.get("media_db", "journal_storage.ser");
     public static final Path MESSAGE_STORAGE_PATH = Paths.get("media_db", "message_storage.ser");
+
 
     public static final Path RESEARCHERS_PATH = Paths.get("research_db", "researchers.ser");
     public static final Path RESEARCH_PAPER_PATH = Paths.get("research_db", "research_paper.ser");

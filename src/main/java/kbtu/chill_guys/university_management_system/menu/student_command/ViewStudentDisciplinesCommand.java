@@ -21,7 +21,7 @@ public class ViewStudentDisciplinesCommand implements Command {
         Student student = (Student) Menu.getInstance().getLoggedUser();
         Set<Semester> semesters = storage.getSemesters(student);
         Semester semester = view.getSemester(semesters);
-        if(semester == null){
+        if (semester == null){
             view.showAllDisciplines(storage.getAllDisciplines(student));
         }else {
             view.showExactDisciplines(storage.getDisciplines(student, semester));

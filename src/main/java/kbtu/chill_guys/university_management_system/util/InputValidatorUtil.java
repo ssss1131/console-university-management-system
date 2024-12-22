@@ -28,6 +28,11 @@ public final class InputValidatorUtil {
         }
     }
 
+    public static String validateOptionalInput() {
+        String input = scanner.nextLine().trim();
+        return input.isEmpty() ? null : input;
+    }
+
     public static String validateEmailInput(String errorMessage) {
         while (true) {
             String email = scanner.nextLine().trim();

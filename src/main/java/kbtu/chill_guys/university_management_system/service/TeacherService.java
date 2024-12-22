@@ -1,11 +1,13 @@
 package main.java.kbtu.chill_guys.university_management_system.service;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Attendance;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.UrgencyLevel;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.*;
 import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 import main.java.kbtu.chill_guys.university_management_system.repository.UserRepository;
+import main.java.kbtu.chill_guys.university_management_system.storage.ComplaintStorage;
 import main.java.kbtu.chill_guys.university_management_system.storage.StudentDisciplineStorage;
 import main.java.kbtu.chill_guys.university_management_system.storage.TeacherDisciplineStorage;
 
@@ -17,6 +19,7 @@ public class TeacherService {
     private final TeacherDisciplineStorage storage = TeacherDisciplineStorage.getInstance();
     private final StudentDisciplineStorage studentStorage = StudentDisciplineStorage.getInstance();
     private final UserRepository userRepository = new UserRepository();
+    private final ComplaintStorage complaintStorage = ComplaintStorage.getInstance();
 
     public List<Discipline> getDisciplines(Teacher teacher, Semester semester) {
         return storage.getDisciplines(teacher, semester);
@@ -26,7 +29,11 @@ public class TeacherService {
         return storage.getStudentsInDiscipline(teacher, semester, discipline);
     }
 
-    public void addLessonRecord(Teacher teacher, Semester semester, Discipline discipline, Student student, LocalDate date, String lessonName, Attendance attendance, double grade, String comment) {
+    public void addLessonRecord(Teacher teacher, Semester semester, Discipline discipline, Student student, LocalDate date, String lessonName, Attendance attendance, Double grade, String comment) {
+        if (storage.isAttestationClosed(discipline)) {
+            throw new IllegalStateException("Cannot add grades. Attestation for this discipline is already closed.");
+        }
+
         LessonRecord record = new LessonRecord(date, lessonName, attendance, grade, comment);
         storage.addLessonRecord(teacher, semester, discipline, student, record);
     }
@@ -50,5 +57,19 @@ public class TeacherService {
 
     public List<LessonRecord> getLessonRecords(Teacher teacher, Semester semester, Discipline discipline, Student student) {
         return storage.getLessonRecordsForStudent(teacher, semester, discipline, student);
+    }
+
+    public void closeAttestation(Discipline selectedDiscipline ) {
+        storage.closeAttestation(selectedDiscipline);
+    }
+
+    public void updateTeacherRating(Teacher teacher, int newRatingScore) {
+        int currentScore = teacher.getScore();
+
+        int updatedScore = (int) (currentScore * 0.9 + newRatingScore * 0.1);
+
+        teacher.setRating(updatedScore);
+
+        userRepository.save(teacher);
     }
 }

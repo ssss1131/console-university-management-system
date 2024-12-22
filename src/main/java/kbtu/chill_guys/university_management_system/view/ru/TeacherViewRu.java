@@ -1,10 +1,13 @@
 package main.java.kbtu.chill_guys.university_management_system.view.ru;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Attendance;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.UrgencyLevel;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.evaluation.Period;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 import main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
@@ -50,22 +53,26 @@ public class TeacherViewRu implements TeacherView {
     @Override
     public LessonRecord createLessonRecord() {
         System.out.println("Введите название урока:");
-        String lesson = InputValidatorUtil.validateNonEmptyInput("Название урока не может быть пустым. Попробуйте снова.");
+        String lesson = InputValidatorUtil.validateNonEmptyInput("Название урока не может быть пустым. Пожалуйста, попробуйте снова.");
 
         String dateInput = InputValidatorUtil.validateDateInput("Неверный формат даты. Используйте yyyy-MM-dd.");
         LocalDate date = LocalDate.parse(dateInput);
 
-        System.out.println("Выберите статус посещаемости:");
+        System.out.println("Выберите посещаемость:");
         Attendance attendance = EnumSelectionUtil.selectEnum(Attendance.class);
 
-        System.out.println("Введите оценку (0-100):");
-        double grade = InputValidatorUtil.validateIntegerInput("Оценка должна быть в диапазоне от 0 до 100.", 0, 100);
+        Double grade = null;
+        if (attendance != Attendance.ABSENT) {
+            System.out.println("Введите оценку (0-100):");
+            grade = (double) InputValidatorUtil.validateIntegerInput("Оценка должна быть в пределах от 0 до 100.", 0, 100);
+        }
 
-        System.out.println("Введите комментарий:");
-        String comment = InputValidatorUtil.validateNonEmptyInput("Комментарий не может быть пустым. Попробуйте снова.");
+        System.out.println("Введите комментарий (опционально, нажмите Enter, чтобы пропустить):");
+        String comment = InputValidatorUtil.validateOptionalInput();
 
-        return new LessonRecord(date, lesson, attendance, grade, comment);
+        return new LessonRecord(date, lesson, attendance, grade != null ? grade : 0.0, comment);
     }
+
 
     @Override
     public void showNoDisciplinesMessage(Semester semester) {
@@ -101,5 +108,56 @@ public class TeacherViewRu implements TeacherView {
                     record.getComment());
         }
         System.out.println("---------------------------------------------------------------");
+    }
+
+    @Override
+    public void showTranscriptUpdatedMessage(Student student, Discipline discipline, Transcript transcript) {
+        System.out.printf(
+                "Транскрипт обновлен для студента %s %s по дисциплине %s: Итоговая оценка: %.2f, GPA: %s, Традиционная оценка: %s%n",
+                student.getFirstName(),
+                student.getLastName(),
+                discipline.getName(),
+                transcript.getTotalGrade(),
+                transcript.getGpaLetter(),
+                transcript.getGpaTraditional()
+        );
+    }
+
+    @Override
+    public void showAttestationClosedMessage(Discipline discipline, Semester semester) {
+        System.out.printf("Аттестация по дисциплине %s в семестре %s успешно закрыта.%n",
+                discipline.getName(),
+                semester
+        );
+    }
+
+    @Override
+    public boolean confirmAttestationClosure() {
+        System.out.println("Вы уверены, что хотите закрыть аттестацию по этой дисциплине? (да/нет):");
+        String input = InputValidatorUtil.validateNonEmptyInput("Введите 'да' или 'нет'.");
+        return input.equalsIgnoreCase("да");
+    }
+
+    @Override
+    public void showTeacherRating(Teacher teacher) {
+        System.out.printf("Ваш рейтинг: %s (%d баллов)%n", teacher.getRating(), teacher.getRating().getScore());
+    }
+
+    @Override
+    public String getComment() {
+        System.out.println("Введите ваш комментарий:");
+        return InputValidatorUtil.validateNonEmptyInput("Комментарий не может быть пустым. Пожалуйста, попробуйте снова.");
+    }
+
+    @Override
+    public UrgencyLevel selectUrgencyLevel() {
+        System.out.println("Выберите уровень срочности:");
+        return EnumSelectionUtil.selectEnum(UrgencyLevel.class);
+    }
+
+    @Override
+    public void showComplaintCreatedMessage(Discipline discipline, Student student, UrgencyLevel urgencyLevel) {
+        System.out.printf("Жалоба на %s %s по предмету %s с уровнем срочности %s успешно создана.%n",
+                student.getFirstName(), student.getLastName(), discipline.getName(), urgencyLevel);
     }
 }

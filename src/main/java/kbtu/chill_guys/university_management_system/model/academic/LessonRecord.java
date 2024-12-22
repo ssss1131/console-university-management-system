@@ -9,10 +9,10 @@ public class LessonRecord implements Serializable {
     private final LocalDate date;
     private final String lesson;
     private Attendance attendance;
-    private double grade;
+    private Double grade;
     private String comment;
 
-    public LessonRecord(LocalDate date, String lesson, Attendance attendance, double grade, String comment) {
+    public LessonRecord(LocalDate date, String lesson, Attendance attendance, Double grade, String comment) {
         this.date = date;
         this.lesson = lesson;
         this.attendance = attendance;
@@ -33,15 +33,21 @@ public class LessonRecord implements Serializable {
     }
 
     public void setAttendance(Attendance attendance) {
+        if (attendance == Attendance.ABSENT) {
+            this.grade = null;
+        }
         this.attendance = attendance;
     }
 
-    public double getGrade() {
+    public Double getGrade() {
         return grade;
     }
 
-    public void setGrade(double grade) {
-        if (grade < 0 || grade > 100) {
+    public void setGrade(Double grade) {
+        if (attendance == Attendance.ABSENT && grade != null) {
+            throw new IllegalArgumentException("Grade must not be set when attendance is ABSENT.");
+        }
+        if (grade != null && (grade < 0 || grade > 100)) {
             throw new IllegalArgumentException("Grade must be between 0 and 100.");
         }
         this.grade = grade;
@@ -61,8 +67,8 @@ public class LessonRecord implements Serializable {
                 "date=" + date +
                 ", lesson='" + lesson + '\'' +
                 ", attendance=" + attendance +
-                ", grade=" + grade +
-                ", comment='" + comment + '\'' +
+                ", grade=" + (grade != null ? grade : "N/A") +
+                ", comment='" + (comment != null ? comment : "No comment") + '\'' +
                 '}';
     }
 }

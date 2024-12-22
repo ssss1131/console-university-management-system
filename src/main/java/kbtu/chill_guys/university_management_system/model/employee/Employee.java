@@ -30,11 +30,9 @@ public abstract class Employee extends User implements CanViewCourses, CanBeRese
     }
 
     public void sendMessage() {
-        //TODO
     }
     
     public Vector<Student> viewStudents() {
-        //TODO
         return null;
     }
 

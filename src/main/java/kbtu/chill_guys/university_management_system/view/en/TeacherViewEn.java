@@ -1,10 +1,13 @@
 package main.java.kbtu.chill_guys.university_management_system.view.en;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.Attendance;
+import main.java.kbtu.chill_guys.university_management_system.enumeration.academic.UrgencyLevel;
 import main.java.kbtu.chill_guys.university_management_system.enumeration.evaluation.Period;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Discipline;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.LessonRecord;
 import main.java.kbtu.chill_guys.university_management_system.model.academic.Semester;
+import main.java.kbtu.chill_guys.university_management_system.model.academic.Transcript;
+import main.java.kbtu.chill_guys.university_management_system.model.employee.Teacher;
 import main.java.kbtu.chill_guys.university_management_system.model.student.Student;
 import main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil;
 import main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil;
@@ -57,14 +60,18 @@ public class TeacherViewEn implements TeacherView {
         System.out.println("Select attendance:");
         Attendance attendance = EnumSelectionUtil.selectEnum(Attendance.class);
 
-        System.out.println("Enter grade (0-100):");
-        double grade = InputValidatorUtil.validateIntegerInput("Grade must be between 0 and 100.", 0, 100);
+        Double grade = null;
+        if (attendance != Attendance.ABSENT) {
+            System.out.println("Enter grade (0-100):");
+            grade = (double) InputValidatorUtil.validateIntegerInput("Grade must be between 0 and 100.", 0, 100);
+        }
 
-        System.out.println("Enter comment:");
-        String comment = InputValidatorUtil.validateNonEmptyInput("Comment cannot be empty. Please try again.");
+        System.out.println("Enter comment (optional, press Enter to skip):");
+        String comment = InputValidatorUtil.validateOptionalInput();
 
-        return new LessonRecord(date, lesson, attendance, grade, comment);
+        return new LessonRecord(date, lesson, attendance, grade != null ? grade : 0.0, comment);
     }
+
 
     @Override
     public void showNoDisciplinesMessage(Semester semester) {
@@ -100,5 +107,56 @@ public class TeacherViewEn implements TeacherView {
                     record.getComment());
         }
         System.out.println("-----------------------------------------------------------");
+    }
+
+    @Override
+    public void showTranscriptUpdatedMessage(Student student, Discipline discipline, Transcript transcript) {
+        System.out.printf(
+                "Transcript updated for student %s %s in discipline %s: Total Grade: %.2f, GPA: %s, Traditional Grade: %s%n",
+                student.getFirstName(),
+                student.getLastName(),
+                discipline.getName(),
+                transcript.getTotalGrade(),
+                transcript.getGpaLetter(),
+                transcript.getGpaTraditional()
+        );
+    }
+
+    @Override
+    public void showAttestationClosedMessage(Discipline discipline, Semester semester) {
+        System.out.printf("Attestation for discipline %s in semester %s has been successfully closed.%n",
+                discipline.getName(),
+                semester
+        );
+    }
+
+    @Override
+    public boolean confirmAttestationClosure() {
+        System.out.println("Are you sure you want to close the attestation for this discipline? (yes/no):");
+        String input = InputValidatorUtil.validateNonEmptyInput("Please enter 'yes' or 'no'.");
+        return input.equalsIgnoreCase("yes");
+    }
+
+    @Override
+    public void showTeacherRating(Teacher teacher) {
+        System.out.printf("Your rating: %s (%d points)%n", teacher.getRating(), teacher.getRating().getScore());
+    }
+
+    @Override
+    public String getComment() {
+        System.out.println("Enter your comment:");
+        return InputValidatorUtil.validateNonEmptyInput("Comment cannot be empty. Please try again.");
+    }
+
+    @Override
+    public UrgencyLevel selectUrgencyLevel() {
+        System.out.println("Select urgency level:");
+        return EnumSelectionUtil.selectEnum(UrgencyLevel.class);
+    }
+
+    @Override
+    public void showComplaintCreatedMessage(Discipline discipline, Student student, UrgencyLevel urgencyLevel) {
+        System.out.printf("Complaint against %s %s in %s with urgency %s successfully created.%n",
+                student.getFirstName(), student.getLastName(), discipline.getName(), urgencyLevel);
     }
 }

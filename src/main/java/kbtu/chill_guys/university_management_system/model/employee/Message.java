@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 public class Message implements Serializable {
     private final Employee sender;
-    private final Employee recipient; // исправлено на 'recipient'
+    private final Employee recipient;
     private final String content;
     private final LocalDateTime timestamp;
 
@@ -13,7 +13,7 @@ public class Message implements Serializable {
         this.sender = sender;
         this.recipient = recipient;
         this.content = content;
-        this.timestamp = LocalDateTime.now(); // Сохраняем текущее время
+        this.timestamp = LocalDateTime.now();
     }
 
     public Employee getSender() {

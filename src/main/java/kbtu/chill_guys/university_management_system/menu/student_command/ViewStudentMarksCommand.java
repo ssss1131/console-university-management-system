@@ -28,11 +28,6 @@ public class ViewStudentMarksCommand implements Command {
         Set<Semester> semesters = studentStorage.getSemesters(student);
         Semester semester = view.getSemester(semesters);
 
-        if (semester == null && semesters.isEmpty()) {
-            view.showNoSemesterSelectedMessage();
-            return;
-        }
-
         if (semester == null) {
             processAllSemesters(view, student, semesters);
         } else {

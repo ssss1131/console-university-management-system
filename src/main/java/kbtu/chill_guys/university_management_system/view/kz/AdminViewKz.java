@@ -31,9 +31,6 @@ public class AdminViewKz implements AdminView {
         UserRole role = selectEnum(UserRole.class);
         data.put(USER_ROLE_ATTRIBUTE, role);
 
-        System.out.println("Email енгізіңіз:");
-        data.put(EMAIL_ATTRIBUTE, validateEmailInput("Email форматы дұрыс емес. Қайтадан көріңіз."));
-
         System.out.println("Құпия сөзді енгізіңіз:");
         data.put(PASSWORD_ATTRIBUTE, validateNonEmptyInput("Құпия сөз бос болмауы керек!"));
 

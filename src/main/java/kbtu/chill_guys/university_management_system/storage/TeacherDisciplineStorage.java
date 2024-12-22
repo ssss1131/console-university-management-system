@@ -138,4 +138,15 @@ public class TeacherDisciplineStorage implements Serializable {
                 .getOrDefault(discipline, Collections.emptyMap())
                 .getOrDefault(student, Collections.emptyList());
     }
+
+    private final Set<Discipline> closedAttestations = new HashSet<>();
+
+    public boolean isAttestationClosed(Discipline discipline) {
+        return closedAttestations.contains(discipline);
+    }
+
+    public void closeAttestation(Discipline discipline) {
+        closedAttestations.add(discipline);
+        saveToFile();
+    }
 }
