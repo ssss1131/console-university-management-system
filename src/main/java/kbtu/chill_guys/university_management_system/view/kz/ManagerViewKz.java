@@ -28,7 +28,6 @@ import static main.java.kbtu.chill_guys.university_management_system.util.InputV
 
 public class ManagerViewKz implements ManagerView {
     private final Scanner scanner = new Scanner(System.in);
-    private final DisciplineService disciplineService = new DisciplineService();
 
     @Override
     public Map<String, Object> getPostInput() {
@@ -84,17 +83,18 @@ public class ManagerViewKz implements ManagerView {
     }
 
     @Override
-    public Discipline getNewDisciplineInput() {
+    public String getCode() {
         System.out.println("Пәннің кодын енгізіңіз:");
-        String code;
-        while (true) {
-            code = InputValidatorUtil.validateNonEmptyInput("Пәннің коды бос болмауы керек.");
-            if (!disciplineService.isUniqueCode(code)) {
-                System.out.println("Бұл пәннің коды бұрыннан қолданыста. Бірегей код енгізіңіз.");
-            } else {
-                break;
-            }
-        }
+        return InputValidatorUtil.validateNonEmptyInput("Пәннің коды бос болмауы керек.");
+    }
+
+    @Override
+    public void showAlreadyExistingMessage() {
+        System.out.println("Бұл пәннің коды бұрыннан қолданыста. Бірегей код енгізіңіз.");
+    }
+
+    @Override
+    public Discipline getNewDisciplineInput(String code, List<Discipline> disciplines) {
 
         System.out.println("Пәннің атауын енгізіңіз:");
         String name = InputValidatorUtil.validateNonEmptyInput("Пәннің атауы бос болмауы керек.");
@@ -134,7 +134,8 @@ public class ManagerViewKz implements ManagerView {
             }
         }
 
-        List<Discipline> schoolDisciplines = disciplineService.getDisciplinesBySchool(school).stream()
+        List<Discipline> schoolDisciplines = disciplines.stream()
+                .filter(discipline -> discipline.getSchool().equals(school))
                 .filter(discipline -> discipline.getSemester().compareTo(semester) < 0)
                 .filter(discipline -> discipline.getTargetAudience() == targetAudience)
                 .toList();

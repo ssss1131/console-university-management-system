@@ -1,8 +1,9 @@
 package main.java.kbtu.chill_guys.university_management_system.model.employee;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Message {
+public class Message implements Serializable {
     private final Employee sender;
     private final Employee recipient; // исправлено на 'recipient'
     private final String content;

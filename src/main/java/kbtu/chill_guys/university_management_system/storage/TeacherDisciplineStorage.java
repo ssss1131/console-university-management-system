@@ -46,7 +46,7 @@ public class TeacherDisciplineStorage implements Serializable {
         if (PATH.toFile().exists()) {
             if (PATH.toFile().length() == 0) {
                 logger.warning("File is empty: " + PATH.toAbsolutePath());
-                return new TeacherDisciplineStorage(); // Пустой экземпляр, если файл пуст
+                return new TeacherDisciplineStorage();
             }
 
             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(PATH.toFile()))) {

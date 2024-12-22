@@ -28,7 +28,6 @@ import static main.java.kbtu.chill_guys.university_management_system.util.InputV
 
 public class ManagerViewRu implements ManagerView {
     private final Scanner scanner = new Scanner(System.in);
-    private final DisciplineService disciplineService = new DisciplineService();
 
     @Override
     public Map<String, Object> getPostInput() {
@@ -83,18 +82,19 @@ public class ManagerViewRu implements ManagerView {
         }
     }
 
-
-    public Discipline getNewDisciplineInput() {
+    @Override
+    public String getCode() {
         System.out.println("Введите код дисциплины:");
-        String code;
-        while (true) {
-            code = InputValidatorUtil.validateNonEmptyInput("Код дисциплины не может быть пустым.");
-            if (!disciplineService.isUniqueCode(code)) {
-                System.out.println("Этот код дисциплины уже используется. Пожалуйста, введите уникальный код.");
-            } else {
-                break;
-            }
-        }
+        return InputValidatorUtil.validateNonEmptyInput("Код дисциплины не может быть пустым.");
+    }
+
+    @Override
+    public void showAlreadyExistingMessage() {
+        System.out.println("Этот код дисциплины уже используется. Пожалуйста, введите уникальный код.");
+    }
+
+
+    public Discipline getNewDisciplineInput(String code, List<Discipline> disciplines) {
 
         System.out.println("Введите название дисциплины:");
         String name = InputValidatorUtil.validateNonEmptyInput("Название дисциплины не может быть пустым.");
@@ -134,7 +134,8 @@ public class ManagerViewRu implements ManagerView {
             }
         }
 
-        List<Discipline> schoolDisciplines = disciplineService.getDisciplinesBySchool(school).stream()
+        List<Discipline> schoolDisciplines = disciplines.stream()
+                .filter(discipline -> discipline.getSchool().equals(school))
                 .filter(discipline -> discipline.getSemester().compareTo(semester) < 0)
                 .filter(discipline -> discipline.getTargetAudience() == targetAudience)
                 .toList();

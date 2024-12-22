@@ -27,8 +27,8 @@ import static main.java.kbtu.chill_guys.university_management_system.util.EnumSe
 import static main.java.kbtu.chill_guys.university_management_system.util.InputValidatorUtil.validateIntegerInput;
 
 public class ManagerViewEn implements ManagerView {
+
     private final Scanner scanner = new Scanner(System.in);
-    private final DisciplineService disciplineService = new DisciplineService();
 
     @Override
     public Map<String, Object> getPostInput() {
@@ -83,19 +83,18 @@ public class ManagerViewEn implements ManagerView {
         }
     }
 
+    public String getCode(){
+        System.out.println("Enter discipline code:");
+        return InputValidatorUtil.validateNonEmptyInput("Discipline code cannot be empty.");
+    }
+
+    public void showAlreadyExistingMessage(){
+        System.out.println("This discipline code is already in use. Please enter a unique code.");
+    }
+
 
     @Override
-    public Discipline getNewDisciplineInput() {
-        System.out.println("Enter discipline code:");
-        String code;
-        while (true) {
-            code = InputValidatorUtil.validateNonEmptyInput("Discipline code cannot be empty.");
-            if (!disciplineService.isUniqueCode(code)) {
-                System.out.println("This discipline code is already in use. Please enter a unique code.");
-            } else {
-                break;
-            }
-        }
+    public Discipline getNewDisciplineInput(String code, List<Discipline> disciplines) {
 
         System.out.println("Enter discipline name:");
         String name = InputValidatorUtil.validateNonEmptyInput("Discipline name cannot be empty.");
@@ -135,7 +134,8 @@ public class ManagerViewEn implements ManagerView {
             }
         }
 
-        List<Discipline> schoolDisciplines = disciplineService.getDisciplinesBySchool(school).stream()
+        List<Discipline> schoolDisciplines = disciplines.stream()
+                .filter(discipline -> discipline.getSchool().equals(school))
                 .filter(discipline -> discipline.getSemester().compareTo(semester) < 0)
                 .filter(discipline -> discipline.getTargetAudience() == targetAudience)
                 .toList();
