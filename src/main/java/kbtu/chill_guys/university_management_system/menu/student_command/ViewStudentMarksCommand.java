@@ -16,7 +16,6 @@ import java.util.Map;
 import java.util.Set;
 
 public class ViewStudentMarksCommand implements Command {
-
     private final StudentDisciplineStorage studentStorage = StudentDisciplineStorage.getInstance();
     private final TeacherDisciplineStorage teacherStorage = TeacherDisciplineStorage.getInstance();
 

@@ -14,9 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 public class ViewJournalCommand implements Command {
-
     private final JournalStorage storage = JournalStorage.getInstance();
-    private GeneralView view;
 
     @Override
     public void execute() {

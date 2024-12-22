@@ -13,7 +13,6 @@ import main.java.kbtu.chill_guys.university_management_system.view.TeacherView;
 import java.util.List;
 
 public class PutMarkCommand implements Command {
-
     private final TeacherService teacherService = new TeacherService();
 
     @Override

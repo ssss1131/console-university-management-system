@@ -12,14 +12,12 @@ import main.java.kbtu.chill_guys.university_management_system.view.ResearcherVie
 import java.util.List;
 
 public class GetResearchProjectsCommand implements Command {
-
     private final ResearcherService service  = ResearcherService.getInstance();
-    private ResearcherView view;
 
     @Override
     public void execute() {
         Language language = Menu.getInstance().getLanguage();
-        view = ViewFactory.getResearcherView(language);
+        ResearcherView view = ViewFactory.getResearcherView(language);
 
         User user = Menu.getInstance().getLoggedUser();
         List<ResearchProject> projects = service.getResearchProjects(user);

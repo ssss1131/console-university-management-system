@@ -10,14 +10,12 @@ import main.java.kbtu.chill_guys.university_management_system.repository.UserRep
 import main.java.kbtu.chill_guys.university_management_system.view.StudentView;
 
 public class ShowInfoAboutDiplomaProjectCommand implements Command {
-
-    private StudentView view;
     private final UserRepository userRepository = new UserRepository();
 
     @Override
     public void execute() {
         Language language = Menu.getInstance().getLanguage();
-        view = ViewFactory.getStudentView(language);
+        StudentView view = ViewFactory.getStudentView(language);
 
         GraduateStudent student = (GraduateStudent) Menu.getInstance().getLoggedUser();
         if(student.getProject() == null){

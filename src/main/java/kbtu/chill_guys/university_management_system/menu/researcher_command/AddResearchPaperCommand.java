@@ -12,15 +12,11 @@ import main.java.kbtu.chill_guys.university_management_system.service.Researcher
 import main.java.kbtu.chill_guys.university_management_system.view.ResearcherView;
 
 public class AddResearchPaperCommand implements Command {
-
-    private ResearcherView view;
     private final ResearcherService researcherService = ResearcherService.getInstance();
     private final UserRepository userRepository = new UserRepository();
 
-
     @Override
     public void execute() {
-
         Language language = Menu.getInstance().getLanguage();
         ResearcherView view = ViewFactory.getResearcherView(language);
         User user = Menu.getInstance().getLoggedUser();

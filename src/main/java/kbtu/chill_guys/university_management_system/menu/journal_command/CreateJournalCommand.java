@@ -11,7 +11,6 @@ import main.java.kbtu.chill_guys.university_management_system.view.JournalView;
 import java.util.UUID;
 
 public class CreateJournalCommand implements Command {
-
     private final JournalService journalService = new JournalService();
 
     @Override

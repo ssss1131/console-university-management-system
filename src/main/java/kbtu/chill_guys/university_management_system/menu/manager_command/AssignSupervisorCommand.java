@@ -13,14 +13,13 @@ import main.java.kbtu.chill_guys.university_management_system.view.ManagerView;
 import java.util.List;
 
 public class AssignSupervisorCommand implements Command {
-
     private final UserRepository userRepository = new UserRepository();
-    private ManagerView view;
 
     @Override
     public void execute() {
         Language language = Menu.getInstance().getLanguage();
-        view = ViewFactory.getManagerView(language);
+        ManagerView view = ViewFactory.getManagerView(language);
+
         List<GraduateStudent> students = userRepository.getAllLines().stream()
                 .filter(user -> user instanceof GraduateStudent)
                 .map(user -> (GraduateStudent) user)
