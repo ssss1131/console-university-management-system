@@ -5,7 +5,6 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.util.U
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 

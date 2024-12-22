@@ -12,7 +12,6 @@ import main.java.kbtu.chill_guys.university_management_system.model.Journal;
 import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchProject;
-import main.java.kbtu.chill_guys.university_management_system.service.JournalService;
 import main.java.kbtu.chill_guys.university_management_system.service.ResearcherService;
 import main.java.kbtu.chill_guys.university_management_system.storage.JournalStorage;
 import main.java.kbtu.chill_guys.university_management_system.util.EnumSelectionUtil;

@@ -6,7 +6,6 @@ import main.java.kbtu.chill_guys.university_management_system.enumeration.util.U
 import main.java.kbtu.chill_guys.university_management_system.model.User;
 import main.java.kbtu.chill_guys.university_management_system.service.ResearcherService;
 import main.java.kbtu.chill_guys.university_management_system.util.CommandSelectionUtil;
-import main.java.kbtu.chill_guys.university_management_system.util.Constant;
 
 import java.util.*;
 import java.util.logging.Logger;

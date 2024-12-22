@@ -9,7 +9,6 @@ import main.java.kbtu.chill_guys.university_management_system.service.JournalSer
 import main.java.kbtu.chill_guys.university_management_system.view.JournalView;
 
 import java.util.List;
-import java.util.UUID;
 
 public class DeleteJournalCommand implements Command {
     private final JournalService journalService = new JournalService();

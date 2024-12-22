@@ -1,13 +1,11 @@
 package main.java.kbtu.chill_guys.university_management_system.model;
 
 import main.java.kbtu.chill_guys.university_management_system.enumeration.util.UserRole;
-import main.java.kbtu.chill_guys.university_management_system.model.academic.Post;
 import main.java.kbtu.chill_guys.university_management_system.model.research.ResearchPaper;
 
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.Vector;
 
 public abstract class User implements Serializable, Subscriber {
     private UUID id;
