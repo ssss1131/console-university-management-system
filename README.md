@@ -71,7 +71,7 @@ The system is built using a **modular MVC (Model-View-Controller)** design patte
    ```bash
    git clone https://github.com/ssss1131/console-university-management-system.git
    ```
-2. Add logs package, for properly working of logger
+2. Add logs package, for properly working of logger  
    ![image](https://github.com/user-attachments/assets/2a813142-0ac2-4e75-b8d5-c9978a5044e5)
 
 3.Mark directory resources as "Resources". You can find it in project structure
@@ -79,6 +79,6 @@ The system is built using a **modular MVC (Model-View-Controller)** design patte
 
 4. Run the Main class in menu
 
-5. You can create accounts with admin account that have such credentials
-   login: admin@1.kz
+5. You can create accounts with admin account that have such credentials  
+   login: admin@1.kz  
    password: admin
